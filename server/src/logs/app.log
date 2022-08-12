@@ -1,0 +1,62 @@
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-12T21:40:06.159Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-12T21:40:08.276Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-12T21:40:19.658Z"}
+{"level":"error","message":"GET / 404 - 14.944 ms - message: -","timestamp":"2022-08-12T21:41:13.527Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-12T21:41:28.330Z"}
+{"level":"info","message":"GET / 200 - 6.051 ms","timestamp":"2022-08-12T21:41:30.384Z"}
+{"level":"info","message":"GET / 200 - 13.623 ms","timestamp":"2022-08-12T21:42:28.047Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-12T21:45:24.545Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-12T21:48:57.345Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-12T21:49:01.961Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-12T21:51:10.467Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-12T21:51:10.474Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-12T21:52:29.915Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-12T21:52:29.920Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-12T21:54:57.257Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-12T21:54:57.262Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-12T21:55:05.808Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-12T21:55:05.814Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-12T21:55:18.443Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-12T21:55:18.448Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-12T21:56:34.893Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-12T21:56:34.898Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-12T21:56:43.717Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-12T21:56:43.718Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-12T21:56:47.997Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-12T21:56:48.002Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-12T21:56:56.299Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-12T21:56:56.303Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-12T21:57:13.500Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-12T21:57:13.505Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-12T21:57:35.181Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-12T21:57:35.186Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-12T21:59:22.818Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-12T21:59:22.820Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-12T21:59:42.382Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-12T21:59:42.384Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-12T21:59:58.343Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-12T21:59:58.350Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-12T22:00:11.165Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-12T22:00:11.169Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-12T22:00:33.919Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-12T22:00:33.921Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-12T22:00:43.410Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-12T22:00:43.414Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-12T22:01:08.133Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-12T22:01:08.137Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-12T22:01:25.899Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-12T22:01:25.904Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-12T22:02:48.362Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-12T22:02:48.366Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-12T22:03:06.651Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-12T22:03:06.655Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-12T22:03:11.509Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-12T22:03:11.510Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-12T22:03:14.793Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-12T22:03:14.797Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-12T22:04:18.628Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-12T22:04:18.632Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-12T22:04:45.547Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-12T22:04:45.552Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-12T22:05:24.941Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-12T22:05:24.947Z"}
