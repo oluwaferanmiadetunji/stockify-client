@@ -1,13 +1,12 @@
 import { Schema, model } from 'mongoose'
 import validator from 'validator'
 import bcrypt from 'bcryptjs'
-import { generateRandomString } from '../utils/helpers'
-import { UserType } from '../types'
+import { IUser } from '../types'
+import { paginate, toJSON } from '../utils/helpers'
 
-const userSchema = new Schema<UserType>(
+const userSchema = new Schema<IUser>(
   {
-    _id: { type: String, required: true },
-    name: { type: String, required: true },
+    _id: String,
     email: {
       type: String,
       required: true,
@@ -34,29 +33,28 @@ const userSchema = new Schema<UserType>(
       },
       private: true, // used by the toJSON plugin
     },
+    blacklisted: {
+      type: Boolean,
+      default: false,
+    },
   },
   {
     timestamps: true,
   },
 )
 
-/**
- * Check if email is taken
- * @param {string} email - The user's email
- * @param {ObjectId} [excludeUserId] - The id of the user to be excluded
- * @returns {Promise<boolean>}
- */
+// add plugin that converts mongoose to json
+userSchema.plugin(toJSON)
+userSchema.plugin(paginate)
+
 userSchema.statics.isEmailTaken = async function (email, excludeUserId) {
   const user = await this.findOne({ email, _id: { $ne: excludeUserId } })
   return !!user
 }
 
-/**
- * Check if password matches the user's password
- * @param {string} password
- * @returns {Promise<boolean>}
- */
-userSchema.methods.isPasswordMatch = async function (password: string) {
+userSchema.methods.isPasswordMatch = async function (
+  password: string,
+): Promise<boolean> {
   const user = this
   return bcrypt.compare(password, user.password)
 }
@@ -65,11 +63,10 @@ userSchema.pre('save', async function (next) {
   const user = this
   if (user.isModified('password')) {
     user.password = await bcrypt.hash(user.password, 8)
-    user._id = generateRandomString()
   }
   next()
 })
 
-const User = model<UserType>('User', userSchema)
+const User = model<IUser>('User', userSchema)
 
 export default User

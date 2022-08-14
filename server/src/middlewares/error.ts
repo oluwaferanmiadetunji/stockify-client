@@ -25,22 +25,19 @@ export const errorConverter = (
 
 export const ErrorHandler = (err: errorType, req: Request, res: Response) => {
   let { statusCode, message } = err
-  if (config.env === 'production' && !err.isOperational) {
-    statusCode = httpStatus.INTERNAL_SERVER_ERROR
-    message = httpStatus[httpStatus.INTERNAL_SERVER_ERROR]
-  }
+
+  statusCode = httpStatus.INTERNAL_SERVER_ERROR
+  message = httpStatus[httpStatus.INTERNAL_SERVER_ERROR]
 
   res.locals.errorMessage = err.message
 
   const response = {
     code: statusCode,
     message,
-    ...(config.env === 'development' && { stack: err.stack }),
+    stack: err.stack,
   }
 
-  if (config.env === 'development') {
-    LoggerInstance.error(err)
-  }
+  LoggerInstance.error(err)
 
   res.status(statusCode).send(response)
 }

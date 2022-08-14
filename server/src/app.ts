@@ -6,7 +6,7 @@ import httpStatus from 'http-status'
 import hpp from 'hpp'
 import { errorHandler, successHandler } from './config/morgan'
 import Middlewares from './middlewares'
-// import routes from './routes';
+import routes from './routes'
 import limiter from './utils/limiter'
 import ApiError from './utils/ApiError'
 
@@ -49,7 +49,7 @@ app.head('/status', (req: Request, res: Response) => {
 
 app.use('/', Middlewares.rateLimiter)
 
-// app.use('/', routes);
+app.use('/', routes)
 
 // Index route
 app.get('/', (req: Request, res: Response) =>
