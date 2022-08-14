@@ -10,15 +10,13 @@ const cors_1 = __importDefault(require("cors"));
 const http_status_1 = __importDefault(require("http-status"));
 const hpp_1 = __importDefault(require("hpp"));
 const morgan_1 = require("./config/morgan");
-const middlewares_1 = __importDefault(require("./src/middlewares"));
-// import routes from './routes';
-const limiter_1 = __importDefault(require("./src/utils/limiter"));
-const ApiError_1 = __importDefault(require("./src/utils/ApiError"));
-// import AuthConfig from './config/auth';
+const middlewares_1 = __importDefault(require("./middlewares"));
+const routes_1 = __importDefault(require("./routes"));
+const limiter_1 = __importDefault(require("./utils/limiter"));
+const ApiError_1 = __importDefault(require("./utils/ApiError"));
 const app = (0, express_1.default)();
 app.use(morgan_1.successHandler);
 app.use(morgan_1.errorHandler);
-// app.use(AuthConfig);
 // Disable etag and x-powered-by to improve server performance
 app.disable('etag').disable('x-powered-by');
 // Useful if you're behind a reverse proxy (Heroku, Bluemix, AWS ELB, Nginx, etc)
@@ -42,9 +40,9 @@ app.head('/status', (req, res) => {
     res.status(http_status_1.default.OK).end();
 });
 app.use('/', middlewares_1.default.rateLimiter);
-// app.use('/', routes);
+app.use('/', routes_1.default);
 // Index route
-app.get('/home', (req, res) => res.status(http_status_1.default.OK).json({
+app.get('/', (req, res) => res.status(http_status_1.default.OK).json({
     message: `${req.ip}: Welcome`,
 }));
 // send back a 404 error for any unknown api request

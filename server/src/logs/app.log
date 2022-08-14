@@ -395,3 +395,15 @@
 {"level":"info","message":"POST /auth/login 200 - 402.665 ms","timestamp":"2022-08-14T10:53:26.890Z"}
 {"level":"info","message":"OPTIONS /auth/login 204 - 0.422 ms","timestamp":"2022-08-14T10:56:13.485Z"}
 {"level":"error","message":"POST /auth/login 401 - 216.763 ms - message: -","timestamp":"2022-08-14T10:56:13.712Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-14T11:40:28.553Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-14T11:40:28.558Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-14T11:42:25.556Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-14T11:42:25.560Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-14T11:43:44.543Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-14T11:43:44.550Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-14T11:45:13.433Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-14T11:45:13.439Z"}
+{"level":"info","message":"OPTIONS /auth/login 204 - 1.708 ms","timestamp":"2022-08-14T11:47:51.547Z"}
+{"level":"error","message":"POST /auth/login 401 - 176.947 ms - message: -","timestamp":"2022-08-14T11:47:51.727Z"}
+{"level":"info","message":"OPTIONS /auth/login 204 - 0.219 ms","timestamp":"2022-08-14T11:48:08.805Z"}
+{"level":"info","message":"POST /auth/login 200 - 399.961 ms","timestamp":"2022-08-14T11:48:09.208Z"}

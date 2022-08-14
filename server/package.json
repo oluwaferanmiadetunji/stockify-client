@@ -12,7 +12,6 @@
     "tsc": "./node_modules/typescript/bin/tsc",
     "test": "jest --coverage",
     "test:watch": "jest --watch --coverage",
-    "prepare": "husky install",
     "lint": "eslint . --fix"
   },
   "author": "",
