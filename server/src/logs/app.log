@@ -407,3 +407,7 @@
 {"level":"error","message":"POST /auth/login 401 - 176.947 ms - message: -","timestamp":"2022-08-14T11:47:51.727Z"}
 {"level":"info","message":"OPTIONS /auth/login 204 - 0.219 ms","timestamp":"2022-08-14T11:48:08.805Z"}
 {"level":"info","message":"POST /auth/login 200 - 399.961 ms","timestamp":"2022-08-14T11:48:09.208Z"}
+{"level":"info","message":"OPTIONS /auth/login 204 - 2.562 ms","timestamp":"2022-08-14T12:22:26.844Z"}
+{"level":"info","message":"POST /auth/login 200 - 2534.191 ms","timestamp":"2022-08-14T12:22:29.388Z"}
+{"level":"info","message":"OPTIONS /auth/login 204 - 2.718 ms","timestamp":"2022-08-14T20:34:56.080Z"}
+{"level":"info","message":"POST /auth/login 200 - 2640.530 ms","timestamp":"2022-08-14T20:34:58.733Z"}
