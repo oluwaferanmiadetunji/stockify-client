@@ -12,8 +12,8 @@ import InventoryIcon from '@mui/icons-material/Inventory'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
 import ReceiptIcon from '@mui/icons-material/Receipt'
 import { ROUTES } from 'utils/constants'
-
 import styles from './styles'
+import { checkIfPageIsActive } from 'utils/helpers'
 
 const Sidebar = () => {
   const [expanded, setExpanded] = React.useState<string | false>(false)
@@ -34,11 +34,25 @@ const Sidebar = () => {
         elevation={0}
       >
         <AccordionSummary
-          expandIcon={<ChevronRightIcon sx={styles.activeIcon} />}
+          expandIcon={
+            <ChevronRightIcon
+              sx={
+                checkIfPageIsActive(ROUTES.DASHBOARD)
+                  ? styles.activeIcon
+                  : styles.inactiveIcon
+              }
+            />
+          }
           aria-controls="panel1bh-content"
           id="panel1bh-header"
         >
-          <Box sx={styles.activeNavHeader}>
+          <Box
+            sx={
+              checkIfPageIsActive(ROUTES.DASHBOARD)
+                ? styles.activeNavHeader
+                : styles.inactiveNavHeader
+            }
+          >
             <PieChartIcon sx={styles.navIcon} />
             <Typography sx={styles.navText}>Reports</Typography>
           </Box>
@@ -47,14 +61,22 @@ const Sidebar = () => {
         <AccordionDetails sx={styles.navDetails}>
           <Button
             variant="text"
-            sx={styles.activeNavSubHeader}
+            sx={
+              checkIfPageIsActive(ROUTES.DASHBOARD)
+                ? styles.activeNavSubHeader
+                : styles.navSubHeader
+            }
             href={ROUTES.DASHBOARD}
           >
             Overview
           </Button>
           <Button
             variant="text"
-            sx={styles.navSubHeader}
+            sx={
+              checkIfPageIsActive(ROUTES.DASHBOARD_SALES)
+                ? styles.activeNavSubHeader
+                : styles.navSubHeader
+            }
             href={ROUTES.DASHBOARD_SALES}
           >
             Sales
@@ -69,11 +91,25 @@ const Sidebar = () => {
         elevation={0}
       >
         <AccordionSummary
-          expandIcon={<ChevronRightIcon sx={styles.activeIcon} />}
+          expandIcon={
+            <ChevronRightIcon
+              sx={
+                checkIfPageIsActive(ROUTES.CUSTOMERS)
+                  ? styles.activeIcon
+                  : styles.inactiveIcon
+              }
+            />
+          }
           aria-controls="panel2bh-content"
           id="panel2bh-header"
         >
-          <Box sx={styles.activeNavHeader}>
+          <Box
+            sx={
+              checkIfPageIsActive(ROUTES.CUSTOMERS)
+                ? styles.activeNavHeader
+                : styles.inactiveNavHeader
+            }
+          >
             <PeopleIcon sx={styles.navIcon} />
             <Typography sx={styles.navText}>Customers</Typography>
           </Box>
@@ -82,21 +118,33 @@ const Sidebar = () => {
         <AccordionDetails sx={styles.navDetails}>
           <Button
             variant="text"
-            sx={styles.activeNavSubHeader}
-            href={ROUTES.CUSTOMERS_LIST}
+            sx={
+              checkIfPageIsActive(ROUTES.CUSTOMERS)
+                ? styles.activeNavSubHeader
+                : styles.navSubHeader
+            }
+            href={ROUTES.CUSTOMERS}
           >
             List
           </Button>
           <Button
             variant="text"
-            sx={styles.navSubHeader}
+            sx={
+              checkIfPageIsActive(ROUTES.CUSTOMERS_ORDERS)
+                ? styles.activeNavSubHeader
+                : styles.navSubHeader
+            }
             href={ROUTES.CUSTOMERS_ORDERS}
           >
             Orders
           </Button>
           <Button
             variant="text"
-            sx={styles.navSubHeader}
+            sx={
+              checkIfPageIsActive(ROUTES.CUSTOMERS_SUMMARY)
+                ? styles.activeNavSubHeader
+                : styles.navSubHeader
+            }
             href={ROUTES.CUSTOMERS_SUMMARY}
           >
             Summary
@@ -111,11 +159,25 @@ const Sidebar = () => {
         elevation={0}
       >
         <AccordionSummary
-          expandIcon={<ChevronRightIcon sx={styles.activeIcon} />}
+          expandIcon={
+            <ChevronRightIcon
+              sx={
+                checkIfPageIsActive(ROUTES.ORDER)
+                  ? styles.activeIcon
+                  : styles.inactiveIcon
+              }
+            />
+          }
           aria-controls="panel3bh-content"
           id="panel3bh-header"
         >
-          <Box sx={styles.activeNavHeader}>
+          <Box
+            sx={
+              checkIfPageIsActive(ROUTES.ORDER)
+                ? styles.activeNavHeader
+                : styles.inactiveNavHeader
+            }
+          >
             <InventoryIcon sx={styles.navIcon} />
             <Typography sx={styles.navText}>Orders</Typography>
           </Box>
@@ -124,14 +186,22 @@ const Sidebar = () => {
         <AccordionDetails sx={styles.navDetails}>
           <Button
             variant="text"
-            sx={styles.activeNavSubHeader}
-            href={ROUTES.ORDER_LIST}
+            sx={
+              checkIfPageIsActive(ROUTES.ORDER)
+                ? styles.activeNavSubHeader
+                : styles.navSubHeader
+            }
+            href={ROUTES.ORDER}
           >
             List
           </Button>
           <Button
             variant="text"
-            sx={styles.navSubHeader}
+            sx={
+              checkIfPageIsActive(ROUTES.ORDER_SUMMARY)
+                ? styles.activeNavSubHeader
+                : styles.navSubHeader
+            }
             href={ROUTES.ORDER_SUMMARY}
           >
             Summary
@@ -146,11 +216,25 @@ const Sidebar = () => {
         elevation={0}
       >
         <AccordionSummary
-          expandIcon={<ChevronRightIcon sx={styles.activeIcon} />}
+          expandIcon={
+            <ChevronRightIcon
+              sx={
+                checkIfPageIsActive(ROUTES.PRODUCTS)
+                  ? styles.activeIcon
+                  : styles.inactiveIcon
+              }
+            />
+          }
           aria-controls="panel4bh-content"
           id="panel4bh-header"
         >
-          <Box sx={styles.activeNavHeader}>
+          <Box
+            sx={
+              checkIfPageIsActive(ROUTES.PRODUCTS)
+                ? styles.activeNavHeader
+                : styles.inactiveNavHeader
+            }
+          >
             <ShoppingCartIcon sx={styles.navIcon} />
             <Typography sx={styles.navText}>Products</Typography>
           </Box>
@@ -159,28 +243,44 @@ const Sidebar = () => {
         <AccordionDetails sx={styles.navDetails}>
           <Button
             variant="text"
-            sx={styles.activeNavSubHeader}
-            href={ROUTES.PRODUCTS_LIST}
+            sx={
+              checkIfPageIsActive(ROUTES.PRODUCTS)
+                ? styles.activeNavSubHeader
+                : styles.navSubHeader
+            }
+            href={ROUTES.PRODUCTS}
           >
             List
           </Button>
           <Button
             variant="text"
-            sx={styles.navSubHeader}
+            sx={
+              checkIfPageIsActive(ROUTES.PRODUCTS_SUMMARY)
+                ? styles.activeNavSubHeader
+                : styles.navSubHeader
+            }
             href={ROUTES.PRODUCTS_SUMMARY}
           >
             Summary
           </Button>
           <Button
             variant="text"
-            sx={styles.navSubHeader}
+            sx={
+              checkIfPageIsActive(ROUTES.PRODUCTS_INVENTORY)
+                ? styles.activeNavSubHeader
+                : styles.navSubHeader
+            }
             href={ROUTES.PRODUCTS_INVENTORY}
           >
             Inventory
           </Button>
           <Button
             variant="text"
-            sx={styles.navSubHeader}
+            sx={
+              checkIfPageIsActive(ROUTES.PRODUCTS_INSIGHTS)
+                ? styles.activeNavSubHeader
+                : styles.navSubHeader
+            }
             href={ROUTES.PRODUCTS_INSIGHTS}
           >
             Insights
@@ -195,11 +295,25 @@ const Sidebar = () => {
         elevation={0}
       >
         <AccordionSummary
-          expandIcon={<ChevronRightIcon sx={styles.activeIcon} />}
+          expandIcon={
+            <ChevronRightIcon
+              sx={
+                checkIfPageIsActive(ROUTES.INVOICE)
+                  ? styles.activeIcon
+                  : styles.inactiveIcon
+              }
+            />
+          }
           aria-controls="panel5bh-content"
           id="panel5bh-header"
         >
-          <Box sx={styles.activeNavHeader}>
+          <Box
+            sx={
+              checkIfPageIsActive(ROUTES.INVOICE)
+                ? styles.activeNavHeader
+                : styles.inactiveNavHeader
+            }
+          >
             <ReceiptIcon sx={styles.navIcon} />
             <Typography sx={styles.navText}>Invoices</Typography>
           </Box>
@@ -208,28 +322,44 @@ const Sidebar = () => {
         <AccordionDetails sx={styles.navDetails}>
           <Button
             variant="text"
-            sx={styles.activeNavSubHeader}
-            href={ROUTES.INVOICE_LIST}
+            sx={
+              checkIfPageIsActive(ROUTES.INVOICE)
+                ? styles.activeNavSubHeader
+                : styles.navSubHeader
+            }
+            href={ROUTES.INVOICE}
           >
             List
           </Button>
           <Button
             variant="text"
-            sx={styles.navSubHeader}
+            sx={
+              checkIfPageIsActive(ROUTES.INVOICE_CREATE)
+                ? styles.activeNavSubHeader
+                : styles.navSubHeader
+            }
             href={ROUTES.INVOICE_CREATE}
           >
             Create
           </Button>
           <Button
             variant="text"
-            sx={styles.navSubHeader}
+            sx={
+              checkIfPageIsActive(ROUTES.INVOICE_DETAILS)
+                ? styles.activeNavSubHeader
+                : styles.navSubHeader
+            }
             href={ROUTES.INVOICE_DETAILS}
           >
             Details
           </Button>
           <Button
             variant="text"
-            sx={styles.navSubHeader}
+            sx={
+              checkIfPageIsActive(ROUTES.INVOICE_PREVIEW)
+                ? styles.activeNavSubHeader
+                : styles.navSubHeader
+            }
             href={ROUTES.INVOICE_PREVIEW}
           >
             Preview

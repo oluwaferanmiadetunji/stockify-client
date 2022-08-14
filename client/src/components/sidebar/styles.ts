@@ -9,6 +9,10 @@ const styles = {
     color: 'rgb(182, 146, 246)',
     display: 'flex',
   },
+  inactiveNavHeader: {
+    color: 'rgb(151, 161, 186)',
+    display: 'flex',
+  },
   navText: {
     marginLeft: '15px',
     width: '33%',
@@ -23,6 +27,9 @@ const styles = {
   },
   activeIcon: {
     color: 'rgb(182, 146, 246)',
+  },
+  inactiveIcon: {
+    color: 'rgb(151, 161, 186)',
   },
   activeNavSubHeader: {
     width: '100%',
