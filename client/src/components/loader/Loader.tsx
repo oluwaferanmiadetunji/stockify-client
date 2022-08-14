@@ -5,7 +5,7 @@ import styles from './styles'
 const Loader = (): JSX.Element => {
   return (
     <Box sx={styles.container}>
-      <GridLoader color="blue" size={30} />
+      <GridLoader color="white" size={30} />
     </Box>
   )
 }

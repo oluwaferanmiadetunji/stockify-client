@@ -9,10 +9,12 @@ import { Provider } from 'react-redux'
 import store, { persistor } from 'redux-store'
 import { PersistGate } from 'redux-persist/integration/react'
 import { ToastContainer } from 'react-toast'
+import { Navigate } from 'react-router-dom'
 
 axios.defaults.baseURL = API_URL
 
 const Login = lazy(() => import('pages/login'))
+const NotFound = lazy(() => import('pages/not-found'))
 
 const theme = createTheme()
 
@@ -26,6 +28,12 @@ function App() {
           <Box>
             <Routes>
               <Route path={ROUTES.LOGIN} element={<Login />} />
+              <Route path={ROUTES.ERROR} element={<NotFound />} />
+
+              <Route
+                path="*"
+                element={<Navigate to={ROUTES.ERROR} replace />}
+              />
             </Routes>
           </Box>
         </ThemeProvider>

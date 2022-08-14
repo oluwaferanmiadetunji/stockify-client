@@ -6,6 +6,7 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'center',
     textAlign: 'center',
+    background: 'rgb(30, 33, 42)',
   },
 }
 
