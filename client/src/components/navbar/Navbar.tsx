@@ -10,17 +10,15 @@ import MailIcon from '@mui/icons-material/Mail'
 import NotificationsIcon from '@mui/icons-material/Notifications'
 import AppsIcon from '@mui/icons-material/Apps'
 import Tooltip from '@mui/material/Tooltip'
-import Divider from '@mui/material/Divider'
 import Paper from '@mui/material/Paper'
 import MenuList from '@mui/material/MenuList'
 import ListItemText from '@mui/material/ListItemText'
 import ListItemIcon from '@mui/material/ListItemIcon'
-import DashboardIcon from '@mui/icons-material/Dashboard'
 import PersonIcon from '@mui/icons-material/Person'
 import LogoutIcon from '@mui/icons-material/Logout'
 import styles from './styles'
 import { useAppDispatch } from 'redux-store/hooks'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { ROUTES } from 'utils/constants'
 import { logout } from 'redux-store/auth.slice'
 
@@ -49,9 +47,16 @@ export default function Navbar() {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="fixed" sx={styles.container}>
         <Toolbar>
-          <IconButton size="large" edge="start" color="inherit" sx={{ mr: 2 }}>
-            <AppsIcon />
-          </IconButton>
+          <Link to={ROUTES.DASHBOARD}>
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              sx={{ mr: 2, color: 'white' }}
+            >
+              <AppsIcon />
+            </IconButton>
+          </Link>
 
           <Box sx={{ flexGrow: 1 }} />
 
@@ -61,7 +66,7 @@ export default function Navbar() {
               aria-label="show 4 new mails"
               color="inherit"
             >
-              <Badge badgeContent={4} color="error">
+              <Badge badgeContent={1} color="error">
                 <MailIcon />
               </Badge>
             </IconButton>
@@ -70,7 +75,7 @@ export default function Navbar() {
               aria-label="show 17 new notifications"
               color="inherit"
             >
-              <Badge badgeContent={17} color="error">
+              <Badge badgeContent={1} color="error">
                 <NotificationsIcon />
               </Badge>
             </IconButton>
@@ -84,13 +89,12 @@ export default function Navbar() {
 
               <Menu
                 sx={styles.menu}
-                id="menu-appbar"
                 anchorEl={anchorElUser}
                 anchorOrigin={{
                   vertical: 'top',
                   horizontal: 'right',
                 }}
-                keepMounted
+                // keepMounted
                 transformOrigin={{
                   vertical: 'top',
                   horizontal: 'right',
@@ -100,14 +104,6 @@ export default function Navbar() {
               >
                 <Paper sx={styles.menuList} elevation={0}>
                   <MenuList>
-                    <MenuItem>
-                      <ListItemIcon>
-                        <DashboardIcon fontSize="small" />
-                      </ListItemIcon>
-                      <ListItemText>Dashboard</ListItemText>
-                    </MenuItem>
-
-                    <Divider />
                     <MenuItem onClick={handleLogout}>
                       <ListItemIcon>
                         <LogoutIcon fontSize="small" />
