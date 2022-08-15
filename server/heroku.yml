@@ -1,6 +1,6 @@
 setup:
   config:
-    APP_NAME: analytics-node-server
+    APP_NAME: symmetrical-chainsaw
 build:
   config:
     NODE_ENV: production
