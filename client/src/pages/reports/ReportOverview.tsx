@@ -1,10 +1,12 @@
-import Box from '@mui/material/Box'
 import ReportWrapper from './ReportWrapper'
+import { SectionOne, SectionTwo } from './components'
 
 const ReportOverview = () => {
   return (
     <ReportWrapper>
-      <Box>Overview</Box>
+      <SectionOne />
+
+      <SectionTwo />
     </ReportWrapper>
   )
 }

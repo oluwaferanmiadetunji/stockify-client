@@ -9,6 +9,7 @@ const initialState: AuthState = {
     blacklisted: false,
     createdAt: '',
     id: '',
+    name: '',
   },
   token: '',
 }

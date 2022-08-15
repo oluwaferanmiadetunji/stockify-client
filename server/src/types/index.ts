@@ -30,6 +30,7 @@ export interface IToken extends Document {
 export type CreateNewUserType = {
   email: string
   password: string
+  name: string
 }
 
 // Input Types

@@ -4,10 +4,10 @@ import { userService, tokenService } from '../services'
 import ApiError from '../utils/ApiError'
 
 export const createNewUser = catchAsync(async (req, res) => {
-  const { email, password } = req.body
+  const { email, password, name } = req.body
 
   try {
-    const user = await userService.createUser({ email, password })
+    const user = await userService.createUser({ email, password, name })
 
     res.status(httpStatus.CREATED).send(user)
   } catch (error) {

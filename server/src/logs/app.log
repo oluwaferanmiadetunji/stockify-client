@@ -415,3 +415,13 @@
 {"level":"info","message":"POST /auth/login 200 - 442.327 ms","timestamp":"2022-08-14T21:50:52.544Z"}
 {"level":"info","message":"OPTIONS /auth/login 204 - 1.280 ms","timestamp":"2022-08-15T06:50:10.066Z"}
 {"level":"info","message":"POST /auth/login 200 - 1360.574 ms","timestamp":"2022-08-15T06:50:11.434Z"}
+{"level":"info","message":"OPTIONS /auth/login 204 - 1.947 ms","timestamp":"2022-08-15T10:45:48.349Z"}
+{"level":"info","message":"POST /auth/login 200 - 1575.953 ms","timestamp":"2022-08-15T10:45:49.930Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-15T13:21:13.771Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-15T13:21:13.776Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-15T13:22:09.889Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-15T13:22:09.907Z"}
+{"level":"info","message":"POST /auth/register 201 - 449.712 ms","timestamp":"2022-08-15T13:23:53.922Z"}
+{"level":"info","message":"POST /auth/login 200 - 513.256 ms","timestamp":"2022-08-15T13:23:58.577Z"}
+{"level":"info","message":"OPTIONS /auth/login 204 - 1.823 ms","timestamp":"2022-08-15T13:24:42.000Z"}
+{"level":"info","message":"POST /auth/login 200 - 365.526 ms","timestamp":"2022-08-15T13:24:42.368Z"}

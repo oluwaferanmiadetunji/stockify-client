@@ -5,6 +5,7 @@ export interface AuthState {
     blacklisted: boolean
     createdAt: string
     id: string
+    name: string
   }
   token: string
 }
@@ -15,6 +16,7 @@ export interface LoginInterface {
     blacklisted: boolean
     createdAt: string
     id: string
+    name: string
   }
   token: string
 }

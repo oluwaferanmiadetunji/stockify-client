@@ -7,6 +7,10 @@ import { paginate, toJSON } from '../utils/helpers'
 const userSchema = new Schema<IUser>(
   {
     _id: String,
+    name: {
+      type: String,
+      required: true,
+    },
     email: {
       type: String,
       required: true,
