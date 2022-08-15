@@ -1,2 +1,3 @@
-export const checkIfPageIsActive = (route: string) =>
-  route === window.location.pathname
+export const checkIfPageIsActive = (route: string) => {
+  return route === window.location.pathname
+}

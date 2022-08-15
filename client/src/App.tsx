@@ -1,5 +1,5 @@
 import { lazy } from 'react'
-import { createTheme, ThemeProvider } from '@mui/material/styles'
+import { ThemeProvider } from '@mui/material/styles'
 import Box from '@mui/material/Box'
 import CssBaseline from '@mui/material/CssBaseline'
 import { Routes, Route } from 'react-router-dom'
@@ -10,14 +10,14 @@ import store, { persistor } from 'redux-store'
 import { PersistGate } from 'redux-persist/integration/react'
 import { ToastContainer } from 'react-toast'
 import { Navigate } from 'react-router-dom'
+import theme from 'theme'
 
 axios.defaults.baseURL = API_URL
 
 const Login = lazy(() => import('pages/login'))
 const NotFound = lazy(() => import('pages/not-found'))
-const Dashboard = lazy(() => import('pages/dashboard'))
-
-const theme = createTheme()
+const ReportOverview = lazy(() => import('pages/reports/ReportOverview'))
+const ReportSales = lazy(() => import('pages/reports/ReportSales'))
 
 function App() {
   return (
@@ -30,7 +30,8 @@ function App() {
             <Routes>
               <Route path={ROUTES.LOGIN} element={<Login />} />
 
-              <Route path={ROUTES.DASHBOARD} element={<Dashboard />} />
+              <Route path={ROUTES.DASHBOARD} element={<ReportOverview />} />
+              <Route path={ROUTES.DASHBOARD_SALES} element={<ReportSales />} />
 
               <Route path={ROUTES.ERROR} element={<NotFound />} />
 

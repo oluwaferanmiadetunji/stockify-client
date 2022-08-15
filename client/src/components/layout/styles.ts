@@ -14,6 +14,7 @@ const styles = {
   main: {
     background: 'rgb(23, 26, 33)',
     width: '100%',
+    padding: '20px',
   },
 }
 

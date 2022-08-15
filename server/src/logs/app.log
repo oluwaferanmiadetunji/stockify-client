@@ -413,3 +413,5 @@
 {"level":"info","message":"POST /auth/login 200 - 2640.530 ms","timestamp":"2022-08-14T20:34:58.733Z"}
 {"level":"info","message":"OPTIONS /auth/login 204 - 1.448 ms","timestamp":"2022-08-14T21:50:52.095Z"}
 {"level":"info","message":"POST /auth/login 200 - 442.327 ms","timestamp":"2022-08-14T21:50:52.544Z"}
+{"level":"info","message":"OPTIONS /auth/login 204 - 1.280 ms","timestamp":"2022-08-15T06:50:10.066Z"}
+{"level":"info","message":"POST /auth/login 200 - 1360.574 ms","timestamp":"2022-08-15T06:50:11.434Z"}
