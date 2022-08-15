@@ -8,7 +8,7 @@ const Home = () => {
   useEffect(() => {
     navigate(ROUTES.LOGIN)
   }, [navigate])
-  return null
+  return <div />
 }
 
 export default Home
