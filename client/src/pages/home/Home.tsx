@@ -7,7 +7,8 @@ const Home = () => {
 
   useEffect(() => {
     navigate(ROUTES.LOGIN)
-  }, [navigate])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
   return <div />
 }
 
