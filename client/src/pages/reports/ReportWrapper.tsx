@@ -7,13 +7,11 @@ import { useNavigate } from 'react-router-dom'
 import { ROUTES } from 'utils/constants'
 
 const ReportWrapper = ({ children }: any) => {
-  const [value, setValue] = React.useState(
-    window.location.pathname === ROUTES.DASHBOARD ? 0 : 1,
-  )
+  const value = window.location.pathname === ROUTES.DASHBOARD ? 0 : 1
+
   const navigate = useNavigate()
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    // setValue(newValue)
     newValue === 0
       ? navigate(ROUTES.DASHBOARD)
       : navigate(ROUTES.DASHBOARD_SALES)
