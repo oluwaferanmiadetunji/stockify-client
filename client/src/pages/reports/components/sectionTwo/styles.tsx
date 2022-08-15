@@ -5,6 +5,7 @@ const styles = {
   topGridItem: {
     padding: 0,
     marginBottom: '20px',
+    marginTop: '10px',
   },
   topGridItemIcon: {
     marginRight: '15px',

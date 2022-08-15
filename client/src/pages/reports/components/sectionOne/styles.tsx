@@ -53,13 +53,13 @@ const styles = {
   button: {
     color: 'white',
     fontSize: 14,
-    background: 'rgb(105, 65, 198)',
+    background: 'rgb(182, 146, 246)',
     height: '40px',
     marginTop: 3,
     marginBottom: 3,
     textTransform: 'unset',
     '&:hover': {
-      background: 'rgb(182, 146, 246)',
+      background: 'rgb(105, 65, 198)',
     },
     fontWeight: '600',
     position: 'absolute',

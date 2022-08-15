@@ -5,6 +5,7 @@ const styles = {
     background: 'rgb(30, 33, 42)',
     padding: 0,
     margin: 0,
+    overflow: 'hidden',
   },
   content: {
     display: 'flex',
@@ -15,6 +16,8 @@ const styles = {
     background: 'rgb(23, 26, 33)',
     width: '100%',
     padding: '20px',
+    height: 'calc(100vh - 64px',
+    overflow: 'auto',
   },
 }
 
