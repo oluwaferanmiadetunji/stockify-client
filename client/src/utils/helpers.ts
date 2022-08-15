@@ -13,3 +13,23 @@ export const generateRandomStrings = (count: number): string[] => {
 
   return response
 }
+
+type CurrencyFormatter = {
+  amount: number
+  currency?: string
+  locale?: string
+}
+
+/**
+ * Formats a number into human readable currency values
+ */
+export function formatCurrency({
+  amount,
+  currency = 'NGN',
+  locale = 'en',
+}: CurrencyFormatter) {
+  return Number(amount.toFixed(2)).toLocaleString(locale, {
+    style: 'currency',
+    currency,
+  })
+}

@@ -1,10 +1,13 @@
 import Box from '@mui/material/Box'
 import ReportWrapper from './ReportWrapper'
+import { Indicators } from './components'
 
 const ReportSales = () => {
   return (
     <ReportWrapper>
-      <Box>Sales</Box>
+      <Box>
+        <Indicators />
+      </Box>
     </ReportWrapper>
   )
 }

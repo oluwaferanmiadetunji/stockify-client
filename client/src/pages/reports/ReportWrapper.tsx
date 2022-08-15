@@ -28,7 +28,7 @@ const ReportWrapper = ({ children }: any) => {
         Reports
       </Typography>
 
-      <Box sx={styles.tabsContainer}>
+      <Box sx={{ ...styles.tabsContainer, borderColor: 'rgb(43, 47, 60)' }}>
         <StyledTabs value={value} onChange={handleChange}>
           <StyledTab label="Overview" />
           <StyledTab label="Sales" />
