@@ -15,6 +15,7 @@ import theme from 'theme'
 axios.defaults.baseURL = API_URL
 
 const Login = lazy(() => import('pages/login'))
+const Home = lazy(() => import('pages/home'))
 const NotFound = lazy(() => import('pages/not-found'))
 const ReportOverview = lazy(() => import('pages/reports/ReportOverview'))
 const ReportSales = lazy(() => import('pages/reports/ReportSales'))
@@ -34,6 +35,7 @@ function App() {
               <Route path={ROUTES.DASHBOARD_SALES} element={<ReportSales />} />
 
               <Route path={ROUTES.ERROR} element={<NotFound />} />
+              <Route path={ROUTES.HOME} element={<Home />} />
 
               <Route
                 path="*"

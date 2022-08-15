@@ -1,6 +1,7 @@
 export const ROUTES = {
   LOGIN: '/auth/login',
   ERROR: '/404',
+  HOME: '/',
   DASHBOARD: '/dashboard/reports',
   DASHBOARD_SALES: '/dashboard/reports/sales',
   CUSTOMERS: '/dashboard/customers',
