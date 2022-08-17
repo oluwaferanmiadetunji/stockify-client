@@ -1,7 +1,42 @@
 import { faker } from '@faker-js/faker'
+import { ROUTES } from './constants'
 
-export const checkIfPageIsActive = (route: string) => {
-  return route === window.location.pathname
+export const checkIfPageIsActive = (route: string): boolean =>
+  route === window.location.pathname
+
+export const checkIfSubPageIsActive = (
+  route: string,
+  parentRoute: string,
+): boolean => {
+  const parentRouteSplit = parentRoute.split('/')
+  const routeSplit = route.split('/')
+
+  return (
+    parentRouteSplit[2] === routeSplit[2] &&
+    routeSplit.length !== parentRouteSplit.length
+  )
+}
+
+export const checkReportsPageIsActive = () => {
+  const isReportPageActive = window.location.pathname === ROUTES.DASHBOARD
+  const isReportSalesPageActive =
+    window.location.pathname === ROUTES.DASHBOARD_SALES
+
+  return { isReportPageActive, isReportSalesPageActive }
+}
+
+export const checkCustomersPageIsActive = () => {
+  const isCustomerPageActive = window.location.pathname === ROUTES.CUSTOMERS
+  const isCustomerOrderPageActive =
+    window.location.pathname === ROUTES.CUSTOMERS_ORDERS
+  const isCustomerSummaryPageActive =
+    window.location.pathname === ROUTES.CUSTOMERS_SUMMARY
+
+  return {
+    isCustomerPageActive,
+    isCustomerOrderPageActive,
+    isCustomerSummaryPageActive,
+  }
 }
 
 export const generateRandomStrings = (count: number): string[] => {
