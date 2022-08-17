@@ -76,7 +76,7 @@ const Indicators = () => {
                 <Box sx={styles.card}>
                   <Typography sx={styles.cardHeader}>REVENUE</Typography>
                   <Typography sx={styles.cardText}>
-                    {formatCurrency({ amount: 4800 })}
+                    {formatCurrency({ amount: 0 })}
                   </Typography>
                 </Box>
               </Item>
@@ -87,7 +87,7 @@ const Indicators = () => {
                 <Box sx={styles.card}>
                   <Typography sx={styles.cardHeader}>NET</Typography>
                   <Typography sx={styles.cardText}>
-                    {formatCurrency({ amount: 4800 })}
+                    {formatCurrency({ amount: 0 })}
                   </Typography>
                 </Box>
               </Item>
@@ -98,7 +98,7 @@ const Indicators = () => {
                 <Box sx={styles.card}>
                   <Typography sx={styles.cardHeader}>PENDING ORDERS</Typography>
                   <Typography sx={styles.cardText}>
-                    {formatCurrency({ amount: 4800 })}
+                    {formatCurrency({ amount: 0 })}
                   </Typography>
                 </Box>
               </Item>
@@ -109,7 +109,7 @@ const Indicators = () => {
                 <Box sx={styles.card}>
                   <Typography sx={styles.cardHeader}>DUE</Typography>
                   <Typography sx={styles.cardText}>
-                    {formatCurrency({ amount: 4800 })}
+                    {formatCurrency({ amount: 0 })}
                   </Typography>
                 </Box>
               </Item>

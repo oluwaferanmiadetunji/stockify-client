@@ -33,3 +33,18 @@ export function formatCurrency({
     currency,
   })
 }
+
+export const generateCustomers = (count = 10) => {
+  const response: any[] = []
+
+  for (let i = 0; i < count; i++) {
+    response.push({
+      name: faker.name.fullName(),
+      email: faker.internet.email(),
+      phone: faker.phone.number(),
+      created: new Date(faker.date.past()).toISOString(),
+    })
+  }
+
+  return response
+}

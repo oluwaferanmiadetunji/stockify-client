@@ -43,16 +43,15 @@ const SectionOne = () => {
             </Box>
 
             <Link to={ROUTES.CUSTOMERS} style={{ textDecoration: 'none' }}>
-              <Stack direction="row" spacing={1} sx={styles.bottomItem}>
+              <Stack direction="row" spacing={2} sx={styles.bottomItem}>
                 <Typography>See all notifications</Typography>
-                <ArrowForwardIcon />
+                <ArrowForwardIcon fontSize="small" />
               </Stack>
             </Link>
           </Item>
         </Grid>
 
         <SetupAccount />
-        
       </Grid>
     </Box>
   )

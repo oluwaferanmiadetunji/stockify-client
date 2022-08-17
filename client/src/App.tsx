@@ -19,6 +19,7 @@ const Home = lazy(() => import('pages/home'))
 const NotFound = lazy(() => import('pages/not-found'))
 const ReportOverview = lazy(() => import('pages/reports/ReportOverview'))
 const ReportSales = lazy(() => import('pages/reports/ReportSales'))
+const Customers = lazy(() => import('pages/customers'))
 
 function App() {
   return (
@@ -33,6 +34,8 @@ function App() {
 
               <Route path={ROUTES.DASHBOARD} element={<ReportOverview />} />
               <Route path={ROUTES.DASHBOARD_SALES} element={<ReportSales />} />
+
+              <Route path={ROUTES.CUSTOMERS} element={<Customers />} />
 
               <Route path={ROUTES.ERROR} element={<NotFound />} />
               <Route path={ROUTES.HOME} element={<Home />} />

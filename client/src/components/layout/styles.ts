@@ -16,7 +16,7 @@ const styles = {
     background: 'rgb(23, 26, 33)',
     width: '100%',
     padding: '20px',
-    height: 'calc(100vh - 64px',
+    height: 'calc(100vh - 100px)',
     overflow: 'auto',
   },
 }
