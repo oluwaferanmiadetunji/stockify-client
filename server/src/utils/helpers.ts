@@ -3,12 +3,6 @@ import randomstring from 'randomstring'
 export const generateRandomString = (length = 8): string =>
   randomstring.generate(length)
 
-/**
- * A mongoose schema plugin which applies the following in the toJSON transform call:
- *  - removes __v, updatedAt, and any path that has private: true
- *  - replaces _id with id
- */
-
 const deleteAtPath = (
   obj: { [x: string]: any },
   path: string | any[],
@@ -88,7 +82,7 @@ export const paginate = (schema: any) => {
     const limit =
       options.limit && parseInt(options.limit, 10) > 0
         ? parseInt(options.limit, 10)
-        : 10
+        : 100
     const page =
       options.page && parseInt(options.page, 10) > 0
         ? parseInt(options.page, 10)

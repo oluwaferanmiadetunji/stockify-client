@@ -23,6 +23,13 @@ export interface IToken extends Document {
   expires: string
 }
 
+export interface ICustomer extends Document {
+  name: string
+  email: string
+  phone: string
+  _id: string
+}
+
 // Model Types
 
 // Input Types
@@ -31,6 +38,12 @@ export type CreateNewUserType = {
   email: string
   password: string
   name: string
+}
+
+export type CreateNewCustomerType = {
+  name: string
+  email: string
+  phone: string
 }
 
 // Input Types

@@ -20,3 +20,17 @@ export interface LoginInterface {
   }
   token: string
 }
+
+export interface CustomerState {
+  customers: {
+    name: string
+    phone: string
+    email: string
+    createdAt: string
+    id: string
+  }[]
+  page: number
+  limit: number
+  totalPages: number
+  count: number
+}

@@ -14,10 +14,11 @@ import ReceiptIcon from '@mui/icons-material/Receipt'
 import { ROUTES } from 'utils/constants'
 import styles from './styles'
 import {
-  checkIfPageIsActive,
-  checkIfSubPageIsActive,
   checkReportsPageIsActive,
   checkCustomersPageIsActive,
+  checkOrderPageIsActive,
+  checkProductPageIsActive,
+  checkInvoicePageIsActive,
 } from 'utils/helpers'
 
 const Sidebar = () => {
@@ -102,7 +103,7 @@ const Sidebar = () => {
             <ChevronRightIcon
               sx={
                 checkCustomersPageIsActive().isCustomerPageActive ||
-                checkCustomersPageIsActive().isCustomerPageActive ||
+                checkCustomersPageIsActive().isCustomerOrderPageActive ||
                 checkCustomersPageIsActive().isCustomerSummaryPageActive
                   ? styles.activeIcon
                   : styles.inactiveIcon
@@ -138,6 +139,7 @@ const Sidebar = () => {
           >
             List
           </Button>
+
           <Button
             variant="text"
             sx={
@@ -173,7 +175,8 @@ const Sidebar = () => {
           expandIcon={
             <ChevronRightIcon
               sx={
-                checkIfPageIsActive(ROUTES.ORDER)
+                checkOrderPageIsActive().isOrderPageActive ||
+                checkOrderPageIsActive().isOrderSummaryPageActive
                   ? styles.activeIcon
                   : styles.inactiveIcon
               }
@@ -184,7 +187,8 @@ const Sidebar = () => {
         >
           <Box
             sx={
-              checkIfPageIsActive(ROUTES.ORDER)
+              checkOrderPageIsActive().isOrderPageActive ||
+              checkOrderPageIsActive().isOrderSummaryPageActive
                 ? styles.activeNavHeader
                 : styles.inactiveNavHeader
             }
@@ -198,7 +202,7 @@ const Sidebar = () => {
           <Button
             variant="text"
             sx={
-              checkIfPageIsActive(ROUTES.ORDER)
+              checkOrderPageIsActive().isOrderPageActive
                 ? styles.activeNavSubHeader
                 : styles.navSubHeader
             }
@@ -209,7 +213,7 @@ const Sidebar = () => {
           <Button
             variant="text"
             sx={
-              checkIfSubPageIsActive(ROUTES.ORDER_SUMMARY, ROUTES.ORDER)
+              checkOrderPageIsActive().isOrderSummaryPageActive
                 ? styles.activeNavSubHeader
                 : styles.navSubHeader
             }
@@ -230,7 +234,10 @@ const Sidebar = () => {
           expandIcon={
             <ChevronRightIcon
               sx={
-                checkIfPageIsActive(ROUTES.PRODUCTS)
+                checkProductPageIsActive().isProductInsightPageActive ||
+                checkProductPageIsActive().isProductInventoryPageActive ||
+                checkProductPageIsActive().isProductPageActive ||
+                checkProductPageIsActive().isProductSummaryPageActive
                   ? styles.activeIcon
                   : styles.inactiveIcon
               }
@@ -241,7 +248,10 @@ const Sidebar = () => {
         >
           <Box
             sx={
-              checkIfPageIsActive(ROUTES.PRODUCTS)
+              checkProductPageIsActive().isProductInsightPageActive ||
+              checkProductPageIsActive().isProductInventoryPageActive ||
+              checkProductPageIsActive().isProductPageActive ||
+              checkProductPageIsActive().isProductSummaryPageActive
                 ? styles.activeNavHeader
                 : styles.inactiveNavHeader
             }
@@ -255,7 +265,7 @@ const Sidebar = () => {
           <Button
             variant="text"
             sx={
-              checkIfPageIsActive(ROUTES.PRODUCTS)
+              checkProductPageIsActive().isProductPageActive
                 ? styles.activeNavSubHeader
                 : styles.navSubHeader
             }
@@ -266,7 +276,7 @@ const Sidebar = () => {
           <Button
             variant="text"
             sx={
-              checkIfSubPageIsActive(ROUTES.PRODUCTS_SUMMARY, ROUTES.PRODUCTS)
+              checkProductPageIsActive().isProductSummaryPageActive
                 ? styles.activeNavSubHeader
                 : styles.navSubHeader
             }
@@ -277,7 +287,7 @@ const Sidebar = () => {
           <Button
             variant="text"
             sx={
-              checkIfSubPageIsActive(ROUTES.PRODUCTS_INVENTORY, ROUTES.PRODUCTS)
+              checkProductPageIsActive().isProductInventoryPageActive
                 ? styles.activeNavSubHeader
                 : styles.navSubHeader
             }
@@ -288,7 +298,7 @@ const Sidebar = () => {
           <Button
             variant="text"
             sx={
-              checkIfSubPageIsActive(ROUTES.PRODUCTS_INSIGHTS, ROUTES.PRODUCTS)
+              checkProductPageIsActive().isProductInsightPageActive
                 ? styles.activeNavSubHeader
                 : styles.navSubHeader
             }
@@ -309,7 +319,10 @@ const Sidebar = () => {
           expandIcon={
             <ChevronRightIcon
               sx={
-                checkIfPageIsActive(ROUTES.INVOICE)
+                checkInvoicePageIsActive().isInvoiceCreatePageActive ||
+                checkInvoicePageIsActive().isInvoiceDetailsPageActive ||
+                checkInvoicePageIsActive().isInvoicePageActive ||
+                checkInvoicePageIsActive().isInvoicePreviewPageActive
                   ? styles.activeIcon
                   : styles.inactiveIcon
               }
@@ -320,7 +333,10 @@ const Sidebar = () => {
         >
           <Box
             sx={
-              checkIfPageIsActive(ROUTES.INVOICE)
+              checkInvoicePageIsActive().isInvoiceCreatePageActive ||
+              checkInvoicePageIsActive().isInvoiceDetailsPageActive ||
+              checkInvoicePageIsActive().isInvoicePageActive ||
+              checkInvoicePageIsActive().isInvoicePreviewPageActive
                 ? styles.activeNavHeader
                 : styles.inactiveNavHeader
             }
@@ -334,7 +350,7 @@ const Sidebar = () => {
           <Button
             variant="text"
             sx={
-              checkIfPageIsActive(ROUTES.INVOICE)
+              checkInvoicePageIsActive().isInvoicePageActive
                 ? styles.activeNavSubHeader
                 : styles.navSubHeader
             }
@@ -345,7 +361,7 @@ const Sidebar = () => {
           <Button
             variant="text"
             sx={
-              checkIfSubPageIsActive(ROUTES.INVOICE_CREATE, ROUTES.INVOICE)
+              checkInvoicePageIsActive().isInvoiceCreatePageActive
                 ? styles.activeNavSubHeader
                 : styles.navSubHeader
             }
@@ -356,7 +372,7 @@ const Sidebar = () => {
           <Button
             variant="text"
             sx={
-              checkIfSubPageIsActive(ROUTES.INVOICE_DETAILS, ROUTES.INVOICE)
+              checkInvoicePageIsActive().isInvoiceDetailsPageActive
                 ? styles.activeNavSubHeader
                 : styles.navSubHeader
             }
@@ -367,7 +383,7 @@ const Sidebar = () => {
           <Button
             variant="text"
             sx={
-              checkIfSubPageIsActive(ROUTES.INVOICE_PREVIEW, ROUTES.INVOICE)
+              checkInvoicePageIsActive().isInvoicePreviewPageActive
                 ? styles.activeNavSubHeader
                 : styles.navSubHeader
             }

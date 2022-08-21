@@ -15,6 +15,18 @@ const styles = {
   tableContainer: {
     backgroundColor: 'rgb(30, 33, 42)',
   },
+  header: {
+    width: '100%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  deleteButton: {
+    cursor: 'pointer',
+    '&:hover': {
+      color: 'pink',
+    },
+  },
 }
 
 export default styles

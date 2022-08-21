@@ -1,22 +1,6 @@
 import { faker } from '@faker-js/faker'
 import { ROUTES } from './constants'
 
-export const checkIfPageIsActive = (route: string): boolean =>
-  route === window.location.pathname
-
-export const checkIfSubPageIsActive = (
-  route: string,
-  parentRoute: string,
-): boolean => {
-  const parentRouteSplit = parentRoute.split('/')
-  const routeSplit = route.split('/')
-
-  return (
-    parentRouteSplit[2] === routeSplit[2] &&
-    routeSplit.length !== parentRouteSplit.length
-  )
-}
-
 export const checkReportsPageIsActive = () => {
   const isReportPageActive = window.location.pathname === ROUTES.DASHBOARD
   const isReportSalesPageActive =
@@ -36,6 +20,54 @@ export const checkCustomersPageIsActive = () => {
     isCustomerPageActive,
     isCustomerOrderPageActive,
     isCustomerSummaryPageActive,
+  }
+}
+
+export const checkOrderPageIsActive = () => {
+  const isOrderPageActive = window.location.pathname === ROUTES.ORDER
+
+  const isOrderSummaryPageActive =
+    window.location.pathname === ROUTES.ORDER_SUMMARY
+
+  return {
+    isOrderPageActive,
+    isOrderSummaryPageActive,
+  }
+}
+
+export const checkProductPageIsActive = () => {
+  const isProductPageActive = window.location.pathname === ROUTES.PRODUCTS
+
+  const isProductSummaryPageActive =
+    window.location.pathname === ROUTES.PRODUCTS_SUMMARY
+  const isProductInsightPageActive =
+    window.location.pathname === ROUTES.PRODUCTS_INSIGHTS
+  const isProductInventoryPageActive =
+    window.location.pathname === ROUTES.PRODUCTS_INVENTORY
+
+  return {
+    isProductPageActive,
+    isProductSummaryPageActive,
+    isProductInsightPageActive,
+    isProductInventoryPageActive,
+  }
+}
+
+export const checkInvoicePageIsActive = () => {
+  const isInvoicePageActive = window.location.pathname === ROUTES.INVOICE
+
+  const isInvoiceCreatePageActive =
+    window.location.pathname === ROUTES.INVOICE_CREATE
+  const isInvoiceDetailsPageActive =
+    window.location.pathname === ROUTES.INVOICE_DETAILS
+  const isInvoicePreviewPageActive =
+    window.location.pathname === ROUTES.INVOICE_PREVIEW
+
+  return {
+    isInvoicePageActive,
+    isInvoiceCreatePageActive,
+    isInvoiceDetailsPageActive,
+    isInvoicePreviewPageActive,
   }
 }
 
