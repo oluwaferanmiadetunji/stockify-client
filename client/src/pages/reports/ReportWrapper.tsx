@@ -5,10 +5,12 @@ import styles, { StyledTab, StyledTabs } from './styles'
 import Typography from '@mui/material/Typography'
 import { useNavigate } from 'react-router-dom'
 import { ROUTES } from 'utils/constants'
+import { getAnalyticsData } from 'utils/api'
+import { useAppDispatch } from 'redux-store/hooks'
 
 const ReportWrapper = ({ children }: any) => {
   const value = window.location.pathname === ROUTES.DASHBOARD ? 0 : 1
-
+  const dispatch = useAppDispatch()
   const navigate = useNavigate()
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -16,6 +18,12 @@ const ReportWrapper = ({ children }: any) => {
       ? navigate(ROUTES.DASHBOARD)
       : navigate(ROUTES.DASHBOARD_SALES)
   }
+
+  React.useEffect(() => {
+    ;(async () => {
+      await getAnalyticsData(dispatch)
+    })()
+  }, [dispatch])
 
   return (
     <Layout>

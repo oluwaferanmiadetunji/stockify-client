@@ -3,6 +3,9 @@ import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import authReducer from './auth.slice'
 import customerReducer from './customers.slice'
+import productsReducer from './products.slice'
+import analyticsReducer from './analytics.slice'
+import logger from 'redux-logger'
 
 const persistConfig = {
   key: 'root',
@@ -12,6 +15,8 @@ const persistConfig = {
 const rootReducer = combineReducers({
   auth: authReducer,
   customers: customerReducer,
+  products: productsReducer,
+  analytics: analyticsReducer,
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
@@ -19,6 +24,10 @@ const persistedReducer = persistReducer(persistConfig, rootReducer)
 const store = configureStore({
   reducer: persistedReducer,
   devTools: process.env.NODE_ENV !== 'production',
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }).concat(logger),
 })
 
 export const persistor = persistStore(store)

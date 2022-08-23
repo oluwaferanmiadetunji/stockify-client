@@ -11,7 +11,7 @@ const initialState: CustomerState = {
 }
 
 const authSlice = createSlice({
-  name: 'auth',
+  name: 'customer',
   initialState,
   reducers: {
     setCustomers: (
@@ -26,6 +26,7 @@ const authSlice = createSlice({
     },
     addCustomers: (state: CustomerState, action: PayloadAction<any>) => {
       state.customers = [action.payload, ...state.customers]
+      state.count = state.count + 1
     },
     deleteCustomer: (state: CustomerState, action: PayloadAction<any>) => {
       const index = state.customers.findIndex(

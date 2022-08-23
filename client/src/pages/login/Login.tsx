@@ -11,12 +11,17 @@ import FormControl from '@mui/material/FormControl'
 import CircularProgress from '@mui/material/CircularProgress'
 import { makeLoginRequest } from 'utils/api'
 import { useAppDispatch } from 'redux-store/hooks'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
+import { ROUTES } from 'utils/constants'
 
 export default function SignIn() {
   const [loading, setLoading] = React.useState(false)
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
+  const location = useLocation()
+
+  //@ts-ignore
+  let from = location.state?.from?.pathname || ROUTES.DASHBOARD
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -28,7 +33,10 @@ export default function SignIn() {
       password: (data.get('password') || '').toString(),
     }
 
-    await makeLoginRequest(payload, dispatch, navigate)
+    const callback = () => {
+      navigate(from, { replace: true })
+    }
+    await makeLoginRequest(payload, dispatch, callback)
 
     setLoading(false)
   }

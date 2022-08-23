@@ -16,7 +16,7 @@ export const ROUTES = {
   PRODUCTS_SUMMARY: '/dashboard/products/summary',
   PRODUCTS_INVENTORY: '/dashboard/products/inventory',
   PRODUCTS_INSIGHTS: '/dashboard/products/insights',
-  
+
   INVOICE: '/dashboard/invoice',
   INVOICE_CREATE: '/dashboard/invoice/create',
   INVOICE_DETAILS: '/dashboard/invoice/details',
@@ -32,5 +32,7 @@ export const API_URL = process.env.REACT_APP_API_URL
 
 export const API_ROUTES = {
   LOGIN: '/auth/login',
-  CUSTOMERS:'/customer'
+  CUSTOMERS: '/customer',
+  PRODUCTS: '/product',
+  ANALYTICS_REPORTS: '/analytics/reports',
 }

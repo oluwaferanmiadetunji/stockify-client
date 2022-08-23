@@ -54,12 +54,21 @@ export const updateCustomerById = async (
   return user
 }
 
-export const deleteCustomerById = async (id: string) => {
+export const deleteCustomerById = async (id: string, userId: string) => {
   const user = await getCustomerById(id)
 
   if (!user) {
     throw new ApiError(httpStatus.NOT_FOUND, 'User not found')
   }
+  if (user.user != userId) {
+    throw new ApiError(httpStatus.UNAUTHORIZED, '')
+  }
   await user.remove()
   return user
+}
+
+export const getTotalCount = async (user: string): Promise<number> => {
+  const count = await Customers.countDocuments({ user })
+
+  return count
 }

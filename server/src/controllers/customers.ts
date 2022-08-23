@@ -4,8 +4,10 @@ import { customerService } from '../services'
 import { pickQueryParams } from '../utils/helpers'
 
 export const createNewCustomer = catchAsync(async (req, res) => {
+  const user = req.currentUser._id
+
   try {
-    const customer = await customerService.createCustomer(req.body)
+    const customer = await customerService.createCustomer({ ...req.body, user })
 
     res.status(httpStatus.CREATED).send(customer)
   } catch (error) {
@@ -16,16 +18,23 @@ export const createNewCustomer = catchAsync(async (req, res) => {
 })
 
 export const getCustomers = catchAsync(async (req, res) => {
-  const filter = pickQueryParams(req.query, ['name', 'phone', 'email'])
-  const options = pickQueryParams(req.query, ['sortBy', 'limit', 'page'])
+  const filter = pickQueryParams(req.query, ['name', 'phone', 'email', 'user'])
+  const options = pickQueryParams(req.query, [
+    'sortBy',
+    'limit',
+    'page',
+    'user',
+  ])
   const result = await customerService.queryCustomers(filter, options)
 
   res.status(httpStatus.OK).send(result)
 })
 
 export const deleteCustomer = catchAsync(async (req, res) => {
+  const user = req.currentUser._id
+
   try {
-    await customerService.deleteCustomerById(req.params.id)
+    await customerService.deleteCustomerById(req.params.id, user)
 
     res.status(httpStatus.OK).json({ message: 'Customer deleted successfully' })
   } catch (error) {

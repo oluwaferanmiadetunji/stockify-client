@@ -21,6 +21,7 @@ import { useAppDispatch } from 'redux-store/hooks'
 import { useNavigate, Link } from 'react-router-dom'
 import { ROUTES } from 'utils/constants'
 import { logout } from 'redux-store/auth.slice'
+import { saveToken } from 'utils/helpers'
 
 export default function Navbar() {
   const dispatch = useAppDispatch()
@@ -40,6 +41,7 @@ export default function Navbar() {
 
   const handleLogout = () => {
     dispatch(logout())
+    saveToken('')
     navigate(ROUTES.LOGIN)
   }
 

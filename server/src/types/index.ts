@@ -1,4 +1,5 @@
 import { Document } from 'mongoose'
+import { Request } from 'express'
 
 export type errorType = {
   statusCode: number
@@ -28,6 +29,28 @@ export interface ICustomer extends Document {
   email: string
   phone: string
   _id: string
+  user: string
+}
+
+export interface IProducts extends Document {
+  name: string
+  supplier?: string
+  manufacturer?: string
+  _id: string
+  serial_number?: string
+  RAM?: string
+  ROM?: string
+  processor?: string
+  size?: string
+  fingerprint?: boolean
+  touch?: boolean
+  dedicated?: boolean
+  imei?: string
+  color: string
+  battery_health?: string
+  image?: string
+  price: number
+  user: string
 }
 
 // Model Types
@@ -46,6 +69,26 @@ export type CreateNewCustomerType = {
   phone: string
 }
 
+export type CreateNewProductType = {
+  name: string
+  supplier?: string
+  manufacturer?: string
+  _id: string
+  serial_number?: string
+  RAM?: string
+  ROM?: string
+  processor?: string
+  size?: string
+  fingerprint?: boolean
+  touch?: boolean
+  dedicated?: boolean
+  imei?: string
+  color: string
+  battery_health?: string
+  image?: string
+  price: number
+  user: string
+}
 // Input Types
 
 // Service Types

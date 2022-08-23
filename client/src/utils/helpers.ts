@@ -1,5 +1,6 @@
 import { faker } from '@faker-js/faker'
 import { ROUTES } from './constants'
+import axios from 'axios'
 
 export const checkReportsPageIsActive = () => {
   const isReportPageActive = window.location.pathname === ROUTES.DASHBOARD
@@ -114,4 +115,10 @@ export const generateCustomers = (count = 10) => {
   }
 
   return response
+}
+
+export const generateImageTag = (): string => faker.datatype.uuid()
+
+export const saveToken = (token: string): void => {
+  axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
 }

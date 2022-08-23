@@ -10,8 +10,12 @@ import PaidIcon from '@mui/icons-material/Paid'
 import { ROUTES } from 'utils/constants'
 import PeopleIcon from '@mui/icons-material/People'
 import Grid from '@mui/material/Grid'
+import { selectAnalyticsState } from 'redux-store/analytics.slice'
+import { useAppSelector } from 'redux-store/hooks'
 
 const ReportOverview = () => {
+  const { customer, product } = useAppSelector(selectAnalyticsState)
+
   return (
     <Box sx={{ flexGrow: 1, mt: 4 }}>
       <Grid container spacing={2}>
@@ -24,7 +28,9 @@ const ReportOverview = () => {
                 <Typography sx={styles.topGridItemDetailsHeader}>
                   Customers
                 </Typography>
-                <Typography sx={styles.topGridItemDetailsValue}>0</Typography>
+                <Typography sx={styles.topGridItemDetailsValue}>
+                  {customer}
+                </Typography>
               </Box>
             </Stack>
 
@@ -53,7 +59,9 @@ const ReportOverview = () => {
                 <Typography sx={styles.topGridItemDetailsHeader}>
                   Products
                 </Typography>
-                <Typography sx={styles.topGridItemDetailsValue}>0</Typography>
+                <Typography sx={styles.topGridItemDetailsValue}>
+                  {product}
+                </Typography>
               </Box>
             </Stack>
 
