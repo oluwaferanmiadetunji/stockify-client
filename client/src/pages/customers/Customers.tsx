@@ -1,42 +1,29 @@
 import { useState, useEffect } from 'react'
 import Layout from 'components/layout'
 import Box from '@mui/material/Box'
-import styles, { Item, StyledTableCell, StyledTableRow } from './styles'
+import styles, { Item } from './styles'
 import Typography from '@mui/material/Typography'
-import Table from '@mui/material/Table'
-import TableBody from '@mui/material/TableBody'
-import TableContainer from '@mui/material/TableContainer'
-import TableHead from '@mui/material/TableHead'
-import TableRow from '@mui/material/TableRow'
-import Paper from '@mui/material/Paper'
 import TextField from '@mui/material/TextField'
 import Dialog from '@mui/material/Dialog'
 import DialogActions from '@mui/material/DialogActions'
 import DialogContent from '@mui/material/DialogContent'
-import DialogContentText from '@mui/material/DialogContentText'
 import DialogTitle from '@mui/material/DialogTitle'
 import Button from '@mui/material/Button'
-import dayjs from 'dayjs'
-import DeleteIcon from '@mui/icons-material/Delete'
 import LoadingButton from '@mui/lab/LoadingButton'
 import { useAppDispatch, useAppSelector } from 'redux-store/hooks'
 import { selectCustomerState } from 'redux-store/customers.slice'
 import { initialState } from './constant'
-import {
-  makeCustomerQueryRequest,
-  makeCreateCustomerRequest,
-  makeDeleteCustomerRequest,
-} from 'utils/api'
+import { makeCustomerQueryRequest, makeCreateCustomerRequest } from 'utils/api'
+
+import VirtualizedTable from './MuiVirtualizedTable'
 
 const Customers = () => {
   const dispatch = useAppDispatch()
-  const { customers, count } = useAppSelector(selectCustomerState)
+  const { customers } = useAppSelector(selectCustomerState)
 
   const [open, setOpen] = useState(false)
-  const [deleteOpen, setDeleteOpen] = useState(false)
   const [state, setState] = useState(initialState)
   const [loading, setLoading] = useState(false)
-  const [id, setId] = useState('')
 
   const handleChange = (event: { target: { name: any; value: any } }) => {
     setState({
@@ -64,13 +51,6 @@ const Customers = () => {
     setLoading(false)
   }
 
-  const onDelete = async () => {
-    setLoading(true)
-    await makeDeleteCustomerRequest(id, dispatch)
-    setDeleteOpen(false)
-    setLoading(false)
-  }
-
   useEffect(() => {
     ;(async () => {
       await makeCustomerQueryRequest('limit=1000', dispatch)
@@ -86,7 +66,7 @@ const Customers = () => {
           gutterBottom
           component="div"
         >
-          Customers ({count})
+          Customers
         </Typography>
 
         <Button variant="contained" onClick={handleClickOpen}>
@@ -153,9 +133,9 @@ const Customers = () => {
       </Dialog>
 
       <Box sx={styles.container}>
-        <Item>
-          <TableContainer component={Paper} sx={styles.tableContainer}>
-            <Table sx={{ minWidth: 700 }} aria-label="customized table">
+        <Item sx={{ height: 500 }}>
+          {/* <TableContainer component={Paper} sx={styles.tableContainer}>
+            <MuiTable sx={{ minWidth: 700 }} aria-label="customized table">
               <TableHead>
                 <TableRow>
                   <StyledTableCell>Name</StyledTableCell>
@@ -190,37 +170,36 @@ const Customers = () => {
                   </StyledTableRow>
                 ))}
               </TableBody>
-            </Table>
-          </TableContainer>
+            </MuiTable>
+          </TableContainer> */}
 
-          <Dialog
-            open={deleteOpen}
-            onClose={() => setDeleteOpen(false)}
-            fullWidth
-            maxWidth="sm"
-          >
-            <DialogTitle>{'Delete this customer'}</DialogTitle>
-            <DialogContent>
-              <DialogContentText id="alert-dialog-description">
-                This action is irreversible and can not be recovered
-              </DialogContentText>
-            </DialogContent>
-            <DialogActions>
-              <Button color="info" onClick={() => setDeleteOpen(false)}>
-                Disagree
-              </Button>
-
-              <LoadingButton
-                loading={loading}
-                onClick={onDelete}
-                variant="contained"
-                color="error"
-                sx={{ marginLeft: '10px' }}
-              >
-                Delete
-              </LoadingButton>
-            </DialogActions>
-          </Dialog>
+          <VirtualizedTable
+          //@ts-ignore
+            rowCount={customers.length}
+            rowGetter={({ index }: any) => customers[index]}
+            columns={[
+              {
+                width: 300,
+                label: 'Name',
+                dataKey: 'name',
+              },
+              {
+                width: 300,
+                label: 'Email Address',
+                dataKey: 'email',
+              },
+              {
+                width: 300,
+                label: 'Phone Number',
+                dataKey: 'phone',
+              },
+              {
+                width: 300,
+                label: 'Date',
+                dataKey: 'createdAt',
+              },
+            ]}
+          />
         </Item>
       </Box>
     </Layout>

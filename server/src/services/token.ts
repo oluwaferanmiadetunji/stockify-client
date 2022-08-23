@@ -13,7 +13,6 @@ export const generateToken = async ({
     {
       sub: user,
       iat: moment().unix(),
-      //   expires: moment().add(120, 'minutes'),
       expires,
     },
     config.jwtSecret,

@@ -1,6 +1,4 @@
-import { styled } from '@mui/material/styles'
-import TableCell, { tableCellClasses } from '@mui/material/TableCell'
-import TableRow from '@mui/material/TableRow'
+import { styled, Theme } from '@mui/material/styles'
 import Paper from '@mui/material/Paper'
 
 const styles = {
@@ -40,24 +38,41 @@ export const Item = styled(Paper)(({ theme }: any) => ({
   padding: '20px',
 }))
 
-export const StyledTableCell = styled(TableCell)(({ theme }: any) => ({
-  [`&.${tableCellClasses.head}`]: {
-    backgroundColor: 'rgb(105, 65, 198)',
-    color: theme.palette.common.white,
-  },
-  [`&.${tableCellClasses.body}`]: {
-    fontSize: 14,
-  },
-  color: 'rgb(151, 161, 186)',
-  //   color: 'white',
-}))
+export const classes = {
+  flexContainer: 'ReactVirtualizedDemo-flexContainer',
+  tableRow: 'ReactVirtualizedDemo-tableRow',
+  tableRowHover: 'ReactVirtualizedDemo-tableRowHover',
+  tableCell: 'ReactVirtualizedDemo-tableCell',
+  noClick: 'ReactVirtualizedDemo-noClick',
+}
 
-export const StyledTableRow = styled(TableRow)(({ theme }: any) => ({
-  '&:nth-of-type(odd)': {
-    backgroundColor: theme.palette.action.hover,
-  },
-  // hide last border
-  '&:last-child td, &:last-child th': {
-    border: 0,
-  },
-}))
+export const MuiStyles = ({ theme }: { theme: Theme }) =>
+  ({
+    '& .ReactVirtualized__Table__headerRow': {
+      ...(theme.direction === 'rtl' && {
+        paddingLeft: '0 !important',
+      }),
+      ...(theme.direction !== 'rtl' && {
+        paddingRight: undefined,
+      }),
+    },
+    [`& .${classes.flexContainer}`]: {
+      display: 'flex',
+      alignItems: 'center',
+      boxSizing: 'border-box',
+    },
+    [`& .${classes.tableRow}`]: {
+      cursor: 'pointer',
+    },
+    [`& .${classes.tableRowHover}`]: {
+      '&:hover': {
+        backgroundColor: theme.palette.grey[200],
+      },
+    },
+    [`& .${classes.tableCell}`]: {
+      flex: 1,
+    },
+    [`& .${classes.noClick}`]: {
+      cursor: 'initial',
+    },
+  } as const)

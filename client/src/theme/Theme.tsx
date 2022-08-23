@@ -3,6 +3,7 @@ import { createTheme } from '@mui/material/styles'
 declare module '@mui/material/styles' {
   interface Theme {
     palette: {
+      grey: any
       primary: {
         main: string
       }

@@ -11,6 +11,7 @@ const NotFound = lazy(() => import('pages/not-found'))
 const ReportOverview = lazy(() => import('pages/reports/ReportOverview'))
 const ReportSales = lazy(() => import('pages/reports/ReportSales'))
 const Customers = lazy(() => import('pages/customers'))
+const CustomerInfo = lazy(() => import('pages/customer-info'))
 const Products = lazy(() => import('pages/products'))
 
 function App() {
@@ -47,6 +48,15 @@ function App() {
         element={
           <AuthRoute>
             <Customers />
+          </AuthRoute>
+        }
+      />
+
+      <Route
+        path={ROUTES.CUSTOMERS_SUMMARY}
+        element={
+          <AuthRoute>
+            <CustomerInfo />
           </AuthRoute>
         }
       />

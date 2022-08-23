@@ -143,17 +143,6 @@ const Sidebar = () => {
           <Button
             variant="text"
             sx={
-              checkCustomersPageIsActive().isCustomerOrderPageActive
-                ? styles.activeNavSubHeader
-                : styles.navSubHeader
-            }
-            href={ROUTES.CUSTOMERS_ORDERS}
-          >
-            Orders
-          </Button>
-          <Button
-            variant="text"
-            sx={
               checkCustomersPageIsActive().isCustomerSummaryPageActive
                 ? styles.activeNavSubHeader
                 : styles.navSubHeader
@@ -161,6 +150,18 @@ const Sidebar = () => {
             href={ROUTES.CUSTOMERS_SUMMARY}
           >
             Summary
+          </Button>
+
+          <Button
+            variant="text"
+            sx={
+              checkCustomersPageIsActive().isCustomerOrderPageActive
+                ? styles.activeNavSubHeader
+                : styles.navSubHeader
+            }
+            href={ROUTES.CUSTOMERS_ORDERS}
+          >
+            Orders
           </Button>
         </AccordionDetails>
       </Accordion>
