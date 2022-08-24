@@ -20,7 +20,7 @@ const AuthRoute = ({ children }: { children: JSX.Element }) => {
 
   const decodedToken: any = jwtDecode(token)
 
-  if (decodedToken.exp * 1000 < Date.now()) {
+  if (new Date(decodedToken.expires).getTime() < Date.now()) {
     dispatch(logout())
     window.location.href = ROUTES.LOGIN
   } else {
