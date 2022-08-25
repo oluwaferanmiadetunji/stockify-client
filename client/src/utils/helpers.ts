@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker'
-import { ROUTES } from './constants'
+import { ROUTES, Naira } from './constants'
 import axios from 'axios'
 
 export const checkReportsPageIsActive = () => {
@@ -119,4 +119,22 @@ export const generateImageTag = (): string => faker.datatype.uuid()
 
 export const saveToken = (token: string): void => {
   axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
+}
+
+export const getTotalPrice = (array: any[]): number => {
+  let sum = 0
+  for (let i = 0; i < array.length; i++) {
+    sum += array[i].price
+  }
+  return sum
+}
+
+// export const renderPrice = (number: number): string =>
+//   `${Naira} ${number
+//     .toFixed(2)
+//     .toString()
+//     .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`
+
+export const renderPrice = (number: number): string => {
+  return `${Naira} ${Number(number).toFixed(2)}`
 }

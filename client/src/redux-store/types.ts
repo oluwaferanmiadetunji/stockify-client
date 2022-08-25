@@ -48,31 +48,42 @@ export interface SetCustomersDataInterface {
   count: number
 }
 
-export interface ProductState {
-  products: {
-    id: string
-    name: string
-    supplier?: string
-    manufacturer?: string
-    serial_number?: string
-    RAM?: string
-    ROM?: string
-    processor?: string
-    size?: string
-    fingerprint?: boolean
-    touch?: boolean
-    dedicated?: boolean
-    imei?: string
-    color: string
-    battery_health?: string
-    image?: string
-    price: number
-    createdAt: string
-  }[]
+export interface SingleProductInterface {
+  id: string
+  name: string
+  supplier?: string
+  manufacturer?: string
+  serial_number?: string
+  RAM?: string
+  ROM?: string
+  processor?: string
+  size?: string
+  fingerprint?: boolean
+  touch?: boolean
+  dedicated?: boolean
+  imei?: string
+  color: string
+  battery_health?: string
+  image?: string
+  price: number
+  createdAt: string
+}
+
+export interface SetProductDataInterface {
+  products: SingleProductInterface[]
   page: number
   limit: number
   totalPages: number
   count: number
+}
+
+export interface ProductState {
+  products: SingleProductInterface[]
+  page: number
+  limit: number
+  totalPages: number
+  count: number
+  totalPrice: number
 }
 
 export interface AnalyticsInterface {

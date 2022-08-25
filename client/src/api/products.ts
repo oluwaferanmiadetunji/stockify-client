@@ -5,12 +5,16 @@ import {
   addProducts,
   setProducts,
   deleteProduct,
+  setProductPrice,
+  updatePrice,
 } from 'redux-store/products.slice'
 import { EmptyObject, AnyAction, Dispatch } from 'redux'
 import { PersistPartial } from 'redux-persist/es/persistReducer'
 import { AuthState } from 'redux-store/types'
 import { ThunkDispatch } from 'redux-thunk'
 import { CreateNewProduct } from './types'
+import { updateCount } from 'redux-store/analytics.slice'
+import { getTotalPrice } from 'utils/helpers'
 
 export const makeAddNewProductRequest = async (
   payload: CreateNewProduct,
@@ -26,6 +30,9 @@ export const makeAddNewProductRequest = async (
     const response = await axios.post(`${API_ROUTES.PRODUCTS}/create`, payload)
     toast.success('Product added successfully')
     dispatch(addProducts(response.data))
+    dispatch(updateCount({ type: 'increase', value: 'product' }))
+
+    dispatch(updatePrice({ type: 'increase', value: payload.price }))
     callback()
   } catch (err) {
     //@ts-ignore
@@ -54,6 +61,8 @@ export const makeProductsQueryRequest = async (
         count: response.data.totalResults,
       }),
     )
+    const sum = getTotalPrice(response.data.results)
+    dispatch(setProductPrice(sum))
   } catch (err) {
     //@ts-ignore
     toast.error(err.response.data.message)
@@ -61,7 +70,7 @@ export const makeProductsQueryRequest = async (
 }
 
 export const makeDeleteProductRequest = async (
-  id: string,
+  payload: { id: string; price: number },
   dispatch: ThunkDispatch<
     EmptyObject & { auth: AuthState } & PersistPartial,
     undefined,
@@ -70,9 +79,11 @@ export const makeDeleteProductRequest = async (
     Dispatch<AnyAction>,
 ): Promise<void> => {
   try {
-    await axios.get(`${API_ROUTES.PRODUCTS}/delete/${id}`)
+    await axios.get(`${API_ROUTES.PRODUCTS}/delete/${payload.id}`)
     toast.success('Product deleted successfully')
-    dispatch(deleteProduct(id))
+    dispatch(deleteProduct(payload.id))
+    dispatch(updateCount({ type: 'decrease', value: 'product' }))
+    dispatch(updatePrice({ type: 'decrease', value: payload.price }))
   } catch (err) {
     //@ts-ignore
     toast.error(err.response.data.message)
