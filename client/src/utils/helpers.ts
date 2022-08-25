@@ -12,14 +12,12 @@ export const checkReportsPageIsActive = () => {
 
 export const checkCustomersPageIsActive = () => {
   const isCustomerPageActive = window.location.pathname === ROUTES.CUSTOMERS
-  const isCustomerOrderPageActive =
-    window.location.pathname === ROUTES.CUSTOMERS_ORDERS
+
   const isCustomerSummaryPageActive =
     window.location.pathname === ROUTES.CUSTOMERS_SUMMARY
 
   return {
     isCustomerPageActive,
-    isCustomerOrderPageActive,
     isCustomerSummaryPageActive,
   }
 }

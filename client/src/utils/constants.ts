@@ -6,8 +6,7 @@ export const ROUTES = {
   DASHBOARD: '/dashboard/reports',
   DASHBOARD_SALES: '/dashboard/reports/sales',
   CUSTOMERS: '/dashboard/customers',
-  CUSTOMERS_SUMMARY: '/dashboard/customers/summary',
-  CUSTOMERS_ORDERS: '/dashboard/customers/orders',
+  CUSTOMERS_SUMMARY: '/dashboard/customers/info',
 
   ORDER: '/dashboard/orders',
   ORDER_SUMMARY: '/dashboard/orders/summary',

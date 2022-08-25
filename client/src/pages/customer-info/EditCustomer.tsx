@@ -8,11 +8,12 @@ import DialogTitle from '@mui/material/DialogTitle'
 import Button from '@mui/material/Button'
 import LoadingButton from '@mui/lab/LoadingButton'
 import { useAppDispatch } from 'redux-store/hooks'
-import { initialState } from './constant'
 import { makeCustomerQueryRequest, makeCreateCustomerRequest } from 'utils/api'
-import AddIcon from '@mui/icons-material/Add'
+import styles from './styles'
+import MenuItem from '@mui/material/MenuItem'
+import EditIcon from '@mui/icons-material/Edit'
 
-const AddCustomer = () => {
+const EditCustomer = ({ initialState }: any) => {
   const dispatch = useAppDispatch()
 
   const [open, setOpen] = useState(false)
@@ -56,17 +57,13 @@ const AddCustomer = () => {
 
   return (
     <>
-      <Button
-        variant="contained"
-        onClick={handleClickOpen}
-        startIcon={<AddIcon />}
-        sx={{ color: 'white', textTransform: 'unset' }}
-      >
-        Add New Customer
-      </Button>
+      <MenuItem onClick={handleClickOpen} disableRipple sx={styles.menuItem}>
+        <EditIcon sx={styles.menuIcon} />
+        Edit
+      </MenuItem>
 
       <Dialog open={open} onClose={handleClose} fullWidth maxWidth={'sm'}>
-        <DialogTitle>Add New Customer</DialogTitle>
+        <DialogTitle>Edit Customer</DialogTitle>
         <DialogContent>
           <Box
             component="form"
@@ -136,4 +133,4 @@ const AddCustomer = () => {
   )
 }
 
-export default AddCustomer
+export default EditCustomer

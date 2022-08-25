@@ -80,15 +80,21 @@ export default function FormDialog() {
             variant="outlined"
             startIcon={<ClearIcon />}
             onClick={onClearFilter}
+            sx={{ color: 'white', textTransform: 'unset' }}
           >
             Clear Filter
           </Button>
         </Tooltip>
       ) : (
         <Tooltip title="Filter Customers">
-          <IconButton onClick={handleClickOpen}>
-            <FilterListIcon sx={styles.filterIcon} />
-          </IconButton>
+          <Button
+            variant="outlined"
+            startIcon={<FilterListIcon sx={styles.filterIcon} />}
+            onClick={handleClickOpen}
+            sx={{ color: 'white', textTransform: 'unset' }}
+          >
+            Filter
+          </Button>
         </Tooltip>
       )}
 

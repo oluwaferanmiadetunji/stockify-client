@@ -103,7 +103,6 @@ const Sidebar = () => {
             <ChevronRightIcon
               sx={
                 checkCustomersPageIsActive().isCustomerPageActive ||
-                checkCustomersPageIsActive().isCustomerOrderPageActive ||
                 checkCustomersPageIsActive().isCustomerSummaryPageActive
                   ? styles.activeIcon
                   : styles.inactiveIcon
@@ -150,18 +149,6 @@ const Sidebar = () => {
             href={ROUTES.CUSTOMERS_SUMMARY}
           >
             Summary
-          </Button>
-
-          <Button
-            variant="text"
-            sx={
-              checkCustomersPageIsActive().isCustomerOrderPageActive
-                ? styles.activeNavSubHeader
-                : styles.navSubHeader
-            }
-            href={ROUTES.CUSTOMERS_ORDERS}
-          >
-            Orders
           </Button>
         </AccordionDetails>
       </Accordion>
