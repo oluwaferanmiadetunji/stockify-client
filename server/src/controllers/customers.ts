@@ -18,13 +18,14 @@ export const createNewCustomer = catchAsync(async (req, res) => {
 })
 
 export const getCustomers = catchAsync(async (req, res) => {
-  const filter = pickQueryParams(req.query, ['name', 'phone', 'email', 'user'])
-  const options = pickQueryParams(req.query, [
-    'sortBy',
-    'limit',
-    'page',
+  const filter = pickQueryParams(req.query, [
+    'firstname',
+    'lastname',
+    'phone',
+    'email',
     'user',
   ])
+  const options = pickQueryParams(req.query, ['sortBy', 'limit', 'page'])
   const result = await customerService.queryCustomers(filter, options)
 
   res.status(httpStatus.OK).send(result)

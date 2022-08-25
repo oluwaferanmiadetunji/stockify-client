@@ -25,7 +25,8 @@ export interface IToken extends Document {
 }
 
 export interface ICustomer extends Document {
-  name: string
+  firstname: string
+  lastname: string
   email: string
   phone: string
   _id: string
@@ -64,7 +65,8 @@ export type CreateNewUserType = {
 }
 
 export type CreateNewCustomerType = {
-  name: string
+  firstname: string
+  lastname: string
   email: string
   phone: string
 }

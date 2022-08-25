@@ -13,6 +13,7 @@ import TableCell from '@mui/material/TableCell'
 import { styled } from '@mui/material/styles'
 import { ROUTES } from 'utils/constants'
 import WithRouter from './Router'
+import dayjs from 'dayjs'
 
 class MuiVirtualizedTable extends React.PureComponent<
   MuiVirtualizedTableProps
@@ -51,7 +52,9 @@ class MuiVirtualizedTable extends React.PureComponent<
             : 'left'
         }
       >
-        {cellData}
+        {columns[columnIndex].dataKey === 'createdAt'
+          ? dayjs(cellData).format('MMM D, YYYY HH:mm')
+          : cellData}
       </TableCell>
     )
   }

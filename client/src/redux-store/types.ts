@@ -21,14 +21,27 @@ export interface LoginInterface {
   token: string
 }
 
+export type SingleCustomerState = {
+  firstname: string
+  lastname: string
+  phone: string
+  email: string
+  createdAt: string
+  id: string
+}
+
 export interface CustomerState {
-  customers: {
-    name: string
-    phone: string
-    email: string
-    createdAt: string
-    id: string
-  }[]
+  customers: SingleCustomerState[]
+  filteredCustomers: SingleCustomerState[]
+  page: number
+  limit: number
+  totalPages: number
+  count: number
+  isFiltered: boolean
+}
+
+export interface SetCustomersDataInterface {
+  customers: SingleCustomerState[]
   page: number
   limit: number
   totalPages: number

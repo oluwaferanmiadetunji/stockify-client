@@ -6,11 +6,12 @@ export const generateRandomCustomers = (user: string, count = 100): any[] => {
 
   for (let i = 0; i < count; i++) {
     const _id = generateRandomString(6)
-    const name = faker.name.fullName()
+    const firstname = faker.name.firstName()
+    const lastname = faker.name.lastName()
     const phone = faker.phone.number()
     const email = faker.internet.email()
 
-    data.push({ _id, name, phone, email, user })
+    data.push({ _id, firstname, phone, email, user, lastname })
   }
 
   return data

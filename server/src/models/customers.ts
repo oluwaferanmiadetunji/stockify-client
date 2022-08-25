@@ -10,7 +10,11 @@ const customerSchema = new Schema<ICustomer>(
       type: String,
       private: true,
     },
-    name: {
+    firstname: {
+      type: String,
+      required: true,
+    },
+    lastname: {
       type: String,
       required: true,
     },

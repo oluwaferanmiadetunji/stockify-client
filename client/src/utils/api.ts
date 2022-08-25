@@ -7,6 +7,7 @@ import {
   setCustomers,
   addCustomers,
   deleteCustomer,
+  setFilter,
 } from 'redux-store/customers.slice'
 import {
   addProducts,
@@ -70,6 +71,27 @@ export const makeCustomerQueryRequest = async (
         count: response.data.totalResults,
       }),
     )
+  } catch (err) {
+    //@ts-ignore
+    toast.error(err.response.data.message)
+  }
+}
+
+export const makeCustomerFilterRequest = async (
+  query: string,
+  dispatch: ThunkDispatch<
+    EmptyObject & { auth: AuthState } & PersistPartial,
+    undefined,
+    AnyAction
+  > &
+    Dispatch<AnyAction>,
+  callback: { (): void; (): void },
+): Promise<void> => {
+  try {
+    const response = await axios.get(`${API_ROUTES.CUSTOMERS}/query?${query}`)
+
+    dispatch(setFilter(response.data.results))
+    callback()
   } catch (err) {
     //@ts-ignore
     toast.error(err.response.data.message)

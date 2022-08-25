@@ -1,13 +1,19 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from './index'
-import { CustomerState } from './types'
+import {
+  CustomerState,
+  SingleCustomerState,
+  SetCustomersDataInterface,
+} from './types'
 
 const initialState: CustomerState = {
   customers: [],
+  filteredCustomers: [],
   page: 1,
   limit: 100,
   totalPages: 0,
   count: 0,
+  isFiltered: false,
 }
 
 const authSlice = createSlice({
@@ -16,7 +22,7 @@ const authSlice = createSlice({
   reducers: {
     setCustomers: (
       state: CustomerState,
-      action: PayloadAction<CustomerState>,
+      action: PayloadAction<SetCustomersDataInterface>,
     ) => {
       state.customers = action.payload.customers
       state.page = action.payload.page
@@ -35,10 +41,27 @@ const authSlice = createSlice({
       state.customers.splice(index, 1)
       state.count = state.count - 1
     },
+    setFilter: (
+      state: CustomerState,
+      action: PayloadAction<SingleCustomerState[]>,
+    ) => {
+      state.filteredCustomers = action.payload
+      state.isFiltered = true
+    },
+    cancelFilter: (state: CustomerState, action: PayloadAction<void>) => {
+      state.filteredCustomers = []
+      state.isFiltered = false
+    },
   },
 })
 
-export const { setCustomers, addCustomers, deleteCustomer } = authSlice.actions
+export const {
+  setCustomers,
+  addCustomers,
+  deleteCustomer,
+  setFilter,
+  cancelFilter,
+} = authSlice.actions
 
 export const selectCustomerState = (state: RootState) => state.customers
 

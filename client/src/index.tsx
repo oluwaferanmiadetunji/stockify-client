@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react'
+import { Suspense } from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
@@ -8,13 +8,11 @@ import Loader from 'components/loader'
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 
 root.render(
-  <React.StrictMode>
-    <Suspense fallback={<Loader />}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </Suspense>
-  </React.StrictMode>,
+  <Suspense fallback={<Loader />}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </Suspense>,
 )
 
 // If you want to start measuring performance in your app, pass a function
