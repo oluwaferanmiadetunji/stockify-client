@@ -18,6 +18,28 @@ const authSlice = createSlice({
       state.customer = action.payload.customer
       state.product = action.payload.product
     },
+    updateCustomerCount: (
+      state: AnalyticsInterface,
+      action: PayloadAction<{
+        type: 'increase' | 'decrease'
+        value: 'customer' | 'product'
+      }>,
+    ) => {
+      switch (action.payload.value) {
+        case 'customer':
+          action.payload.type === 'increase'
+            ? (state.customer = state.customer + 1)
+            : (state.customer = state.customer - 1)
+          break
+        case 'product':
+          action.payload.type === 'increase'
+            ? (state.product = state.product + 1)
+            : (state.product = state.product - 1)
+          break
+        default:
+          break
+      }
+    },
   },
 })
 

@@ -41,6 +41,12 @@ const authSlice = createSlice({
       state.customers.splice(index, 1)
       state.count = state.count - 1
     },
+    updateCustomer: (state, action) => {
+      let index = state.customers.findIndex(
+        (customer) => customer.id === action.payload.id,
+      )
+      state.customers[index] = action.payload
+    },
     setFilter: (
       state: CustomerState,
       action: PayloadAction<SingleCustomerState[]>,

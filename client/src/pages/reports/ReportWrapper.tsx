@@ -5,7 +5,7 @@ import styles, { StyledTab, StyledTabs } from './styles'
 import Typography from '@mui/material/Typography'
 import { useNavigate } from 'react-router-dom'
 import { ROUTES } from 'utils/constants'
-import { getAnalyticsData } from 'utils/api'
+import { getAnalyticsData } from 'api/analytics'
 import { useAppDispatch } from 'redux-store/hooks'
 
 const ReportWrapper = ({ children }: any) => {

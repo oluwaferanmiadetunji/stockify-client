@@ -44,3 +44,16 @@ export const deleteCustomer = catchAsync(async (req, res) => {
     res.status(httpStatus.CONFLICT).json({ message: 'Error deleting customer' })
   }
 })
+
+export const getCustomer = catchAsync(async (req, res) => {
+  const user = req.currentUser._id
+
+  try {
+    const customer = await customerService.getCustomerById(req.params.id)
+    res.status(httpStatus.OK).json({ customer })
+  } catch (error) {
+    console.log('Error: ', JSON.stringify(error))
+
+    res.status(httpStatus.NOT_FOUND).json({ message: 'Error getting customer' })
+  }
+})

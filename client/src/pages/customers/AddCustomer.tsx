@@ -9,7 +9,7 @@ import Button from '@mui/material/Button'
 import LoadingButton from '@mui/lab/LoadingButton'
 import { useAppDispatch } from 'redux-store/hooks'
 import { initialState } from './constant'
-import { makeCustomerQueryRequest, makeCreateCustomerRequest } from 'utils/api'
+import { makeCustomerQueryRequest, makeCreateCustomerRequest } from 'api/customers'
 import AddIcon from '@mui/icons-material/Add'
 
 const AddCustomer = () => {

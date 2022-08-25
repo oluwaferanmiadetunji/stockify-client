@@ -35,3 +35,5 @@ export const API_ROUTES = {
   PRODUCTS: '/product',
   ANALYTICS_REPORTS: '/analytics/reports',
 }
+
+export const Naira = '₦'

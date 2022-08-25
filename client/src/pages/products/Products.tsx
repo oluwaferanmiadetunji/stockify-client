@@ -35,7 +35,7 @@ import {
   makeAddNewProductRequest,
   makeProductsQueryRequest,
   makeDeleteProductRequest,
-} from 'utils/api'
+} from 'api/products'
 import Avatar from '@mui/material/Avatar'
 import ListItem from '@mui/material/ListItem'
 import ListItemText from '@mui/material/ListItemText'

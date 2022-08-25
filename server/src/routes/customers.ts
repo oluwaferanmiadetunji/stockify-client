@@ -23,4 +23,11 @@ router.get(
   customerControllers.deleteCustomer,
 )
 
+router.get(
+  '/:id',
+  middlewares.isAuth,
+  middlewares.attachUser,
+  customerControllers.getCustomer,
+)
+
 export default router

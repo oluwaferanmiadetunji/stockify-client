@@ -8,7 +8,10 @@ import DialogTitle from '@mui/material/DialogTitle'
 import Button from '@mui/material/Button'
 import LoadingButton from '@mui/lab/LoadingButton'
 import { useAppDispatch } from 'redux-store/hooks'
-import { makeCustomerQueryRequest, makeCreateCustomerRequest } from 'utils/api'
+import {
+  makeCustomerQueryRequest,
+  makeCreateCustomerRequest,
+} from 'api/customers'
 import styles from './styles'
 import MenuItem from '@mui/material/MenuItem'
 import EditIcon from '@mui/icons-material/Edit'

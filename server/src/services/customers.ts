@@ -28,7 +28,7 @@ export const queryCustomers = async (filter: any, options: any) => {
 }
 
 export const getCustomerById = async (id: string) => {
-  return Customers.findOne({ _id: id })
+  return Customers.findById(id)
 }
 
 export const updateCustomerById = async (
