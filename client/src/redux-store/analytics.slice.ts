@@ -18,7 +18,7 @@ const authSlice = createSlice({
       state.customer = action.payload.customer
       state.product = action.payload.product
     },
-    updateCustomerCount: (
+    updateCount: (
       state: AnalyticsInterface,
       action: PayloadAction<{
         type: 'increase' | 'decrease'
@@ -43,7 +43,7 @@ const authSlice = createSlice({
   },
 })
 
-export const { setAnalyticsData } = authSlice.actions
+export const { setAnalyticsData, updateCount } = authSlice.actions
 
 export const selectAnalyticsState = (state: RootState) => state.analytics
 

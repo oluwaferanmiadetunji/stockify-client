@@ -41,7 +41,7 @@ const authSlice = createSlice({
       state.customers.splice(index, 1)
       state.count = state.count - 1
     },
-    updateCustomer: (state, action) => {
+    updateCustomer: (state: CustomerState, action: PayloadAction<any>) => {
       let index = state.customers.findIndex(
         (customer) => customer.id === action.payload.id,
       )
@@ -67,6 +67,7 @@ export const {
   deleteCustomer,
   setFilter,
   cancelFilter,
+  updateCustomer,
 } = authSlice.actions
 
 export const selectCustomerState = (state: RootState) => state.customers

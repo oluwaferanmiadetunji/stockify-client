@@ -3,10 +3,12 @@ import { Customers } from '../models'
 import ApiError from '../utils/ApiError'
 import { CreateNewCustomerType } from '../types'
 import { generateRandomString } from '../utils/helpers'
+import logger from '../config/logger'
 
 export const createCustomer = async (customerBody: CreateNewCustomerType) => {
   //@ts-ignore
   if (await Customers.isEmailTaken(customerBody.email)) {
+    logger.error('Email already taken')
     throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken')
   }
   const customer = await Customers.create({
@@ -34,10 +36,18 @@ export const getCustomerById = async (id: string) => {
 export const updateCustomerById = async (
   userId: string,
   payload: Partial<CreateNewCustomerType>,
+  creator: string,
 ) => {
   const user = await getCustomerById(userId)
+
   if (!user) {
-    throw new ApiError(httpStatus.NOT_FOUND, 'User not found')
+    logger.error('Customer not found')
+    throw new ApiError(httpStatus.NOT_FOUND, 'Customer not found')
+  }
+
+  if (user.user !== creator) {
+    logger.error('Unauthorized. Unable to delete customer')
+    throw new ApiError(httpStatus.UNAUTHORIZED, 'Unable to delete customer')
   }
 
   if (
@@ -45,6 +55,7 @@ export const updateCustomerById = async (
     //@ts-ignore
     (await Customers.isEmailTaken(payload.email, userId))
   ) {
+    logger.error('Email already taken')
     throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken')
   }
 
@@ -58,10 +69,12 @@ export const deleteCustomerById = async (id: string, userId: string) => {
   const user = await getCustomerById(id)
 
   if (!user) {
-    throw new ApiError(httpStatus.NOT_FOUND, 'User not found')
+    logger.error('Customer not found')
+    throw new ApiError(httpStatus.NOT_FOUND, 'Customer not found')
   }
   if (user.user != userId) {
-    throw new ApiError(httpStatus.UNAUTHORIZED, '')
+    logger.error('Unauthorized. Unable to delete customer')
+    throw new ApiError(httpStatus.UNAUTHORIZED, 'Unable to delete customer')
   }
   await user.remove()
   return user

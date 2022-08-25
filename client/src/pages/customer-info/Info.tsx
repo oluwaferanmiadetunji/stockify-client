@@ -7,11 +7,14 @@ import MenuItem from '@mui/material/MenuItem'
 import DeleteIcon from '@mui/icons-material/Delete'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace'
-import { Link as RouterLink } from 'react-router-dom'
+import { Link as RouterLink, useNavigate } from 'react-router-dom'
 import { ROUTES, Naira } from 'utils/constants'
 import { StyledMenu } from './styled'
 import EditCustomer from './EditCustomer'
-import { makeSingleCustomerRequest } from 'api/customers'
+import {
+  makeSingleCustomerRequest,
+  makeDeleteCustomerRequest,
+} from 'api/customers'
 import queryString from 'query-string'
 import BounceLoader from 'react-spinners/BounceLoader'
 import Typography from '@mui/material/Typography'
@@ -22,8 +25,11 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
 import PaymentsIcon from '@mui/icons-material/Payments'
 import Grid from '@mui/material/Grid'
 import Divider from '@mui/material/Divider'
+import { useAppDispatch } from 'redux-store/hooks'
 
 const CustomerInfo = () => {
+  const navigate = useNavigate()
+  const dispatch = useAppDispatch()
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const open = Boolean(anchorEl)
   const handleClick = (event: MouseEvent<HTMLElement>) => {
@@ -45,6 +51,18 @@ const CustomerInfo = () => {
       setLoading(false)
     })()
   }, [])
+
+  const [deleteLoading, setDeleteLoading] = useState(false)
+
+  const onDeleteCustomer = async () => {
+    setDeleteLoading(true)
+    await makeDeleteCustomerRequest(data?.customer?.id, dispatch)
+    setDeleteLoading(false)
+    navigate(ROUTES.CUSTOMERS)
+  }
+
+  const updateCallback = (payload: any) =>
+    setData({ ...data, customer: payload })
 
   return (
     <Layout>
@@ -91,15 +109,24 @@ const CustomerInfo = () => {
                   open={open}
                   onClose={handleClose}
                 >
-                  <EditCustomer initialState={data?.customer} />
+                  <EditCustomer
+                    initialState={data?.customer}
+                    update={updateCallback}
+                  />
 
                   <MenuItem
-                    onClick={handleClose}
+                    onClick={onDeleteCustomer}
                     sx={styles.menuItem}
                     disableRipple
                   >
-                    <DeleteIcon sx={styles.menuIcon} />
-                    Delete
+                    {deleteLoading ? (
+                      'Deleting ...'
+                    ) : (
+                      <>
+                        <DeleteIcon sx={styles.menuIcon} />
+                        Delete
+                      </>
+                    )}
                   </MenuItem>
                 </StyledMenu>
               </Box>

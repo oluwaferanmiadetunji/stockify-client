@@ -16,18 +16,26 @@ router.get(
   middlewares.attachUser,
   customerControllers.getCustomers,
 )
-router.get(
-  '/delete/:id',
-  middlewares.isAuth,
-  middlewares.attachUser,
-  customerControllers.deleteCustomer,
-)
 
 router.get(
   '/:id',
   middlewares.isAuth,
   middlewares.attachUser,
   customerControllers.getCustomer,
+)
+
+router.delete(
+  '/:id',
+  middlewares.isAuth,
+  middlewares.attachUser,
+  customerControllers.deleteCustomer,
+)
+
+router.patch(
+  '/:id',
+  middlewares.isAuth,
+  middlewares.attachUser,
+  customerControllers.updateCustomer,
 )
 
 export default router

@@ -6,7 +6,9 @@ import {
   addCustomers,
   deleteCustomer,
   setFilter,
+  updateCustomer,
 } from 'redux-store/customers.slice'
+import { updateCount } from 'redux-store/analytics.slice'
 
 import { EmptyObject, AnyAction, Dispatch } from 'redux'
 import { PersistPartial } from 'redux-persist/es/persistReducer'
@@ -86,6 +88,7 @@ export const makeCreateCustomerRequest = async (
     const response = await axios.post(`${API_ROUTES.CUSTOMERS}/create`, payload)
     toast.success('Customer added successfully')
     dispatch(addCustomers(response.data))
+    dispatch(updateCount({ type: 'increase', value: 'customer' }))
     callback()
   } catch (err) {
     //@ts-ignore
@@ -103,9 +106,31 @@ export const makeDeleteCustomerRequest = async (
     Dispatch<AnyAction>,
 ): Promise<void> => {
   try {
-    await axios.get(`${API_ROUTES.CUSTOMERS}/delete/${id}`)
+    await axios.delete(`${API_ROUTES.CUSTOMERS}/${id}`)
     toast.success('Customer deleted successfully')
     dispatch(deleteCustomer(id))
+    dispatch(updateCount({ type: 'decrease', value: 'customer' }))
+  } catch (err) {
+    //@ts-ignore
+    toast.error(err.response.data.message)
+  }
+}
+
+export const makeUpdateCustomerRequest = async (
+  id: string,
+  payload: MakeCreateCustomerRequestInterface,
+  dispatch: ThunkDispatch<
+    EmptyObject & { auth: AuthState } & PersistPartial,
+    undefined,
+    AnyAction
+  > &
+    Dispatch<AnyAction>,
+): Promise<any> => {
+  try {
+    const response = await axios.patch(`${API_ROUTES.CUSTOMERS}/${id}`, payload)
+    toast.success('Customer updated successfully')
+    dispatch(updateCustomer(response.data))
+    return response.data
   } catch (err) {
     //@ts-ignore
     toast.error(err.response.data.message)

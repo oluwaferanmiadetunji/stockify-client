@@ -2,6 +2,7 @@ import httpStatus from 'http-status'
 import catchAsync from '../utils/catchAsync'
 import { customerService } from '../services'
 import { pickQueryParams } from '../utils/helpers'
+import logger from '../config/logger'
 
 export const createNewCustomer = catchAsync(async (req, res) => {
   const user = req.currentUser._id
@@ -11,7 +12,7 @@ export const createNewCustomer = catchAsync(async (req, res) => {
 
     res.status(httpStatus.CREATED).send(customer)
   } catch (error) {
-    console.log('Error: ', JSON.stringify(error))
+    logger.error('Error: ', JSON.stringify(error))
 
     res.status(httpStatus.CONFLICT).json({ message: 'Error creating user' })
   }
@@ -39,21 +40,39 @@ export const deleteCustomer = catchAsync(async (req, res) => {
 
     res.status(httpStatus.OK).json({ message: 'Customer deleted successfully' })
   } catch (error) {
-    console.log('Error: ', JSON.stringify(error))
+    logger.error('Error: ', JSON.stringify(error))
 
     res.status(httpStatus.CONFLICT).json({ message: 'Error deleting customer' })
   }
 })
 
 export const getCustomer = catchAsync(async (req, res) => {
-  const user = req.currentUser._id
-
   try {
     const customer = await customerService.getCustomerById(req.params.id)
     res.status(httpStatus.OK).json({ customer })
   } catch (error) {
-    console.log('Error: ', JSON.stringify(error))
+    logger.error('Error: ', JSON.stringify(error))
 
     res.status(httpStatus.NOT_FOUND).json({ message: 'Error getting customer' })
+  }
+})
+
+export const updateCustomer = catchAsync(async (req, res) => {
+  const user = req.currentUser._id
+  const id = req.params.id
+
+  try {
+    const customer = await customerService.updateCustomerById(
+      id,
+      req.body,
+      user,
+    )
+    res.status(httpStatus.OK).send(customer)
+  } catch (error) {
+    logger.error('Error: ', JSON.stringify(error))
+
+    res
+      .status(httpStatus.NOT_FOUND)
+      .json({ message: 'Error updating customer' })
   }
 })
