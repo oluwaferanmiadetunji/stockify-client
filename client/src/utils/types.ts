@@ -4,7 +4,8 @@ export interface MakeLoginRequestInterface {
 }
 
 export interface MakeCreateCustomerRequestInterface {
-  name: string
+  firstname: string
+  lastname: string
   email: string
   phone: string
 }

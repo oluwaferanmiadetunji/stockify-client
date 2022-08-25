@@ -17,18 +17,14 @@ import { toast } from 'react-toast'
 import { useAppDispatch, useAppSelector } from 'redux-store/hooks'
 import { selectCustomerState, cancelFilter } from 'redux-store/customers.slice'
 import ClearIcon from '@mui/icons-material/Clear'
+import { initialState } from './constant'
 
 export default function FormDialog() {
   const dispatch = useAppDispatch()
   const { isFiltered } = useAppSelector(selectCustomerState)
   const [open, setOpen] = React.useState(false)
   const [loading, setLoading] = React.useState(false)
-  const [state, setState] = React.useState({
-    firstname: '',
-    lastname: '',
-    email: '',
-    phone: '',
-  })
+  const [state, setState] = React.useState(initialState)
 
   const handleClickOpen = () => {
     setOpen(true)
@@ -58,6 +54,7 @@ export default function FormDialog() {
     })
 
     const callback = () => {
+      setState(initialState)
       handleClose()
     }
 

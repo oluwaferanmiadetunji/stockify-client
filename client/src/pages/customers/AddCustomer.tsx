@@ -73,12 +73,22 @@ const AddCustomer = () => {
             <TextField
               autoFocus
               margin="dense"
-              name="name"
-              label="Full Name"
+              name="firstname"
+              label="First Name"
               type="text"
               fullWidth
               variant="standard"
-              value={state.name}
+              value={state.firstname}
+              onChange={handleChange}
+            />
+            <TextField
+              margin="dense"
+              name="lastname"
+              label="Last Name"
+              type="text"
+              fullWidth
+              variant="standard"
+              value={state.lastname}
               onChange={handleChange}
             />
             <TextField

@@ -1,5 +1,6 @@
 export const initialState = {
-  name: '',
+  firstname: '',
+  lastname: '',
   email: '',
   phone: '',
 }
