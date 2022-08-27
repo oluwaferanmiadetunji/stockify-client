@@ -17,7 +17,21 @@ router.get(
   productsControllers.getProducts,
 )
 router.get(
-  '/delete/:id',
+  '/:id',
+  middlewares.isAuth,
+  middlewares.attachUser,
+  productsControllers.getProduct,
+)
+
+router.patch(
+  '/:id',
+  middlewares.isAuth,
+  middlewares.attachUser,
+  productsControllers.updateProduct,
+)
+
+router.delete(
+  '/:id',
   middlewares.isAuth,
   middlewares.attachUser,
   productsControllers.deleteProduct,

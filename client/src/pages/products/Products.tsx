@@ -170,7 +170,7 @@ const Products = () => {
                     <StyledTableRow
                       key={row.name}
                       onClick={() =>
-                        navigate(`${ROUTES.PRODUCTS_SUMMARY}?id=${row}`)
+                        navigate(`${ROUTES.PRODUCTS_SUMMARY}?id=${row.id}`)
                       }
                     >
                       <StyledTableCell component="th" scope="row">

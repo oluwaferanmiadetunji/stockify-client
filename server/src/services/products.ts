@@ -3,6 +3,7 @@ import { Products } from '../models'
 import ApiError from '../utils/ApiError'
 import { CreateNewProductType } from '../types'
 import { generateRandomString } from '../utils/helpers'
+import logger from '../config/logger'
 
 export const createProduct = async (body: Partial<CreateNewProductType>) => {
   const product = await Products.create({
@@ -20,20 +21,23 @@ export const queryProducts = async (filter: any, options: any) => {
 }
 
 export const getProductById = async (id: string) => {
-  return Products.findOne({ _id: id })
-}
-
-export const getProductByName = async (name: string) => {
-  return Products.find({ name })
+  return Products.findById(id)
 }
 
 export const updateProductById = async (
   id: string,
   payload: Partial<CreateNewProductType>,
+  creator: string,
 ) => {
   const product = await getProductById(id)
   if (!product) {
+    logger.error('Product not found')
     throw new ApiError(httpStatus.NOT_FOUND, 'Product not found')
+  }
+
+  if (product.user !== creator) {
+    logger.error('Unauthorized. Unable to delete product')
+    throw new ApiError(httpStatus.UNAUTHORIZED, 'Unable to delete product')
   }
 
   Object.assign(product, payload)
@@ -46,6 +50,7 @@ export const deleteProductById = async (id: string) => {
   const product = await getProductById(id)
 
   if (!product) {
+    logger.error('Product not found')
     throw new ApiError(httpStatus.NOT_FOUND, 'Product not found')
   }
   await product.remove()

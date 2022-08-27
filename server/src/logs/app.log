@@ -3263,3 +3263,39 @@
 {"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc - - - ms","timestamp":"2022-08-27T19:18:14.810Z"}
 {"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 0.243 ms","timestamp":"2022-08-27T19:18:15.799Z"}
 {"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc 200 - 1296.538 ms","timestamp":"2022-08-27T19:18:17.099Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 6.802 ms","timestamp":"2022-08-27T19:22:46.197Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc - - - ms","timestamp":"2022-08-27T19:22:46.504Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 0.080 ms","timestamp":"2022-08-27T19:22:47.566Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc 200 - 2052.103 ms","timestamp":"2022-08-27T19:22:49.622Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 0.540 ms","timestamp":"2022-08-27T19:23:17.355Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc 200 - 987.338 ms","timestamp":"2022-08-27T19:23:18.351Z"}
+{"level":"info","message":"OPTIONS /analytics/reports 204 - 1.455 ms","timestamp":"2022-08-27T19:40:41.535Z"}
+{"level":"error","message":"GET /analytics/reports 500 - 30080.981 ms - message: -","timestamp":"2022-08-27T19:41:11.631Z"}
+{"level":"info","message":"GET /product/query?limit=10&sortBy=createdAt:desc 200 - 3230.501 ms","timestamp":"2022-08-27T19:43:41.999Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-27T19:45:41.288Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-27T19:45:41.292Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-27T19:45:56.141Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-27T19:45:56.145Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-27T19:46:21.996Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-27T19:46:22.000Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-27T19:46:29.777Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-27T19:46:29.781Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-27T19:47:52.799Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-27T19:47:52.804Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-27T19:48:18.318Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-27T19:48:18.322Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-27T19:48:35.437Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-27T19:48:35.441Z"}
+{"level":"info","message":"GET /product/FmeBFPvo 200 - 309.537 ms","timestamp":"2022-08-27T19:48:47.888Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-27T19:49:08.875Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-27T19:49:08.879Z"}
+{"level":"info","message":"GET /product/FmeBFPvo 200 - 347.906 ms","timestamp":"2022-08-27T19:49:33.434Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-27T19:51:50.905Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-27T19:51:50.909Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-27T19:51:59.145Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-27T19:51:59.150Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-27T19:52:09.615Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-27T19:52:09.619Z"}
+{"level":"info","message":"GET /product/FmeBFPvo 200 - 317.657 ms","timestamp":"2022-08-27T19:52:41.722Z"}
+{"level":"info","message":"DELETE /product/FmeBFPvo 200 - 463.841 ms","timestamp":"2022-08-27T19:52:48.892Z"}
+{"level":"info","message":"GET /product/FmeBFPvo 200 - 283.705 ms","timestamp":"2022-08-27T19:52:52.314Z"}
