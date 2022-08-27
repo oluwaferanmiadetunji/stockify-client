@@ -12,6 +12,7 @@ export const ROUTES = {
   ORDER_SUMMARY: '/dashboard/orders/summary',
 
   PRODUCTS: '/dashboard/products',
+  PRODUCTS_CREATE: '/dashboard/products/new',
   PRODUCTS_SUMMARY: '/dashboard/products/summary',
   PRODUCTS_INVENTORY: '/dashboard/products/inventory',
   PRODUCTS_INSIGHTS: '/dashboard/products/insights',

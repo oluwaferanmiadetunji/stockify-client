@@ -21,14 +21,19 @@ import Avatar from '@mui/material/Avatar'
 import ListItem from '@mui/material/ListItem'
 import ListItemText from '@mui/material/ListItemText'
 import ListItemAvatar from '@mui/material/ListItemAvatar'
-import AddProduct from './AddProduct'
 import DeleteProduct from './DeleteProduct'
 import { renderPrice } from 'utils/helpers'
+import Button from '@mui/material/Button'
+import AddIcon from '@mui/icons-material/Add'
+import { ROUTES } from 'utils/constants'
+import { Link as RouterLink, useNavigate } from 'react-router-dom'
 
 const Products = () => {
   const dispatch = useAppDispatch()
   const { products, totalPrice } = useAppSelector(selectProductState)
   const { product: count } = useAppSelector(selectAnalyticsState)
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     ;(async () => {
@@ -53,7 +58,15 @@ const Products = () => {
           </Typography>
 
           <Box>
-            <AddProduct />
+            <Button
+              variant="contained"
+              startIcon={<AddIcon />}
+              sx={{ color: 'white', textTransform: 'unset' }}
+              component={RouterLink}
+              to={ROUTES.PRODUCTS_CREATE}
+            >
+              Add New Product
+            </Button>
           </Box>
         </Box>
 
@@ -154,7 +167,12 @@ const Products = () => {
 
                 <TableBody>
                   {products.map((row) => (
-                    <StyledTableRow key={row.name}>
+                    <StyledTableRow
+                      key={row.name}
+                      onClick={() =>
+                        navigate(`${ROUTES.PRODUCTS_SUMMARY}?id=${row}`)
+                      }
+                    >
                       <StyledTableCell component="th" scope="row">
                         <ListItem>
                           <ListItemAvatar>
@@ -167,7 +185,7 @@ const Products = () => {
                       <StyledTableCell>{row.color}</StyledTableCell>
                       <StyledTableCell>{row.size}</StyledTableCell>
                       <StyledTableCell>
-                        {dayjs(row.createdAt).format('MMM D, YYYY')}
+                        {dayjs(row.createdAt).format('MMM D, YYYY HH:mm')}
                       </StyledTableCell>
                       <StyledTableCell>
                         <DeleteProduct product={row} />

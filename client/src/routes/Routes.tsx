@@ -12,6 +12,7 @@ const ReportOverview = lazy(() => import('pages/reports/ReportOverview'))
 const ReportSales = lazy(() => import('pages/reports/ReportSales'))
 const Customers = lazy(() => import('pages/customers'))
 const CustomerInfo = lazy(() => import('pages/customer-info'))
+const CreateProduct = lazy(() => import('pages/create-product'))
 const Products = lazy(() => import('pages/products'))
 
 function App() {
@@ -57,6 +58,15 @@ function App() {
         element={
           <AuthRoute>
             <CustomerInfo />
+          </AuthRoute>
+        }
+      />
+
+      <Route
+        path={ROUTES.PRODUCTS_CREATE}
+        element={
+          <AuthRoute>
+            <CreateProduct />
           </AuthRoute>
         }
       />

@@ -225,7 +225,8 @@ const Sidebar = () => {
                 checkProductPageIsActive().isProductInsightPageActive ||
                 checkProductPageIsActive().isProductInventoryPageActive ||
                 checkProductPageIsActive().isProductPageActive ||
-                checkProductPageIsActive().isProductSummaryPageActive
+                checkProductPageIsActive().isProductSummaryPageActive ||
+                checkProductPageIsActive().isProductCreatePageActive
                   ? styles.activeIcon
                   : styles.inactiveIcon
               }
@@ -239,7 +240,8 @@ const Sidebar = () => {
               checkProductPageIsActive().isProductInsightPageActive ||
               checkProductPageIsActive().isProductInventoryPageActive ||
               checkProductPageIsActive().isProductPageActive ||
-              checkProductPageIsActive().isProductSummaryPageActive
+              checkProductPageIsActive().isProductSummaryPageActive ||
+              checkProductPageIsActive().isProductCreatePageActive
                 ? styles.activeNavHeader
                 : styles.inactiveNavHeader
             }
@@ -250,6 +252,17 @@ const Sidebar = () => {
         </AccordionSummary>
 
         <AccordionDetails sx={styles.navDetails}>
+          <Button
+            variant="text"
+            sx={
+              checkProductPageIsActive().isProductCreatePageActive
+                ? styles.activeNavSubHeader
+                : styles.navSubHeader
+            }
+            href={ROUTES.PRODUCTS_CREATE}
+          >
+            Add
+          </Button>
           <Button
             variant="text"
             sx={

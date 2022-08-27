@@ -43,12 +43,15 @@ export const checkProductPageIsActive = () => {
     window.location.pathname === ROUTES.PRODUCTS_INSIGHTS
   const isProductInventoryPageActive =
     window.location.pathname === ROUTES.PRODUCTS_INVENTORY
+  const isProductCreatePageActive =
+    window.location.pathname === ROUTES.PRODUCTS_CREATE
 
   return {
     isProductPageActive,
     isProductSummaryPageActive,
     isProductInsightPageActive,
     isProductInventoryPageActive,
+    isProductCreatePageActive,
   }
 }
 
@@ -137,4 +140,12 @@ export const getTotalPrice = (array: any[]): number => {
 
 export const renderPrice = (number: number): string => {
   return `${Naira} ${Number(number).toFixed(2)}`
+}
+export const getBase64 = (file: any) => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader()
+    reader.readAsDataURL(file)
+    reader.onload = () => resolve(reader.result)
+    reader.onerror = (error) => reject(error)
+  })
 }
