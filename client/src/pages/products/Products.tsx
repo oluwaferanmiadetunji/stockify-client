@@ -50,185 +50,183 @@ const Products = () => {
   const allProducts = isFiltered ? filteredProducts : products
 
   return (
-    <div>
-      <Layout>
-        <Box sx={styles.header}>
-          <Typography
-            variant="h5"
-            sx={styles.headerText}
-            gutterBottom
-            component="div"
+    <Layout>
+      <Box sx={styles.header}>
+        <Typography
+          variant="h5"
+          sx={styles.headerText}
+          gutterBottom
+          component="div"
+        >
+          Products
+        </Typography>
+
+        <Stack direction="row" spacing={2}>
+          <FilterProducts />
+          <Button
+            variant="contained"
+            startIcon={<AddIcon />}
+            sx={{ color: 'white', textTransform: 'unset' }}
+            component={RouterLink}
+            to={ROUTES.PRODUCTS_CREATE}
           >
-            Products
-          </Typography>
+            Add New Product
+          </Button>
+        </Stack>
+      </Box>
 
-          <Stack direction="row" spacing={2}>
-            <FilterProducts />
-            <Button
-              variant="contained"
-              startIcon={<AddIcon />}
-              sx={{ color: 'white', textTransform: 'unset' }}
-              component={RouterLink}
-              to={ROUTES.PRODUCTS_CREATE}
-            >
-              Add New Product
-            </Button>
-          </Stack>
-        </Box>
+      <Box sx={styles.container}>
+        <Item
+          sx={{
+            display: 'flex',
+            width: '100%',
+            justifyContent: 'space-between',
+          }}
+        >
+          <Box sx={styles.card}>
+            <InventoryIcon />
 
-        <Box sx={styles.container}>
-          <Item
-            sx={{
-              display: 'flex',
-              width: '100%',
-              justifyContent: 'space-between',
-            }}
-          >
-            <Box sx={styles.card}>
-              <InventoryIcon />
+            <Box sx={{ marginLeft: '30px' }}>
+              <Typography
+                variant="h5"
+                sx={styles.cardLabel}
+                gutterBottom
+                component="div"
+              >
+                TOTAL PRODUCTS
+              </Typography>
 
-              <Box sx={{ marginLeft: '30px' }}>
-                <Typography
-                  variant="h5"
-                  sx={styles.cardLabel}
-                  gutterBottom
-                  component="div"
-                >
-                  TOTAL PRODUCTS
-                </Typography>
-
-                <Typography
-                  variant="h5"
-                  sx={styles.cardValue}
-                  gutterBottom
-                  component="div"
-                >
-                  {count}
-                </Typography>
-              </Box>
+              <Typography
+                variant="h5"
+                sx={styles.cardValue}
+                gutterBottom
+                component="div"
+              >
+                {count}
+              </Typography>
             </Box>
+          </Box>
 
-            <Box sx={styles.card}>
-              <InventoryIcon />
+          <Box sx={styles.card}>
+            <InventoryIcon />
 
-              <Box sx={{ marginLeft: '30px' }}>
-                <Typography
-                  variant="h5"
-                  sx={styles.cardLabel}
-                  gutterBottom
-                  component="div"
-                >
-                  TOTAL STOCK
-                </Typography>
+            <Box sx={{ marginLeft: '30px' }}>
+              <Typography
+                variant="h5"
+                sx={styles.cardLabel}
+                gutterBottom
+                component="div"
+              >
+                TOTAL STOCK
+              </Typography>
 
-                <Typography
-                  variant="h5"
-                  sx={styles.cardValue}
-                  gutterBottom
-                  component="div"
-                >
-                  {getTotalProductCount(products)}
-                </Typography>
-              </Box>
+              <Typography
+                variant="h5"
+                sx={styles.cardValue}
+                gutterBottom
+                component="div"
+              >
+                {getTotalProductCount(products)}
+              </Typography>
             </Box>
+          </Box>
 
-            <Box sx={styles.card}>
-              <PaidIcon />
+          <Box sx={styles.card}>
+            <PaidIcon />
 
-              <Box sx={{ marginLeft: '30px' }}>
-                <Typography
-                  variant="h5"
-                  sx={styles.cardLabel}
-                  gutterBottom
-                  component="div"
-                >
-                  RETAIL VALUE
-                </Typography>
+            <Box sx={{ marginLeft: '30px' }}>
+              <Typography
+                variant="h5"
+                sx={styles.cardLabel}
+                gutterBottom
+                component="div"
+              >
+                RETAIL VALUE
+              </Typography>
 
-                <Typography
-                  variant="h5"
-                  sx={styles.cardValue}
-                  gutterBottom
-                  component="div"
-                >
-                  {renderPrice(totalPrice)}
-                </Typography>
-              </Box>
+              <Typography
+                variant="h5"
+                sx={styles.cardValue}
+                gutterBottom
+                component="div"
+              >
+                {renderPrice(totalPrice)}
+              </Typography>
             </Box>
+          </Box>
 
-            <Box sx={{ ...styles.card, borderRight: 'unset' }}>
-              <ShoppingCartIcon />
+          <Box sx={{ ...styles.card, borderRight: 'unset' }}>
+            <ShoppingCartIcon />
 
-              <Box sx={{ marginLeft: '30px' }}>
-                <Typography
-                  variant="h5"
-                  sx={styles.cardLabel}
-                  gutterBottom
-                  component="div"
-                >
-                  UNREALIZED PROFIT
-                </Typography>
+            <Box sx={{ marginLeft: '30px' }}>
+              <Typography
+                variant="h5"
+                sx={styles.cardLabel}
+                gutterBottom
+                component="div"
+              >
+                UNREALIZED PROFIT
+              </Typography>
 
-                <Typography
-                  variant="h5"
-                  sx={styles.cardValue}
-                  gutterBottom
-                  component="div"
-                >
-                  {renderPrice(totalPrice)}
-                </Typography>
-              </Box>
+              <Typography
+                variant="h5"
+                sx={styles.cardValue}
+                gutterBottom
+                component="div"
+              >
+                {renderPrice(totalPrice)}
+              </Typography>
             </Box>
-          </Item>
+          </Box>
+        </Item>
 
-          <Item sx={{ padding: '20px' }}>
-            <TableContainer component={Paper} sx={styles.tableContainer}>
-              <Table sx={{ minWidth: 700 }} aria-label="customized table">
-                <TableHead>
-                  <TableRow>
-                    <StyledTableCell>Product</StyledTableCell>
-                    <StyledTableCell>Cost Price</StyledTableCell>
-                    <StyledTableCell>Selling Price</StyledTableCell>
-                    <StyledTableCell>Color</StyledTableCell>
-                    <StyledTableCell>Size</StyledTableCell>
-                    <StyledTableCell>Quantity</StyledTableCell>
-                    <StyledTableCell>Created</StyledTableCell>
-                  </TableRow>
-                </TableHead>
+        <Item sx={{ padding: '20px' }}>
+          <TableContainer component={Paper} sx={styles.tableContainer}>
+            <Table sx={{ minWidth: 700 }} aria-label="customized table">
+              <TableHead>
+                <TableRow>
+                  <StyledTableCell>Product</StyledTableCell>
+                  <StyledTableCell>Cost Price</StyledTableCell>
+                  <StyledTableCell>Selling Price</StyledTableCell>
+                  <StyledTableCell>Color</StyledTableCell>
+                  <StyledTableCell>Size</StyledTableCell>
+                  <StyledTableCell>Quantity</StyledTableCell>
+                  <StyledTableCell>Created</StyledTableCell>
+                </TableRow>
+              </TableHead>
 
-                <TableBody>
-                  {allProducts.map((row) => (
-                    <StyledTableRow
-                      key={row.name}
-                      onClick={() =>
-                        navigate(`${ROUTES.PRODUCTS_SUMMARY}?id=${row.id}`)
-                      }
-                    >
-                      <StyledTableCell component="th" scope="row">
-                        <ListItem>
-                          <ListItemAvatar>
-                            <Avatar src={row.image} />
-                          </ListItemAvatar>
-                          <ListItemText primary={row.name} />
-                        </ListItem>
-                      </StyledTableCell>
-                      <StyledTableCell>₦ {row.costprice}</StyledTableCell>
-                      <StyledTableCell>₦ {row.sellingprice}</StyledTableCell>
-                      <StyledTableCell>{row.color}</StyledTableCell>
-                      <StyledTableCell>{row.size}</StyledTableCell>
-                      <StyledTableCell>{row.quantity}</StyledTableCell>
-                      <StyledTableCell>
-                        {dayjs(row.createdAt).format('MMM D, YYYY HH:mm')}
-                      </StyledTableCell>
-                    </StyledTableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </TableContainer>
-          </Item>
-        </Box>
-      </Layout>
-    </div>
+              <TableBody>
+                {allProducts.map((row) => (
+                  <StyledTableRow
+                    key={row.name}
+                    onClick={() =>
+                      navigate(`${ROUTES.PRODUCTS_SUMMARY}?id=${row.id}`)
+                    }
+                  >
+                    <StyledTableCell component="th" scope="row">
+                      <ListItem>
+                        <ListItemAvatar>
+                          <Avatar src={row.image} />
+                        </ListItemAvatar>
+                        <ListItemText primary={row.name} />
+                      </ListItem>
+                    </StyledTableCell>
+                    <StyledTableCell>₦ {row.costprice}</StyledTableCell>
+                    <StyledTableCell>₦ {row.sellingprice}</StyledTableCell>
+                    <StyledTableCell>{row.color}</StyledTableCell>
+                    <StyledTableCell>{row.size}</StyledTableCell>
+                    <StyledTableCell>{row.quantity}</StyledTableCell>
+                    <StyledTableCell>
+                      {dayjs(row.createdAt).format('MMM D, YYYY HH:mm')}
+                    </StyledTableCell>
+                  </StyledTableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </Item>
+      </Box>
+    </Layout>
   )
 }
 

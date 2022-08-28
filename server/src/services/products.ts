@@ -6,7 +6,10 @@ import { generateRandomString } from '../utils/helpers'
 import logger from '../config/logger'
 
 export const createProduct = async (body: Partial<CreateNewProductType>) => {
-  const isProductExist = await Products.findOne({ name: body.name })
+  const isProductExist = await Products.findOne({
+    name: body.name,
+    color: body.color,
+  })
 
   if (isProductExist) {
     throw new ApiError(httpStatus.BAD_REQUEST, 'Product exists already')

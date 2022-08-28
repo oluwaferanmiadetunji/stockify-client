@@ -11,7 +11,6 @@ const productSchema = new Schema<IProducts>(
     },
     name: {
       type: String,
-      unique: true,
     },
     supplier: {
       type: String,

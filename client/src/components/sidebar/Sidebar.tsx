@@ -142,65 +142,6 @@ const Sidebar = () => {
       </Accordion>
 
       <Accordion
-        expanded={expanded === 'panel3'}
-        onChange={handleChange('panel3')}
-        sx={{ background: 'transparent', margin: 0 }}
-        elevation={0}
-      >
-        <AccordionSummary
-          expandIcon={
-            <ChevronRightIcon
-              sx={
-                checkOrderPageIsActive().isOrderPageActive ||
-                checkOrderPageIsActive().isOrderSummaryPageActive
-                  ? styles.activeIcon
-                  : styles.inactiveIcon
-              }
-            />
-          }
-          aria-controls="panel3bh-content"
-          id="panel3bh-header"
-        >
-          <Box
-            sx={
-              checkOrderPageIsActive().isOrderPageActive ||
-              checkOrderPageIsActive().isOrderSummaryPageActive
-                ? styles.activeNavHeader
-                : styles.inactiveNavHeader
-            }
-          >
-            <InventoryIcon sx={styles.navIcon} />
-            <Typography sx={styles.navText}>Orders</Typography>
-          </Box>
-        </AccordionSummary>
-
-        <AccordionDetails sx={styles.navDetails}>
-          <Button
-            variant="text"
-            sx={
-              checkOrderPageIsActive().isOrderPageActive
-                ? styles.activeNavSubHeader
-                : styles.navSubHeader
-            }
-            href={ROUTES.ORDER}
-          >
-            List
-          </Button>
-          <Button
-            variant="text"
-            sx={
-              checkOrderPageIsActive().isOrderSummaryPageActive
-                ? styles.activeNavSubHeader
-                : styles.navSubHeader
-            }
-            href={ROUTES.ORDER_SUMMARY}
-          >
-            Summary
-          </Button>
-        </AccordionDetails>
-      </Accordion>
-
-      <Accordion
         expanded={expanded === 'panel4'}
         onChange={handleChange('panel4')}
         sx={{ background: 'transparent', margin: 0 }}
@@ -325,27 +266,64 @@ const Sidebar = () => {
           >
             Create
           </Button>
+        </AccordionDetails>
+      </Accordion>
+
+      <Accordion
+        expanded={expanded === 'panel3'}
+        onChange={handleChange('panel3')}
+        sx={{ background: 'transparent', margin: 0 }}
+        elevation={0}
+      >
+        <AccordionSummary
+          expandIcon={
+            <ChevronRightIcon
+              sx={
+                checkOrderPageIsActive().isOrderPageActive ||
+                checkOrderPageIsActive().isOrderSummaryPageActive
+                  ? styles.activeIcon
+                  : styles.inactiveIcon
+              }
+            />
+          }
+          aria-controls="panel3bh-content"
+          id="panel3bh-header"
+        >
+          <Box
+            sx={
+              checkOrderPageIsActive().isOrderPageActive ||
+              checkOrderPageIsActive().isOrderSummaryPageActive
+                ? styles.activeNavHeader
+                : styles.inactiveNavHeader
+            }
+          >
+            <InventoryIcon sx={styles.navIcon} />
+            <Typography sx={styles.navText}>Orders</Typography>
+          </Box>
+        </AccordionSummary>
+
+        <AccordionDetails sx={styles.navDetails}>
           <Button
             variant="text"
             sx={
-              checkInvoicePageIsActive().isInvoiceDetailsPageActive
+              checkOrderPageIsActive().isOrderPageActive
                 ? styles.activeNavSubHeader
                 : styles.navSubHeader
             }
-            href={ROUTES.INVOICE_DETAILS}
+            href={ROUTES.ORDER}
           >
-            Details
+            List
           </Button>
           <Button
             variant="text"
             sx={
-              checkInvoicePageIsActive().isInvoicePreviewPageActive
+              checkOrderPageIsActive().isOrderSummaryPageActive
                 ? styles.activeNavSubHeader
                 : styles.navSubHeader
             }
-            href={ROUTES.INVOICE_PREVIEW}
+            href={ROUTES.ORDER_SUMMARY}
           >
-            Preview
+            Summary
           </Button>
         </AccordionDetails>
       </Accordion>
