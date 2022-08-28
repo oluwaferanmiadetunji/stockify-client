@@ -44,6 +44,9 @@ const styles = {
       color: 'pink',
     },
   },
+  filterIcon: {
+    color: 'white',
+  },
 }
 
 export default styles

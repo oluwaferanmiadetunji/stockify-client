@@ -26,10 +26,14 @@ import Button from '@mui/material/Button'
 import AddIcon from '@mui/icons-material/Add'
 import { ROUTES } from 'utils/constants'
 import { Link as RouterLink, useNavigate } from 'react-router-dom'
+import FilterProducts from './FilterProducts'
+import Stack from '@mui/material/Stack'
 
 const Products = () => {
   const dispatch = useAppDispatch()
-  const { products, totalPrice } = useAppSelector(selectProductState)
+  const { products, totalPrice, isFiltered, filteredProducts } = useAppSelector(
+    selectProductState,
+  )
   const { product: count } = useAppSelector(selectAnalyticsState)
 
   const navigate = useNavigate()
@@ -42,6 +46,8 @@ const Products = () => {
       )
     })()
   }, [dispatch])
+
+  const allProducts = isFiltered ? filteredProducts : products
 
   return (
     <div>
@@ -56,7 +62,8 @@ const Products = () => {
             Products
           </Typography>
 
-          <Box>
+          <Stack direction="row" spacing={2}>
+            <FilterProducts />
             <Button
               variant="contained"
               startIcon={<AddIcon />}
@@ -66,7 +73,7 @@ const Products = () => {
             >
               Add New Product
             </Button>
-          </Box>
+          </Stack>
         </Box>
 
         <Box sx={styles.container}>
@@ -190,7 +197,7 @@ const Products = () => {
                 </TableHead>
 
                 <TableBody>
-                  {products.map((row) => (
+                  {allProducts.map((row) => (
                     <StyledTableRow
                       key={row.name}
                       onClick={() =>

@@ -9,18 +9,21 @@ import FilterListIcon from '@mui/icons-material/FilterList'
 import Tooltip from '@mui/material/Tooltip'
 import Box from '@mui/material/Box'
 import styles from './styles'
-import { makeCustomerFilterRequest } from 'api/customers'
+import { makeProductFilterRequest } from 'api/products'
 import LoadingButton from '@mui/lab/LoadingButton'
 import queryString from 'query-string'
 import { toast } from 'react-toast'
 import { useAppDispatch, useAppSelector } from 'redux-store/hooks'
-import { selectCustomerState, cancelFilter } from 'redux-store/customers.slice'
+import {
+  selectProductState,
+  cancelProductsFilter,
+} from 'redux-store/products.slice'
 import ClearIcon from '@mui/icons-material/Clear'
-import { initialState } from './constant'
+import { initialState } from './constants'
 
-export default function FilterCustomers() {
+export default function FilterProducts() {
   const dispatch = useAppDispatch()
-  const { isFiltered } = useAppSelector(selectCustomerState)
+  const { isFiltered } = useAppSelector(selectProductState)
   const [open, setOpen] = React.useState(false)
   const [loading, setLoading] = React.useState(false)
   const [state, setState] = React.useState(initialState)
@@ -43,7 +46,7 @@ export default function FilterCustomers() {
   const handleSubmit = async (event: any) => {
     event.preventDefault()
 
-    if (!state.firstname && !state.lastname && !state.email && !state.phone) {
+    if (!state.name && !state.color) {
       toast.error('Filter value not set')
       return
     }
@@ -58,7 +61,7 @@ export default function FilterCustomers() {
     }
 
     setLoading(true)
-    await makeCustomerFilterRequest(
+    await makeProductFilterRequest(
       `limit=1000&sortBy=createdAt:desc&${query}`,
       dispatch,
       callback,
@@ -68,7 +71,7 @@ export default function FilterCustomers() {
   }
 
   const onClearFilter = () => {
-    dispatch(cancelFilter())
+    dispatch(cancelProductsFilter())
   }
 
   return (
@@ -85,7 +88,7 @@ export default function FilterCustomers() {
           </Button>
         </Tooltip>
       ) : (
-        <Tooltip title="Filter Customers">
+        <Tooltip title="Filter Products">
           <Button
             variant="outlined"
             startIcon={<FilterListIcon sx={styles.filterIcon} />}
@@ -98,48 +101,28 @@ export default function FilterCustomers() {
       )}
 
       <Dialog open={open} onClose={handleClose} fullWidth maxWidth="sm">
-        <DialogTitle>Filter Customers</DialogTitle>
+        <DialogTitle>Filter Products</DialogTitle>
         <DialogContent>
           <TextField
             autoFocus
             margin="dense"
-            name="firstname"
-            label="First Name"
+            name="name"
+            label="Product Name"
             type="text"
             fullWidth
             variant="standard"
             onChange={handleChange}
-            value={state.firstname}
+            value={state.name}
           />
           <TextField
             margin="dense"
-            name="lastname"
-            label="Last Name"
+            name="color"
+            label="Color"
             type="text"
             fullWidth
             variant="standard"
             onChange={handleChange}
-            value={state.lastname}
-          />
-          <TextField
-            margin="dense"
-            name="email"
-            label="Email Address"
-            type="email"
-            fullWidth
-            variant="standard"
-            onChange={handleChange}
-            value={state.email}
-          />
-          <TextField
-            margin="dense"
-            name="phone"
-            label="Phone Number"
-            type="tel"
-            fullWidth
-            variant="standard"
-            onChange={handleChange}
-            value={state.phone}
+            value={state.color}
           />
         </DialogContent>
 

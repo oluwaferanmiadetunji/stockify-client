@@ -81,11 +81,13 @@ export interface SetProductDataInterface {
 
 export interface ProductState {
   products: SingleProductInterface[]
+  filteredProducts: SingleProductInterface[]
   page: number
   limit: number
   totalPages: number
   count: number
   totalPrice: number
+  isFiltered: boolean
 }
 
 export interface AnalyticsInterface {

@@ -1,14 +1,20 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from './index'
-import { ProductState, SetProductDataInterface } from './types'
+import {
+  ProductState,
+  SetProductDataInterface,
+  SingleProductInterface,
+} from './types'
 
 const initialState: ProductState = {
   products: [],
+  filteredProducts: [],
   page: 1,
   limit: 100,
   totalPages: 0,
   count: 0,
   totalPrice: 0,
+  isFiltered: false,
 }
 
 const authSlice = createSlice({
@@ -56,6 +62,20 @@ const authSlice = createSlice({
       )
       state.products[index] = action.payload
     },
+    setProductsFilter: (
+      state: ProductState,
+      action: PayloadAction<SingleProductInterface[]>,
+    ) => {
+      state.filteredProducts = action.payload
+      state.isFiltered = true
+    },
+    cancelProductsFilter: (
+      state: ProductState,
+      action: PayloadAction<void>,
+    ) => {
+      state.filteredProducts = []
+      state.isFiltered = false
+    },
   },
 })
 
@@ -65,7 +85,7 @@ export const {
   deleteProduct,
   setProductPrice,
   updatePrice,
-  updateProduct,
+  updateProduct,cancelProductsFilter,setProductsFilter
 } = authSlice.actions
 
 export const selectProductState = (state: RootState) => state.products

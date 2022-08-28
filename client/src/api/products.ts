@@ -7,7 +7,7 @@ import {
   deleteProduct,
   setProductPrice,
   updatePrice,
-  updateProduct,
+  updateProduct,setProductsFilter
 } from 'redux-store/products.slice'
 import { EmptyObject, AnyAction, Dispatch } from 'redux'
 import { PersistPartial } from 'redux-persist/es/persistReducer'
@@ -120,6 +120,27 @@ export const makeUpdateProductRequest = async (
     toast.success('Product updated successfully')
     dispatch(updateProduct(response.data))
     return response.data
+  } catch (err) {
+    //@ts-ignore
+    toast.error(err.response.data.message)
+  }
+}
+
+export const makeProductFilterRequest = async (
+  query: string,
+  dispatch: ThunkDispatch<
+    EmptyObject & { auth: AuthState } & PersistPartial,
+    undefined,
+    AnyAction
+  > &
+    Dispatch<AnyAction>,
+  callback: { (): void; (): void },
+): Promise<void> => {
+  try {
+    const response = await axios.get(`${API_ROUTES.PRODUCTS}/query?${query}`)
+
+    dispatch(setProductsFilter(response.data.results))
+    callback()
   } catch (err) {
     //@ts-ignore
     toast.error(err.response.data.message)
