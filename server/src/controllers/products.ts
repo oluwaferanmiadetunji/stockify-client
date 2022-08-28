@@ -45,7 +45,7 @@ export const deleteProduct = catchAsync(async (req, res) => {
 export const getProduct = catchAsync(async (req, res) => {
   try {
     const product = await productService.getProductById(req.params.id)
-    res.status(httpStatus.OK).json({ product })
+    res.status(httpStatus.OK).send(product)
   } catch (error) {
     logger.error('Error: ', JSON.stringify(error))
 

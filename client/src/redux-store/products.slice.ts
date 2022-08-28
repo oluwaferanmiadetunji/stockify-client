@@ -50,6 +50,12 @@ const authSlice = createSlice({
       state.products.splice(index, 1)
       state.count = state.count - 1
     },
+    updateProduct: (state: ProductState, action: PayloadAction<any>) => {
+      let index = state.products.findIndex(
+        (product) => product.id === action.payload.id,
+      )
+      state.products[index] = action.payload
+    },
   },
 })
 
@@ -59,6 +65,7 @@ export const {
   deleteProduct,
   setProductPrice,
   updatePrice,
+  updateProduct,
 } = authSlice.actions
 
 export const selectProductState = (state: RootState) => state.products

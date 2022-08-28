@@ -21,7 +21,6 @@ import Avatar from '@mui/material/Avatar'
 import ListItem from '@mui/material/ListItem'
 import ListItemText from '@mui/material/ListItemText'
 import ListItemAvatar from '@mui/material/ListItemAvatar'
-import DeleteProduct from './DeleteProduct'
 import { renderPrice, getTotalProductCount } from 'utils/helpers'
 import Button from '@mui/material/Button'
 import AddIcon from '@mui/icons-material/Add'
@@ -187,7 +186,6 @@ const Products = () => {
                     <StyledTableCell>Size</StyledTableCell>
                     <StyledTableCell>Quantity</StyledTableCell>
                     <StyledTableCell>Created</StyledTableCell>
-                    <StyledTableCell></StyledTableCell>
                   </TableRow>
                 </TableHead>
 
@@ -214,9 +212,6 @@ const Products = () => {
                       <StyledTableCell>{row.quantity}</StyledTableCell>
                       <StyledTableCell>
                         {dayjs(row.createdAt).format('MMM D, YYYY HH:mm')}
-                      </StyledTableCell>
-                      <StyledTableCell>
-                        <DeleteProduct product={row} />
                       </StyledTableCell>
                     </StyledTableRow>
                   ))}

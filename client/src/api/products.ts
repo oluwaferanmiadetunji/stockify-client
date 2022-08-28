@@ -7,6 +7,7 @@ import {
   deleteProduct,
   setProductPrice,
   updatePrice,
+  updateProduct,
 } from 'redux-store/products.slice'
 import { EmptyObject, AnyAction, Dispatch } from 'redux'
 import { PersistPartial } from 'redux-persist/es/persistReducer'
@@ -83,11 +84,42 @@ export const makeDeleteProductRequest = async (
     Dispatch<AnyAction>,
 ): Promise<void> => {
   try {
-    await axios.get(`${API_ROUTES.PRODUCTS}/delete/${payload.id}`)
+    await axios.delete(`${API_ROUTES.PRODUCTS}/${payload.id}`)
     toast.success('Product deleted successfully')
     dispatch(deleteProduct(payload.id))
     dispatch(updateCount({ type: 'decrease', value: 'product' }))
     dispatch(updatePrice({ type: 'decrease', value: payload.price }))
+  } catch (err) {
+    //@ts-ignore
+    toast.error(err.response.data.message)
+  }
+}
+
+export const makeSingleProductRequest = async (id: string): Promise<any> => {
+  try {
+    const response = await axios.get(`${API_ROUTES.PRODUCTS}/${id}`)
+    return response.data
+  } catch (err) {
+    //@ts-ignore
+    toast.error(err.response.data.message)
+  }
+}
+
+export const makeUpdateProductRequest = async (
+  id: string,
+  payload: CreateNewProduct,
+  dispatch: ThunkDispatch<
+    EmptyObject & { auth: AuthState } & PersistPartial,
+    undefined,
+    AnyAction
+  > &
+    Dispatch<AnyAction>,
+): Promise<any> => {
+  try {
+    const response = await axios.patch(`${API_ROUTES.PRODUCTS}/${id}`, payload)
+    toast.success('Product updated successfully')
+    dispatch(updateProduct(response.data))
+    return response.data
   } catch (err) {
     //@ts-ignore
     toast.error(err.response.data.message)

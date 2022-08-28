@@ -1,9 +1,9 @@
 import TextField from '@mui/material/TextField'
 import InputAdornment from '@mui/material/InputAdornment'
+import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
 import styles from './styles'
 import { Naira } from 'utils/constants'
-import { Typography } from '@mui/material'
 import { selectOptions } from './constants'
 
 const AddProduct = ({ handleChange, state }: any) => {

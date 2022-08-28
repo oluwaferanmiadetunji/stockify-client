@@ -105,7 +105,7 @@ const FileUpload = ({ state, setState, setStep, onCancel }: any) => {
 
   return (
     <Box>
-      <Typography sx={styles.uploadText}>Upload Images</Typography>
+      <Typography sx={styles.uploadText}>Upload Product Image</Typography>
 
       <Form>
         <Box>

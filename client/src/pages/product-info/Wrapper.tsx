@@ -3,11 +3,12 @@ import Layout from 'components/layout'
 import Box from '@mui/material/Box'
 import styles from './styles'
 import { StyledTab, StyledTabs } from './styled'
-import Typography from '@mui/material/Typography'
-import { useNavigate } from 'react-router-dom'
-import { ROUTES } from 'utils/constants'
+import Button from '@mui/material/Button'
 import { getAnalyticsData } from 'api/analytics'
 import { useAppDispatch } from 'redux-store/hooks'
+import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace'
+import { ROUTES } from 'utils/constants'
+import { Link as RouterLink, useNavigate } from 'react-router-dom'
 
 const Summary = ({ children }: any) => {
   const value = window.location.pathname === ROUTES.PRODUCTS_SUMMARY ? 0 : 1
@@ -28,14 +29,17 @@ const Summary = ({ children }: any) => {
 
   return (
     <Layout>
-      <Typography
-        variant="h5"
-        sx={styles.headerText}
-        gutterBottom
-        component="div"
-      >
-        Reports
-      </Typography>
+      <Box sx={styles.containerHeader}>
+        <Button
+          variant="text"
+          startIcon={<KeyboardBackspaceIcon />}
+          sx={styles.back}
+          component={RouterLink}
+          to={ROUTES.PRODUCTS}
+        >
+          Products
+        </Button>
+      </Box>
 
       <Box sx={{ ...styles.tabsContainer, borderColor: 'rgb(43, 47, 60)' }}>
         <StyledTabs value={value} onChange={handleChange}>

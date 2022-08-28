@@ -138,18 +138,6 @@ const Sidebar = () => {
           >
             List
           </Button>
-
-          <Button
-            variant="text"
-            sx={
-              checkCustomersPageIsActive().isCustomerSummaryPageActive
-                ? styles.activeNavSubHeader
-                : styles.navSubHeader
-            }
-            href={ROUTES.CUSTOMERS_SUMMARY}
-          >
-            Summary
-          </Button>
         </AccordionDetails>
       </Accordion>
 
@@ -273,39 +261,6 @@ const Sidebar = () => {
             href={ROUTES.PRODUCTS}
           >
             List
-          </Button>
-          <Button
-            variant="text"
-            sx={
-              checkProductPageIsActive().isProductSummaryPageActive
-                ? styles.activeNavSubHeader
-                : styles.navSubHeader
-            }
-            href={ROUTES.PRODUCTS_SUMMARY}
-          >
-            Summary
-          </Button>
-          <Button
-            variant="text"
-            sx={
-              checkProductPageIsActive().isProductInventoryPageActive
-                ? styles.activeNavSubHeader
-                : styles.navSubHeader
-            }
-            href={ROUTES.PRODUCTS_INVENTORY}
-          >
-            Inventory
-          </Button>
-          <Button
-            variant="text"
-            sx={
-              checkProductPageIsActive().isProductInsightPageActive
-                ? styles.activeNavSubHeader
-                : styles.navSubHeader
-            }
-            href={ROUTES.PRODUCTS_INSIGHTS}
-          >
-            Insights
           </Button>
         </AccordionDetails>
       </Accordion>
