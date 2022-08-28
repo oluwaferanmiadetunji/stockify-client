@@ -3299,3 +3299,153 @@
 {"level":"info","message":"GET /product/FmeBFPvo 200 - 317.657 ms","timestamp":"2022-08-27T19:52:41.722Z"}
 {"level":"info","message":"DELETE /product/FmeBFPvo 200 - 463.841 ms","timestamp":"2022-08-27T19:52:48.892Z"}
 {"level":"info","message":"GET /product/FmeBFPvo 200 - 283.705 ms","timestamp":"2022-08-27T19:52:52.314Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-28T08:58:43.485Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-28T08:58:43.490Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-28T08:59:41.765Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-28T08:59:41.768Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-28T09:08:03.086Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-28T09:08:03.093Z"}
+{"level":"info","message":"POST /auth/login 200 - 663.336 ms","timestamp":"2022-08-28T09:08:04.334Z"}
+{"level":"info","message":"POST /seeder/products/add 201 - 19712.741 ms","timestamp":"2022-08-28T09:08:41.620Z"}
+{"level":"info","message":"GET /product/query?limit=10&sortBy=createdAt:desc 200 - 541.743 ms","timestamp":"2022-08-28T09:08:51.906Z"}
+{"level":"info","message":"OPTIONS /auth/login 204 - 0.310 ms","timestamp":"2022-08-28T09:09:04.213Z"}
+{"level":"info","message":"POST /auth/login 200 - 394.217 ms","timestamp":"2022-08-28T09:09:04.609Z"}
+{"level":"info","message":"OPTIONS /analytics/reports 204 - 0.119 ms","timestamp":"2022-08-28T09:09:04.879Z"}
+{"level":"info","message":"GET /analytics/reports 200 - 487.372 ms","timestamp":"2022-08-28T09:09:05.368Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 0.252 ms","timestamp":"2022-08-28T09:09:08.809Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc 200 - 1191.842 ms","timestamp":"2022-08-28T09:09:10.005Z"}
+{"level":"info","message":"OPTIONS /analytics/reports 204 - 0.798 ms","timestamp":"2022-08-28T09:09:11.708Z"}
+{"level":"info","message":"GET /analytics/reports 200 - 607.981 ms","timestamp":"2022-08-28T09:09:12.318Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 0.126 ms","timestamp":"2022-08-28T09:09:14.123Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc 200 - 1152.983 ms","timestamp":"2022-08-28T09:09:15.280Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 0.515 ms","timestamp":"2022-08-28T09:10:34.841Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc - - - ms","timestamp":"2022-08-28T09:10:35.717Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 0.114 ms","timestamp":"2022-08-28T09:10:36.742Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 1.999 ms","timestamp":"2022-08-28T09:11:35.183Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 0.340 ms","timestamp":"2022-08-28T09:11:42.239Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc - - - ms","timestamp":"2022-08-28T09:11:45.576Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc - - - ms","timestamp":"2022-08-28T09:11:45.606Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 0.140 ms","timestamp":"2022-08-28T09:11:46.636Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc 200 - 1635.746 ms","timestamp":"2022-08-28T09:11:48.279Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 0.372 ms","timestamp":"2022-08-28T09:12:02.071Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc 200 - 5342.762 ms","timestamp":"2022-08-28T09:12:07.419Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 0.489 ms","timestamp":"2022-08-28T09:12:19.936Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc 200 - 1243.368 ms","timestamp":"2022-08-28T09:12:21.183Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 0.223 ms","timestamp":"2022-08-28T09:12:25.022Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 0.231 ms","timestamp":"2022-08-28T09:12:38.173Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc 200 - 14401.848 ms","timestamp":"2022-08-28T09:12:39.426Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc 200 - 12338.868 ms","timestamp":"2022-08-28T09:12:51.768Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 0.330 ms","timestamp":"2022-08-28T09:13:01.293Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc - - - ms","timestamp":"2022-08-28T09:13:01.776Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 0.141 ms","timestamp":"2022-08-28T09:13:02.815Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc 200 - 11164.807 ms","timestamp":"2022-08-28T09:13:13.984Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-28T09:14:07.230Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-28T09:14:07.235Z"}
+{"level":"info","message":"GET /product/query?limit=10&sortBy=createdAt:desc 200 - 310.779 ms","timestamp":"2022-08-28T09:14:18.636Z"}
+{"level":"info","message":"POST /seeder/products/add 201 - 17322.182 ms","timestamp":"2022-08-28T09:14:41.968Z"}
+{"level":"info","message":"GET /product/query?limit=10&sortBy=createdAt:desc 200 - 486.075 ms","timestamp":"2022-08-28T09:14:47.097Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 0.682 ms","timestamp":"2022-08-28T09:14:57.638Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc 200 - 874.499 ms","timestamp":"2022-08-28T09:14:58.518Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-28T09:15:29.008Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-28T09:15:29.011Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-28T09:17:11.369Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-28T09:17:11.375Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-28T09:17:31.535Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-28T09:17:31.547Z"}
+{"level":"info","message":"GET /product/query?limit=10&sortBy=createdAt:desc 200 - 2385.952 ms","timestamp":"2022-08-28T09:17:34.834Z"}
+{"level":"error","message":"Error: ","timestamp":"2022-08-28T09:17:47.781Z"}
+{"level":"error","message":"POST /product/create 409 - 348.939 ms - message: -","timestamp":"2022-08-28T09:17:47.783Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-28T09:19:14.448Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-28T09:19:14.452Z"}
+{"level":"error","message":"Error: ","timestamp":"2022-08-28T09:19:16.901Z"}
+{"level":"error","message":"POST /product/create 409 - 366.257 ms - message: -","timestamp":"2022-08-28T09:19:16.920Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-28T09:19:54.342Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-28T09:19:54.346Z"}
+{"level":"error","message":"Error: ","timestamp":"2022-08-28T09:19:56.616Z"}
+{"level":"error","message":"POST /product/create 409 - 324.033 ms - message: -","timestamp":"2022-08-28T09:19:56.630Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-28T09:20:16.754Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-28T09:20:16.758Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-28T09:20:25.392Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-28T09:20:25.395Z"}
+{"level":"error","message":"Error: ","timestamp":"2022-08-28T09:20:27.929Z"}
+{"level":"error","message":"POST /product/create 409 - 427.776 ms - message: -","timestamp":"2022-08-28T09:20:27.937Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-28T09:20:43.142Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-28T09:20:43.147Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-28T09:21:18.547Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-28T09:21:18.551Z"}
+{"level":"error","message":"Error: ","timestamp":"2022-08-28T09:21:20.690Z"}
+{"level":"error","message":"POST /product/create 409 - 341.879 ms - message: -","timestamp":"2022-08-28T09:21:20.704Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-28T09:23:11.799Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-28T09:23:11.803Z"}
+{"level":"error","message":"POST /product/create 500 - 21.903 ms - message: -","timestamp":"2022-08-28T09:23:13.847Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-28T09:23:24.775Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-28T09:23:24.777Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-28T09:25:48.322Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-28T09:25:48.326Z"}
+{"level":"error","message":"Error: ","timestamp":"2022-08-28T09:25:50.802Z"}
+{"level":"error","message":"POST /product/create 409 - 364.696 ms - message: -","timestamp":"2022-08-28T09:25:50.819Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-28T09:26:27.158Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-28T09:26:27.163Z"}
+{"level":"error","message":"Error: ","timestamp":"2022-08-28T09:26:29.750Z"}
+{"level":"error","message":"POST /product/create 409 - 384.822 ms - message: -","timestamp":"2022-08-28T09:26:29.764Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-28T09:26:51.365Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-28T09:26:51.368Z"}
+{"level":"error","message":"Error: ","timestamp":"2022-08-28T09:26:56.117Z"}
+{"level":"error","message":"POST /product/create 409 - 446.646 ms - message: -","timestamp":"2022-08-28T09:26:56.142Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-28T09:27:57.119Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-28T09:27:57.123Z"}
+{"level":"error","message":"Error: ","timestamp":"2022-08-28T09:27:59.499Z"}
+{"level":"error","message":"POST /product/create 409 - 323.322 ms - message: -","timestamp":"2022-08-28T09:27:59.514Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-28T09:28:25.238Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-28T09:28:25.242Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-28T09:28:37.341Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-28T09:28:37.346Z"}
+{"level":"error","message":"Error: ","timestamp":"2022-08-28T09:28:40.468Z"}
+{"level":"error","message":"POST /product/create 409 - 345.763 ms - message: -","timestamp":"2022-08-28T09:28:40.476Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 0.876 ms","timestamp":"2022-08-28T09:29:17.889Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc 200 - 798.951 ms","timestamp":"2022-08-28T09:29:18.691Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 0.779 ms","timestamp":"2022-08-28T09:29:22.954Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc 200 - 2730.659 ms","timestamp":"2022-08-28T09:29:25.688Z"}
+{"level":"info","message":"OPTIONS /product/create 204 - 0.307 ms","timestamp":"2022-08-28T09:30:15.599Z"}
+{"level":"error","message":"Error: ","timestamp":"2022-08-28T09:30:15.937Z"}
+{"level":"error","message":"POST /product/create 409 - 337.165 ms - message: -","timestamp":"2022-08-28T09:30:15.939Z"}
+{"level":"info","message":"OPTIONS /product/create 204 - 1.474 ms","timestamp":"2022-08-28T09:31:48.660Z"}
+{"level":"error","message":"Error: ","timestamp":"2022-08-28T09:31:49.019Z"}
+{"level":"error","message":"POST /product/create 409 - 354.452 ms - message: -","timestamp":"2022-08-28T09:31:49.022Z"}
+{"level":"info","message":"OPTIONS /product/create 204 - 0.297 ms","timestamp":"2022-08-28T09:35:54.844Z"}
+{"level":"info","message":"POST /product/create 201 - 632.525 ms","timestamp":"2022-08-28T09:35:55.479Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 0.168 ms","timestamp":"2022-08-28T09:36:03.713Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc 200 - 1959.670 ms","timestamp":"2022-08-28T09:36:05.676Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-28T09:41:09.704Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-28T09:41:09.705Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-28T09:41:46.101Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-28T09:41:46.103Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-28T09:45:52.487Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-28T09:45:52.490Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-28T09:48:11.356Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-28T09:48:11.360Z"}
+{"level":"info","message":"POST /seeder/products/add 201 - 8419.636 ms","timestamp":"2022-08-28T09:49:13.697Z"}
+{"level":"info","message":"POST /seeder/products/add 201 - 9325.381 ms","timestamp":"2022-08-28T09:49:53.429Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-28T09:50:27.016Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-28T09:50:27.022Z"}
+{"level":"info","message":"POST /seeder/products/add 201 - 8474.583 ms","timestamp":"2022-08-28T09:50:41.111Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-08-28T09:50:49.343Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-08-28T09:50:49.347Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 2.215 ms","timestamp":"2022-08-28T09:51:51.748Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc 200 - 462.697 ms","timestamp":"2022-08-28T09:51:52.225Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 0.244 ms","timestamp":"2022-08-28T09:51:53.757Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc 200 - 1026.789 ms","timestamp":"2022-08-28T09:51:54.789Z"}
+{"level":"info","message":"GET /product/query?limit=10&sortBy=createdAt:desc 200 - 750.704 ms","timestamp":"2022-08-28T09:52:09.660Z"}
+{"level":"info","message":"GET /product/query?limit=100&sortBy=createdAt:desc 200 - 430.756 ms","timestamp":"2022-08-28T09:52:17.294Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 0.152 ms","timestamp":"2022-08-28T09:52:22.770Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc 200 - 1678.917 ms","timestamp":"2022-08-28T09:52:24.452Z"}
+{"level":"info","message":"OPTIONS /auth/login 204 - 0.105 ms","timestamp":"2022-08-28T09:52:30.726Z"}
+{"level":"info","message":"POST /auth/login 200 - 449.722 ms","timestamp":"2022-08-28T09:52:31.178Z"}
+{"level":"info","message":"OPTIONS /analytics/reports 204 - 0.119 ms","timestamp":"2022-08-28T09:52:31.274Z"}
+{"level":"info","message":"GET /analytics/reports 200 - 529.829 ms","timestamp":"2022-08-28T09:52:31.807Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 0.127 ms","timestamp":"2022-08-28T09:52:33.782Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc 200 - 491.851 ms","timestamp":"2022-08-28T09:52:34.277Z"}
+{"level":"info","message":"OPTIONS /product/create 204 - 0.540 ms","timestamp":"2022-08-28T09:53:25.754Z"}
+{"level":"info","message":"POST /product/create 201 - 560.606 ms","timestamp":"2022-08-28T09:53:26.317Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 0.103 ms","timestamp":"2022-08-28T09:53:30.424Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc 200 - 2036.676 ms","timestamp":"2022-08-28T09:53:32.468Z"}

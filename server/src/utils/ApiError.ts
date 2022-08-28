@@ -1,17 +1,16 @@
 class ApiError extends Error {
-	statusCode: any;
-	isOperational: boolean;
-	constructor(statusCode: number, message: string, isOperational = true, stack = '') {
-		super(message);
-		this.statusCode = statusCode;
-		this.isOperational = isOperational;
-		
-		if (stack) {
-			this.stack = stack;
-		} else {
-			Error.captureStackTrace(this, this.constructor);
-		}
-	}
+  constructor(statusCode: any, message: any, isOperational = true, stack = '') {
+    super(message)
+	//@ts-ignore
+    this.statusCode = statusCode
+	//@ts-ignore
+    this.isOperational = isOperational
+    if (stack) {
+      this.stack = stack
+    } else {
+      Error.captureStackTrace(this, this.constructor)
+    }
+  }
 }
 
-export default ApiError;
+export default ApiError

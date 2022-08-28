@@ -50,8 +50,10 @@ export interface IProducts extends Document {
   color: string
   battery_health?: string
   image?: string
-  price: number
+  costprice: number
+  sellingprice: number
   user: string
+  quantity: number
 }
 
 // Model Types
@@ -88,8 +90,10 @@ export type CreateNewProductType = {
   color: string
   battery_health?: string
   image?: string
-  price: number
+  costprice: number
+  sellingprice: number
   user: string
+  quantity?: number
 }
 // Input Types
 

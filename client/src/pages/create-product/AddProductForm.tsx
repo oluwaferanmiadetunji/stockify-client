@@ -20,7 +20,7 @@ const AddProduct = ({ handleChange, state }: any) => {
           autoFocus
           margin="dense"
           name="name"
-          label="Product name *"
+          label="Product name"
           type="text"
           fullWidth
           required
@@ -34,12 +34,12 @@ const AddProduct = ({ handleChange, state }: any) => {
         />
         <TextField
           margin="dense"
-          name="price"
-          label="Product Price"
+          name="costprice"
+          label="Product Cost Price"
           type="number"
           fullWidth
           variant="standard"
-          value={state.price}
+          value={state.costprice}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
@@ -47,6 +47,44 @@ const AddProduct = ({ handleChange, state }: any) => {
               </InputAdornment>
             ),
           }}
+          required
+          onChange={handleChange}
+          sx={styles.textfield}
+          InputLabelProps={{
+            style: { color: 'rgb(151, 161, 186)' },
+          }}
+        />
+        <TextField
+          margin="dense"
+          name="sellingprice"
+          label="Product Selling Price"
+          type="number"
+          fullWidth
+          variant="standard"
+          value={state.sellingprice}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <Typography sx={{ color: 'white' }}>{Naira}</Typography>
+              </InputAdornment>
+            ),
+          }}
+          required
+          onChange={handleChange}
+          sx={styles.textfield}
+          InputLabelProps={{
+            style: { color: 'rgb(151, 161, 186)' },
+          }}
+        />
+
+        <TextField
+          margin="dense"
+          name="quantity"
+          label="Product Quantity"
+          type="number"
+          fullWidth
+          variant="standard"
+          value={state.quantity}
           required
           onChange={handleChange}
           sx={styles.textfield}

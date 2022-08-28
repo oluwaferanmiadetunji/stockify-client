@@ -11,6 +11,7 @@ const productSchema = new Schema<IProducts>(
     },
     name: {
       type: String,
+      unique: true,
     },
     supplier: {
       type: String,
@@ -54,8 +55,15 @@ const productSchema = new Schema<IProducts>(
     image: {
       type: String,
     },
-    price: {
+    costprice: {
       type: Number,
+    },
+    sellingprice: {
+      type: Number,
+    },
+    quantity: {
+      type: Number,
+      default: 1,
     },
   },
   {

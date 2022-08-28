@@ -16,7 +16,9 @@ export const initialState: CreateNewProduct = {
   color: '',
   battery_health: '',
   image: '',
-  price: 0,
+  costprice: 0,
+  sellingprice: 0,
+  quantity: 1,
 }
 
 export const selectOptions = [

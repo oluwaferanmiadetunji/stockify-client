@@ -22,7 +22,7 @@ import ListItem from '@mui/material/ListItem'
 import ListItemText from '@mui/material/ListItemText'
 import ListItemAvatar from '@mui/material/ListItemAvatar'
 import DeleteProduct from './DeleteProduct'
-import { renderPrice } from 'utils/helpers'
+import { renderPrice, getTotalProductCount } from 'utils/helpers'
 import Button from '@mui/material/Button'
 import AddIcon from '@mui/icons-material/Add'
 import { ROUTES } from 'utils/constants'
@@ -88,7 +88,7 @@ const Products = () => {
                   gutterBottom
                   component="div"
                 >
-                  TOTAL STOCK
+                  TOTAL PRODUCTS
                 </Typography>
 
                 <Typography
@@ -98,6 +98,30 @@ const Products = () => {
                   component="div"
                 >
                   {count}
+                </Typography>
+              </Box>
+            </Box>
+
+            <Box sx={styles.card}>
+              <InventoryIcon />
+
+              <Box sx={{ marginLeft: '30px' }}>
+                <Typography
+                  variant="h5"
+                  sx={styles.cardLabel}
+                  gutterBottom
+                  component="div"
+                >
+                  TOTAL STOCK
+                </Typography>
+
+                <Typography
+                  variant="h5"
+                  sx={styles.cardValue}
+                  gutterBottom
+                  component="div"
+                >
+                  {getTotalProductCount(products)}
                 </Typography>
               </Box>
             </Box>
@@ -157,9 +181,11 @@ const Products = () => {
                 <TableHead>
                   <TableRow>
                     <StyledTableCell>Product</StyledTableCell>
-                    <StyledTableCell>Price</StyledTableCell>
+                    <StyledTableCell>Cost Price</StyledTableCell>
+                    <StyledTableCell>Selling Price</StyledTableCell>
                     <StyledTableCell>Color</StyledTableCell>
                     <StyledTableCell>Size</StyledTableCell>
+                    <StyledTableCell>Quantity</StyledTableCell>
                     <StyledTableCell>Created</StyledTableCell>
                     <StyledTableCell></StyledTableCell>
                   </TableRow>
@@ -181,9 +207,11 @@ const Products = () => {
                           <ListItemText primary={row.name} />
                         </ListItem>
                       </StyledTableCell>
-                      <StyledTableCell>₦ {row.price}</StyledTableCell>
+                      <StyledTableCell>₦ {row.costprice}</StyledTableCell>
+                      <StyledTableCell>₦ {row.sellingprice}</StyledTableCell>
                       <StyledTableCell>{row.color}</StyledTableCell>
                       <StyledTableCell>{row.size}</StyledTableCell>
+                      <StyledTableCell>{row.quantity}</StyledTableCell>
                       <StyledTableCell>
                         {dayjs(row.createdAt).format('MMM D, YYYY HH:mm')}
                       </StyledTableCell>

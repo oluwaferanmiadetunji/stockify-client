@@ -24,6 +24,11 @@ const CreateProduct = () => {
     setStep(1)
   }
 
+  const onCancel = () => {
+    setStep(0)
+    setState(initialState)
+  }
+
   return (
     <Layout>
       <Box sx={styles.container}>
@@ -44,7 +49,12 @@ const CreateProduct = () => {
           )}
 
           {step === 1 && (
-            <UploadImage state={state} setState={setState} setStep={setStep} />
+            <UploadImage
+              state={state}
+              setState={setState}
+              setStep={setStep}
+              onCancel={onCancel}
+            />
           )}
         </Box>
       </Box>

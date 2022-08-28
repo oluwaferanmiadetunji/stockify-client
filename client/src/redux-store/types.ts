@@ -65,8 +65,10 @@ export interface SingleProductInterface {
   color: string
   battery_health?: string
   image?: string
-  price: number
+  costprice: number
+  sellingprice: number
   createdAt: string
+  quantity: number
 }
 
 export interface SetProductDataInterface {

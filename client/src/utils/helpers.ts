@@ -127,11 +127,18 @@ export const saveToken = (token: string): void => {
 export const getTotalPrice = (array: any[]): number => {
   let sum = 0
   for (let i = 0; i < array.length; i++) {
-    sum += array[i].price
+    sum += array[i].costprice * array[i].quantity
   }
   return sum
 }
 
+export const getTotalProductCount = (array: any[]): number => {
+  let sum = 0
+  for (let i = 0; i < array.length; i++) {
+    sum += array[i].quantity
+  }
+  return sum
+}
 // export const renderPrice = (number: number): string =>
 //   `${Naira} ${number
 //     .toFixed(2)

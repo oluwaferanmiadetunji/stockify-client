@@ -11,6 +11,7 @@ export const createNewProduct = catchAsync(async (req, res) => {
     res.status(httpStatus.CREATED).send(product)
   } catch (error) {
     logger.error('Error: ', JSON.stringify(error))
+    //@ts-ignore
 
     res.status(httpStatus.CONFLICT).json({ message: 'Error adding product' })
   }
@@ -57,17 +58,11 @@ export const updateProduct = catchAsync(async (req, res) => {
   const id = req.params.id
 
   try {
-    const customer = await productService.updateProductById(
-      id,
-      req.body,
-      user,
-    )
+    const customer = await productService.updateProductById(id, req.body, user)
     res.status(httpStatus.OK).send(customer)
   } catch (error) {
     logger.error('Error: ', JSON.stringify(error))
 
-    res
-      .status(httpStatus.NOT_FOUND)
-      .json({ message: 'Error updating product' })
+    res.status(httpStatus.NOT_FOUND).json({ message: 'Error updating product' })
   }
 })

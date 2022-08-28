@@ -1,4 +1,5 @@
 import { faker } from '@faker-js/faker'
+import _ from 'lodash'
 import { generateRandomString } from './helpers'
 
 export const generateRandomCustomers = (user: string, count = 100): any[] => {
@@ -22,7 +23,7 @@ export const generateRandomProducts = (user: string, count = 100): any[] => {
 
   for (let i = 0; i < count; i++) {
     const _id = generateRandomString(6)
-    const name = faker.name.fullName()
+    const name = faker.commerce.product()
     const supplier = faker.company.name()
     const manufacturer = faker.company.name()
     const serial_number = faker.datatype.uuid()
@@ -37,7 +38,9 @@ export const generateRandomProducts = (user: string, count = 100): any[] => {
     const color = faker.color.human()
     const battery_health = `${faker.datatype.number()} %`
     const image = faker.image.imageUrl()
-    const price = faker.finance.amount()
+    const costprice = faker.finance.amount()
+    const sellingprice = faker.finance.amount()
+    const quantity = faker.datatype.number()
 
     data.push({
       _id,
@@ -56,10 +59,14 @@ export const generateRandomProducts = (user: string, count = 100): any[] => {
       color,
       battery_health,
       image,
-      price,
+      costprice,
       user,
+      quantity,
+      sellingprice,
     })
   }
 
-  return data
+  const uniqueData = _.uniqBy(data, 'name')
+
+  return uniqueData
 }

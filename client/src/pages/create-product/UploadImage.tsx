@@ -14,7 +14,7 @@ import { makeAddNewProductRequest } from 'api/products'
 import { initialState } from './constants'
 import { toast } from 'react-toast'
 
-const FileUpload = ({ state, setState, setStep }: any) => {
+const FileUpload = ({ state, setState, setStep, onCancel }: any) => {
   const [fileList, setFileList] = useState<any>([])
 
   const [previewVisible, setPreviewVisible] = useState(false)
@@ -81,8 +81,6 @@ const FileUpload = ({ state, setState, setStep }: any) => {
           try {
             const designFile = await fileRef.put(file.originFileObj)
             image = await designFile.ref.getDownloadURL()
-
-            toast.success('Image uploaded successfully')
           } catch (e) {
             toast.error('Error uploading product image.')
             return
@@ -139,6 +137,10 @@ const FileUpload = ({ state, setState, setStep }: any) => {
       </Modal>
 
       <Stack direction="row" spacing={2} sx={styles.buttons}>
+        <Button variant="contained" color="error" onClick={onCancel}>
+          Cancel
+        </Button>
+
         <Button variant="outlined" onClick={onBack}>
           Back
         </Button>

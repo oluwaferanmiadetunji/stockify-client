@@ -35,8 +35,12 @@ export const makeAddNewProductRequest = async (
     dispatch(updatePrice({ type: 'increase', value: payload.price }))
     callback()
   } catch (err) {
-    //@ts-ignore
-    toast.error('Erroradding product')
+    toast.error(
+      //@ts-ignore
+      err.response.status === 409
+        ? 'Product exists already'
+        : 'Error adding product',
+    )
   }
 }
 
