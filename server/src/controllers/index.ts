@@ -4,6 +4,7 @@ import * as seedersControllers from './seeders'
 import * as productsControllers from './products'
 import * as storageControllers from './storage'
 import * as analyticsControllers from './analytics'
+import * as invoicesControllers from './invoices'
 
 export {
   authControllers,
@@ -11,5 +12,6 @@ export {
   seedersControllers,
   productsControllers,
   storageControllers,
-  analyticsControllers
+  analyticsControllers,
+  invoicesControllers,
 }

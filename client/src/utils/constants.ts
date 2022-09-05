@@ -35,6 +35,7 @@ export const API_ROUTES = {
   CUSTOMERS: '/customer',
   PRODUCTS: '/product',
   ANALYTICS_REPORTS: '/analytics/reports',
+  INVOICES: '/invoices',
 }
 
 export const Naira = '₦'

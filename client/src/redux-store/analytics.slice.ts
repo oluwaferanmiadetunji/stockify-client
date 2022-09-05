@@ -7,7 +7,7 @@ const initialState: AnalyticsInterface = {
   product: 0,
 }
 
-const authSlice = createSlice({
+const analyticsSlice = createSlice({
   name: 'analytics',
   initialState,
   reducers: {
@@ -43,8 +43,8 @@ const authSlice = createSlice({
   },
 })
 
-export const { setAnalyticsData, updateCount } = authSlice.actions
+export const { setAnalyticsData, updateCount } = analyticsSlice.actions
 
 export const selectAnalyticsState = (state: RootState) => state.analytics
 
-export default authSlice.reducer
+export default analyticsSlice.reducer

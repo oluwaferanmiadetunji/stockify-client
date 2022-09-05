@@ -6,12 +6,12 @@ import Divider from '@mui/material/Divider'
 import Typography from '@mui/material/Typography'
 import ChevronRightIcon from '@mui/icons-material/ChevronRight'
 import styles, { Item } from './styles'
-import PaidIcon from '@mui/icons-material/Paid'
 import { ROUTES } from 'utils/constants'
 import PeopleIcon from '@mui/icons-material/People'
 import Grid from '@mui/material/Grid'
 import { selectAnalyticsState } from 'redux-store/analytics.slice'
 import { useAppSelector } from 'redux-store/hooks'
+import ReceiptIcon from '@mui/icons-material/Receipt'
 
 const ReportOverview = () => {
   const { customer, product } = useAppSelector(selectAnalyticsState)
@@ -79,7 +79,7 @@ const ReportOverview = () => {
         <Grid item xs={4}>
           <Item>
             <Stack direction="row" spacing={1} sx={styles.topGridItem}>
-              <PaidIcon
+              <ReceiptIcon
                 sx={{
                   ...styles.topGridItemIcon,
                   background: 'rgb(230, 73, 45)',
@@ -88,7 +88,7 @@ const ReportOverview = () => {
 
               <Box sx={styles.topGridItemDetails}>
                 <Typography sx={styles.topGridItemDetailsHeader}>
-                  Transactions
+                  Invoices
                 </Typography>
                 <Typography sx={styles.topGridItemDetailsValue}>0</Typography>
               </Box>
@@ -96,9 +96,9 @@ const ReportOverview = () => {
 
             <Divider />
 
-            <Link to={ROUTES.ORDER} style={{ textDecoration: 'none' }}>
+            <Link to={ROUTES.INVOICE} style={{ textDecoration: 'none' }}>
               <Stack direction="row" spacing={1} sx={styles.bottomGridItem}>
-                <Typography>Transactions</Typography>
+                <Typography>Invoices</Typography>
                 <ChevronRightIcon />
               </Stack>
             </Link>

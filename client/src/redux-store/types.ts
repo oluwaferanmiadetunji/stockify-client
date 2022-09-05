@@ -1,3 +1,5 @@
+import { Dayjs } from 'dayjs'
+
 export interface AuthState {
   isLogged: boolean
   user: {
@@ -28,6 +30,7 @@ export type SingleCustomerState = {
   email: string
   createdAt: string
   id: string
+  inputValue?: string
 }
 
 export interface CustomerState {
@@ -69,6 +72,7 @@ export interface SingleProductInterface {
   sellingprice: number
   createdAt: string
   quantity: number
+  inputValue?: string
 }
 
 export interface SetProductDataInterface {
@@ -93,4 +97,29 @@ export interface ProductState {
 export interface AnalyticsInterface {
   customer: number
   product: number
+}
+
+export interface CreateNewInvoiceItemInterface {
+  qty: number
+  price: number
+  name: string | null
+  productId: string | null
+}
+
+export interface CreateNewInvoiceInterface {
+  subject: string
+  invoice_number: string
+  customer_first_name: string
+  customer_last_name: string
+  customer_email: string
+  customer_phone: string
+  issued_date: Dayjs
+  due_date: Dayjs
+  items: CreateNewInvoiceItemInterface[]
+  notes: string
+}
+
+export interface InvoiceInterface {
+  invoices: any[]
+  newInvoice: CreateNewInvoiceInterface
 }

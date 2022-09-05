@@ -5,6 +5,7 @@ import authReducer from './auth.slice'
 import customerReducer from './customers.slice'
 import productsReducer from './products.slice'
 import analyticsReducer from './analytics.slice'
+import invoiceReducer from './invoice.slice'
 import logger from 'redux-logger'
 
 const persistConfig = {
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   customers: customerReducer,
   products: productsReducer,
   analytics: analyticsReducer,
+  invoice: invoiceReducer,
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

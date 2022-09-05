@@ -5,6 +5,7 @@ import seedersRoute from './seeders'
 import productsRoute from './products'
 import storageRoute from './storage'
 import analyticsRoute from './analytics'
+import invoicesRoute from './invoices'
 import config from '../config'
 
 const router = express.Router()
@@ -21,6 +22,10 @@ const Routes = [
   {
     path: '/customer',
     route: customersRoute,
+  },
+  {
+    path: '/invoices',
+    route: invoicesRoute,
   },
   {
     path: '/product',

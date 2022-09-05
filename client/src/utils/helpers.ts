@@ -139,14 +139,13 @@ export const getTotalProductCount = (array: any[]): number => {
   }
   return sum
 }
-// export const renderPrice = (number: number): string =>
-//   `${Naira} ${number
-//     .toFixed(2)
-//     .toString()
-//     .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`
 
-export const renderPrice = (number: number): string => {
-  return `${Naira} ${Number(number).toFixed(2)}`
+export const renderPrice = (number: number | string): number | string => {
+  if (typeof number === 'number') {
+    return `${Naira} ${Number(number).toFixed(2)}`
+  }
+
+  return `${Naira} ${number}`
 }
 export const getBase64 = (file: any) => {
   return new Promise((resolve, reject) => {
@@ -155,4 +154,18 @@ export const getBase64 = (file: any) => {
     reader.onload = () => resolve(reader.result)
     reader.onerror = (error) => reject(error)
   })
+}
+
+export const generateInvoiceNumber = (): string => {
+  const now = new Date().toISOString()
+  const string = now.split('T')[1].replace(/[^a-zA-Z0-9 ]/g, '')
+
+  return `DNS${string}`
+}
+
+export const addCommasToNumber = (payload: number): string => {
+  let data = payload.toFixed(2).toString().split('.')
+  data[0] = data[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+
+  return data.join('.')
 }

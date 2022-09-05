@@ -25,7 +25,7 @@ const Invoices = () => {
             gutterBottom
             component="div"
           >
-            Imvoices
+            Invoices
           </Typography>
 
           <Stack direction="row" spacing={2}>

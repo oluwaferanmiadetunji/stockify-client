@@ -16,7 +16,7 @@ const initialState: CustomerState = {
   isFiltered: false,
 }
 
-const authSlice = createSlice({
+const customerSlice = createSlice({
   name: 'customer',
   initialState,
   reducers: {
@@ -68,8 +68,8 @@ export const {
   setFilter,
   cancelFilter,
   updateCustomer,
-} = authSlice.actions
+} = customerSlice.actions
 
 export const selectCustomerState = (state: RootState) => state.customers
 
-export default authSlice.reducer
+export default customerSlice.reducer

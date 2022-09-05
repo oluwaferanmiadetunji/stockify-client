@@ -13,7 +13,7 @@ import {
 import TableCell from '@mui/material/TableCell'
 import { styled } from '@mui/material/styles'
 // import { ROUTES } from 'utils/constants'
-import WithRouter from './Router'
+import WithRouter from 'components/withRouter'
 import dayjs from 'dayjs'
 
 class MuiVirtualizedTable extends React.PureComponent<
