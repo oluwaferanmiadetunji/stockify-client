@@ -8,29 +8,29 @@ const invoiceSchema = new Schema<IInvoice>(
     user: {
       type: String,
       private: true,
-      required: true
+      required: true,
     },
     subject: {
       type: String,
-      required: true
+      required: true,
     },
     invoice_number: {
       type: String,
-      required: true
+      required: true,
     },
     customer: {
       type: String,
-      required: true
+      required: true,
     },
     issued_date: {
       type: String,
-      required: true
+      required: true,
     },
     due_date: {
       type: String,
-      required: true
+      required: true,
     },
-    items: [{ qty: Number, productId: String }],
+    items: [{ qty: Number, productId: String, price: Number }],
     notes: {
       type: String,
     },

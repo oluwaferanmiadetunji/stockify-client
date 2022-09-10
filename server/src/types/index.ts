@@ -65,7 +65,8 @@ export interface IInvoice extends Document {
   due_date: string
   items: {
     qty: number
-    productId: string | null
+    productId: string
+    price: number
   }[]
   notes: string
   _id: string
@@ -120,7 +121,8 @@ export type CreateNewInvoiceType = {
   due_date: string
   items: {
     qty: number
-    productId: string | null
+    productId: string
+    price: number
   }[]
   notes?: string
 }

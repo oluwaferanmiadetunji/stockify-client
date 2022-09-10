@@ -9,7 +9,7 @@ export const createInvoiceRecord = catchAsync(async (req, res) => {
   const user = req.currentUser._id
 
   try {
-    const customerInfo = {
+    const customerInfo: any = {
       firstname: req.body.customer_first_name,
       lastname: req.body.customer_last_name,
       phone: req.body.customer_phone,
@@ -70,4 +70,30 @@ export const getInvoices = catchAsync(async (req, res) => {
   const result = await invoiceService.queryInvoices(filter, options)
 
   res.status(httpStatus.OK).send(result)
+})
+
+export const getInvoice = catchAsync(async (req, res) => {
+  let invoice: any = await invoiceService.getInvoiceById(req.params.id)
+
+  let itemDetails = []
+
+  for (let i = 0; i < invoice.items.length; i++) {
+    const product = await productService.getProductById(
+      invoice.items[i].productId,
+    )
+
+    itemDetails.push({
+      qty: invoice.items[i].qty,
+      price: invoice.items[i].price,
+      product,
+    })
+  }
+
+  const customer = await customerService.getCustomerById(invoice.customer)
+
+  delete invoice._doc['items']
+  invoice._doc.items = itemDetails
+  invoice._doc.customer = customer
+
+  return res.status(httpStatus.OK).send(invoice)
 })

@@ -28,3 +28,9 @@ export const queryInvoices = async (filter: any, options: any) => {
   const invoices = await Invoice.paginate(filter, options)
   return invoices
 }
+
+export const getInvoiceById = async (id: string) => {
+  const product = await Invoice.findById(id)
+
+  return product
+}

@@ -18,4 +18,11 @@ router.get(
   invoicesControllers.getInvoices,
 )
 
+router.get(
+  '/:id',
+  middlewares.isAuth,
+  middlewares.attachUser,
+  invoicesControllers.getInvoice,
+)
+
 export default router
