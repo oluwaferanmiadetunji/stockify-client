@@ -207,7 +207,7 @@ const Invoice = () => {
             type="text"
             fullWidth
             multiline
-            rows={4}
+            rows={5}
             sx={styles.halfField}
             InputLabelProps={{
               style: { color: 'rgb(151, 161, 186)' },

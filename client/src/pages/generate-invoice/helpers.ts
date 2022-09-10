@@ -39,10 +39,12 @@ export const removeSelectedProductsFromTotalProducts = (
     return totalProducts
   }
 
-  const filteredArray = totalProducts.filter(
-    (product) =>
-      !selectedProducts.find((selected) => selected.productId === product.id),
-  )
+  const filteredArray = totalProducts
+    .filter((product) => product.quantity > 0)
+    .filter(
+      (product) =>
+        !selectedProducts.find((selected) => selected.productId === product.id),
+    )
 
   return filteredArray
 }

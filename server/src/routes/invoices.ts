@@ -1,14 +1,14 @@
 import express from 'express'
-import { analyticsControllers, invoicesControllers } from '../controllers'
+import { invoicesControllers } from '../controllers'
 import middlewares from '../middlewares'
 
 const router = express.Router()
 
-router.get(
-  '/generate-number',
+router.post(
+  '/create',
   middlewares.isAuth,
   middlewares.attachUser,
-  // invoicesControllers.generateInvoiceNumber,
+  invoicesControllers.createInvoiceRecord,
 )
 
 export default router

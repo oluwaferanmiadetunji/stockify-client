@@ -5,15 +5,20 @@ import { pickQueryParams } from '../utils/helpers'
 import logger from '../config/logger'
 
 export const createNewProduct = catchAsync(async (req, res) => {
+  const user = req.currentUser._id
+
   try {
-    const product = await productService.createProduct(req.body)
+    const product = await productService.createProduct({ ...req.body, user})
 
     res.status(httpStatus.CREATED).send(product)
   } catch (error) {
+    console.log(error)
     logger.error('Error: ', JSON.stringify(error))
     //@ts-ignore
 
-    res.status(httpStatus.CONFLICT).json({ message: 'Error adding product' })
+    res
+      .status(httpStatus.CONFLICT)
+      .json({ message: 'Error adding product', error })
   }
 })
 

@@ -1,7 +1,7 @@
 import httpStatus from 'http-status'
 import { Customers } from '../models'
 import ApiError from '../utils/ApiError'
-import { CreateNewCustomerType } from '../types'
+import { CreateNewCustomerType, GetCustomersByQueryType } from '../types'
 import { generateRandomString } from '../utils/helpers'
 import logger from '../config/logger'
 
@@ -20,7 +20,9 @@ export const createCustomer = async (customerBody: CreateNewCustomerType) => {
 }
 
 export const getCustomerByEmail = async (email: string) => {
-  return Customers.findOne({ email })
+  const customer = await Customers.findOne({ email })
+
+  return customer
 }
 
 export const queryCustomers = async (filter: any, options: any) => {
@@ -30,7 +32,9 @@ export const queryCustomers = async (filter: any, options: any) => {
 }
 
 export const getCustomerById = async (id: string) => {
-  return Customers.findById(id)
+  const customer = Customers.findById(id)
+
+  return customer
 }
 
 export const updateCustomerById = async (
@@ -84,4 +88,10 @@ export const getTotalCount = async (user: string): Promise<number> => {
   const count = await Customers.countDocuments({ user })
 
   return count
+}
+
+export const getCustomersByQuery = async (query: GetCustomersByQueryType) => {
+  const customer = await Customers.findOne({ ...query })
+
+  return customer
 }

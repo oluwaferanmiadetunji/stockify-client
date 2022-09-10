@@ -8,18 +8,23 @@ const productSchema = new Schema<IProducts>(
     user: {
       type: String,
       private: true,
+      required: true,
     },
     name: {
       type: String,
+      required: true,
     },
     supplier: {
       type: String,
+      required: true,
     },
     manufacturer: {
       type: String,
+      required: true,
     },
     serial_number: {
       type: String,
+      required: true,
     },
     RAM: {
       type: String,
@@ -56,9 +61,11 @@ const productSchema = new Schema<IProducts>(
     },
     costprice: {
       type: Number,
+      required: true,
     },
     sellingprice: {
       type: Number,
+      required: true,
     },
     quantity: {
       type: Number,

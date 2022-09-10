@@ -6,20 +6,22 @@ import dayjs from 'dayjs'
 
 const singleItem = { name: null, qty: 1, price: 0, productId: null }
 
+const invoiceState = {
+  subject: '',
+  invoice_number: generateInvoiceNumber(),
+  customer_first_name: '',
+  customer_last_name: '',
+  customer_email: '',
+  customer_phone: '',
+  issued_date: dayjs(new Date().toISOString()),
+  due_date: dayjs(new Date().setDate(new Date().getDate() + 10)),
+  items: [singleItem],
+  notes: '',
+}
+
 const initialState: InvoiceInterface = {
   invoices: [],
-  newInvoice: {
-    subject: '',
-    invoice_number: generateInvoiceNumber(),
-    customer_first_name: '',
-    customer_last_name: '',
-    customer_email: '',
-    customer_phone: '',
-    issued_date: dayjs(new Date().toISOString()),
-    due_date: dayjs(new Date().setDate(new Date().getDate() + 10)),
-    items: [singleItem],
-    notes: '',
-  },
+  newInvoice: invoiceState,
 }
 
 const invoiceSlice = createSlice({
@@ -68,7 +70,7 @@ const invoiceSlice = createSlice({
       }
     },
     clearNewInvoice: (state: InvoiceInterface, action: PayloadAction<null>) => {
-      state.newInvoice = initialState.newInvoice
+      state.newInvoice = invoiceState
     },
   },
 })

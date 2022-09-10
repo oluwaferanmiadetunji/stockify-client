@@ -1,72 +1,24 @@
 import httpStatus from 'http-status'
-import { Products } from '../models'
+import { Invoice } from '../models'
 import ApiError from '../utils/ApiError'
-import { CreateNewProductType } from '../types'
+import { CreateNewInvoiceType } from '../types'
 import { generateRandomString } from '../utils/helpers'
 import logger from '../config/logger'
 
-export const createProduct = async (body: Partial<CreateNewProductType>) => {
-  const isProductExist = await Products.findOne({
-    name: body.name,
-    color: body.color,
+export const addInvoice = async (body: CreateNewInvoiceType) => {
+  const isInvoiceNumberExists = await Invoice.findOne({
+    invoice_number: body.invoice_number,
   })
 
-  if (isProductExist) {
-    throw new ApiError(httpStatus.BAD_REQUEST, 'Product exists already')
+  if (isInvoiceNumberExists) {
+    logger.error('Invoice number exists already')
+    throw new ApiError(httpStatus.BAD_REQUEST, 'Invoice number exists already')
   }
-  const product = await Products.create({
-    ...body,
+
+  const invoice = await Invoice.create({
     _id: generateRandomString(),
+    ...body,
   })
 
-  return product
-}
-
-export const queryProducts = async (filter: any, options: any) => {
-  //@ts-ignore
-  const products = await Products.paginate(filter, options)
-  return products
-}
-
-export const getProductById = async (id: string) => {
-  return Products.findById(id)
-}
-
-export const updateProductById = async (
-  id: string,
-  payload: Partial<CreateNewProductType>,
-  creator: string,
-) => {
-  const product = await getProductById(id)
-  if (!product) {
-    logger.error('Product not found')
-    throw new ApiError(httpStatus.NOT_FOUND, 'Product not found')
-  }
-
-  if (product.user !== creator) {
-    logger.error('Unauthorized. Unable to delete product')
-    throw new ApiError(httpStatus.UNAUTHORIZED, 'Unable to delete product')
-  }
-
-  Object.assign(product, payload)
-  await product.save()
-
-  return product
-}
-
-export const deleteProductById = async (id: string) => {
-  const product = await getProductById(id)
-
-  if (!product) {
-    logger.error('Product not found')
-    throw new ApiError(httpStatus.NOT_FOUND, 'Product not found')
-  }
-  await product.remove()
-  return product
-}
-
-export const getTotalCount = async (user: string): Promise<number> => {
-  const count = await Products.countDocuments({ user })
-
-  return count
+  return invoice
 }

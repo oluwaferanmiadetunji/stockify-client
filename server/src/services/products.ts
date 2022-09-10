@@ -29,7 +29,9 @@ export const queryProducts = async (filter: any, options: any) => {
 }
 
 export const getProductById = async (id: string) => {
-  return Products.findById(id)
+  const product = await Products.findById(id)
+
+  return product
 }
 
 export const updateProductById = async (

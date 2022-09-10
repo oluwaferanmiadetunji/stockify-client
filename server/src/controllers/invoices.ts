@@ -1,68 +1,59 @@
 import httpStatus from 'http-status'
 import catchAsync from '../utils/catchAsync'
-import { productService, invoiceService } from '../services'
-import { pickQueryParams } from '../utils/helpers'
+import { invoiceService, customerService, productService } from '../services'
 import logger from '../config/logger'
+import { removeEmptyValuesFromObject } from '../utils/helpers'
 
-export const createNewProduct = catchAsync(async (req, res) => {
+export const createInvoiceRecord = catchAsync(async (req, res) => {
+  const user = req.currentUser._id
+
   try {
-    const product = await productService.createProduct(req.body)
+    const customerInfo = {
+      firstname: req.body.customer_first_name,
+      lastname: req.body.customer_last_name,
+      phone: req.body.customer_phone,
+      email: req.body.customer_email,
+    }
 
-    res.status(httpStatus.CREATED).send(product)
+    let customer = await customerService.getCustomersByQuery(
+      removeEmptyValuesFromObject(customerInfo),
+    )
+
+    if (!customer) {
+      customer = await customerService.createCustomer(customerInfo)
+    }
+
+    const invoice = await invoiceService.addInvoice({
+      customer: customer.id,
+      due_date: req.body.due_date,
+      invoice_number: req.body.invoice_number,
+      issued_date: req.body.issued_date,
+      items: req.body.items,
+      subject: req.body.subject,
+      user,
+    })
+
+    for (let i = 0; i < req.body.items.length; i++) {
+      const item = req.body.items[i]
+      const product: any = await productService.getProductById(item.productId)
+
+      await productService.updateProductById(
+        item.productId,
+        {
+          quantity: product?.quantity - item.qty,
+        },
+        product.user,
+      )
+    }
+
+    return res.status(httpStatus.CREATED).send(invoice)
   } catch (error) {
     logger.error('Error: ', JSON.stringify(error))
     //@ts-ignore
+    console.log(error)
 
-    res.status(httpStatus.CONFLICT).json({ message: 'Error adding product' })
-  }
-})
-
-export const getProducts = catchAsync(async (req, res) => {
-  const filter = pickQueryParams(req.query, ['name'])
-  const options = pickQueryParams(req.query, [
-    'sortBy',
-    'limit',
-    'page',
-    'user',
-  ])
-  const result = await productService.queryProducts(filter, options)
-
-  res.status(httpStatus.OK).send(result)
-})
-
-export const deleteProduct = catchAsync(async (req, res) => {
-  try {
-    await productService.deleteProductById(req.params.id)
-
-    res.status(httpStatus.OK).json({ message: 'Product deleted successfully' })
-  } catch (error) {
-    logger.error('Error: ', JSON.stringify(error))
-
-    res.status(httpStatus.CONFLICT).json({ message: 'Error deleting product' })
-  }
-})
-
-export const getProduct = catchAsync(async (req, res) => {
-  try {
-    const product = await productService.getProductById(req.params.id)
-    res.status(httpStatus.OK).send(product)
-  } catch (error) {
-    logger.error('Error: ', JSON.stringify(error))
-
-    res.status(httpStatus.NOT_FOUND).json({ message: 'Error getting product' })
-  }
-})
-
-export const updateProduct = catchAsync(async (req, res) => {
-  const user = req.currentUser._id
-  const id = req.params.id
-
-  try {
-    const customer = await productService.updateProductById(id, req.body, user)
-    res.status(httpStatus.OK).send(customer)
-  } catch (error) {
-    logger.error('Error: ', JSON.stringify(error))
-
-    res.status(httpStatus.NOT_FOUND).json({ message: 'Error updating product' })
+    return res
+      .status(httpStatus.CONFLICT)
+      .json({ message: 'Error creating record' })
   }
 })

@@ -9,6 +9,7 @@ const customerSchema = new Schema<ICustomer>(
     user: {
       type: String,
       private: true,
+      required: true
     },
     firstname: {
       type: String,

@@ -56,6 +56,21 @@ export interface IProducts extends Document {
   quantity: number
 }
 
+export interface IInvoice extends Document {
+  subject: string
+  invoice_number: string
+  user: string
+  customer: string
+  issued_date: string
+  due_date: string
+  items: {
+    qty: number
+    productId: string | null
+  }[]
+  notes: string
+  _id: string
+}
+
 // Model Types
 
 // Input Types
@@ -95,6 +110,21 @@ export type CreateNewProductType = {
   user: string
   quantity?: number
 }
+
+export type CreateNewInvoiceType = {
+  subject: string
+  user: string
+  invoice_number: string
+  customer: string
+  issued_date: string
+  due_date: string
+  items: {
+    qty: number
+    productId: string | null
+  }[]
+  notes?: string
+}
+
 // Input Types
 
 // Service Types
@@ -106,6 +136,13 @@ export interface GenerateTokenType {
 
 export interface SaveTokenType extends GenerateTokenType {
   token: string
+}
+
+export interface GetCustomersByQueryType {
+  firstname?: string
+  lastname?: string
+  phone?: string
+  email?: string
 }
 
 // Service Types

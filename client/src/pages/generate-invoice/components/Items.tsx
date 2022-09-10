@@ -58,144 +58,152 @@ const Invoice = () => {
   return (
     <Box>
       <Box sx={styles.items}>
-        {newInvoice.items.map((item, index) => (
-          <Grid container spacing={2} key={index}>
-            <Grid item xs={newInvoice.items.length > 1 ? 5 : 6}>
-              <Autocomplete
-                options={autoCompleteOptions}
-                autoHighlight
-                autoSelect
-                clearOnBlur={false}
-                clearOnEscape={false}
-                value={products.find((product) => product.name === item.name)}
-                onChange={(event, value) => {
-                  onHandleChangeItem(index, 'name', value?.name)
-                  onHandleChangeItem(index, 'productId', value?.id)
-                  onHandleChangeItem(index, 'price', value?.sellingprice)
-                }}
-                isOptionEqualToValue={(option, value) =>
-                  option.name === value.name
-                }
-                sx={{ ...styles.halfField, marginTop: '10px' }}
-                getOptionLabel={(option) => option?.name || ''}
-                renderOption={(props, option) => (
-                  <Box
-                    component="li"
-                    sx={{ '& > img': { mr: 2, flexShrink: 0 } }}
-                    {...props}
-                  >
-                    <img
-                      loading="lazy"
-                      width="20"
-                      src={option.image}
-                      srcSet={option.image}
-                      alt=""
+        {newInvoice.items.map((item, index) => {
+          console.log(index + 1, ' : ', item)
+          return (
+            <Grid container spacing={2} key={index}>
+              <Grid item xs={newInvoice.items.length > 1 ? 5 : 6}>
+                <Autocomplete
+                  options={autoCompleteOptions}
+                  autoHighlight
+                  autoSelect
+                  clearOnBlur
+                  clearOnEscape
+                  selectOnFocus
+                  value={
+                    !item.name
+                      ? null
+                      : products.find((product) => product.name === item.name)
+                  }
+                  onChange={(event, value) => {
+                    onHandleChangeItem(index, 'name', value?.name)
+                    onHandleChangeItem(index, 'productId', value?.id)
+                    onHandleChangeItem(index, 'price', value?.sellingprice)
+                  }}
+                  isOptionEqualToValue={(option, value) =>
+                    option.name === value.name
+                  }
+                  sx={{ ...styles.halfField, marginTop: '10px' }}
+                  getOptionLabel={(option) => option?.name || ''}
+                  renderOption={(props, option) => (
+                    <Box
+                      component="li"
+                      sx={{ '& > img': { mr: 2, flexShrink: 0 } }}
+                      {...props}
+                    >
+                      <img
+                        loading="lazy"
+                        width="20"
+                        src={option.image}
+                        srcSet={option.image}
+                        alt=""
+                      />
+                      {option.name}
+                    </Box>
+                  )}
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      label="Item"
+                      inputProps={{
+                        ...params.inputProps,
+                      }}
+                      size="small"
                     />
-                    {option.name}
-                  </Box>
-                )}
-                renderInput={(params) => (
-                  <TextField
-                    {...params}
-                    label="Item"
-                    inputProps={{
-                      ...params.inputProps,
-                    }}
-                    size="small"
-                  />
-                )}
-              />
-            </Grid>
-
-            <Grid item xs={2}>
-              <TextField
-                label="Qty"
-                variant="outlined"
-                size="small"
-                margin="dense"
-                name="qty"
-                type="number"
-                fullWidth
-                required
-                sx={styles.halfField}
-                InputLabelProps={{
-                  style: { color: 'rgb(151, 161, 186)' },
-                }}
-                value={item.qty}
-                onChange={(event) =>
-                  onHandleChangeItem(index, 'qty', event.target.value)
-                }
-              />
-            </Grid>
-
-            <Grid item xs={2}>
-              <TextField
-                label="Price"
-                variant="outlined"
-                size="small"
-                margin="dense"
-                name="price"
-                type="number"
-                fullWidth
-                required
-                disabled
-                sx={styles.halfField}
-                InputLabelProps={{
-                  style: { color: 'rgb(151, 161, 186)' },
-                }}
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <Typography sx={{ color: 'white' }}>{Naira}</Typography>
-                    </InputAdornment>
-                  ),
-                }}
-                value={item.price}
-                onChange={(event) =>
-                  onHandleChangeItem(index, 'price', event.target.value)
-                }
-              />
-            </Grid>
-
-            <Grid item xs={2}>
-              <TextField
-                label="Total"
-                variant="outlined"
-                size="small"
-                margin="dense"
-                name="name"
-                type="text"
-                fullWidth
-                disabled
-                sx={styles.halfField}
-                InputLabelProps={{
-                  style: { color: 'rgb(151, 161, 186)' },
-                }}
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <Typography sx={{ color: 'white' }}>{Naira}</Typography>
-                    </InputAdornment>
-                  ),
-                }}
-                value={getPriceOfTotalItem(item.qty, getProduct(item?.name))}
-              />
-            </Grid>
-
-            {newInvoice.items.length > 1 && (
-              <Grid item xs={1}>
-                <IconButton
-                  aria-label="delete"
-                  color="error"
-                  sx={{ marginTop: '8px' }}
-                  onClick={() => deleteItem(index)}
-                >
-                  <DeleteIcon />
-                </IconButton>
+                  )}
+                />
               </Grid>
-            )}
-          </Grid>
-        ))}
+
+              <Grid item xs={2}>
+                <TextField
+                  label="Qty"
+                  variant="outlined"
+                  size="small"
+                  margin="dense"
+                  name="qty"
+                  type="number"
+                  fullWidth
+                  required
+                  sx={styles.halfField}
+                  InputLabelProps={{
+                    style: { color: 'rgb(151, 161, 186)' },
+                  }}
+                  value={item.qty}
+                  onChange={(event) =>
+                    onHandleChangeItem(index, 'qty', event.target.value)
+                  }
+                />
+              </Grid>
+
+              <Grid item xs={2}>
+                <TextField
+                  label="Price"
+                  variant="outlined"
+                  size="small"
+                  margin="dense"
+                  name="price"
+                  type="number"
+                  fullWidth
+                  required
+                  disabled
+                  sx={styles.halfField}
+                  InputLabelProps={{
+                    style: { color: 'rgb(151, 161, 186)' },
+                  }}
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <Typography sx={{ color: 'white' }}>{Naira}</Typography>
+                      </InputAdornment>
+                    ),
+                  }}
+                  value={item.price}
+                  onChange={(event) =>
+                    onHandleChangeItem(index, 'price', event.target.value)
+                  }
+                />
+              </Grid>
+
+              <Grid item xs={2}>
+                <TextField
+                  label="Total"
+                  variant="outlined"
+                  size="small"
+                  margin="dense"
+                  name="name"
+                  type="text"
+                  fullWidth
+                  disabled
+                  sx={styles.halfField}
+                  InputLabelProps={{
+                    style: { color: 'rgb(151, 161, 186)' },
+                  }}
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <Typography sx={{ color: 'white' }}>{Naira}</Typography>
+                      </InputAdornment>
+                    ),
+                  }}
+                  value={getPriceOfTotalItem(item.qty, getProduct(item?.name))}
+                />
+              </Grid>
+
+              {newInvoice.items.length > 1 && (
+                <Grid item xs={1}>
+                  <IconButton
+                    aria-label="delete"
+                    color="error"
+                    sx={{ marginTop: '8px' }}
+                    onClick={() => deleteItem(index)}
+                  >
+                    <DeleteIcon />
+                  </IconButton>
+                </Grid>
+              )}
+            </Grid>
+          )
+        })}
       </Box>
 
       <Box
