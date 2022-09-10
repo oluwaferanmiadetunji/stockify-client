@@ -7,6 +7,12 @@ const attachUser = async (
   res: Response,
   next: NextFunction,
 ): Promise<any> => {
+  if (new Date(req.token.expires).getTime() < Date.now()) {
+    return res
+      .status(httpStatus.UNAUTHORIZED)
+      .json({ message: 'Your request token has expired' })
+  }
+
   try {
     const userRecord = await User.findById(req.token.sub)
 

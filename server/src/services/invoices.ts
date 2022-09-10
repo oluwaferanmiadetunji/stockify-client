@@ -22,3 +22,9 @@ export const addInvoice = async (body: CreateNewInvoiceType) => {
 
   return invoice
 }
+
+export const queryInvoices = async (filter: any, options: any) => {
+  //@ts-ignore
+  const invoices = await Invoice.paginate(filter, options)
+  return invoices
+}

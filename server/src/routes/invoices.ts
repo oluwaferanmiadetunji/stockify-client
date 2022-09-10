@@ -11,4 +11,11 @@ router.post(
   invoicesControllers.createInvoiceRecord,
 )
 
+router.get(
+  '/query',
+  middlewares.isAuth,
+  middlewares.attachUser,
+  invoicesControllers.getInvoices,
+)
+
 export default router

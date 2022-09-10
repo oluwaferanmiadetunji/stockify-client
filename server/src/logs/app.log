@@ -6492,3 +6492,34 @@
 {"level":"info","message":"GET /product/query?limit=100&sortBy=createdAt:desc 200 - 523.060 ms","timestamp":"2022-09-10T12:47:05.466Z"}
 {"level":"info","message":"POST /invoices/create 201 - 3037.966 ms","timestamp":"2022-09-10T12:47:52.076Z"}
 {"level":"info","message":"GET /product/query?limit=100&sortBy=createdAt:desc 200 - 1980.934 ms","timestamp":"2022-09-10T12:47:57.903Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-09-10T12:51:31.224Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-09-10T12:51:31.229Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-09-10T12:51:45.663Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-09-10T12:51:45.669Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-09-10T12:52:04.706Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-09-10T12:52:04.710Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-09-10T12:52:41.302Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-09-10T12:52:41.306Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-09-10T12:55:08.290Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-09-10T12:55:08.296Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-09-10T12:56:31.470Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-09-10T12:56:31.481Z"}
+{"level":"info","message":"GET /invoices/query?limit=100&sortBy=createdAt:desc 200 - 434.942 ms","timestamp":"2022-09-10T12:57:01.819Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-09-10T12:57:29.687Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-09-10T12:57:29.695Z"}
+{"level":"info","message":"GET /invoices/query?limit=100&sortBy=createdAt:desc 200 - 447.412 ms","timestamp":"2022-09-10T12:57:47.251Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-09-10T12:58:34.432Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-09-10T12:58:34.436Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-09-10T12:58:51.405Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-09-10T12:58:51.410Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-09-10T12:59:04.399Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-09-10T12:59:04.403Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-09-10T13:00:09.800Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-09-10T13:00:09.806Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-09-10T13:00:17.395Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-09-10T13:00:17.400Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-09-10T13:00:33.313Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-09-10T13:00:33.319Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-09-10T13:01:48.277Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-09-10T13:01:48.279Z"}
+{"level":"error","message":"GET /invoices/query?limit=100&sortBy=createdAt:desc 401 - 10.570 ms - message: -","timestamp":"2022-09-10T13:01:52.295Z"}

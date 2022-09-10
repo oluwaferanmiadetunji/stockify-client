@@ -3,6 +3,7 @@ import catchAsync from '../utils/catchAsync'
 import { invoiceService, customerService, productService } from '../services'
 import logger from '../config/logger'
 import { removeEmptyValuesFromObject } from '../utils/helpers'
+import { pickQueryParams } from '../utils/helpers'
 
 export const createInvoiceRecord = catchAsync(async (req, res) => {
   const user = req.currentUser._id
@@ -56,4 +57,17 @@ export const createInvoiceRecord = catchAsync(async (req, res) => {
       .status(httpStatus.CONFLICT)
       .json({ message: 'Error creating record' })
   }
+})
+
+export const getInvoices = catchAsync(async (req, res) => {
+  const filter = pickQueryParams(req.query, ['name'])
+  const options = pickQueryParams(req.query, [
+    'sortBy',
+    'limit',
+    'page',
+    'user',
+  ])
+  const result = await invoiceService.queryInvoices(filter, options)
+
+  res.status(httpStatus.OK).send(result)
 })
