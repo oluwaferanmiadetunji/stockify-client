@@ -24,18 +24,33 @@ export const createInvoiceRecord = catchAsync(async (req, res) => {
       customer = await customerService.createCustomer(customerInfo)
     }
 
+    const items = []
+
+    for (let i = 0; i < req.body.items.length; i++) {
+      const product: any = await productService.getProductById(
+        req.body.items[i].productId,
+      )
+
+      items.push({
+        qty: req.body.items[i].qty,
+        productId: req.body.items[i].productId,
+        costPrice: product.costprice,
+        sellingPrice: product.sellingprice,
+      })
+    }
+
     const invoice = await invoiceService.addInvoice({
       customer: customer.id,
       due_date: req.body.due_date,
       invoice_number: req.body.invoice_number,
       issued_date: req.body.issued_date,
-      items: req.body.items,
+      items,
       subject: req.body.subject,
       user,
     })
 
-    for (let i = 0; i < req.body.items.length; i++) {
-      const item = req.body.items[i]
+    for (let i = 0; i < items.length; i++) {
+      const item = items[i]
       const product: any = await productService.getProductById(item.productId)
 
       await productService.updateProductById(
@@ -84,7 +99,8 @@ export const getInvoice = catchAsync(async (req, res) => {
 
     itemDetails.push({
       qty: invoice.items[i].qty,
-      price: invoice.items[i].price,
+      costPrice: invoice.items[i].costPrice,
+      sellingPrice: invoice.items[i].sellingPrice,
       product,
     })
   }

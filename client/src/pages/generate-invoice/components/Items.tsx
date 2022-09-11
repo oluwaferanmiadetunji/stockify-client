@@ -59,7 +59,6 @@ const Invoice = () => {
     <Box>
       <Box sx={styles.items}>
         {newInvoice.items.map((item, index) => {
-          console.log(index + 1, ' : ', item)
           return (
             <Grid container spacing={2} key={index}>
               <Grid item xs={newInvoice.items.length > 1 ? 5 : 6}>

@@ -1,7 +1,6 @@
 import React from 'react'
 import { MuiVirtualizedTableProps, Row } from './types'
-import { MuiStyles } from './styled'
-import { classes } from './constants'
+import { classes, MuiStyles } from './styles'
 import clsx from 'clsx'
 import {
   AutoSizer,
@@ -12,9 +11,11 @@ import {
 } from 'react-virtualized'
 import TableCell from '@mui/material/TableCell'
 import { styled } from '@mui/material/styles'
-// import { ROUTES } from 'utils/constants'
+import { ROUTES, Naira } from 'utils/constants'
 import WithRouter from 'components/withRouter'
 import dayjs from 'dayjs'
+import { connect } from 'react-redux'
+import { addCommasToNumber } from 'utils/helpers'
 
 class MuiVirtualizedTable extends React.PureComponent<
   MuiVirtualizedTableProps
@@ -30,6 +31,35 @@ class MuiVirtualizedTable extends React.PureComponent<
     return clsx(classes.tableRow, classes.flexContainer, {
       [classes.tableRowHover]: index !== -1 && onRowClick != null,
     })
+  }
+
+  getPrice = (items: any[]) => {
+    let sum = 0
+    for (let i = 0; i < items.length; i++) {
+      sum += items[i].sellingPrice * items[i].qty
+    }
+
+    return `${Naira} ${addCommasToNumber(sum)}`
+  }
+
+  renderColumnData = (key: string, cellData: any, isPrice = false) => {
+    switch (key) {
+      case 'createdAt':
+        return dayjs(cellData).format('MMM D, YYYY HH:mm')
+      case 'due_date':
+        return dayjs(cellData).format('MMM D, YYYY HH:mm')
+      case 'items':
+        return isPrice ? this.getPrice(cellData) : cellData.length
+      case 'customer':
+        //@ts-ignore
+        const customer = this.props.customers.find(
+          (customer: any) => customer.id === cellData,
+        )
+
+        return `${customer?.firstname} ${customer?.lastname}`
+      default:
+        return cellData
+    }
   }
 
   cellRenderer: TableCellRenderer = ({ cellData, columnIndex }: any) => {
@@ -53,9 +83,11 @@ class MuiVirtualizedTable extends React.PureComponent<
             : 'left'
         }
       >
-        {columns[columnIndex].dataKey === 'createdAt'
-          ? dayjs(cellData).format('MMM D, YYYY HH:mm')
-          : cellData}
+        {this.renderColumnData(
+          columns[columnIndex].dataKey,
+          cellData,
+          columns[columnIndex].isPrice,
+        )}
       </TableCell>
     )
   }
@@ -106,9 +138,9 @@ class MuiVirtualizedTable extends React.PureComponent<
             {...tableProps}
             rowClassName={this.getRowClassName}
             onRowClick={({ rowData }) => {
-              // const { id } = rowData
-              //@ts-ignore
-              // this.props.navigate(`${ROUTES.INVOICE_DETAILS}?id=${id}`)
+              const { id } = rowData
+
+              this.props.navigate(`${ROUTES.INVOICE_DETAILS}?id=${id}`)
             }}
           >
             {columns.map(({ dataKey, ...other }, index) => {
@@ -136,6 +168,13 @@ class MuiVirtualizedTable extends React.PureComponent<
   }
 }
 
-const VirtualizedTable = styled(WithRouter(MuiVirtualizedTable))(MuiStyles)
+const mapStateToProps = (state: any) => ({
+  customers: state.customers.customers,
+})
+
+const VirtualizedTable = connect(
+  mapStateToProps,
+  null,
+)(styled(WithRouter(MuiVirtualizedTable))(MuiStyles))
 
 export default VirtualizedTable

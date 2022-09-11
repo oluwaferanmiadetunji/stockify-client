@@ -30,7 +30,14 @@ const invoiceSchema = new Schema<IInvoice>(
       type: String,
       required: true,
     },
-    items: [{ qty: Number, productId: String, price: Number }],
+    items: [
+      {
+        qty: Number,
+        productId: String,
+        costPrice: Number,
+        sellingPrice: Number,
+      },
+    ],
     notes: {
       type: String,
     },

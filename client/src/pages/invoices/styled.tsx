@@ -1,6 +1,6 @@
 import { Theme, styled } from '@mui/material/styles'
 import Paper from '@mui/material/Paper'
-import { classes } from './constants'
+import { classes } from './constant'
 
 export const Item = styled(Paper)(({ theme }: any) => ({
   backgroundColor: 'rgb(30, 33, 42)',

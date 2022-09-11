@@ -1,8 +1,10 @@
+import { NavigateFunction } from 'react-router-dom'
 export interface ColumnData {
   dataKey: string
   label: string
   numeric?: boolean
   width: number
+  isPrice?: boolean
 }
 
 export interface Row {
@@ -16,14 +18,13 @@ export interface MuiVirtualizedTableProps {
   rowCount: number
   rowGetter: (row: Row) => Data
   rowHeight?: number
+  navigate: NavigateFunction
 }
 
 export interface Data {
-  calories: number
-  carbs: number
-  dessert: string
-  fat: number
-  id: number
-  protein: number
+  name: string
+  phone: string
+  email: string
+  createdAt: string
+  id: string
 }
-export type Sample = [string, number, number, number, number]

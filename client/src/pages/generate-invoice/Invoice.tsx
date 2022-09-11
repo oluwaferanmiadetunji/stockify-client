@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect } from 'react'
+import { ChangeEvent, useEffect, useState } from 'react'
 import Layout from 'components/layout'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
@@ -15,7 +15,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker'
 import Divider from '@mui/material/Divider'
-
+import { formatCreateInvoicePayload } from './helpers'
 import { useAppDispatch, useAppSelector } from 'redux-store/hooks'
 import { makeCustomerQueryRequest } from 'api/customers'
 import { makeProductsQueryRequest } from 'api/products'
@@ -25,10 +25,13 @@ import {
   updateNewInvoiceCreate,
   clearNewInvoice,
 } from 'redux-store/invoice.slice'
+import { makeCreateInvoiceRequest } from 'api/invoices'
+import LoadingButton from '@mui/lab/LoadingButton'
 
 const Invoice = () => {
   const dispatch = useAppDispatch()
   const { newInvoice } = useAppSelector(selectInvoiceState)
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     ;(async () => {
@@ -64,10 +67,20 @@ const Invoice = () => {
     dispatch(clearNewInvoice(null))
   }
 
-  const handleSubmit = (event: React.SyntheticEvent) => {
-    event.preventDefault()
+  const callback = () => {
+    onClear()
+    setLoading(false)
+  }
 
-    // console.log(JSON.stringify(newInvoice))
+  const handleSubmit = async (event: React.SyntheticEvent) => {
+    event.preventDefault()
+    setLoading(true)
+
+    await makeCreateInvoiceRequest(
+      formatCreateInvoicePayload(newInvoice),
+      dispatch,
+      callback,
+    )
   }
 
   return (
@@ -226,9 +239,14 @@ const Invoice = () => {
               Clear
             </Button>
 
-            <Button variant="contained" onClick={handleSubmit} type="submit">
+            <LoadingButton
+              loading={loading}
+              variant="contained"
+              onClick={handleSubmit}
+              type="submit"
+            >
               Create Invoice
-            </Button>
+            </LoadingButton>
           </Box>
         </Box>
       </Box>

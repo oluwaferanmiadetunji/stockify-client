@@ -66,7 +66,8 @@ export interface IInvoice extends Document {
   items: {
     qty: number
     productId: string
-    price: number
+    costPrice: number
+    sellingPrice: number
   }[]
   notes: string
   _id: string
@@ -122,7 +123,8 @@ export type CreateNewInvoiceType = {
   items: {
     qty: number
     productId: string
-    price: number
+    costPrice: number
+    sellingPrice: number
   }[]
   notes?: string
 }

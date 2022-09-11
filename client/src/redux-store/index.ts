@@ -6,7 +6,6 @@ import customerReducer from './customers.slice'
 import productsReducer from './products.slice'
 import analyticsReducer from './analytics.slice'
 import invoiceReducer from './invoice.slice'
-import logger from 'redux-logger'
 
 const persistConfig = {
   key: 'root',
@@ -29,7 +28,7 @@ const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: false,
-    }).concat(logger),
+    }),
 })
 
 export const persistor = persistStore(store)

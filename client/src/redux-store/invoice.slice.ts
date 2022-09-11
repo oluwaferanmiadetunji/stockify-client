@@ -22,6 +22,12 @@ const invoiceState = {
 const initialState: InvoiceInterface = {
   invoices: [],
   newInvoice: invoiceState,
+  filteredInvoices: [],
+  page: 1,
+  limit: 100,
+  totalPages: 0,
+  count: 0,
+  isFiltered: false,
 }
 
 const invoiceSlice = createSlice({
@@ -29,7 +35,14 @@ const invoiceSlice = createSlice({
   initialState,
   reducers: {
     setInvoicesData: (state: InvoiceInterface, action: PayloadAction<any>) => {
-      state.invoices = action.payload
+      state.invoices = action.payload.invoices
+      state.page = action.payload.page
+      state.limit = action.payload.limit
+      state.totalPages = action.payload.totalPages
+      state.count = action.payload.count
+    },
+    addInvoicesData: (state: InvoiceInterface, action: PayloadAction<any>) => {
+      state.invoices = [action.payload, ...state.invoices]
     },
     updateNewInvoiceCreate: (
       state: InvoiceInterface,
@@ -70,7 +83,24 @@ const invoiceSlice = createSlice({
       }
     },
     clearNewInvoice: (state: InvoiceInterface, action: PayloadAction<null>) => {
-      state.newInvoice = invoiceState
+      state.newInvoice = {
+        ...invoiceState,
+        invoice_number: generateInvoiceNumber(),
+      }
+    },
+    setInvoicesFilter: (
+      state: InvoiceInterface,
+      action: PayloadAction<any[]>,
+    ) => {
+      state.filteredInvoices = action.payload
+      state.isFiltered = true
+    },
+    cancelInvoicesFilter: (
+      state: InvoiceInterface,
+      action: PayloadAction<void>,
+    ) => {
+      state.filteredInvoices = []
+      state.isFiltered = false
     },
   },
 })
@@ -82,6 +112,7 @@ export const {
   deleteInvoiceItem,
   updateInvoiceItem,
   clearNewInvoice,
+  addInvoicesData,
 } = invoiceSlice.actions
 
 export const selectInvoiceState = (state: RootState) => state.invoice

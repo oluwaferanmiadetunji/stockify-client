@@ -122,4 +122,10 @@ export interface CreateNewInvoiceInterface {
 export interface InvoiceInterface {
   invoices: any[]
   newInvoice: CreateNewInvoiceInterface
+  filteredInvoices: any[]
+  page: number
+  limit: number
+  totalPages: number
+  count: number
+  isFiltered: boolean
 }
