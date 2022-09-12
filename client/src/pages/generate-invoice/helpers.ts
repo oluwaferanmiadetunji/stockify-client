@@ -63,8 +63,8 @@ export const formatCreateInvoicePayload = (
 
   for (let i = 0; i < invoice.items.length; i++) {
     items.push({
-      productId: invoice.items[0].productId,
-      qty: invoice.items[0].qty,
+      productId: invoice.items[i].productId,
+      qty: invoice.items[i].qty,
     })
   }
 

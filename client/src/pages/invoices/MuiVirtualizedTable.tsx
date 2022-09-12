@@ -15,7 +15,7 @@ import { ROUTES, Naira } from 'utils/constants'
 import WithRouter from 'components/withRouter'
 import dayjs from 'dayjs'
 import { connect } from 'react-redux'
-import { addCommasToNumber } from 'utils/helpers'
+import { renderPriceWithCommas } from 'utils/helpers'
 
 class MuiVirtualizedTable extends React.PureComponent<
   MuiVirtualizedTableProps
@@ -39,7 +39,7 @@ class MuiVirtualizedTable extends React.PureComponent<
       sum += items[i].sellingPrice * items[i].qty
     }
 
-    return `${Naira} ${addCommasToNumber(sum)}`
+    return `${Naira} ${renderPriceWithCommas(sum)}`
   }
 
   renderColumnData = (key: string, cellData: any, isPrice = false) => {

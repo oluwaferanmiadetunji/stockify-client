@@ -71,6 +71,7 @@ export interface IInvoice extends Document {
   }[]
   notes: string
   _id: string
+  isPaid?: boolean
 }
 
 // Model Types

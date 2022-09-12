@@ -47,6 +47,7 @@ export const createInvoiceRecord = catchAsync(async (req, res) => {
       items,
       subject: req.body.subject,
       user,
+      notes: req.body.notes,
     })
 
     for (let i = 0; i < items.length; i++) {

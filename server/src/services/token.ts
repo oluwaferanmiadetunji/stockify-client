@@ -43,7 +43,7 @@ export const verifyToken = async (token: string) => {
 export const generateAuthenticationToken = async (
   user: string,
 ): Promise<string> => {
-  const expires = moment().add(120, 'minutes').toISOString()
+  const expires = moment().add(1200, 'minutes').toISOString()
   const token = await generateToken({ user, expires })
 
   await saveToken({ expires, token, user })

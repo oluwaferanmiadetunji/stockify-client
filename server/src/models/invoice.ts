@@ -41,6 +41,10 @@ const invoiceSchema = new Schema<IInvoice>(
     notes: {
       type: String,
     },
+    isPaid: {
+      type: Boolean,
+      default: false,
+    },
   },
   {
     timestamps: true,

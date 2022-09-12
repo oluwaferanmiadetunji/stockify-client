@@ -5,7 +5,7 @@ import styles from './styles'
 import Typography from '@mui/material/Typography'
 import { useAppDispatch, useAppSelector } from 'redux-store/hooks'
 import { selectInvoiceState } from 'redux-store/invoice.slice'
-import { makeProductsQueryRequest } from 'api/products'
+import { makeInvoicesQueryRequest } from 'api/invoices'
 import Button from '@mui/material/Button'
 import FilterInvoices from './FilterInvoices'
 import VirtualizedTable from './MuiVirtualizedTable'
@@ -26,7 +26,7 @@ const InvoicesPage = () => {
 
   useEffect(() => {
     ;(async () => {
-      await makeProductsQueryRequest(
+      await makeInvoicesQueryRequest(
         'limit=1000&sortBy=createdAt:desc',
         dispatch,
       )

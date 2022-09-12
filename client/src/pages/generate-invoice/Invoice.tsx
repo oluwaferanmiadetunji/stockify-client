@@ -3,7 +3,7 @@ import Layout from 'components/layout'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace'
-import { Link as RouterLink } from 'react-router-dom'
+import { Link as RouterLink, useNavigate } from 'react-router-dom'
 import Button from '@mui/material/Button'
 import { ROUTES } from 'utils/constants'
 import styles from './styles'
@@ -29,6 +29,7 @@ import { makeCreateInvoiceRequest } from 'api/invoices'
 import LoadingButton from '@mui/lab/LoadingButton'
 
 const Invoice = () => {
+  const navigate = useNavigate()
   const dispatch = useAppDispatch()
   const { newInvoice } = useAppSelector(selectInvoiceState)
   const [loading, setLoading] = useState(false)
@@ -80,6 +81,7 @@ const Invoice = () => {
       formatCreateInvoicePayload(newInvoice),
       dispatch,
       callback,
+      navigate,
     )
   }
 

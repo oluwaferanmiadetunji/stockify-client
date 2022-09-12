@@ -18,6 +18,7 @@ const ProductInfo = lazy(() => import('pages/product-info'))
 const Invoices = lazy(() => import('pages/invoices'))
 const GenerateInvoice = lazy(() => import('pages/generate-invoice'))
 const InvoiceDetails = lazy(() => import('pages/invoice-details'))
+const InvoicePreview = lazy(() => import('pages/invoice-preview'))
 
 function App() {
   return (
@@ -116,6 +117,15 @@ function App() {
         element={
           <AuthRoute>
             <InvoiceDetails />
+          </AuthRoute>
+        }
+      />
+
+      <Route
+        path={ROUTES.INVOICE_PREVIEW}
+        element={
+          <AuthRoute>
+            <InvoicePreview />
           </AuthRoute>
         }
       />
