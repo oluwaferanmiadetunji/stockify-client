@@ -12,21 +12,33 @@ import queryString from 'query-string'
 import BounceLoader from 'react-spinners/BounceLoader'
 import InvoicePage from './components/InvoicePage'
 import { PDFDownloadLink } from '@react-pdf/renderer'
+import {
+  selectInvoiceState,
+  setSingleInvoiceData,
+} from 'redux-store/invoice.slice'
+import { useAppDispatch, useAppSelector } from 'redux-store/hooks'
 
 const Preview = () => {
-  const [data, setData] = useState<any>({})
+  const parsed: any = queryString.parse(window.location.search)
+  const dispatch = useAppDispatch()
+  const { invoice } = useAppSelector(selectInvoiceState)
+
+  const [data, setData] = useState<any>(
+    parsed.id === invoice?.id ? invoice : {},
+  )
+
   const [loading, setLoading] = useState(true)
   const navigation = useNavigate()
-  const parsed: any = queryString.parse(window.location.search)
 
   useEffect(() => {
     ;(async () => {
       setLoading(true)
       const response = await makeSingleInvoiceRequest(parsed.id)
+      dispatch(setSingleInvoiceData(response))
       setData(response)
       setLoading(false)
     })()
-  }, [parsed.id])
+  }, [dispatch, parsed.id])
 
   const downloadInvoice = async () => {}
 
@@ -44,7 +56,9 @@ const Preview = () => {
           </Button>
         </Box>
 
-        {loading ? (
+        {loading &&
+        Object.keys(data).length === 0 &&
+        data.constructor === Object ? (
           <Box sx={styles.loaderContainer}>
             <BounceLoader color="white" size={30} />
           </Box>

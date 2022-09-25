@@ -37,11 +37,23 @@ import DeleteIcon from '@mui/icons-material/Delete'
 import { makeSingleInvoiceRequest } from 'api/invoices'
 import queryString from 'query-string'
 import BounceLoader from 'react-spinners/BounceLoader'
+import {
+  selectInvoiceState,
+  setSingleInvoiceData,
+} from 'redux-store/invoice.slice'
+import { useAppDispatch, useAppSelector } from 'redux-store/hooks'
 
 const Details = () => {
+  const parsed: any = queryString.parse(window.location.search)
+
+  const dispatch = useAppDispatch()
+  const { invoice } = useAppSelector(selectInvoiceState)
+
   const [option, setOption] = useState(OPTIONS[0].value)
 
-  const [data, setData] = useState<any>({})
+  const [data, setData] = useState<any>(
+    parsed.id === invoice?.id ? invoice : {},
+  )
   const [loading, setLoading] = useState(true)
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -50,13 +62,13 @@ const Details = () => {
 
   useEffect(() => {
     ;(async () => {
-      const parsed: any = queryString.parse(window.location.search)
       setLoading(true)
       const response = await makeSingleInvoiceRequest(parsed.id)
       setData(response)
+      dispatch(setSingleInvoiceData(response))
       setLoading(false)
     })()
-  }, [])
+  }, [dispatch, parsed.id])
 
   return (
     <Layout>
@@ -73,7 +85,9 @@ const Details = () => {
           </Button>
         </Box>
 
-        {loading ? (
+        {loading &&
+        Object.keys(data).length === 0 &&
+        data.constructor === Object ? (
           <Box sx={styles.loaderContainer}>
             <BounceLoader color="white" size={30} />
           </Box>
