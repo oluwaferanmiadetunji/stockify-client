@@ -66,6 +66,7 @@ const Invoice = () => {
 
   const onClear = () => {
     dispatch(clearNewInvoice(null))
+    setLoading(false)
   }
 
   const callback = () => {
@@ -76,7 +77,7 @@ const Invoice = () => {
   const handleSubmit = async (event: React.SyntheticEvent) => {
     event.preventDefault()
     setLoading(true)
-
+    
     await makeCreateInvoiceRequest(
       formatCreateInvoicePayload(newInvoice),
       dispatch,

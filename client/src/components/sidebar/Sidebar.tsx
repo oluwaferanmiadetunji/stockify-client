@@ -8,7 +8,7 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight'
 import PieChartIcon from '@mui/icons-material/PieChart'
 import Button from '@mui/material/Button'
 import PeopleIcon from '@mui/icons-material/People'
-import InventoryIcon from '@mui/icons-material/Inventory'
+// import InventoryIcon from '@mui/icons-material/Inventory'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
 import ReceiptIcon from '@mui/icons-material/Receipt'
 import { ROUTES } from 'utils/constants'
@@ -16,7 +16,7 @@ import styles from './styles'
 import {
   checkReportsPageIsActive,
   checkCustomersPageIsActive,
-  checkOrderPageIsActive,
+  // checkOrderPageIsActive,
   checkProductPageIsActive,
   checkInvoicePageIsActive,
 } from 'utils/helpers'
@@ -269,7 +269,7 @@ const Sidebar = () => {
         </AccordionDetails>
       </Accordion>
 
-      <Accordion
+      {/* <Accordion
         expanded={expanded === 'panel3'}
         onChange={handleChange('panel3')}
         sx={{ background: 'transparent', margin: 0 }}
@@ -326,7 +326,7 @@ const Sidebar = () => {
             Summary
           </Button>
         </AccordionDetails>
-      </Accordion>
+      </Accordion> */}
     </Box>
   )
 }

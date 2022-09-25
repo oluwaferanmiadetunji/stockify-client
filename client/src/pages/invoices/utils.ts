@@ -6,8 +6,12 @@ export const getTotalSum = (invoices: any[]) => {
 
     for (let i = 0; i < invoice.items.length; i++) {
       const item = invoice.items[i]
-
-      amount += item.sellingPrice - item.costPrice * item.qty
+      console.log({
+        qty: item.qty,
+        sellingPrice: item.sellingPrice,
+        costPrice: item.costPrice,
+      })
+      amount += (item.sellingPrice - item.costPrice) * item.qty
     }
   }
 

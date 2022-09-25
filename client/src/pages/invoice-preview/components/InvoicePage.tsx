@@ -150,14 +150,16 @@ const InvoicePage: FC<Props> = ({ data, pdfMode }) => {
           </View>
         </View>
 
-        <View className="mt-20" pdfMode={pdfMode}>
-          <Text pdfMode={pdfMode} className="fs-14 bold">
-            Notes:
-          </Text>
-          <Text pdfMode={pdfMode} className="fs-14 w-100">
-            {data?.notes}
-          </Text>
-        </View>
+        {data?.notes && (
+          <View className="mt-20" pdfMode={pdfMode}>
+            <Text pdfMode={pdfMode} className="fs-14 bold">
+              Notes:
+            </Text>
+            <Text pdfMode={pdfMode} className="fs-14 w-100">
+              {data?.notes}
+            </Text>
+          </View>
+        )}
       </Page>
     </Document>
   )
