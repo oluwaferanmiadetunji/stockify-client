@@ -14,7 +14,7 @@ import { useAppSelector } from 'redux-store/hooks'
 import ReceiptIcon from '@mui/icons-material/Receipt'
 
 const ReportOverview = () => {
-  const { customer, product } = useAppSelector(selectAnalyticsState)
+  const { customer, product, invoice } = useAppSelector(selectAnalyticsState)
 
   return (
     <Box sx={{ flexGrow: 1, mt: 4 }}>
@@ -90,7 +90,9 @@ const ReportOverview = () => {
                 <Typography sx={styles.topGridItemDetailsHeader}>
                   Invoices
                 </Typography>
-                <Typography sx={styles.topGridItemDetailsValue}>0</Typography>
+                <Typography sx={styles.topGridItemDetailsValue}>
+                  {invoice}
+                </Typography>
               </Box>
             </Stack>
 

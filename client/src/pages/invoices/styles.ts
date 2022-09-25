@@ -4,6 +4,7 @@ import Paper from '@mui/material/Paper'
 const styles = {
   container: {
     marginTop: '40px',
+    width: '100%',
   },
   headerText: {
     color: 'white',
@@ -40,6 +41,14 @@ const styles = {
   cardCaption: {
     color: 'rgb(151, 161, 186)',
     fontSize: 14,
+  },
+  loader: {
+    width: '100%',
+    height: '200px',
+    display: 'flex',
+    alignItems: 'center',
+    textAlign: 'center',
+    justifyContent: 'center',
   },
 }
 

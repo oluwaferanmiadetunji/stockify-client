@@ -2,6 +2,7 @@ import { Suspense } from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
 import 'antd/dist/antd.css'; 
+import './scss/main.scss'
 import reportWebVitals from './reportWebVitals'
 import { BrowserRouter } from 'react-router-dom'
 import Loader from 'components/loader'

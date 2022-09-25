@@ -42,7 +42,7 @@ const Details = () => {
   const [option, setOption] = useState(OPTIONS[0].value)
 
   const [data, setData] = useState<any>({})
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setOption(event.target.value)

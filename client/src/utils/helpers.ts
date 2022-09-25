@@ -1,3 +1,5 @@
+/* eslint-disable no-sparse-arrays */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { faker } from '@faker-js/faker'
 import { ROUTES, Naira } from './constants'
 import axios from 'axios'
@@ -167,7 +169,7 @@ export const addCommasToNumber = (payload: number): string => {
   let data = payload.toFixed(2).toString().split('.')
   data[0] = data[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 
-  return  data.join('.')
+  return data.join('.')
 }
 
 export const renderPriceWithCommas = (payload: number): string => {
@@ -184,4 +186,34 @@ export const removeEmptyValuesFromObject = (obj: any) => {
     }
   }
   return obj
+}
+
+export const JSToCSS = (JS: any) => {
+  let cssString = ''
+  for (let objectKey in JS) {
+    cssString +=
+      objectKey.replace(/([A-Z])/g, (g) => `-${g[0].toLowerCase()}`) +
+      ': ' +
+      JS[objectKey] +
+      ';\n'
+  }
+
+  return cssString
+}
+
+export const parseCSSText = (cssText: any) => {
+  var cssTxt = cssText.replace(/\/\*(.|\s)*?\*\//g, ' ').replace(/\s+/g, ' ')
+  var style: any = {},
+    [, ruleName, rule] = cssTxt.match(/ ?(.*?) ?{([^}]*)}/) || [, , cssTxt]
+
+  var cssToJs = (s: string) =>
+    s.replace(/\W+\w/g, (match: string) => match.slice(-1).toUpperCase())
+
+  var properties = rule
+    .split(';')
+    .map((o: string) => o.split(':').map((x: string) => x && x.trim()))
+
+  for (var [property, value] of properties) style[cssToJs(property)] = value
+
+  return { cssText, style }
 }

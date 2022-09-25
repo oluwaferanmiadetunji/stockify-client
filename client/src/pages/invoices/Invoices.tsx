@@ -1,10 +1,11 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Layout from 'components/layout'
 import Box from '@mui/material/Box'
 import styles from './styles'
 import Typography from '@mui/material/Typography'
 import { useAppDispatch, useAppSelector } from 'redux-store/hooks'
 import { selectInvoiceState } from 'redux-store/invoice.slice'
+import { selectCustomerState } from 'redux-store/customers.slice'
 import { makeInvoicesQueryRequest } from 'api/invoices'
 import Button from '@mui/material/Button'
 import FilterInvoices from './FilterInvoices'
@@ -16,20 +17,37 @@ import { ROUTES } from 'utils/constants'
 import { Card, Item } from './styled'
 import ReactApexChart from 'react-apexcharts'
 import { config } from './constant'
-import { renderPrice } from 'utils/helpers'
+import { renderPriceWithCommas } from 'utils/helpers'
+import { makeCustomerQueryRequest } from 'api/customers'
+import CircularProgress from '@mui/material/CircularProgress'
+import { selectAnalyticsState } from 'redux-store/analytics.slice'
+import { getTotalSum } from './utils'
 
 const InvoicesPage = () => {
   const dispatch = useAppDispatch()
   const { filteredInvoices, invoices, isFiltered } = useAppSelector(
     selectInvoiceState,
   )
+  const { customers } = useAppSelector(selectCustomerState)
+  const [loading, setLoading] = useState(false)
+
+  const { invoice } = useAppSelector(selectAnalyticsState)
 
   useEffect(() => {
     ;(async () => {
+      setLoading(true)
+
+      await makeCustomerQueryRequest(
+        'limit=1000&sortBy=createdAt:desc',
+        dispatch,
+      )
+
       await makeInvoicesQueryRequest(
         'limit=1000&sortBy=createdAt:desc',
         dispatch,
       )
+
+      setLoading(false)
     })()
   }, [dispatch])
 
@@ -77,7 +95,7 @@ const InvoicesPage = () => {
             gutterBottom
             component="div"
           >
-            {renderPrice(0)}
+            {renderPriceWithCommas(getTotalSum(invoices))}
           </Typography>
 
           <Typography
@@ -86,7 +104,8 @@ const InvoicesPage = () => {
             gutterBottom
             component="div"
           >
-            From a total of 0 Invoices
+            From a total of {invoice}{' '}
+            {invoices.length > 1 ? 'Invoices' : 'Invoice'}
           </Typography>
         </Box>
 
@@ -100,48 +119,54 @@ const InvoicesPage = () => {
       </Card>
 
       <Box sx={styles.container}>
-        <Item sx={{ height: 550 }}>
-          <VirtualizedTable
-            //@ts-ignore
-            rowCount={isFiltered ? filteredInvoices?.length : invoices.length}
-            rowGetter={({ index }: any) =>
-              isFiltered ? filteredInvoices[index] : invoices[index]
-            }
-            columns={[
-              {
-                width: 300,
-                label: 'Order ID',
-                dataKey: 'invoice_number',
-              },
-              {
-                width: 300,
-                label: 'Customer',
-                dataKey: 'customer',
-              },
-              {
-                width: 300,
-                label: 'Number of Items',
-                dataKey: 'items',
-              },
-              {
-                width: 300,
-                label: 'Invoice Date',
-                dataKey: 'createdAt',
-              },
-              {
-                width: 300,
-                label: 'Due Date',
-                dataKey: 'due_date',
-              },
-              {
-                width: 300,
-                label: 'Price',
-                dataKey: 'items',
-                isPrice: true
-              },
-            ]}
-          />
-        </Item>
+        {loading && !invoices && !customers ? (
+          <Box sx={styles.loader}>
+            <CircularProgress />
+          </Box>
+        ) : (
+          <Item sx={{ height: 550 }}>
+            <VirtualizedTable
+              //@ts-ignore
+              rowCount={isFiltered ? filteredInvoices?.length : invoices.length}
+              rowGetter={({ index }: any) =>
+                isFiltered ? filteredInvoices[index] : invoices[index]
+              }
+              columns={[
+                {
+                  width: 300,
+                  label: 'Order ID',
+                  dataKey: 'invoice_number',
+                },
+                {
+                  width: 300,
+                  label: 'Customer',
+                  dataKey: 'customer',
+                },
+                {
+                  width: 300,
+                  label: 'Number of Items',
+                  dataKey: 'items',
+                },
+                {
+                  width: 300,
+                  label: 'Invoice Date',
+                  dataKey: 'createdAt',
+                },
+                {
+                  width: 300,
+                  label: 'Due Date',
+                  dataKey: 'due_date',
+                },
+                {
+                  width: 300,
+                  label: 'Price',
+                  dataKey: 'items',
+                  isPrice: true,
+                },
+              ]}
+            />
+          </Item>
+        )}
       </Box>
     </Layout>
   )

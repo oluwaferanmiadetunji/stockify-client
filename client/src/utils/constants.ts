@@ -39,3 +39,12 @@ export const API_ROUTES = {
 }
 
 export const Naira = '₦'
+
+export const CompanyDetails = {
+  name: 'Denis4ward',
+  email: 'Denis4ward@gmail.com',
+  phone: '08038551439',
+  address: 'Office 3b, Ogunleye Shopping Complex, Futa South Gate',
+  twitter: '@Denis4ward tech',
+  instagram: '@Denis4ward tech',
+}

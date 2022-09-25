@@ -97,6 +97,7 @@ export interface ProductState {
 export interface AnalyticsInterface {
   customer: number
   product: number
+  invoice: number
 }
 
 export interface CreateNewInvoiceItemInterface {
@@ -128,4 +129,5 @@ export interface InvoiceInterface {
   totalPages: number
   count: number
   isFiltered: boolean
+  invoice: any
 }
