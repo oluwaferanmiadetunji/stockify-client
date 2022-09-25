@@ -1,10 +1,13 @@
 import ReportWrapper from './ReportWrapper'
-import { SectionOne, SectionTwo } from './components'
+import {
+  //  SectionOne,
+  SectionTwo,
+} from './components'
 
 const ReportOverview = () => {
   return (
     <ReportWrapper>
-      <SectionOne />
+      {/* <SectionOne /> */}
 
       <SectionTwo />
     </ReportWrapper>

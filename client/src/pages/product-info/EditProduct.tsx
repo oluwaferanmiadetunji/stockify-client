@@ -259,7 +259,7 @@ export default function EditProduct({ initialState, update }: any) {
                 style: { color: 'rgb(151, 161, 186)' },
               }}
             />
-            <TextField
+            {/* <TextField
               margin="dense"
               name="color"
               label="Color"
@@ -273,7 +273,7 @@ export default function EditProduct({ initialState, update }: any) {
               InputLabelProps={{
                 style: { color: 'rgb(151, 161, 186)' },
               }}
-            />
+            /> */}
             <TextField
               margin="dense"
               name="battery_health"

@@ -165,7 +165,7 @@ const Summary = () => {
                     <Typography sx={styles.label}>Fingerprint</Typography>
                     <Typography sx={styles.label}>Touch</Typography>
                     <Typography sx={styles.label}>Dedicated</Typography>
-                    <Typography sx={styles.label}>Color</Typography>
+                    {/* <Typography sx={styles.label}>Color</Typography> */}
                     <Typography sx={styles.label}>Battery Health</Typography>
                     <Typography sx={styles.label}>Date</Typography>
                   </Grid>
@@ -185,7 +185,7 @@ const Summary = () => {
                     <Typography sx={styles.value}>
                       {data.dedicated === true ? 'Yes' : 'No'}
                     </Typography>
-                    <Typography sx={styles.value}>{data.color}</Typography>
+                    {/* <Typography sx={styles.value}>{data.color}</Typography> */}
                     <Typography sx={styles.value}>
                       {data.battery_health}
                     </Typography>

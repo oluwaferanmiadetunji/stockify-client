@@ -188,7 +188,7 @@ const Products = () => {
                   <StyledTableCell>Product</StyledTableCell>
                   <StyledTableCell>Cost Price</StyledTableCell>
                   <StyledTableCell>Selling Price</StyledTableCell>
-                  <StyledTableCell>Color</StyledTableCell>
+                  {/* <StyledTableCell>Color</StyledTableCell> */}
                   <StyledTableCell>Size</StyledTableCell>
                   <StyledTableCell>Quantity</StyledTableCell>
                   <StyledTableCell>Created</StyledTableCell>
@@ -213,7 +213,7 @@ const Products = () => {
                     </StyledTableCell>
                     <StyledTableCell>₦ {row.costprice}</StyledTableCell>
                     <StyledTableCell>₦ {row.sellingprice}</StyledTableCell>
-                    <StyledTableCell>{row.color}</StyledTableCell>
+                    {/* <StyledTableCell>{row.color}</StyledTableCell> */}
                     <StyledTableCell>{row.size}</StyledTableCell>
                     <StyledTableCell>{row.quantity}</StyledTableCell>
                     <StyledTableCell>
