@@ -50,6 +50,8 @@ class MuiVirtualizedTable extends React.PureComponent<
         return dayjs(cellData).format('MMM D, YYYY HH:mm')
       case 'items':
         return isPrice ? this.getPrice(cellData) : cellData.length
+      case 'isPaid':
+        return cellData ? 'Paid' : 'Unpaid'
       case 'customer':
         //@ts-ignore
         const customer = this.props.customers.find(

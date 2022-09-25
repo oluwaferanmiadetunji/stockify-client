@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from 'redux-store/hooks'
 import Layout from 'components/layout'
 import Typography from '@mui/material/Typography'
 import InventoryIcon from '@mui/icons-material/Inventory'
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
+// import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
 import PaidIcon from '@mui/icons-material/Paid'
 import styles, { Item, StyledTableCell, StyledTableRow } from './styles'
 import Table from '@mui/material/Table'
@@ -21,13 +21,14 @@ import Avatar from '@mui/material/Avatar'
 import ListItem from '@mui/material/ListItem'
 import ListItemText from '@mui/material/ListItemText'
 import ListItemAvatar from '@mui/material/ListItemAvatar'
-import { renderPrice, getTotalProductCount } from 'utils/helpers'
+import { renderPriceWithCommas, getTotalProductCount } from 'utils/helpers'
 import Button from '@mui/material/Button'
 import AddIcon from '@mui/icons-material/Add'
 import { ROUTES } from 'utils/constants'
 import { Link as RouterLink, useNavigate } from 'react-router-dom'
 import FilterProducts from './FilterProducts'
 import Stack from '@mui/material/Stack'
+import EmptyData from 'components/empty'
 
 const Products = () => {
   const dispatch = useAppDispatch()
@@ -150,12 +151,12 @@ const Products = () => {
                 gutterBottom
                 component="div"
               >
-                {renderPrice(totalPrice)}
+                {renderPriceWithCommas(totalPrice)}
               </Typography>
             </Box>
           </Box>
 
-          <Box sx={{ ...styles.card, borderRight: 'unset' }}>
+          {/* <Box sx={{ ...styles.card, borderRight: 'unset' }}>
             <ShoppingCartIcon />
 
             <Box sx={{ marginLeft: '30px' }}>
@@ -174,56 +175,60 @@ const Products = () => {
                 gutterBottom
                 component="div"
               >
-                {renderPrice(totalPrice)}
+                {renderPriceWithCommas(totalPrice)}
               </Typography>
             </Box>
-          </Box>
+          </Box> */}
         </Item>
 
         <Item sx={{ padding: '20px' }}>
-          <TableContainer component={Paper} sx={styles.tableContainer}>
-            <Table sx={{ minWidth: 700 }} aria-label="customized table">
-              <TableHead>
-                <TableRow>
-                  <StyledTableCell>Product</StyledTableCell>
-                  <StyledTableCell>Cost Price</StyledTableCell>
-                  <StyledTableCell>Selling Price</StyledTableCell>
-                  {/* <StyledTableCell>Color</StyledTableCell> */}
-                  <StyledTableCell>Size</StyledTableCell>
-                  <StyledTableCell>Quantity</StyledTableCell>
-                  <StyledTableCell>Created</StyledTableCell>
-                </TableRow>
-              </TableHead>
+          {allProducts.length > 0 ? (
+            <TableContainer component={Paper} sx={styles.tableContainer}>
+              <Table sx={{ minWidth: 700 }} aria-label="customized table">
+                <TableHead>
+                  <TableRow>
+                    <StyledTableCell>Product</StyledTableCell>
+                    <StyledTableCell>Cost Price</StyledTableCell>
+                    <StyledTableCell>Selling Price</StyledTableCell>
+                    {/* <StyledTableCell>Color</StyledTableCell> */}
+                    <StyledTableCell>Size</StyledTableCell>
+                    <StyledTableCell>Quantity</StyledTableCell>
+                    <StyledTableCell>Created</StyledTableCell>
+                  </TableRow>
+                </TableHead>
 
-              <TableBody>
-                {allProducts.map((row) => (
-                  <StyledTableRow
-                    key={row.name}
-                    onClick={() =>
-                      navigate(`${ROUTES.PRODUCTS_SUMMARY}?id=${row.id}`)
-                    }
-                  >
-                    <StyledTableCell component="th" scope="row">
-                      <ListItem>
-                        <ListItemAvatar>
-                          <Avatar src={row.image} />
-                        </ListItemAvatar>
-                        <ListItemText primary={row.name} />
-                      </ListItem>
-                    </StyledTableCell>
-                    <StyledTableCell>₦ {row.costprice}</StyledTableCell>
-                    <StyledTableCell>₦ {row.sellingprice}</StyledTableCell>
-                    {/* <StyledTableCell>{row.color}</StyledTableCell> */}
-                    <StyledTableCell>{row.size}</StyledTableCell>
-                    <StyledTableCell>{row.quantity}</StyledTableCell>
-                    <StyledTableCell>
-                      {dayjs(row.createdAt).format('MMM D, YYYY HH:mm')}
-                    </StyledTableCell>
-                  </StyledTableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
+                <TableBody>
+                  {allProducts.map((row) => (
+                    <StyledTableRow
+                      key={row.name}
+                      onClick={() =>
+                        navigate(`${ROUTES.PRODUCTS_SUMMARY}?id=${row.id}`)
+                      }
+                    >
+                      <StyledTableCell component="th" scope="row">
+                        <ListItem>
+                          <ListItemAvatar>
+                            <Avatar src={row.image} />
+                          </ListItemAvatar>
+                          <ListItemText primary={row.name} />
+                        </ListItem>
+                      </StyledTableCell>
+                      <StyledTableCell>₦ {row.costprice}</StyledTableCell>
+                      <StyledTableCell>₦ {row.sellingprice}</StyledTableCell>
+                      {/* <StyledTableCell>{row.color}</StyledTableCell> */}
+                      <StyledTableCell>{row.size}</StyledTableCell>
+                      <StyledTableCell>{row.quantity}</StyledTableCell>
+                      <StyledTableCell>
+                        {dayjs(row.createdAt).format('MMM D, YYYY HH:mm')}
+                      </StyledTableCell>
+                    </StyledTableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          ) : (
+            <EmptyData />
+          )}
         </Item>
       </Box>
     </Layout>

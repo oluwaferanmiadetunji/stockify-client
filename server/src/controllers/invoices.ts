@@ -114,3 +114,17 @@ export const getInvoice = catchAsync(async (req, res) => {
 
   return res.status(httpStatus.OK).send(invoice)
 })
+
+export const updateInvoice = catchAsync(async (req, res) => {
+  const user = req.currentUser._id
+  const id = req.params.id
+
+  try {
+    const invoice = await invoiceService.updateInvoiceById(id, req.body, user)
+    res.status(httpStatus.OK).send(invoice)
+  } catch (error) {
+    logger.error('Error: ', JSON.stringify(error))
+
+    res.status(httpStatus.NOT_FOUND).json({ message: 'Error updating invoice' })
+  }
+})

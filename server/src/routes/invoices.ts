@@ -25,4 +25,11 @@ router.get(
   invoicesControllers.getInvoice,
 )
 
+router.patch(
+  '/:id',
+  middlewares.isAuth,
+  middlewares.attachUser,
+  invoicesControllers.updateInvoice,
+)
+
 export default router

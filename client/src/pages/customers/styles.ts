@@ -4,8 +4,6 @@ import Paper from '@mui/material/Paper'
 const styles = {
   container: {
     marginTop: '40px',
-    borderBottom: 1,
-    borderColor: 'divider',
   },
   headerText: {
     color: 'white',

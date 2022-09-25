@@ -22,6 +22,7 @@ import { makeCustomerQueryRequest } from 'api/customers'
 import CircularProgress from '@mui/material/CircularProgress'
 import { selectAnalyticsState } from 'redux-store/analytics.slice'
 import { getTotalSum } from './utils'
+import EmptyData from 'components/empty'
 
 const InvoicesPage = () => {
   const dispatch = useAppDispatch()
@@ -125,46 +126,57 @@ const InvoicesPage = () => {
           </Box>
         ) : (
           <Item sx={{ height: 550 }}>
-            <VirtualizedTable
-              //@ts-ignore
-              rowCount={isFiltered ? filteredInvoices?.length : invoices.length}
-              rowGetter={({ index }: any) =>
-                isFiltered ? filteredInvoices[index] : invoices[index]
-              }
-              columns={[
-                {
-                  width: 300,
-                  label: 'Order ID',
-                  dataKey: 'invoice_number',
-                },
-                {
-                  width: 300,
-                  label: 'Customer',
-                  dataKey: 'customer',
-                },
-                {
-                  width: 300,
-                  label: 'Number of Items',
-                  dataKey: 'items',
-                },
-                {
-                  width: 300,
-                  label: 'Invoice Date',
-                  dataKey: 'createdAt',
-                },
-                {
-                  width: 300,
-                  label: 'Due Date',
-                  dataKey: 'due_date',
-                },
-                {
-                  width: 300,
-                  label: 'Price',
-                  dataKey: 'items',
-                  isPrice: true,
-                },
-              ]}
-            />
+            {invoices.length > 0 ? (
+              <VirtualizedTable
+                //@ts-ignore
+                rowCount={
+                  isFiltered ? filteredInvoices?.length : invoices.length
+                }
+                rowGetter={({ index }: any) =>
+                  isFiltered ? filteredInvoices[index] : invoices[index]
+                }
+                columns={[
+                  {
+                    width: 300,
+                    label: 'Order ID',
+                    dataKey: 'invoice_number',
+                  },
+                  {
+                    width: 300,
+                    label: 'Customer',
+                    dataKey: 'customer',
+                  },
+                  {
+                    width: 300,
+                    label: 'Number of Items',
+                    dataKey: 'items',
+                  },
+                  {
+                    width: 300,
+                    label: 'Status',
+                    dataKey: 'isPaid',
+                  },
+                  {
+                    width: 300,
+                    label: 'Invoice Date',
+                    dataKey: 'createdAt',
+                  },
+                  {
+                    width: 300,
+                    label: 'Due Date',
+                    dataKey: 'due_date',
+                  },
+                  {
+                    width: 300,
+                    label: 'Price',
+                    dataKey: 'items',
+                    isPrice: true,
+                  },
+                ]}
+              />
+            ) : (
+              <EmptyData />
+            )}
           </Item>
         )}
       </Box>

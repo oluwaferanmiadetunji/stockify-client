@@ -46,7 +46,7 @@
   margin-left: -110px;
   width: 40px;
   height: 40px;
-  background: url('../images/download.svg');
+  
   transition: opacity 0.2s ease-in-out;
 
   &.loading {
@@ -150,12 +150,12 @@
 }
 
 .image__edit {
-  background-image: url('../images/resize.svg');
+  
   right: 20px;
 }
 
 .image__remove {
-  background-image: url('../images/remove.svg');
+  
   right: -10px;
 }
 

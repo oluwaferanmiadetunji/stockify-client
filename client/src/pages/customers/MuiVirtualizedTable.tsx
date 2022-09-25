@@ -110,24 +110,22 @@ class MuiVirtualizedTable extends React.PureComponent<
               this.props.navigate(`${ROUTES.CUSTOMERS_SUMMARY}?id=${id}`)
             }}
           >
-            {columns.map(({ dataKey, ...other }, index) => {
-              return (
-                //@ts-ignore
-                <Column
-                  key={dataKey}
-                  headerRenderer={(headerProps: any) =>
-                    this.headerRenderer({
-                      ...headerProps,
-                      columnIndex: index,
-                    })
-                  }
-                  className={classes.flexContainer}
-                  cellRenderer={this.cellRenderer}
-                  dataKey={dataKey}
-                  {...other}
-                />
-              )
-            })}
+            {columns.map(({ dataKey, ...other }, index) => (
+              //@ts-ignore
+              <Column
+                key={dataKey}
+                headerRenderer={(headerProps: any) =>
+                  this.headerRenderer({
+                    ...headerProps,
+                    columnIndex: index,
+                  })
+                }
+                className={classes.flexContainer}
+                cellRenderer={this.cellRenderer}
+                dataKey={dataKey}
+                {...other}
+              />
+            ))}
           </Table>
         )}
       </AutoSizer>

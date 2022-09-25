@@ -173,10 +173,13 @@ export const addCommasToNumber = (payload: number): string => {
 }
 
 export const renderPriceWithCommas = (payload: number): string => {
-  let data = payload.toFixed(2).toString().split('.')
-  data[0] = data[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+  if (payload) {
+    let data = payload.toFixed(2).toString().split('.')
+    data[0] = data[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 
-  return `${Naira} ${data.join('.')}`
+    return `${Naira} ${data.join('.')}`
+  }
+  return `${Naira} ${0}`
 }
 
 export const removeEmptyValuesFromObject = (obj: any) => {

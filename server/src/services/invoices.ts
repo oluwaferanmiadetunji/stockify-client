@@ -40,3 +40,25 @@ export const getTotalCount = async (user: string): Promise<number> => {
 
   return count
 }
+
+export const updateInvoiceById = async (
+  id: string,
+  payload: Partial<CreateNewInvoiceType>,
+  creator: string,
+) => {
+  const invoice = await getInvoiceById(id)
+  if (!invoice) {
+    logger.error('Invoice not found')
+    throw new ApiError(httpStatus.NOT_FOUND, 'Invoice not found')
+  }
+
+  if (invoice.user !== creator) {
+    logger.error('Unauthorized. Unable to delete invoice')
+    throw new ApiError(httpStatus.UNAUTHORIZED, 'Unable to delete invoice')
+  }
+
+  Object.assign(invoice, payload)
+  await invoice.save()
+
+  return invoice
+}

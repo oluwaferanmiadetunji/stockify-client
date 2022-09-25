@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import Layout from 'components/layout'
+import CircularProgress from '@mui/material/CircularProgress'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
@@ -34,7 +35,10 @@ import PriceCheckIcon from '@mui/icons-material/PriceCheck'
 import FolderCopyIcon from '@mui/icons-material/FolderCopy'
 import DownloadIcon from '@mui/icons-material/Download'
 import DeleteIcon from '@mui/icons-material/Delete'
-import { makeSingleInvoiceRequest } from 'api/invoices'
+import {
+  makeSingleInvoiceRequest,
+  makeUpdateInvoiceRequest,
+} from 'api/invoices'
 import queryString from 'query-string'
 import BounceLoader from 'react-spinners/BounceLoader'
 import {
@@ -69,6 +73,17 @@ const Details = () => {
       setLoading(false)
     })()
   }, [dispatch, parsed.id])
+
+  const [updateLoading, setUpdateLoading] = useState(false)
+
+  const markAsPaid = async () => {
+    setUpdateLoading(true)
+    await makeUpdateInvoiceRequest(data?.id, { isPaid: true }, dispatch)
+
+    window.location.reload()
+
+    setUpdateLoading(false)
+  }
 
   return (
     <Layout>
@@ -225,14 +240,14 @@ const Details = () => {
                               align="right"
                               sx={{ color: 'rgb(151, 161, 186)' }}
                             >
-                              {renderPriceWithCommas(row.sellingPrice)}
+                              {renderPriceWithCommas(row?.sellingPrice)}
                             </TableCell>
                             <TableCell
                               align="right"
                               sx={{ color: 'rgb(151, 161, 186)' }}
                             >
                               {renderPriceWithCommas(
-                                row.sellingPrice * row.qty,
+                                row?.sellingPrice * row?.qty,
                               )}
                             </TableCell>
                           </TableRow>
@@ -328,17 +343,40 @@ const Details = () => {
                         </ListItemButton>
                       </ListItem>
 
-                      <ListItem disablePadding>
-                        <ListItemButton>
-                          <ListItemIcon>
-                            <PriceCheckIcon />
-                          </ListItemIcon>
-                          <ListItemText
-                            sx={{ color: 'white', fontSize: '14px' }}
-                            primary="Mark Paid"
-                          />
-                        </ListItemButton>
-                      </ListItem>
+                      {!data?.isPaid && (
+                        <ListItem disablePadding>
+                          <ListItemButton
+                            onClick={markAsPaid}
+                            disabled={updateLoading}
+                          >
+                            {updateLoading ? (
+                              <Box
+                                sx={{
+                                  display: 'flex',
+                                  width: '100%',
+                                  textAlign: 'center',
+                                  justifyContent: 'center',
+                                }}
+                              >
+                                <CircularProgress
+                                  size={25}
+                                  sx={{ color: 'white' }}
+                                />
+                              </Box>
+                            ) : (
+                              <>
+                                <ListItemIcon>
+                                  <PriceCheckIcon />
+                                </ListItemIcon>
+                                <ListItemText
+                                  sx={{ color: 'white', fontSize: '14px' }}
+                                  primary="Mark Paid"
+                                />
+                              </>
+                            )}
+                          </ListItemButton>
+                        </ListItem>
+                      )}
 
                       <ListItem disablePadding>
                         <ListItemButton>

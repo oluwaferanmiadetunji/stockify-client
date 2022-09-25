@@ -10,6 +10,7 @@ import AddCustomer from './AddCustomer'
 import FilterCustomer from './FilterCustomers'
 import VirtualizedTable from './MuiVirtualizedTable'
 import Stack from '@mui/material/Stack'
+import EmptyData from 'components/empty'
 
 const Customers = () => {
   const dispatch = useAppDispatch()
@@ -47,40 +48,46 @@ const Customers = () => {
 
       <Box sx={styles.container}>
         <Item sx={{ height: 550 }}>
-          <VirtualizedTable
-            //@ts-ignore
-            rowCount={isFiltered ? filteredCustomers?.length : customers.length}
-            rowGetter={({ index }: any) =>
-              isFiltered ? filteredCustomers[index] : customers[index]
-            }
-            columns={[
-              {
-                width: 300,
-                label: 'First Name',
-                dataKey: 'firstname',
-              },
-              {
-                width: 300,
-                label: 'Last Name',
-                dataKey: 'lastname',
-              },
-              {
-                width: 300,
-                label: 'Email Address',
-                dataKey: 'email',
-              },
-              {
-                width: 300,
-                label: 'Phone Number',
-                dataKey: 'phone',
-              },
-              {
-                width: 300,
-                label: 'Date',
-                dataKey: 'createdAt',
-              },
-            ]}
-          />
+          {customers.length > 0 ? (
+            <VirtualizedTable
+              //@ts-ignore
+              rowCount={
+                isFiltered ? filteredCustomers?.length : customers.length
+              }
+              rowGetter={({ index }: any) =>
+                isFiltered ? filteredCustomers[index] : customers[index]
+              }
+              columns={[
+                {
+                  width: 300,
+                  label: 'First Name',
+                  dataKey: 'firstname',
+                },
+                {
+                  width: 300,
+                  label: 'Last Name',
+                  dataKey: 'lastname',
+                },
+                {
+                  width: 300,
+                  label: 'Email Address',
+                  dataKey: 'email',
+                },
+                {
+                  width: 300,
+                  label: 'Phone Number',
+                  dataKey: 'phone',
+                },
+                {
+                  width: 300,
+                  label: 'Date',
+                  dataKey: 'createdAt',
+                },
+              ]}
+            />
+          ) : (
+            <EmptyData />
+          )}
         </Item>
       </Box>
     </Layout>

@@ -1,7 +1,11 @@
 import axios from 'axios'
 import { API_ROUTES, ROUTES } from 'utils/constants'
 import { toast } from 'react-toast'
-import { addInvoicesData, setInvoicesData } from 'redux-store/invoice.slice'
+import {
+  addInvoicesData,
+  setInvoicesData,
+  updateInvoiceItem,
+} from 'redux-store/invoice.slice'
 import { EmptyObject, AnyAction, Dispatch } from 'redux'
 import { PersistPartial } from 'redux-persist/es/persistReducer'
 import { AuthState } from 'redux-store/types'
@@ -62,6 +66,27 @@ export const makeInvoicesQueryRequest = async (
 export const makeSingleInvoiceRequest = async (id: string): Promise<any> => {
   try {
     const response = await axios.get(`${API_ROUTES.INVOICES}/${id}`)
+    return response.data
+  } catch (err) {
+    //@ts-ignore
+    toast.error(err.response.data.message)
+  }
+}
+
+export const makeUpdateInvoiceRequest = async (
+  id: string,
+  payload: any,
+  dispatch: ThunkDispatch<
+    EmptyObject & { auth: AuthState } & PersistPartial,
+    undefined,
+    AnyAction
+  > &
+    Dispatch<AnyAction>,
+): Promise<any> => {
+  try {
+    const response = await axios.patch(`${API_ROUTES.INVOICES}/${id}`, payload)
+    toast.success('Invoice updated successfully')
+    dispatch(updateInvoiceItem(response.data))
     return response.data
   } catch (err) {
     //@ts-ignore
