@@ -147,12 +147,12 @@ const InvoicesPage = () => {
                     dataKey: 'customer',
                   },
                   {
-                    width: 300,
-                    label: 'Number of Items',
+                    width: 150,
+                    label: 'Qty',
                     dataKey: 'items',
                   },
                   {
-                    width: 300,
+                    width: 200,
                     label: 'Status',
                     dataKey: 'isPaid',
                   },

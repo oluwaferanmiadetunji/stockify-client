@@ -40,8 +40,6 @@ const Preview = () => {
     })()
   }, [dispatch, parsed.id])
 
-  const downloadInvoice = async () => {}
-
   return (
     <Layout>
       <Box sx={styles.container}>
@@ -75,7 +73,6 @@ const Preview = () => {
                   variant="contained"
                   startIcon={<DownloadIcon />}
                   sx={{ color: 'white', textTransform: 'unset' }}
-                  onClick={downloadInvoice}
                 >
                   Download
                 </Button>

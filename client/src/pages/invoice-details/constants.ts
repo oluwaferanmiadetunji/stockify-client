@@ -85,3 +85,10 @@ export const OPTIONS = [
     value: 'payment-received',
   },
 ]
+
+export const LOADING_TYPE = {
+  page: 'page',
+  update: 'update',
+  duplicate: 'duplicate',
+  delete: 'delete',
+}

@@ -5,6 +5,7 @@ import {
   addInvoicesData,
   setInvoicesData,
   updateInvoiceItem,
+  deleteInvoice,
 } from 'redux-store/invoice.slice'
 import { EmptyObject, AnyAction, Dispatch } from 'redux'
 import { PersistPartial } from 'redux-persist/es/persistReducer'
@@ -23,10 +24,11 @@ export const makeCreateInvoiceRequest = async (
     Dispatch<AnyAction>,
   callback: () => void,
   navigate: NavigateFunction,
+  message?: string,
 ) => {
   try {
     const response = await axios.post(`${API_ROUTES.INVOICES}/create`, payload)
-    toast.success('Invoice created successfully')
+    toast.success(message ? message : 'Invoice created successfully')
     dispatch(addInvoicesData(response.data))
     dispatch(updateCount({ type: 'increase', value: 'invoice' }))
     callback()
@@ -88,6 +90,26 @@ export const makeUpdateInvoiceRequest = async (
     toast.success('Invoice updated successfully')
     dispatch(updateInvoiceItem(response.data))
     return response.data
+  } catch (err) {
+    //@ts-ignore
+    toast.error(err.response.data.message)
+  }
+}
+
+export const makeDeleteInvoiceRequest = async (
+  payload: { id: string },
+  dispatch: ThunkDispatch<
+    EmptyObject & { auth: AuthState } & PersistPartial,
+    undefined,
+    AnyAction
+  > &
+    Dispatch<AnyAction>,
+): Promise<void> => {
+  try {
+    await axios.delete(`${API_ROUTES.INVOICES}/${payload.id}`)
+    toast.success('Invoice deleted successfully')
+    dispatch(deleteInvoice(payload.id))
+    dispatch(updateCount({ type: 'decrease', value: 'invoice' }))
   } catch (err) {
     //@ts-ignore
     toast.error(err.response.data.message)

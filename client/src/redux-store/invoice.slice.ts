@@ -109,6 +109,13 @@ const invoiceSlice = createSlice({
     ) => {
       state.invoice = action.payload
     },
+    deleteInvoice: (state: InvoiceInterface, action: PayloadAction<any>) => {
+      const index = state.invoices.findIndex(
+        (invoice) => invoice.id === action.payload,
+      )
+      state.invoices.splice(index, 1)
+      state.count = state.count - 1
+    },
   },
 })
 
@@ -121,6 +128,7 @@ export const {
   clearNewInvoice,
   addInvoicesData,
   setSingleInvoiceData,
+  deleteInvoice,
 } = invoiceSlice.actions
 
 export const selectInvoiceState = (state: RootState) => state.invoice

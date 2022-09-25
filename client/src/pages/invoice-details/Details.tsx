@@ -14,7 +14,7 @@ import VisibilityIcon from '@mui/icons-material/Visibility'
 import Stack from '@mui/material/Stack'
 import Grid from '@mui/material/Grid'
 import { Item } from './styled'
-import { OPTIONS } from './constants'
+import { OPTIONS, LOADING_TYPE } from './constants'
 import dayjs from 'dayjs'
 import Table from '@mui/material/Table'
 import TableBody from '@mui/material/TableBody'
@@ -33,11 +33,12 @@ import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 import PriceCheckIcon from '@mui/icons-material/PriceCheck'
 import FolderCopyIcon from '@mui/icons-material/FolderCopy'
-import DownloadIcon from '@mui/icons-material/Download'
+import { useNavigate } from 'react-router-dom'
 import DeleteIcon from '@mui/icons-material/Delete'
 import {
   makeSingleInvoiceRequest,
   makeUpdateInvoiceRequest,
+  makeDeleteInvoiceRequest,
 } from 'api/invoices'
 import queryString from 'query-string'
 import BounceLoader from 'react-spinners/BounceLoader'
@@ -46,8 +47,11 @@ import {
   setSingleInvoiceData,
 } from 'redux-store/invoice.slice'
 import { useAppDispatch, useAppSelector } from 'redux-store/hooks'
+import { formatCreateInvoicePayload } from './helpers'
+import { makeCreateInvoiceRequest } from 'api/invoices'
 
 const Details = () => {
+  const navigate = useNavigate()
   const parsed: any = queryString.parse(window.location.search)
 
   const dispatch = useAppDispatch()
@@ -58,7 +62,10 @@ const Details = () => {
   const [data, setData] = useState<any>(
     parsed.id === invoice?.id ? invoice : {},
   )
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState({
+    value: false,
+    type: LOADING_TYPE.page,
+  })
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setOption(event.target.value)
@@ -66,23 +73,62 @@ const Details = () => {
 
   useEffect(() => {
     ;(async () => {
-      setLoading(true)
+      setLoading({
+        value: true,
+        type: LOADING_TYPE.page,
+      })
       const response = await makeSingleInvoiceRequest(parsed.id)
       setData(response)
       dispatch(setSingleInvoiceData(response))
-      setLoading(false)
+      setLoading({ value: false, type: LOADING_TYPE.page })
     })()
   }, [dispatch, parsed.id])
 
-  const [updateLoading, setUpdateLoading] = useState(false)
-
   const markAsPaid = async () => {
-    setUpdateLoading(true)
+    setLoading({
+      value: true,
+      type: LOADING_TYPE.update,
+    })
     await makeUpdateInvoiceRequest(data?.id, { isPaid: true }, dispatch)
 
-    window.location.reload()
+    setLoading({ value: false, type: LOADING_TYPE.update })
+  }
 
-    setUpdateLoading(false)
+  const callback = () => {
+    setLoading({
+      value: false,
+      type: LOADING_TYPE.duplicate,
+    })
+  }
+
+  const duplicateInvoice = async () => {
+    setLoading({
+      value: true,
+      type: LOADING_TYPE.duplicate,
+    })
+
+    await makeCreateInvoiceRequest(
+      formatCreateInvoicePayload(data),
+      dispatch,
+      callback,
+      navigate,
+      'Invoice duplicated successfully',
+    )
+  }
+
+  const onDeleteInvoice = async () => {
+    setLoading({
+      value: true,
+      type: LOADING_TYPE.delete,
+    })
+    await makeDeleteInvoiceRequest({ id: data?.id }, dispatch)
+
+    setLoading({
+      value: false,
+      type: LOADING_TYPE.delete,
+    })
+
+    navigate(ROUTES.INVOICE)
   }
 
   return (
@@ -100,7 +146,8 @@ const Details = () => {
           </Button>
         </Box>
 
-        {loading &&
+        {loading.value &&
+        loading.type === LOADING_TYPE.page &&
         Object.keys(data).length === 0 &&
         data.constructor === Object ? (
           <Box sx={styles.loaderContainer}>
@@ -347,9 +394,13 @@ const Details = () => {
                         <ListItem disablePadding>
                           <ListItemButton
                             onClick={markAsPaid}
-                            disabled={updateLoading}
+                            disabled={
+                              loading.value &&
+                              loading.type === LOADING_TYPE.update
+                            }
                           >
-                            {updateLoading ? (
+                            {loading.value &&
+                            loading.type === LOADING_TYPE.update ? (
                               <Box
                                 sx={{
                                   display: 'flex',
@@ -379,38 +430,76 @@ const Details = () => {
                       )}
 
                       <ListItem disablePadding>
-                        <ListItemButton>
-                          <ListItemIcon>
-                            <FolderCopyIcon />
-                          </ListItemIcon>
-                          <ListItemText
-                            sx={{ color: 'white', fontSize: '14px' }}
-                            primary="Duplicate"
-                          />
+                        <ListItemButton
+                          onClick={duplicateInvoice}
+                          disabled={
+                            loading.value &&
+                            loading.type === LOADING_TYPE.duplicate
+                          }
+                        >
+                          {loading.value &&
+                          loading.type === LOADING_TYPE.duplicate ? (
+                            <Box
+                              sx={{
+                                display: 'flex',
+                                width: '100%',
+                                textAlign: 'center',
+                                justifyContent: 'center',
+                              }}
+                            >
+                              <CircularProgress
+                                size={25}
+                                sx={{ color: 'white' }}
+                              />
+                            </Box>
+                          ) : (
+                            <>
+                              <ListItemIcon>
+                                <FolderCopyIcon />
+                              </ListItemIcon>
+                              <ListItemText
+                                sx={{ color: 'white', fontSize: '14px' }}
+                                primary="Duplicate"
+                              />
+                            </>
+                          )}
                         </ListItemButton>
                       </ListItem>
 
                       <ListItem disablePadding>
-                        <ListItemButton>
-                          <ListItemIcon>
-                            <DownloadIcon />
-                          </ListItemIcon>
-                          <ListItemText
-                            sx={{ color: 'white', fontSize: '14px' }}
-                            primary="Download (PDF)"
-                          />
-                        </ListItemButton>
-                      </ListItem>
-
-                      <ListItem disablePadding>
-                        <ListItemButton>
-                          <ListItemIcon>
-                            <DeleteIcon />
-                          </ListItemIcon>
-                          <ListItemText
-                            sx={{ color: 'white', fontSize: '14px' }}
-                            primary="Delete"
-                          />
+                        <ListItemButton
+                          onClick={onDeleteInvoice}
+                          disabled={
+                            loading.value &&
+                            loading.type === LOADING_TYPE.delete
+                          }
+                        >
+                          {loading.value &&
+                          loading.type === LOADING_TYPE.delete ? (
+                            <Box
+                              sx={{
+                                display: 'flex',
+                                width: '100%',
+                                textAlign: 'center',
+                                justifyContent: 'center',
+                              }}
+                            >
+                              <CircularProgress
+                                size={25}
+                                sx={{ color: 'white' }}
+                              />
+                            </Box>
+                          ) : (
+                            <>
+                              <ListItemIcon>
+                                <DeleteIcon />
+                              </ListItemIcon>
+                              <ListItemText
+                                sx={{ color: 'white', fontSize: '14px' }}
+                                primary="Delete"
+                              />
+                            </>
+                          )}
                         </ListItemButton>
                       </ListItem>
                     </List>

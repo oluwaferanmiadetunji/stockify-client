@@ -32,4 +32,11 @@ router.patch(
   invoicesControllers.updateInvoice,
 )
 
+router.delete(
+  '/:id',
+  middlewares.isAuth,
+  middlewares.attachUser,
+  invoicesControllers.deleteInvoice,
+)
+
 export default router

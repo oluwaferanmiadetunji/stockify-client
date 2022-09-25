@@ -128,3 +128,16 @@ export const updateInvoice = catchAsync(async (req, res) => {
     res.status(httpStatus.NOT_FOUND).json({ message: 'Error updating invoice' })
   }
 })
+
+
+export const deleteInvoice = catchAsync(async (req, res) => {
+  try {
+    await invoiceService.deleteInvoiceById(req.params.id)
+
+    res.status(httpStatus.OK).json({ message: 'Invoice deleted successfully' })
+  } catch (error) {
+    logger.error('Error: ', JSON.stringify(error))
+
+    res.status(httpStatus.CONFLICT).json({ message: 'Error deleting invoice' })
+  }
+})

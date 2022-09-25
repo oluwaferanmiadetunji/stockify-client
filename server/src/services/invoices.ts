@@ -62,3 +62,14 @@ export const updateInvoiceById = async (
 
   return invoice
 }
+
+export const deleteInvoiceById = async (id: string) => {
+  const invoice = await getInvoiceById(id)
+
+  if (!invoice) {
+    logger.error('Product not found')
+    throw new ApiError(httpStatus.NOT_FOUND, 'Invoice not found')
+  }
+  await invoice.remove()
+  return invoice
+}
