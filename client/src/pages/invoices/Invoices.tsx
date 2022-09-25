@@ -20,7 +20,6 @@ import { Card, Item } from './styled'
 import { renderPriceWithCommas } from 'utils/helpers'
 import { makeCustomerQueryRequest } from 'api/customers'
 import CircularProgress from '@mui/material/CircularProgress'
-import { selectAnalyticsState } from 'redux-store/analytics.slice'
 import { getTotalSum } from './utils'
 import EmptyData from 'components/empty'
 
@@ -31,8 +30,6 @@ const InvoicesPage = () => {
   )
   const { customers } = useAppSelector(selectCustomerState)
   const [loading, setLoading] = useState(false)
-
-  const { invoice } = useAppSelector(selectAnalyticsState)
 
   useEffect(() => {
     ;(async () => {
@@ -105,7 +102,7 @@ const InvoicesPage = () => {
             gutterBottom
             component="div"
           >
-            From a total of {invoice}{' '}
+            From a total of {invoices.length}{' '}
             {invoices.length > 1 ? 'Invoices' : 'Invoice'}
           </Typography>
         </Box>
