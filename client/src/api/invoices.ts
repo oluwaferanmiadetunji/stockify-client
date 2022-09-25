@@ -7,6 +7,7 @@ import { PersistPartial } from 'redux-persist/es/persistReducer'
 import { AuthState } from 'redux-store/types'
 import { ThunkDispatch } from 'redux-thunk'
 import { NavigateFunction } from 'react-router-dom'
+import { updateCount } from 'redux-store/analytics.slice'
 
 export const makeCreateInvoiceRequest = async (
   payload: any,
@@ -23,6 +24,7 @@ export const makeCreateInvoiceRequest = async (
     const response = await axios.post(`${API_ROUTES.INVOICES}/create`, payload)
     toast.success('Invoice created successfully')
     dispatch(addInvoicesData(response.data))
+    dispatch(updateCount({ type: 'increase', value: 'invoice' }))
     callback()
     navigate(`${ROUTES.INVOICE_DETAILS}?id=${response.data.id}`)
   } catch (err) {

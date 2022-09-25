@@ -15,8 +15,8 @@ import AddIcon from '@mui/icons-material/Add'
 import { Link as RouterLink } from 'react-router-dom'
 import { ROUTES } from 'utils/constants'
 import { Card, Item } from './styled'
-import ReactApexChart from 'react-apexcharts'
-import { config } from './constant'
+// import ReactApexChart from 'react-apexcharts'
+// import { config } from './constant'
 import { renderPriceWithCommas } from 'utils/helpers'
 import { makeCustomerQueryRequest } from 'api/customers'
 import CircularProgress from '@mui/material/CircularProgress'
@@ -109,13 +109,13 @@ const InvoicesPage = () => {
           </Typography>
         </Box>
 
-        <Box>
+        {/* <Box>
           <ReactApexChart
             options={config.options}
             series={config.series}
             type="donut"
           />
-        </Box>
+        </Box> */}
       </Card>
 
       <Box sx={styles.container}>

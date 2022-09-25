@@ -11,7 +11,7 @@ import {
 } from 'react-virtualized'
 import TableCell from '@mui/material/TableCell'
 import { styled } from '@mui/material/styles'
-import { ROUTES, Naira } from 'utils/constants'
+import { ROUTES } from 'utils/constants'
 import WithRouter from 'components/withRouter'
 import dayjs from 'dayjs'
 import { connect } from 'react-redux'
@@ -39,7 +39,7 @@ class MuiVirtualizedTable extends React.PureComponent<
       sum += items[i].sellingPrice * items[i].qty
     }
 
-    return `${Naira} ${renderPriceWithCommas(sum)}`
+    return `${renderPriceWithCommas(sum)}`
   }
 
   renderColumnData = (key: string, cellData: any, isPrice = false) => {
