@@ -4,19 +4,9 @@ import Page from './Page'
 import View from './View'
 import Text from './Text'
 import { CompanyDetails } from 'utils/constants'
-import { Font } from '@react-pdf/renderer'
-
-Font.register({
-  family: 'Nunito',
-  fonts: [
-    { src: 'https://fonts.gstatic.com/s/nunito/v12/XRXV3I6Li01BKofINeaE.ttf' },
-    {
-      src:
-        'https://fonts.gstatic.com/s/nunito/v12/XRXW3I6Li01BKofA6sKUYevN.ttf',
-      fontWeight: 600,
-    },
-  ],
-})
+import dayjs from 'dayjs'
+import { renderPriceWithCommas } from 'utils/helpers'
+import { getTotalPrice } from 'pages/invoice-details/helpers'
 
 interface Props {
   data?: any
@@ -57,17 +47,18 @@ const InvoicePage: FC<Props> = ({ data, pdfMode }) => {
 
           <View className="w-60 right" pdfMode={pdfMode}>
             <Text pdfMode={pdfMode} className="fs-16 bold">
-              #DNS215227834Z
+              Invoice #: {data?.invoice_number}
             </Text>
 
             <Text pdfMode={pdfMode} className="fs-16 bold">
-              Labore aut deleniti
+              Subject: {data?.subject}
             </Text>
             <Text pdfMode={pdfMode} className="fs-16 bold">
-              Jan 22, 2022
+              Issued Date:{' '}
+              {dayjs(data?.issued_date).format('MMM D, YYYY HH:mm')}
             </Text>
             <Text pdfMode={pdfMode} className="fs-16 bold">
-              Oct 23, 2022
+              Due Date: {dayjs(data?.due_date).format('MMM D, YYYY HH:mm')}
             </Text>
           </View>
         </View>
@@ -76,15 +67,15 @@ const InvoicePage: FC<Props> = ({ data, pdfMode }) => {
           <Text
             pdfMode={pdfMode}
             className="fs-20 bold"
-          >{`To: Ali Vasquez`}</Text>
+          >{`To: ${data?.customer?.firstname} ${data?.customer?.lastname}`}</Text>
           <Text
             pdfMode={pdfMode}
             className="fs-14"
-          >{`Phone: +1 (241) 586-2132`}</Text>
+          >{`Phone: ${data?.customer?.phone}`}</Text>
           <Text
             pdfMode={pdfMode}
             className="fs-14"
-          >{`Email: hysywaso@mailinator.com`}</Text>
+          >{`Email: ${data?.customer?.email}`}</Text>
         </View>
 
         <View className="mt-30 bg-dark flex" pdfMode={pdfMode}>
@@ -113,29 +104,29 @@ const InvoicePage: FC<Props> = ({ data, pdfMode }) => {
           </View>
         </View>
 
-        {['', '', ''].map((_, i) => {
+        {data?.items.map((item: any, i: number) => {
           return (
             <View key={i} className="row flex" pdfMode={pdfMode}>
               <View className="w-48 p-4-8 pb-10" pdfMode={pdfMode}>
                 <Text pdfMode={pdfMode} className="fs-14 dark">
-                  iPhone 12
+                  {item?.product?.name}
                 </Text>
               </View>
 
               <View className="w-17 p-4-8 pb-10" pdfMode={pdfMode}>
                 <Text pdfMode={pdfMode} className="fs-14 dark">
-                  1
+                  {item?.qty}
                 </Text>
               </View>
 
               <View className="w-17 p-4-8 pb-10" pdfMode={pdfMode}>
                 <Text pdfMode={pdfMode} className="fs-14 dark">
-                  120
+                  {renderPriceWithCommas(item?.sellingPrice)}
                 </Text>
               </View>
               <View className="w-18 p-4-8 pb-10" pdfMode={pdfMode}>
                 <Text pdfMode={pdfMode} className="dark">
-                  1200
+                  {renderPriceWithCommas(item?.qty * item?.sellingPrice)}
                 </Text>
               </View>
             </View>
@@ -152,7 +143,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode }) => {
               </View>
               <View className="w-50 p-5 flex" pdfMode={pdfMode}>
                 <Text pdfMode={pdfMode} className="dark bold fs-20">
-                  12000
+                  {getTotalPrice(data?.items || [])}
                 </Text>
               </View>
             </View>
@@ -164,10 +155,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode }) => {
             Notes:
           </Text>
           <Text pdfMode={pdfMode} className="fs-14 w-100">
-            Dolore tenetur aut sDolore tenetur aut sDolore tenetur aut sDolore
-            tenetur aut sDolore tenetur aut sDolore tenetur aut sDolore tenetur
-            aut sDolore tenetur aut sDolore tenetur aut sDolore tenetur aut
-            sDolore tenetur aut sDolore tenetur aut
+            {data?.notes}
           </Text>
         </View>
       </Page>

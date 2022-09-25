@@ -10,8 +10,6 @@ import DownloadIcon from '@mui/icons-material/Download'
 import { makeSingleInvoiceRequest } from 'api/invoices'
 import queryString from 'query-string'
 import BounceLoader from 'react-spinners/BounceLoader'
-import { useAppSelector } from 'redux-store/hooks'
-import { selectAuthState } from 'redux-store/auth.slice'
 import InvoicePage from './components/InvoicePage'
 import { PDFDownloadLink } from '@react-pdf/renderer'
 
@@ -29,8 +27,6 @@ const Preview = () => {
       setLoading(false)
     })()
   }, [parsed.id])
-
-  const { user } = useAppSelector(selectAuthState)
 
   const downloadInvoice = async () => {}
 
@@ -58,7 +54,7 @@ const Preview = () => {
               <Typography sx={styles.headerText}>Invoice Preview</Typography>
 
               <PDFDownloadLink
-                document={<InvoicePage pdfMode={true} />}
+                document={<InvoicePage pdfMode={true} data={data} />}
                 fileName={`Invoice: #${data?.invoice_number}.pdf`}
               >
                 <Button
@@ -73,7 +69,7 @@ const Preview = () => {
             </Box>
 
             <Box>
-              <InvoicePage />
+              <InvoicePage data={data} />
             </Box>
           </Box>
         )}

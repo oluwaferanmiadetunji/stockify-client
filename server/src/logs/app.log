@@ -8232,3 +8232,48 @@
 {"level":"error","message":"Error: Error: queryTxt ESERVFAIL cluster0.bqnyokc.mongodb.net","timestamp":"2022-09-25T18:24:31.351Z"}
 {"level":"error","message":"Error: Error: queryTxt ESERVFAIL cluster0.bqnyokc.mongodb.net","timestamp":"2022-09-25T18:25:52.008Z"}
 {"level":"error","message":"Error: Error: querySrv ESERVFAIL _mongodb._tcp.cluster0.bqnyokc.mongodb.net","timestamp":"2022-09-25T18:28:07.367Z"}
+{"level":"error","message":"Error: MongooseServerSelectionError: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://docs.atlas.mongodb.com/security-whitelist/","timestamp":"2022-09-25T18:48:23.310Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-09-25T18:54:44.423Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-09-25T18:54:44.426Z"}
+{"level":"info","message":"OPTIONS /invoices/u80CKIpd 204 - 1.771 ms","timestamp":"2022-09-25T18:54:51.640Z"}
+{"level":"info","message":"GET /invoices/u80CKIpd 200 - 972.117 ms","timestamp":"2022-09-25T18:54:52.618Z"}
+{"level":"info","message":"OPTIONS /invoices/u80CKIpd 204 - 0.316 ms","timestamp":"2022-09-25T18:55:29.479Z"}
+{"level":"info","message":"GET /invoices/u80CKIpd 200 - 1050.526 ms","timestamp":"2022-09-25T18:55:30.533Z"}
+{"level":"info","message":"OPTIONS /invoices/u80CKIpd 204 - 1.025 ms","timestamp":"2022-09-25T18:57:21.928Z"}
+{"level":"info","message":"GET /invoices/u80CKIpd 200 - 1013.936 ms","timestamp":"2022-09-25T18:57:22.948Z"}
+{"level":"info","message":"OPTIONS /invoices/u80CKIpd 204 - 0.121 ms","timestamp":"2022-09-25T18:57:27.874Z"}
+{"level":"info","message":"GET /invoices/u80CKIpd 200 - 1453.351 ms","timestamp":"2022-09-25T18:57:29.334Z"}
+{"level":"info","message":"OPTIONS /invoices/u80CKIpd 204 - 0.550 ms","timestamp":"2022-09-25T18:58:13.712Z"}
+{"level":"info","message":"GET /invoices/u80CKIpd 200 - 1276.461 ms","timestamp":"2022-09-25T18:58:15.001Z"}
+{"level":"info","message":"OPTIONS /invoices/u80CKIpd 204 - 1.383 ms","timestamp":"2022-09-25T19:02:27.436Z"}
+{"level":"info","message":"GET /invoices/u80CKIpd 200 - 1938.358 ms","timestamp":"2022-09-25T19:02:29.379Z"}
+{"level":"info","message":"OPTIONS /invoices/u80CKIpd 204 - 0.374 ms","timestamp":"2022-09-25T19:02:42.163Z"}
+{"level":"info","message":"GET /invoices/u80CKIpd 200 - 1661.344 ms","timestamp":"2022-09-25T19:02:43.832Z"}
+{"level":"info","message":"OPTIONS /invoices/u80CKIpd 204 - 0.432 ms","timestamp":"2022-09-25T19:02:53.394Z"}
+{"level":"info","message":"GET /invoices/u80CKIpd 200 - 2016.834 ms","timestamp":"2022-09-25T19:02:55.426Z"}
+{"level":"info","message":"OPTIONS /invoices/u80CKIpd 204 - 0.636 ms","timestamp":"2022-09-25T19:03:26.948Z"}
+{"level":"info","message":"GET /invoices/u80CKIpd 200 - 972.355 ms","timestamp":"2022-09-25T19:03:27.927Z"}
+{"level":"info","message":"OPTIONS /invoices/u80CKIpd 204 - 0.253 ms","timestamp":"2022-09-25T19:03:57.475Z"}
+{"level":"info","message":"GET /invoices/u80CKIpd 200 - 1029.245 ms","timestamp":"2022-09-25T19:03:58.509Z"}
+{"level":"info","message":"GET /invoices/u80CKIpd 200 - 988.673 ms","timestamp":"2022-09-25T19:04:01.579Z"}
+{"level":"info","message":"OPTIONS /invoices/u80CKIpd 204 - 0.571 ms","timestamp":"2022-09-25T19:05:08.052Z"}
+{"level":"info","message":"GET /invoices/u80CKIpd 200 - 990.372 ms","timestamp":"2022-09-25T19:05:09.046Z"}
+{"level":"info","message":"OPTIONS /invoices/u80CKIpd 204 - 0.224 ms","timestamp":"2022-09-25T19:06:47.386Z"}
+{"level":"info","message":"GET /invoices/u80CKIpd 200 - 910.709 ms","timestamp":"2022-09-25T19:06:48.300Z"}
+{"level":"info","message":"OPTIONS /invoices/u80CKIpd 204 - 1.104 ms","timestamp":"2022-09-25T19:09:19.715Z"}
+{"level":"info","message":"GET /invoices/u80CKIpd 200 - 1404.045 ms","timestamp":"2022-09-25T19:09:21.121Z"}
+{"level":"info","message":"OPTIONS /invoices/u80CKIpd 204 - 0.274 ms","timestamp":"2022-09-25T19:10:22.406Z"}
+{"level":"info","message":"GET /invoices/u80CKIpd 200 - 3758.003 ms","timestamp":"2022-09-25T19:10:26.170Z"}
+{"level":"info","message":"OPTIONS /invoices/u80CKIpd 204 - 0.316 ms","timestamp":"2022-09-25T19:11:00.058Z"}
+{"level":"info","message":"GET /invoices/u80CKIpd 200 - 1339.154 ms","timestamp":"2022-09-25T19:11:01.409Z"}
+{"level":"info","message":"OPTIONS /invoices/u80CKIpd 204 - 0.714 ms","timestamp":"2022-09-25T19:13:51.160Z"}
+{"level":"info","message":"GET /invoices/u80CKIpd 200 - 907.732 ms","timestamp":"2022-09-25T19:13:52.069Z"}
+{"level":"info","message":"OPTIONS /invoices/u80CKIpd 204 - 0.243 ms","timestamp":"2022-09-25T19:14:40.350Z"}
+{"level":"info","message":"GET /invoices/u80CKIpd 200 - 1307.253 ms","timestamp":"2022-09-25T19:14:41.660Z"}
+{"level":"info","message":"GET /invoices/u80CKIpd 200 - 933.924 ms","timestamp":"2022-09-25T19:14:44.185Z"}
+{"level":"info","message":"OPTIONS /invoices/u80CKIpd 204 - 0.191 ms","timestamp":"2022-09-25T19:15:05.698Z"}
+{"level":"info","message":"GET /invoices/u80CKIpd 200 - 1295.945 ms","timestamp":"2022-09-25T19:15:06.996Z"}
+{"level":"info","message":"OPTIONS /invoices/u80CKIpd 204 - 0.382 ms","timestamp":"2022-09-25T19:15:11.853Z"}
+{"level":"info","message":"GET /invoices/u80CKIpd 200 - 986.372 ms","timestamp":"2022-09-25T19:15:12.842Z"}
+{"level":"info","message":"OPTIONS /invoices/u80CKIpd 204 - 0.564 ms","timestamp":"2022-09-25T19:19:17.136Z"}
+{"level":"info","message":"GET /invoices/u80CKIpd 200 - 1381.121 ms","timestamp":"2022-09-25T19:19:18.521Z"}
