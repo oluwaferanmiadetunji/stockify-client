@@ -8,7 +8,7 @@ import { selectInvoiceState } from 'redux-store/invoice.slice'
 import { selectCustomerState } from 'redux-store/customers.slice'
 import { makeInvoicesQueryRequest } from 'api/invoices'
 import Button from '@mui/material/Button'
-import FilterInvoices from './FilterInvoices'
+// import FilterInvoices from './FilterInvoices'
 import VirtualizedTable from './MuiVirtualizedTable'
 import Stack from '@mui/material/Stack'
 import AddIcon from '@mui/icons-material/Add'
@@ -62,7 +62,7 @@ const InvoicesPage = () => {
         </Typography>
 
         <Stack direction="row" spacing={2}>
-          <FilterInvoices />
+          {/* <FilterInvoices /> */}
 
           <Button
             variant="contained"

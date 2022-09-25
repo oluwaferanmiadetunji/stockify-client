@@ -9229,3 +9229,9 @@
 {"level":"info","message":"GET /customer/query?limit=1000&sortBy=createdAt:desc 200 - 815.517 ms","timestamp":"2022-09-25T22:55:42.078Z"}
 {"level":"info","message":"OPTIONS /invoices/query?limit=1000&sortBy=createdAt:desc 204 - 0.070 ms","timestamp":"2022-09-25T22:55:42.114Z"}
 {"level":"info","message":"GET /invoices/query?limit=1000&sortBy=createdAt:desc 200 - 357.922 ms","timestamp":"2022-09-25T22:55:42.474Z"}
+{"level":"info","message":"OPTIONS /customer/query?limit=1000&sortBy=createdAt:desc&firstname=ALi 204 - 0.620 ms","timestamp":"2022-09-25T22:57:06.987Z"}
+{"level":"info","message":"GET /customer/query?limit=1000&sortBy=createdAt:desc&firstname=ALi 200 - 389.235 ms","timestamp":"2022-09-25T22:57:07.379Z"}
+{"level":"info","message":"OPTIONS /customer/query?limit=1000&sortBy=createdAt:desc 204 - 1.262 ms","timestamp":"2022-09-25T22:57:26.140Z"}
+{"level":"info","message":"GET /customer/query?limit=1000&sortBy=createdAt:desc 200 - 1342.470 ms","timestamp":"2022-09-25T22:57:27.486Z"}
+{"level":"info","message":"OPTIONS /invoices/query?limit=1000&sortBy=createdAt:desc 204 - 0.071 ms","timestamp":"2022-09-25T22:57:27.590Z"}
+{"level":"info","message":"GET /invoices/query?limit=1000&sortBy=createdAt:desc 200 - 375.209 ms","timestamp":"2022-09-25T22:57:27.967Z"}
