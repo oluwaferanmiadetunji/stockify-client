@@ -54,6 +54,7 @@ export interface IProducts extends Document {
   sellingprice: number
   user: string
   quantity: number
+  category: string
 }
 
 export interface IInvoice extends Document {
@@ -112,6 +113,7 @@ export type CreateNewProductType = {
   sellingprice: number
   user: string
   quantity?: number
+  category: string
 }
 
 export type CreateNewInvoiceType = {

@@ -10,12 +10,14 @@ router.post(
   middlewares.attachUser,
   productsControllers.createNewProduct,
 )
+
 router.get(
   '/query',
   middlewares.isAuth,
   middlewares.attachUser,
   productsControllers.getProducts,
 )
+
 router.get(
   '/:id',
   middlewares.isAuth,

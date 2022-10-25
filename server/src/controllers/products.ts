@@ -8,7 +8,7 @@ export const createNewProduct = catchAsync(async (req, res) => {
   const user = req.currentUser._id
 
   try {
-    const product = await productService.createProduct({ ...req.body, user})
+    const product = await productService.createProduct({ ...req.body, user })
 
     res.status(httpStatus.CREATED).send(product)
   } catch (error) {
@@ -23,7 +23,7 @@ export const createNewProduct = catchAsync(async (req, res) => {
 })
 
 export const getProducts = catchAsync(async (req, res) => {
-  const filter = pickQueryParams(req.query, ['name'])
+  const filter = pickQueryParams(req.query, ['name', 'category'])
   const options = pickQueryParams(req.query, [
     'sortBy',
     'limit',

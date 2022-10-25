@@ -13,8 +13,9 @@ import { useAppDispatch } from 'redux-store/hooks'
 import { makeAddNewProductRequest } from 'api/products'
 import { initialState } from './constants'
 import { toast } from 'react-toast'
+import { UploadImageProps } from './types'
 
-const FileUpload = ({ state, setState, setStep, onCancel }: any) => {
+const FileUpload = ({ state, setState, setStep, onCancel }: UploadImageProps) => {
   const [fileList, setFileList] = useState<any>([])
 
   const [previewVisible, setPreviewVisible] = useState(false)

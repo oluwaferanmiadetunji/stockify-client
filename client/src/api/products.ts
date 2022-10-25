@@ -7,7 +7,8 @@ import {
   deleteProduct,
   setProductPrice,
   updatePrice,
-  updateProduct,setProductsFilter
+  updateProduct,
+  setProductsFilter,
 } from 'redux-store/products.slice'
 import { EmptyObject, AnyAction, Dispatch } from 'redux'
 import { PersistPartial } from 'redux-persist/es/persistReducer'
@@ -33,7 +34,7 @@ export const makeAddNewProductRequest = async (
     dispatch(addProducts(response.data))
     dispatch(updateCount({ type: 'increase', value: 'product' }))
 
-    dispatch(updatePrice({ type: 'increase', value: payload.price }))
+    dispatch(updatePrice({ type: 'increase', value: payload.sellingprice }))
     callback()
   } catch (err) {
     toast.error(

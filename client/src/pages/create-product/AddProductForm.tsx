@@ -5,8 +5,9 @@ import Box from '@mui/material/Box'
 import styles from './styles'
 import { Naira } from 'utils/constants'
 import { selectOptions } from './constants'
+import { AddProductFormProps } from './types'
 
-const AddProduct = ({ handleChange, state }: any) => {
+const AddProduct = ({ handleChange, state }: AddProductFormProps) => {
   return (
     <Box>
       <Box
@@ -18,6 +19,7 @@ const AddProduct = ({ handleChange, state }: any) => {
       >
         <TextField
           autoFocus
+          placeholder="iPhone 12"
           margin="dense"
           name="name"
           label="Product name"
@@ -94,6 +96,21 @@ const AddProduct = ({ handleChange, state }: any) => {
         />
         <TextField
           margin="dense"
+          name="category"
+          label="Product Category"
+          type="text"
+          fullWidth
+          variant="standard"
+          value={state.category}
+          required
+          onChange={handleChange}
+          sx={styles.textfield}
+          InputLabelProps={{
+            style: { color: 'rgb(151, 161, 186)' },
+          }}
+        />
+        <TextField
+          margin="dense"
           name="supplier"
           label="Product Supplier"
           type="text"
@@ -138,6 +155,7 @@ const AddProduct = ({ handleChange, state }: any) => {
           }}
         />
         <TextField
+          placeholder="8 GB"
           margin="dense"
           name="RAM"
           label="Specification (RAM)"
@@ -152,6 +170,7 @@ const AddProduct = ({ handleChange, state }: any) => {
           }}
         />
         <TextField
+          placeholder="256 GB"
           margin="dense"
           name="ROM"
           label="Specification (ROM)"
@@ -180,10 +199,11 @@ const AddProduct = ({ handleChange, state }: any) => {
           }}
         />
         <TextField
+          placeholder="12 inches"
           margin="dense"
           name="size"
           label="Product size (in inches)"
-          type="text"
+          type="string"
           fullWidth
           required
           variant="standard"
@@ -209,6 +229,7 @@ const AddProduct = ({ handleChange, state }: any) => {
           }}
         />
         <TextField
+          placeholder="Black"
           margin="dense"
           name="color"
           label="Color"
@@ -224,6 +245,7 @@ const AddProduct = ({ handleChange, state }: any) => {
           }}
         />
         <TextField
+          placeholder="100%"
           margin="dense"
           name="battery_health"
           label="Battery Health"

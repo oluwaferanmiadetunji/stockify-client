@@ -220,3 +220,6 @@ export const parseCSSText = (cssText: any) => {
 
   return { cssText, style }
 }
+
+export const formatWord = (string: string): string =>
+  string ? string.charAt(0).toUpperCase() + string.slice(1) : ''

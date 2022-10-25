@@ -9235,3 +9235,275 @@
 {"level":"info","message":"GET /customer/query?limit=1000&sortBy=createdAt:desc 200 - 1342.470 ms","timestamp":"2022-09-25T22:57:27.486Z"}
 {"level":"info","message":"OPTIONS /invoices/query?limit=1000&sortBy=createdAt:desc 204 - 0.071 ms","timestamp":"2022-09-25T22:57:27.590Z"}
 {"level":"info","message":"GET /invoices/query?limit=1000&sortBy=createdAt:desc 200 - 375.209 ms","timestamp":"2022-09-25T22:57:27.967Z"}
+{"level":"info","message":"GET /customer/query?limit=1000&sortBy=createdAt:desc - - - ms","timestamp":"2022-09-25T22:57:44.799Z"}
+{"level":"info","message":"OPTIONS /customer/query?limit=1000&sortBy=createdAt:desc 204 - 0.110 ms","timestamp":"2022-09-25T22:57:45.870Z"}
+{"level":"info","message":"OPTIONS /customer/query?limit=1000&sortBy=createdAt:desc 204 - 0.021 ms","timestamp":"2022-09-25T22:57:45.871Z"}
+{"level":"info","message":"GET /customer/query?limit=1000&sortBy=createdAt:desc 200 - 5445.298 ms","timestamp":"2022-09-25T22:57:51.319Z"}
+{"level":"info","message":"GET /customer/query?limit=1000&sortBy=createdAt:desc 200 - 588.535 ms","timestamp":"2022-09-25T22:57:51.912Z"}
+{"level":"info","message":"OPTIONS /customer/query?limit=1000&sortBy=createdAt:desc&firstname=Ali 204 - 0.114 ms","timestamp":"2022-09-25T22:57:52.260Z"}
+{"level":"info","message":"GET /customer/query?limit=1000&sortBy=createdAt:desc&firstname=Ali 200 - 338.246 ms","timestamp":"2022-09-25T22:57:52.600Z"}
+{"level":"info","message":"OPTIONS /customer/sUzdqw69 204 - 0.082 ms","timestamp":"2022-09-25T22:57:54.400Z"}
+{"level":"info","message":"GET /customer/sUzdqw69 200 - 311.740 ms","timestamp":"2022-09-25T22:57:54.715Z"}
+{"level":"info","message":"OPTIONS /customer/sUzdqw69 204 - 8.161 ms","timestamp":"2022-09-26T08:14:42.148Z"}
+{"level":"info","message":"GET /customer/sUzdqw69 200 - 3277.763 ms","timestamp":"2022-09-26T08:14:45.458Z"}
+{"isOperational":false,"level":"error","statusCode":500,"timestamp":"2022-09-26T12:55:18.788Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-10-23T18:36:20.690Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-10-23T18:42:53.134Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-10-23T18:42:53.140Z"}
+{"level":"info","message":"OPTIONS /auth/login 204 - 1.993 ms","timestamp":"2022-10-23T19:03:49.115Z"}
+{"level":"info","message":"POST /auth/login 200 - 549.293 ms","timestamp":"2022-10-23T19:03:49.671Z"}
+{"level":"info","message":"OPTIONS /analytics/reports 204 - 0.063 ms","timestamp":"2022-10-23T19:03:49.831Z"}
+{"level":"info","message":"GET /analytics/reports 200 - 697.660 ms","timestamp":"2022-10-23T19:03:50.532Z"}
+{"level":"info","message":"OPTIONS /customer/query?limit=1000&sortBy=createdAt:desc 204 - 0.399 ms","timestamp":"2022-10-23T19:04:00.568Z"}
+{"level":"info","message":"OPTIONS /customer/query?limit=1000&sortBy=createdAt:desc 204 - 0.212 ms","timestamp":"2022-10-23T19:04:00.587Z"}
+{"level":"info","message":"GET /customer/query?limit=1000&sortBy=createdAt:desc 200 - 887.051 ms","timestamp":"2022-10-23T19:04:01.457Z"}
+{"level":"info","message":"GET /customer/query?limit=1000&sortBy=createdAt:desc 200 - 671.756 ms","timestamp":"2022-10-23T19:04:02.132Z"}
+{"level":"info","message":"OPTIONS /analytics/reports 204 - 0.164 ms","timestamp":"2022-10-23T19:04:03.988Z"}
+{"level":"info","message":"GET /analytics/reports 200 - 642.363 ms","timestamp":"2022-10-23T19:04:04.637Z"}
+{"level":"info","message":"OPTIONS /analytics/reports 204 - 4.481 ms","timestamp":"2022-10-24T07:49:23.081Z"}
+{"level":"info","message":"GET /analytics/reports 200 - 1839.322 ms","timestamp":"2022-10-24T07:49:24.933Z"}
+{"level":"info","message":"OPTIONS /auth/login 204 - 0.180 ms","timestamp":"2022-10-24T07:49:28.759Z"}
+{"level":"info","message":"POST /auth/login 200 - 406.614 ms","timestamp":"2022-10-24T07:49:29.167Z"}
+{"level":"info","message":"OPTIONS /analytics/reports 204 - 0.078 ms","timestamp":"2022-10-24T07:49:29.203Z"}
+{"level":"info","message":"GET /analytics/reports 200 - 554.000 ms","timestamp":"2022-10-24T07:49:29.774Z"}
+{"level":"info","message":"OPTIONS /product/create 204 - 1.806 ms","timestamp":"2022-10-24T07:55:17.144Z"}
+{"level":"info","message":"POST /product/create 201 - 569.431 ms","timestamp":"2022-10-24T07:55:17.718Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 0.571 ms","timestamp":"2022-10-24T07:56:16.009Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc 200 - 1644.613 ms","timestamp":"2022-10-24T07:56:17.690Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 1.929 ms","timestamp":"2022-10-24T08:01:49.256Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc 200 - 442.862 ms","timestamp":"2022-10-24T08:01:49.707Z"}
+{"level":"info","message":"OPTIONS /analytics/reports 204 - 1.601 ms","timestamp":"2022-10-24T08:16:33.737Z"}
+{"level":"info","message":"OPTIONS /product/cBG0GyyD 204 - 0.081 ms","timestamp":"2022-10-24T08:16:33.788Z"}
+{"level":"info","message":"GET /product/cBG0GyyD 200 - 321.384 ms","timestamp":"2022-10-24T08:16:34.111Z"}
+{"level":"info","message":"GET /analytics/reports 200 - 612.369 ms","timestamp":"2022-10-24T08:16:34.355Z"}
+{"level":"info","message":"OPTIONS /product/cBG0GyyD 204 - 0.334 ms","timestamp":"2022-10-24T08:16:42.234Z"}
+{"level":"info","message":"DELETE /product/cBG0GyyD 200 - 465.080 ms","timestamp":"2022-10-24T08:16:42.750Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 0.149 ms","timestamp":"2022-10-24T08:16:42.812Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc 200 - 321.031 ms","timestamp":"2022-10-24T08:16:43.147Z"}
+{"level":"info","message":"OPTIONS /analytics/reports 204 - 1.121 ms","timestamp":"2022-10-24T08:20:38.201Z"}
+{"level":"info","message":"OPTIONS /product/EpRFx30i 204 - 0.124 ms","timestamp":"2022-10-24T08:20:38.203Z"}
+{"level":"info","message":"GET /product/EpRFx30i 200 - 320.180 ms","timestamp":"2022-10-24T08:20:38.557Z"}
+{"level":"info","message":"GET /analytics/reports 200 - 656.524 ms","timestamp":"2022-10-24T08:20:38.861Z"}
+{"level":"info","message":"OPTIONS /product/EpRFx30i 204 - 0.432 ms","timestamp":"2022-10-24T08:20:47.871Z"}
+{"level":"info","message":"PATCH /product/EpRFx30i 200 - 546.485 ms","timestamp":"2022-10-24T08:20:48.420Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 0.849 ms","timestamp":"2022-10-24T08:20:52.223Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc 200 - 296.239 ms","timestamp":"2022-10-24T08:20:52.521Z"}
+{"level":"info","message":"OPTIONS /customer/query?limit=1000&sortBy=createdAt:desc 204 - 2.600 ms","timestamp":"2022-10-24T09:51:57.125Z"}
+{"level":"info","message":"OPTIONS /customer/query?limit=1000&sortBy=createdAt:desc 204 - 0.732 ms","timestamp":"2022-10-24T09:51:57.139Z"}
+{"level":"info","message":"GET /customer/query?limit=1000&sortBy=createdAt:desc 200 - 2412.049 ms","timestamp":"2022-10-24T09:51:59.559Z"}
+{"level":"info","message":"GET /customer/query?limit=1000&sortBy=createdAt:desc 200 - 455.376 ms","timestamp":"2022-10-24T09:52:00.024Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 0.122 ms","timestamp":"2022-10-24T09:52:02.400Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc 200 - 353.900 ms","timestamp":"2022-10-24T09:52:02.756Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc&name=iphone 204 - 0.355 ms","timestamp":"2022-10-24T09:52:09.802Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc&name=iphone 200 - 382.005 ms","timestamp":"2022-10-24T09:52:10.188Z"}
+{"level":"info","message":"OPTIONS /customer/query?limit=1000&sortBy=createdAt:desc 204 - 0.657 ms","timestamp":"2022-10-24T09:53:21.823Z"}
+{"level":"info","message":"OPTIONS /customer/query?limit=1000&sortBy=createdAt:desc 204 - 0.464 ms","timestamp":"2022-10-24T09:53:21.825Z"}
+{"level":"info","message":"GET /customer/query?limit=1000&sortBy=createdAt:desc 200 - 621.553 ms","timestamp":"2022-10-24T09:53:22.454Z"}
+{"level":"info","message":"GET /customer/query?limit=1000&sortBy=createdAt:desc 200 - 437.690 ms","timestamp":"2022-10-24T09:53:22.893Z"}
+{"level":"info","message":"OPTIONS /customer/query?limit=1000&sortBy=createdAt:desc&firstname=Ali 204 - 0.855 ms","timestamp":"2022-10-24T09:53:28.169Z"}
+{"level":"info","message":"GET /customer/query?limit=1000&sortBy=createdAt:desc&firstname=Ali 200 - 337.329 ms","timestamp":"2022-10-24T09:53:28.513Z"}
+{"level":"info","message":"OPTIONS /customer/query?limit=1000&sortBy=createdAt:desc 204 - 0.287 ms","timestamp":"2022-10-24T09:53:35.745Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 0.079 ms","timestamp":"2022-10-24T09:53:35.747Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc 200 - 1637.611 ms","timestamp":"2022-10-24T09:53:37.433Z"}
+{"level":"info","message":"GET /customer/query?limit=1000&sortBy=createdAt:desc 200 - 1685.102 ms","timestamp":"2022-10-24T09:53:37.433Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 1.806 ms","timestamp":"2022-10-24T10:07:35.301Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc 200 - 382.614 ms","timestamp":"2022-10-24T10:07:35.689Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 0.467 ms","timestamp":"2022-10-24T10:08:13.171Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc 200 - 316.355 ms","timestamp":"2022-10-24T10:08:13.490Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 2.459 ms","timestamp":"2022-10-24T10:14:25.705Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc 200 - 359.133 ms","timestamp":"2022-10-24T10:14:26.071Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 1.326 ms","timestamp":"2022-10-24T10:14:42.440Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc 200 - 339.282 ms","timestamp":"2022-10-24T10:14:42.785Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc&name=Iphone%2011 204 - 1.631 ms","timestamp":"2022-10-24T10:16:27.742Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc&name=Iphone%2011 200 - 371.768 ms","timestamp":"2022-10-24T10:16:28.116Z"}
+{"level":"info","message":"OPTIONS /analytics/reports 204 - 2.914 ms","timestamp":"2022-10-24T10:19:22.980Z"}
+{"level":"info","message":"OPTIONS /product/EpRFx30i 204 - 0.101 ms","timestamp":"2022-10-24T10:19:22.986Z"}
+{"level":"info","message":"GET /product/EpRFx30i 200 - 302.249 ms","timestamp":"2022-10-24T10:19:23.314Z"}
+{"level":"info","message":"GET /analytics/reports 200 - 634.855 ms","timestamp":"2022-10-24T10:19:23.623Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 0.193 ms","timestamp":"2022-10-24T10:19:24.683Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc 200 - 336.095 ms","timestamp":"2022-10-24T10:19:25.021Z"}
+{"level":"info","message":"OPTIONS /customer/query?limit=1000&sortBy=createdAt:desc 204 - 0.927 ms","timestamp":"2022-10-24T10:19:43.853Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 0.088 ms","timestamp":"2022-10-24T10:19:43.855Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc 200 - 360.486 ms","timestamp":"2022-10-24T10:19:44.277Z"}
+{"level":"info","message":"GET /customer/query?limit=1000&sortBy=createdAt:desc 200 - 496.391 ms","timestamp":"2022-10-24T10:19:44.401Z"}
+{"level":"info","message":"OPTIONS /invoices/create 204 - 0.367 ms","timestamp":"2022-10-24T10:20:22.362Z"}
+{"level":"info","message":"POST /invoices/create 201 - 1400.367 ms","timestamp":"2022-10-24T10:20:23.764Z"}
+{"level":"info","message":"OPTIONS /invoices/mgBWP14X 204 - 0.252 ms","timestamp":"2022-10-24T10:20:23.938Z"}
+{"level":"info","message":"GET /invoices/mgBWP14X 200 - 784.998 ms","timestamp":"2022-10-24T10:20:24.727Z"}
+{"level":"info","message":"OPTIONS /invoices/mgBWP14X 204 - 0.243 ms","timestamp":"2022-10-24T10:20:35.282Z"}
+{"level":"info","message":"GET /invoices/mgBWP14X 200 - 669.654 ms","timestamp":"2022-10-24T10:20:35.962Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-10-24T10:26:38.106Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-10-24T10:26:38.108Z"}
+{"level":"error","message":"POST /product/create 401 - 104.445 ms - message: -","timestamp":"2022-10-24T11:23:43.148Z"}
+{"level":"info","message":"POST /auth/login 200 - 445.949 ms","timestamp":"2022-10-24T11:23:49.767Z"}
+{"level":"error","message":"Error: ","timestamp":"2022-10-24T11:24:00.769Z"}
+{"level":"error","message":"POST /product/create 409 - 390.179 ms - message: -","timestamp":"2022-10-24T11:24:00.774Z"}
+{"level":"error","message":"Error: ","timestamp":"2022-10-24T11:24:18.944Z"}
+{"level":"error","message":"POST /product/create 409 - 361.612 ms - message: -","timestamp":"2022-10-24T11:24:18.949Z"}
+{"level":"info","message":"POST /product/create 201 - 490.609 ms","timestamp":"2022-10-24T11:24:26.628Z"}
+{"level":"info","message":"GET /product/query?limit=100&sortBy=createdAt:desc 200 - 487.938 ms","timestamp":"2022-10-24T11:24:32.563Z"}
+{"level":"info","message":"GET /product/query?limit=100&sortBy=createdAt:asc 200 - 340.343 ms","timestamp":"2022-10-24T11:24:53.471Z"}
+{"level":"info","message":"DELETE /product/q30cbB6y 200 - 474.032 ms","timestamp":"2022-10-24T11:25:16.995Z"}
+{"level":"info","message":"DELETE /product/VObzUd3s 200 - 466.042 ms","timestamp":"2022-10-24T11:25:25.584Z"}
+{"level":"info","message":"DELETE /product/NzWZvEdv 200 - 466.847 ms","timestamp":"2022-10-24T11:25:33.630Z"}
+{"level":"info","message":"DELETE /product/ubTM6QNR 200 - 470.517 ms","timestamp":"2022-10-24T11:25:41.898Z"}
+{"level":"info","message":"DELETE /product/ECgtu0zw 200 - 537.790 ms","timestamp":"2022-10-24T11:25:50.079Z"}
+{"level":"info","message":"GET /product/query?limit=100&sortBy=createdAt:asc 200 - 333.923 ms","timestamp":"2022-10-24T11:25:52.063Z"}
+{"level":"info","message":"DELETE /product/b3uorMpx 200 - 438.057 ms","timestamp":"2022-10-24T11:26:06.267Z"}
+{"level":"info","message":"DELETE /product/GGg5W0bz 200 - 455.933 ms","timestamp":"2022-10-24T11:26:14.755Z"}
+{"level":"info","message":"DELETE /product/qfLPxq0Q 200 - 425.778 ms","timestamp":"2022-10-24T11:26:22.176Z"}
+{"level":"info","message":"DELETE /product/GhIbbv4M 200 - 453.799 ms","timestamp":"2022-10-24T11:26:28.912Z"}
+{"level":"info","message":"DELETE /product/HS2jFwWt 200 - 497.242 ms","timestamp":"2022-10-24T11:26:35.494Z"}
+{"level":"info","message":"DELETE /product/dVCAJYTi 200 - 429.214 ms","timestamp":"2022-10-24T11:26:42.562Z"}
+{"level":"info","message":"DELETE /product/cn9GVuJy 200 - 442.485 ms","timestamp":"2022-10-24T11:26:49.507Z"}
+{"level":"info","message":"DELETE /product/zUPwihSi 200 - 456.160 ms","timestamp":"2022-10-24T11:26:56.127Z"}
+{"level":"info","message":"DELETE /product/tOmDHmlC 200 - 510.775 ms","timestamp":"2022-10-24T11:27:03.518Z"}
+{"level":"info","message":"DELETE /product/85L6X3CG 200 - 453.673 ms","timestamp":"2022-10-24T11:27:10.419Z"}
+{"level":"info","message":"DELETE /product/Cr3jZqiY 200 - 480.789 ms","timestamp":"2022-10-24T11:27:17.035Z"}
+{"level":"info","message":"GET /product/query?limit=100&sortBy=createdAt:asc 200 - 307.640 ms","timestamp":"2022-10-24T11:29:04.739Z"}
+{"level":"info","message":"DELETE /product/Azrj5G22 200 - 530.494 ms","timestamp":"2022-10-24T11:29:14.231Z"}
+{"level":"info","message":"DELETE /product/vlorTyRJ 200 - 460.071 ms","timestamp":"2022-10-24T11:29:22.253Z"}
+{"level":"info","message":"DELETE /product/BEA6ieXJ 200 - 492.001 ms","timestamp":"2022-10-24T11:29:30.046Z"}
+{"level":"info","message":"DELETE /product/paZAjVdA 200 - 444.048 ms","timestamp":"2022-10-24T11:29:36.963Z"}
+{"level":"info","message":"DELETE /product/Bk9aqTgw 200 - 492.198 ms","timestamp":"2022-10-24T11:29:44.193Z"}
+{"level":"info","message":"DELETE /product/EpRFx30i 200 - 474.515 ms","timestamp":"2022-10-24T11:29:51.097Z"}
+{"level":"info","message":"GET /product/query?limit=100&sortBy=createdAt:asc 200 - 449.175 ms","timestamp":"2022-10-24T11:29:55.426Z"}
+{"level":"info","message":"GET /product/query?limit=100&sortBy=createdAt:asc 200 - 301.455 ms","timestamp":"2022-10-24T11:32:03.204Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-10-24T11:33:55.558Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-10-24T11:33:55.562Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-10-24T11:36:27.819Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-10-24T11:36:27.826Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-10-24T11:37:09.675Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-10-24T11:37:09.688Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-10-24T11:38:10.844Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-10-24T11:38:10.848Z"}
+{"level":"info","message":"POST /seeder/products/add 201 - 30940.645 ms","timestamp":"2022-10-24T11:38:47.806Z"}
+{"level":"info","message":"GET /product/query?limit=100&sortBy=createdAt:asc 200 - 668.153 ms","timestamp":"2022-10-24T11:45:20.604Z"}
+{"level":"info","message":"GET /product/query?limit=100&sortBy=createdAt:asc 200 - 2231.252 ms","timestamp":"2022-10-24T12:09:19.452Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-10-24T12:11:06.573Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-10-24T12:11:06.576Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-10-24T12:13:04.266Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-10-24T12:13:04.275Z"}
+{"level":"info","message":"POST /seeder/products/add 201 - 33619.561 ms","timestamp":"2022-10-24T12:13:44.264Z"}
+{"level":"info","message":"GET /product/query?limit=100&sortBy=createdAt:asc 200 - 675.603 ms","timestamp":"2022-10-24T12:16:20.050Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-10-24T12:18:06.888Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-10-24T12:18:06.909Z"}
+{"level":"info","message":"POST /seeder/products/add 201 - 32701.956 ms","timestamp":"2022-10-24T12:18:44.666Z"}
+{"level":"info","message":"GET /product/query?limit=100&sortBy=createdAt:asc 200 - 730.938 ms","timestamp":"2022-10-24T12:37:25.243Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 2.798 ms","timestamp":"2022-10-24T12:37:39.237Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc 200 - 711.588 ms","timestamp":"2022-10-24T12:37:39.953Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 1.678 ms","timestamp":"2022-10-24T12:37:44.856Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc 200 - 722.477 ms","timestamp":"2022-10-24T12:37:45.581Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 0.310 ms","timestamp":"2022-10-24T12:37:55.617Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc 200 - 690.224 ms","timestamp":"2022-10-24T12:37:56.310Z"}
+{"level":"info","message":"OPTIONS /analytics/reports 204 - 0.563 ms","timestamp":"2022-10-24T12:37:58.150Z"}
+{"level":"info","message":"GET /analytics/reports 200 - 664.272 ms","timestamp":"2022-10-24T12:37:58.823Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc 200 - 628.559 ms","timestamp":"2022-10-24T12:38:00.881Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 5.242 ms","timestamp":"2022-10-24T16:52:07.614Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc 200 - 2656.255 ms","timestamp":"2022-10-24T16:52:10.284Z"}
+{"level":"info","message":"OPTIONS /analytics/reports 204 - 0.503 ms","timestamp":"2022-10-24T16:53:09.321Z"}
+{"level":"info","message":"OPTIONS /product/iL3Omlj7 204 - 0.118 ms","timestamp":"2022-10-24T16:53:09.325Z"}
+{"level":"info","message":"GET /product/iL3Omlj7 200 - 315.616 ms","timestamp":"2022-10-24T16:53:09.731Z"}
+{"level":"info","message":"GET /analytics/reports 200 - 673.587 ms","timestamp":"2022-10-24T16:53:10.007Z"}
+{"level":"info","message":"OPTIONS /product/iL3Omlj7 204 - 6.981 ms","timestamp":"2022-10-24T16:53:54.745Z"}
+{"level":"info","message":"GET /product/iL3Omlj7 200 - 456.176 ms","timestamp":"2022-10-24T16:53:55.211Z"}
+{"level":"info","message":"GET /product/iL3Omlj7 200 - 370.860 ms","timestamp":"2022-10-24T16:53:58.900Z"}
+{"level":"info","message":"OPTIONS /product/iL3Omlj7 204 - 4.175 ms","timestamp":"2022-10-24T16:54:01.530Z"}
+{"level":"info","message":"GET /product/iL3Omlj7 200 - 383.150 ms","timestamp":"2022-10-24T16:54:01.920Z"}
+{"level":"info","message":"GET /product/iL3Omlj7 200 - 323.660 ms","timestamp":"2022-10-24T16:54:03.759Z"}
+{"level":"info","message":"OPTIONS /analytics/reports 204 - 0.620 ms","timestamp":"2022-10-24T16:54:27.317Z"}
+{"level":"info","message":"OPTIONS /product/iL3Omlj7 204 - 1.502 ms","timestamp":"2022-10-24T16:54:27.326Z"}
+{"level":"info","message":"GET /product/iL3Omlj7 200 - 304.410 ms","timestamp":"2022-10-24T16:54:27.650Z"}
+{"level":"info","message":"GET /analytics/reports 200 - 601.051 ms","timestamp":"2022-10-24T16:54:27.930Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 3.441 ms","timestamp":"2022-10-24T16:57:08.197Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc 200 - 768.284 ms","timestamp":"2022-10-24T16:57:08.973Z"}
+{"level":"info","message":"OPTIONS /analytics/reports 204 - 0.508 ms","timestamp":"2022-10-24T16:57:12.959Z"}
+{"level":"info","message":"OPTIONS /product/8lzNowF0 204 - 0.127 ms","timestamp":"2022-10-24T16:57:12.967Z"}
+{"level":"info","message":"GET /product/8lzNowF0 200 - 314.590 ms","timestamp":"2022-10-24T16:57:13.283Z"}
+{"level":"info","message":"GET /analytics/reports 200 - 636.758 ms","timestamp":"2022-10-24T16:57:13.599Z"}
+{"level":"info","message":"OPTIONS /analytics/reports 204 - 34.558 ms","timestamp":"2022-10-24T16:58:26.329Z"}
+{"level":"info","message":"OPTIONS /product/8lzNowF0 204 - 0.071 ms","timestamp":"2022-10-24T16:58:26.405Z"}
+{"level":"info","message":"GET /product/8lzNowF0 200 - 366.350 ms","timestamp":"2022-10-24T16:58:27.347Z"}
+{"level":"info","message":"GET /analytics/reports 200 - 1196.633 ms","timestamp":"2022-10-24T16:58:27.622Z"}
+{"level":"info","message":"OPTIONS /analytics/reports 204 - 1.079 ms","timestamp":"2022-10-24T16:58:31.438Z"}
+{"level":"info","message":"GET /product/8lzNowF0 200 - 292.471 ms","timestamp":"2022-10-24T16:58:31.764Z"}
+{"level":"info","message":"GET /analytics/reports 200 - 612.140 ms","timestamp":"2022-10-24T16:58:32.052Z"}
+{"level":"info","message":"OPTIONS /analytics/reports 204 - 1.340 ms","timestamp":"2022-10-24T16:58:57.589Z"}
+{"level":"info","message":"OPTIONS /product/8lzNowF0 204 - 0.053 ms","timestamp":"2022-10-24T16:58:57.634Z"}
+{"level":"info","message":"GET /product/8lzNowF0 200 - 313.163 ms","timestamp":"2022-10-24T16:58:57.953Z"}
+{"level":"info","message":"GET /analytics/reports 200 - 624.552 ms","timestamp":"2022-10-24T16:58:58.217Z"}
+{"level":"info","message":"GET /product/8lzNowF0 200 - 314.041 ms","timestamp":"2022-10-24T16:59:02.626Z"}
+{"level":"info","message":"GET /analytics/reports 200 - 605.275 ms","timestamp":"2022-10-24T16:59:02.903Z"}
+{"level":"info","message":"OPTIONS /product/8lzNowF0 204 - 7.123 ms","timestamp":"2022-10-24T17:02:27.076Z"}
+{"level":"info","message":"GET /product/8lzNowF0 200 - 479.010 ms","timestamp":"2022-10-24T17:02:27.572Z"}
+{"level":"info","message":"GET /product/8lzNowF0 200 - 346.782 ms","timestamp":"2022-10-24T17:02:30.666Z"}
+{"level":"info","message":"GET /product/8lzNowF0 200 - 294.932 ms","timestamp":"2022-10-24T17:02:31.544Z"}
+{"level":"info","message":"OPTIONS /product/8lzNowF0 204 - 1.483 ms","timestamp":"2022-10-24T17:02:48.475Z"}
+{"level":"info","message":"GET /product/8lzNowF0 200 - 342.228 ms","timestamp":"2022-10-24T17:02:48.820Z"}
+{"level":"info","message":"GET /product/8lzNowF0 200 - 310.172 ms","timestamp":"2022-10-24T17:02:51.789Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 3.624 ms","timestamp":"2022-10-24T17:07:35.320Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc 200 - 792.484 ms","timestamp":"2022-10-24T17:07:36.122Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-10-25T09:43:52.351Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-10-25T09:43:52.357Z"}
+{"level":"info","message":"OPTIONS /auth/login 204 - 5.069 ms","timestamp":"2022-10-25T09:49:59.570Z"}
+{"level":"info","message":"POST /auth/login 200 - 1307.506 ms","timestamp":"2022-10-25T09:50:00.883Z"}
+{"level":"info","message":"OPTIONS /analytics/reports 204 - 0.170 ms","timestamp":"2022-10-25T09:50:01.050Z"}
+{"level":"info","message":"GET /analytics/reports 200 - 2052.892 ms","timestamp":"2022-10-25T09:50:03.105Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 0.381 ms","timestamp":"2022-10-25T09:50:11.606Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc 200 - 859.269 ms","timestamp":"2022-10-25T09:50:12.472Z"}
+{"level":"info","message":"OPTIONS /analytics/reports 204 - 0.854 ms","timestamp":"2022-10-25T09:52:11.236Z"}
+{"level":"info","message":"OPTIONS /product/iL3Omlj7 204 - 0.478 ms","timestamp":"2022-10-25T09:52:11.312Z"}
+{"level":"info","message":"GET /product/iL3Omlj7 200 - 567.558 ms","timestamp":"2022-10-25T09:52:11.892Z"}
+{"level":"info","message":"GET /analytics/reports 200 - 949.003 ms","timestamp":"2022-10-25T09:52:12.198Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 18.598 ms","timestamp":"2022-10-25T09:52:12.978Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc 200 - 1677.504 ms","timestamp":"2022-10-25T09:52:14.672Z"}
+{"level":"info","message":"GET /product/iL3Omlj7 200 - 351.502 ms","timestamp":"2022-10-25T09:52:16.447Z"}
+{"level":"info","message":"GET /analytics/reports 200 - 674.145 ms","timestamp":"2022-10-25T09:52:16.729Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 0.321 ms","timestamp":"2022-10-25T09:52:28.226Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc 200 - 784.315 ms","timestamp":"2022-10-25T09:52:29.015Z"}
+{"level":"info","message":"OPTIONS /analytics/reports 204 - 0.120 ms","timestamp":"2022-10-25T09:52:29.645Z"}
+{"level":"info","message":"OPTIONS /product/ZWXUgyF5 204 - 0.305 ms","timestamp":"2022-10-25T09:52:29.653Z"}
+{"level":"info","message":"GET /product/ZWXUgyF5 200 - 335.452 ms","timestamp":"2022-10-25T09:52:29.992Z"}
+{"level":"info","message":"GET /analytics/reports 200 - 663.929 ms","timestamp":"2022-10-25T09:52:30.312Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 4.166 ms","timestamp":"2022-10-25T09:52:36.385Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc 200 - 1200.851 ms","timestamp":"2022-10-25T09:52:37.589Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc&name=Handcrafted%20Metal%20Soap 204 - 0.830 ms","timestamp":"2022-10-25T09:52:48.175Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc&name=Handcrafted%20Metal%20Soap 200 - 335.161 ms","timestamp":"2022-10-25T09:52:48.512Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-10-25T09:54:39.650Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-10-25T09:54:39.653Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 1.486 ms","timestamp":"2022-10-25T09:55:44.704Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc 200 - 743.734 ms","timestamp":"2022-10-25T09:55:45.453Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 0.186 ms","timestamp":"2022-10-25T09:56:44.833Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc 200 - 695.602 ms","timestamp":"2022-10-25T09:56:45.532Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 0.450 ms","timestamp":"2022-10-25T09:57:10.748Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc 200 - 672.513 ms","timestamp":"2022-10-25T09:57:11.425Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 2.516 ms","timestamp":"2022-10-25T10:00:22.255Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc 200 - 704.656 ms","timestamp":"2022-10-25T10:00:22.971Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 0.289 ms","timestamp":"2022-10-25T10:01:01.568Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc 200 - 684.590 ms","timestamp":"2022-10-25T10:01:02.259Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 0.248 ms","timestamp":"2022-10-25T10:01:10.499Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc 200 - 671.763 ms","timestamp":"2022-10-25T10:01:11.176Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc&category=sequi 204 - 0.481 ms","timestamp":"2022-10-25T10:01:16.759Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc&category=sequi 200 - 371.762 ms","timestamp":"2022-10-25T10:01:17.133Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc&category=error 204 - 0.241 ms","timestamp":"2022-10-25T10:01:45.798Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc&category=error 200 - 342.562 ms","timestamp":"2022-10-25T10:01:46.145Z"}
+{"level":"info","message":"OPTIONS /customer/query?limit=1000&sortBy=createdAt:desc 204 - 0.306 ms","timestamp":"2022-10-25T10:01:53.779Z"}
+{"level":"info","message":"OPTIONS /customer/query?limit=1000&sortBy=createdAt:desc 204 - 0.113 ms","timestamp":"2022-10-25T10:01:53.782Z"}
+{"level":"info","message":"GET /customer/query?limit=1000&sortBy=createdAt:desc 200 - 586.479 ms","timestamp":"2022-10-25T10:01:54.375Z"}
+{"level":"info","message":"GET /customer/query?limit=1000&sortBy=createdAt:desc 200 - 498.290 ms","timestamp":"2022-10-25T10:01:54.879Z"}
+{"level":"info","message":"OPTIONS /customer/query?limit=1000&sortBy=createdAt:desc&firstname=ali 204 - 0.119 ms","timestamp":"2022-10-25T10:02:00.561Z"}
+{"level":"info","message":"GET /customer/query?limit=1000&sortBy=createdAt:desc&firstname=ali 200 - 312.705 ms","timestamp":"2022-10-25T10:02:00.877Z"}
+{"level":"info","message":"OPTIONS /customer/query?limit=1000&sortBy=createdAt:desc 204 - 0.546 ms","timestamp":"2022-10-25T10:02:46.480Z"}
+{"level":"info","message":"OPTIONS /customer/query?limit=1000&sortBy=createdAt:desc 204 - 0.109 ms","timestamp":"2022-10-25T10:02:46.482Z"}
+{"level":"info","message":"GET /customer/query?limit=1000&sortBy=createdAt:desc 200 - 529.567 ms","timestamp":"2022-10-25T10:02:47.014Z"}
+{"level":"info","message":"GET /customer/query?limit=1000&sortBy=createdAt:desc 200 - 504.440 ms","timestamp":"2022-10-25T10:02:47.520Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 0.149 ms","timestamp":"2022-10-25T10:02:48.442Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc 200 - 745.839 ms","timestamp":"2022-10-25T10:02:49.196Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 0.452 ms","timestamp":"2022-10-25T10:04:33.483Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc 200 - 826.763 ms","timestamp":"2022-10-25T10:04:34.315Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc&name=Tasty%20Steel%20Shirt 204 - 0.347 ms","timestamp":"2022-10-25T10:07:00.196Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc&name=Tasty%20Steel%20Shirt 200 - 374.564 ms","timestamp":"2022-10-25T10:07:00.572Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 2.026 ms","timestamp":"2022-10-25T10:07:31.753Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc 200 - 685.711 ms","timestamp":"2022-10-25T10:07:32.462Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc&name=Unbranded%20Metal%20Computer 204 - 0.135 ms","timestamp":"2022-10-25T10:07:39.322Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc&name=Unbranded%20Metal%20Computer 200 - 321.589 ms","timestamp":"2022-10-25T10:07:39.644Z"}

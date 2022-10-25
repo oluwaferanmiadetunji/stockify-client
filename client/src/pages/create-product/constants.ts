@@ -19,6 +19,7 @@ export const initialState: CreateNewProduct = {
   costprice: 0,
   sellingprice: 0,
   quantity: 1,
+  category: '',
 }
 
 export const selectOptions = [

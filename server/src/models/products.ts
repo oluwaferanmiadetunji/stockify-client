@@ -59,6 +59,9 @@ const productSchema = new Schema<IProducts>(
     image: {
       type: String,
     },
+    category: {
+      type: String,
+    },
     costprice: {
       type: Number,
       required: true,

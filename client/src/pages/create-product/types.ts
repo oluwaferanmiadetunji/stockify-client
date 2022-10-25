@@ -17,4 +17,22 @@ export interface CreateNewProduct {
   costprice: number
   sellingprice: number
   quantity: number
+  category: string
+}
+
+export type AddProductFormProps = {
+  state: CreateNewProduct
+  handleChange: (event: {
+    target: {
+      name: any
+      value: any
+    }
+  }) => void
+}
+
+export type UploadImageProps = {
+  state: CreateNewProduct
+  setStep: React.Dispatch<React.SetStateAction<number>>
+  setState: React.Dispatch<React.SetStateAction<CreateNewProduct>>
+  onCancel: () => void
 }

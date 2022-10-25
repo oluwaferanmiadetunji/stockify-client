@@ -7,7 +7,7 @@ import Button from '@mui/material/Button'
 import styles from './styles'
 import Grid from '@mui/material/Grid'
 import { ROUTES } from 'utils/constants'
-import { renderPrice } from 'utils/helpers'
+import { renderPrice, formatWord } from 'utils/helpers'
 import Avatar from '@mui/material/Avatar'
 import dayjs from 'dayjs'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
@@ -114,7 +114,11 @@ const Summary = () => {
             <Grid item xs={6} sx={{ marginTop: '-15px' }}>
               <Item sx={{ padding: '20px 20px 0 20px' }}>
                 <Box sx={styles.imageContainer}>
-                  <Avatar alt={data.name} sx={styles.image} src={data.image} />
+                  <Avatar
+                    alt={data?.name}
+                    sx={styles.image}
+                    src={data?.image}
+                  />
                   <UpdateProductImage
                     initialState={data}
                     update={updateCallback}
@@ -133,20 +137,20 @@ const Summary = () => {
                   </Grid>
 
                   <Grid item xs={8}>
-                    <Typography sx={styles.value}>{data.id}</Typography>
-                    <Typography sx={styles.value}>{data.quantity}</Typography>
+                    <Typography sx={styles.value}>{data?.id}</Typography>
+                    <Typography sx={styles.value}>{data?.quantity}</Typography>
                     <Typography sx={styles.value}>
-                      {renderPrice(data.costprice)}
+                      {renderPrice(data?.costprice)}
                     </Typography>
                     <Typography sx={styles.value}>
-                      {renderPrice(data.sellingprice)}
+                      {renderPrice(data?.sellingprice)}
                     </Typography>
-                    <Typography sx={styles.value}>{data.supplier}</Typography>
+                    <Typography sx={styles.value}>{data?.supplier}</Typography>
                     <Typography sx={styles.value}>
-                      {data.manufacturer}
+                      {data?.manufacturer}
                     </Typography>
                     <Typography sx={styles.value}>
-                      {data.serial_number}
+                      {data?.serial_number}
                     </Typography>
                   </Grid>
                 </Grid>
@@ -158,6 +162,7 @@ const Summary = () => {
                 <Grid container spacing={2} sx={styles.infoContainer}>
                   <Grid item xs={4}>
                     <Typography sx={styles.label}>IMEI Number</Typography>
+                    <Typography sx={styles.label}>Category</Typography>
                     <Typography sx={styles.label}>RAM</Typography>
                     <Typography sx={styles.label}>ROM</Typography>
                     <Typography sx={styles.label}>Processor</Typography>
@@ -171,26 +176,29 @@ const Summary = () => {
                   </Grid>
 
                   <Grid item xs={8}>
-                    <Typography sx={styles.value}>{data.imei}</Typography>
-                    <Typography sx={styles.value}>{data.RAM}</Typography>
-                    <Typography sx={styles.value}>{data.ROM}</Typography>
-                    <Typography sx={styles.value}>{data.processor}</Typography>
-                    <Typography sx={styles.value}>{data.size}</Typography>
+                    <Typography sx={styles.value}>{data?.imei}</Typography>
                     <Typography sx={styles.value}>
-                      {data.fingerprint === true ? 'Yes' : 'No'}
+                      {formatWord(data?.category)}
+                    </Typography>
+                    <Typography sx={styles.value}>{data?.RAM}</Typography>
+                    <Typography sx={styles.value}>{data?.ROM}</Typography>
+                    <Typography sx={styles.value}>{data?.processor}</Typography>
+                    <Typography sx={styles.value}>{data?.size}</Typography>
+                    <Typography sx={styles.value}>
+                      {data?.fingerprint === true ? 'Yes' : 'No'}
                     </Typography>
                     <Typography sx={styles.value}>
-                      {data.touch === true ? 'Yes' : 'No'}
+                      {data?.touch === true ? 'Yes' : 'No'}
                     </Typography>
                     <Typography sx={styles.value}>
-                      {data.dedicated === true ? 'Yes' : 'No'}
+                      {data?.dedicated === true ? 'Yes' : 'No'}
                     </Typography>
-                    {/* <Typography sx={styles.value}>{data.color}</Typography> */}
+                    {/* <Typography sx={styles.value}>{data?.color}</Typography> */}
                     <Typography sx={styles.value}>
-                      {data.battery_health}
+                      {data?.battery_health}
                     </Typography>
                     <Typography sx={styles.value}>
-                      {dayjs(data.createdAt).format('MMM D, YYYY HH:mm')}
+                      {dayjs(data?.createdAt).format('MMM D, YYYY HH:mm')}
                     </Typography>
                   </Grid>
                 </Grid>

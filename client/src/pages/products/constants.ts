@@ -1,6 +1,7 @@
 export const initialState = {
   name: '',
   color: '',
+  category: '',
 }
 
 export const selectOptions = [

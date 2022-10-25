@@ -73,6 +73,7 @@ export interface SingleProductInterface {
   createdAt: string
   quantity: number
   inputValue?: string
+  category: string
 }
 
 export interface SetProductDataInterface {
