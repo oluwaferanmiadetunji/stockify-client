@@ -6,8 +6,17 @@ import styles from './styles'
 import { Naira } from 'utils/constants'
 import { selectOptions } from './constants'
 import { AddProductFormProps } from './types'
+import Autocomplete, { createFilterOptions } from '@mui/material/Autocomplete'
+import { SingleProductInterface } from 'redux-store/types'
+import _ from 'lodash'
+import { useAppSelector } from 'redux-store/hooks'
+import { selectProductState } from 'redux-store/products.slice'
+
+const filter = createFilterOptions<SingleProductInterface>()
 
 const AddProduct = ({ handleChange, state }: AddProductFormProps) => {
+  const { products } = useAppSelector(selectProductState)
+
   return (
     <Box>
       <Box
@@ -94,21 +103,79 @@ const AddProduct = ({ handleChange, state }: AddProductFormProps) => {
             style: { color: 'rgb(151, 161, 186)' },
           }}
         />
-        <TextField
-          margin="dense"
-          name="category"
-          label="Product Category"
-          type="text"
-          fullWidth
-          variant="standard"
+
+        <Autocomplete
+          options={_.uniqBy(products, 'category')}
           value={state.category}
-          required
-          onChange={handleChange}
-          sx={styles.textfield}
-          InputLabelProps={{
-            style: { color: 'rgb(151, 161, 186)' },
+          onChange={(event, newValue: any) => {
+            if (typeof newValue === 'string') {
+              handleChange({ target: { name: 'category', value: newValue } })
+            } else if (newValue && newValue.inputValue) {
+              handleChange({
+                target: { name: 'category', value: newValue.inputValue },
+              })
+            } else {
+              handleChange({
+                target: { name: 'category', value: newValue?.category || '' },
+              })
+            }
           }}
+          filterOptions={(options, params) => {
+            const filtered = filter(options, params)
+
+            const { inputValue } = params
+            // Suggest the creation of a new value
+            const isExisting = options.some(
+              (option) => inputValue === option.category,
+            )
+            if (inputValue !== '' && !isExisting) {
+              filtered.push({
+                inputValue,
+                ...products[0],
+                category: `Add "${inputValue}"`,
+              })
+            }
+
+            return filtered
+          }}
+          selectOnFocus
+          clearOnBlur
+          handleHomeEndKeys
+          getOptionLabel={(option) => {
+            // Value selected with enter, right from the input
+            if (typeof option === 'string') {
+              return option
+            }
+            // Add "xxx" option created dynamically
+            if (option.inputValue) {
+              return option.inputValue
+            }
+            // Regular option
+            return option.category
+          }}
+          renderOption={(props, option) => (
+            <li {...props}>{option.category}</li>
+          )}
+          fullWidth
+          freeSolo
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              label="Product Category"
+              margin="dense"
+              name="category"
+              type="text"
+              fullWidth
+              required
+              variant="standard"
+              InputLabelProps={{
+                style: { color: 'rgb(151, 161, 186)' },
+              }}
+              sx={styles.textfield}
+            />
+          )}
         />
+
         <TextField
           margin="dense"
           name="supplier"
@@ -228,7 +295,7 @@ const AddProduct = ({ handleChange, state }: AddProductFormProps) => {
             style: { color: 'rgb(151, 161, 186)' },
           }}
         />
-        <TextField
+        {/* <TextField
           placeholder="Black"
           margin="dense"
           name="color"
@@ -243,7 +310,7 @@ const AddProduct = ({ handleChange, state }: AddProductFormProps) => {
           InputLabelProps={{
             style: { color: 'rgb(151, 161, 186)' },
           }}
-        />
+        /> */}
         <TextField
           placeholder="100%"
           margin="dense"
