@@ -144,3 +144,10 @@ export const removeEmptyValuesFromObject = (obj: any) => {
   }
   return obj
 }
+
+export const generateInvoiceNumber = (): string => {
+  const now = new Date().toISOString()
+  const string = now.split('T')[1].replace(/[^a-zA-Z0-9 ]/g, '')
+
+  return `DNS${string}`
+}

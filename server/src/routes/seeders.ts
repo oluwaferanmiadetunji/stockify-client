@@ -16,5 +16,11 @@ router.post(
   middlewares.attachUser,
   seedersControllers.createRandomProducts,
 )
+router.post(
+  '/invoices/add',
+  middlewares.isAuth,
+  middlewares.attachUser,
+  seedersControllers.createRandomInvoices,
+)
 
 export default router
