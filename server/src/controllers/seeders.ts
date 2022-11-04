@@ -67,9 +67,9 @@ export const createRandomInvoices = catchAsync(async (req, res) => {
   )
 
   for (let i = 0; i < data.length; i++) {
-    console.log(`Adding customer ${i + 1}`)
-    console.log(data[i].invoice_number)
-    // await invoiceService.addInvoice(data[i])
+    console.log(`Adding ${i + 1} of ${data.length} invoices`)
+
+    await invoiceService.addInvoice(data[i])
   }
 
   return res.status(httpStatus.CREATED).json({

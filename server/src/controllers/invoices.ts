@@ -2,7 +2,11 @@ import httpStatus from 'http-status'
 import catchAsync from '../utils/catchAsync'
 import { invoiceService, customerService, productService } from '../services'
 import logger from '../config/logger'
-import { removeEmptyValuesFromObject } from '../utils/helpers'
+import {
+  removeEmptyValuesFromObject,
+  getPriceFromInvoice,
+  renderPriceWithCommas,
+} from '../utils/helpers'
 import { pickQueryParams } from '../utils/helpers'
 
 export const createInvoiceRecord = catchAsync(async (req, res) => {
@@ -129,7 +133,6 @@ export const updateInvoice = catchAsync(async (req, res) => {
   }
 })
 
-
 export const deleteInvoice = catchAsync(async (req, res) => {
   try {
     await invoiceService.deleteInvoiceById(req.params.id)
@@ -139,5 +142,58 @@ export const deleteInvoice = catchAsync(async (req, res) => {
     logger.error('Error: ', JSON.stringify(error))
 
     res.status(httpStatus.CONFLICT).json({ message: 'Error deleting invoice' })
+  }
+})
+
+export const getInvoicesReport = catchAsync(async (req, res) => {
+  const user = req.currentUser._id
+
+  try {
+    const total = await invoiceService.getTotalCount({ user })
+    const totalUnpaidInvoices = await invoiceService.getTotalCount({
+      user,
+      isPaid: false,
+    })
+    const totalPaidInvoices = await invoiceService.getTotalCount({
+      user,
+      isPaid: true,
+    })
+
+    const paidInvoices = await invoiceService.getInvoicesByQueries({
+      user,
+      isPaid: true,
+    })
+    const unpaidInvoices = await invoiceService.getInvoicesByQueries({
+      user,
+      isPaid: false,
+    })
+
+    const claimedNetIncome = renderPriceWithCommas(
+      await getPriceFromInvoice(paidInvoices),
+    )
+
+    const unclaimedNetIncome = renderPriceWithCommas(
+      await getPriceFromInvoice(unpaidInvoices),
+    )
+
+    const data = Object.freeze({
+      total,
+      totalUnpaidInvoices,
+      totalPaidInvoices,
+      totalOverdueInvoices: 0,
+      claimedNetIncome,
+      unclaimedNetIncome,
+      totalCancelledInvoices: 0,
+    })
+
+    res
+      .status(httpStatus.OK)
+      .json({ message: 'Report generated successfully', data })
+  } catch (error) {
+    logger.error('Error: ', JSON.stringify(error))
+
+    res
+      .status(httpStatus.SERVICE_UNAVAILABLE)
+      .json({ message: 'Error getting report' })
   }
 })

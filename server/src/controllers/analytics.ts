@@ -8,7 +8,7 @@ export const getReports = catchAsync(async (req, res) => {
   try {
     const customer = await customerService.getTotalCount(user)
     const product = await productService.getTotalCount(user)
-    const invoice = await invoiceService.getTotalCount(user)
+    const invoice = await invoiceService.getTotalCount({ user })
 
     res.status(httpStatus.OK).json({ customer, product, invoice })
   } catch (error) {

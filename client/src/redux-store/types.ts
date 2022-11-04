@@ -131,4 +131,5 @@ export interface InvoiceInterface {
   count: number
   isFiltered: boolean
   invoice: any
+  report: any
 }

@@ -92,6 +92,7 @@ const Details = () => {
     await makeUpdateInvoiceRequest(data?.id, { isPaid: true }, dispatch)
 
     setLoading({ value: false, type: LOADING_TYPE.update })
+    window.location.reload()
   }
 
   const callback = () => {

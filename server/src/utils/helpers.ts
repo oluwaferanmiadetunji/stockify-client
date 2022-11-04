@@ -1,4 +1,6 @@
 import randomstring from 'randomstring'
+import { IInvoice } from '../types'
+import { Naira } from './constants'
 
 export const generateRandomString = (length = 8): string =>
   randomstring.generate(length)
@@ -145,9 +147,47 @@ export const removeEmptyValuesFromObject = (obj: any) => {
   return obj
 }
 
-export const generateInvoiceNumber = (): string => {
-  const now = new Date().toISOString()
-  const string = now.split('T')[1].replace(/[^a-zA-Z0-9 ]/g, '')
+export const generateInvoiceNumber = (value?: number): string => {
+  if (value) {
+    const now = new Date()
+    now.setSeconds(now.getSeconds() + value)
 
-  return `DNS${string}`
+    const string = now
+      .toISOString()
+      .split('T')[1]
+      .replace(/[^a-zA-Z0-9 ]/g, '')
+
+    return `DNS${string}`
+  } else {
+    const now = new Date().toISOString()
+
+    const string = now.split('T')[1].replace(/[^a-zA-Z0-9 ]/g, '')
+
+    return `DNS${string}`
+  }
+}
+
+export const getPriceFromInvoice = async (
+  invoices: IInvoice[],
+): Promise<number> => {
+  let sum = 0
+  for (let i = 0; i < invoices.length; i++) {
+    const item = invoices[i]
+
+    for (let j = 0; j < item.items.length; j++) {
+      sum = item.items[j].sellingPrice * item.items[j].qty
+    }
+  }
+
+  return sum
+}
+
+export const renderPriceWithCommas = (payload: number): string => {
+  if (payload) {
+    let data = payload.toFixed(2).toString().split('.')
+    data[0] = data[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+
+    return `${Naira} ${data.join('.')}`
+  }
+  return `${Naira} ${0}`
 }

@@ -50,6 +50,11 @@ const styles = {
     textAlign: 'center',
     justifyContent: 'center',
   },
+  viewMore: {
+    textTransform: 'unset',
+    color: 'white',
+    margin: '0 0 20px 20px',
+  },
 }
 
 export default styles

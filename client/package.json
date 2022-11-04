@@ -56,7 +56,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "parse":"node-sass ./src/scss/main.scss ./src/scss/style.css"
+    "parse": "node-sass ./src/scss/main.scss ./src/scss/style.css"
   },
   "eslintConfig": {
     "extends": [

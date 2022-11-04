@@ -76,7 +76,12 @@ class MuiVirtualizedTable extends React.PureComponent<
         variant="body"
         style={{
           height: rowHeight,
-          color: 'rgb(151, 161, 186)',
+          color:
+            columns[columnIndex].dataKey === 'isPaid'
+              ? cellData === true
+                ? 'lightgreen'
+                : 'red'
+              : 'rgb(151, 161, 186)',
           cursor: 'pointer',
         }}
         align={

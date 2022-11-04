@@ -223,3 +223,19 @@ export const parseCSSText = (cssText: any) => {
 
 export const formatWord = (string: string): string =>
   string ? string.charAt(0).toUpperCase() + string.slice(1) : ''
+
+export const generateYears = (
+  start = new Date(2022, 0, 2).toISOString(),
+  end = new Date().toISOString(),
+) => {
+  for (
+    var arr = [], dt = new Date(start);
+    dt <= new Date(end);
+    dt.setFullYear(dt.getFullYear() + 1)
+  ) {
+    arr.push(new Date(dt).getFullYear())
+  }
+  return arr
+}
+
+export const getCurrentYear = () => new Date().getFullYear()

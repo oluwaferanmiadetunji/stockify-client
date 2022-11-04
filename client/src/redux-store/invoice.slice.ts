@@ -29,6 +29,7 @@ const initialState: InvoiceInterface = {
   count: 0,
   isFiltered: false,
   invoice: {},
+  report: {},
 }
 
 const invoiceSlice = createSlice({
@@ -116,6 +117,9 @@ const invoiceSlice = createSlice({
       state.invoices.splice(index, 1)
       state.count = state.count - 1
     },
+    setInvoiceReport: (state: InvoiceInterface, action: PayloadAction<any>) => {
+      state.report = action.payload
+    },
   },
 })
 
@@ -129,6 +133,7 @@ export const {
   addInvoicesData,
   setSingleInvoiceData,
   deleteInvoice,
+  setInvoiceReport,
 } = invoiceSlice.actions
 
 export const selectInvoiceState = (state: RootState) => state.invoice

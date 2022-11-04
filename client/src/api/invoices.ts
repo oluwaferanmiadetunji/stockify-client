@@ -6,6 +6,7 @@ import {
   setInvoicesData,
   updateInvoiceItem,
   deleteInvoice,
+  setInvoiceReport,
 } from 'redux-store/invoice.slice'
 import { EmptyObject, AnyAction, Dispatch } from 'redux'
 import { PersistPartial } from 'redux-persist/es/persistReducer'
@@ -110,6 +111,24 @@ export const makeDeleteInvoiceRequest = async (
     toast.success('Invoice deleted successfully')
     dispatch(deleteInvoice(payload.id))
     dispatch(updateCount({ type: 'decrease', value: 'invoice' }))
+  } catch (err) {
+    //@ts-ignore
+    toast.error(err.response.data.message)
+  }
+}
+
+export const getInvoicesReport = async (
+  dispatch: ThunkDispatch<
+    EmptyObject & { auth: AuthState } & PersistPartial,
+    undefined,
+    AnyAction
+  > &
+    Dispatch<AnyAction>,
+): Promise<void> => {
+  try {
+    const response = await axios.get(`${API_ROUTES.INVOICES}/report`)
+
+    dispatch(setInvoiceReport(response.data.data))
   } catch (err) {
     //@ts-ignore
     toast.error(err.response.data.message)

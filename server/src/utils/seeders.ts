@@ -1,7 +1,6 @@
 import { faker } from '@faker-js/faker'
 import _ from 'lodash'
 import { generateRandomString, generateInvoiceNumber } from './helpers'
-import { CreateNewInvoiceType } from '../types'
 
 export const generateRandomCustomers = (user: string, count = 100): any[] => {
   const data = []
@@ -89,34 +88,35 @@ export const generateRandomInvoices = async (
   products: any[],
   customers: any[],
 ) => {
-  const data = []
+  const data: any = []
 
   for (let i = 0; i < count; i++) {
     console.log(`Generating ${i + 1} of ${count} invoices`)
 
     let items = []
-    const _id = generateRandomString(6)
-    const invoice_number = generateInvoiceNumber()
-    const subject = faker.lorem.words(4)
     const customer = customers[Math.floor(Math.random() * customers.length)]._id
-    const issued_date = new Date().toISOString()
     const due_date = new Date(
       new Date().setDate(new Date().getDate() + 10),
     ).toISOString()
+    const invoice_number = generateInvoiceNumber(i)
+    const issued_date = new Date().toISOString()
+
+    const subject = faker.lorem.words(4)
+
     const notes = faker.lorem.sentences(5, '\n')
 
     for (let i = 0; i < 3; i++) {
       const product = products[Math.floor(Math.random() * products.length)]
+
       items.push({
         productId: product._id,
         qty: faker.datatype.number({ min: 1, max: 4 }),
-        costPrice: product.costPrice,
-        sellingPrice: product.sellingPrice,
+        costPrice: product.costprice,
+        sellingPrice: product.sellingprice,
       })
     }
 
     data.push({
-      _id,
       subject,
       invoice_number,
       customer,

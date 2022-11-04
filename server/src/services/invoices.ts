@@ -35,8 +35,8 @@ export const getInvoiceById = async (id: string) => {
   return invoice
 }
 
-export const getTotalCount = async (user: string): Promise<number> => {
-  const count = await Invoice.countDocuments({ user })
+export const getTotalCount = async (query: any): Promise<number> => {
+  const count = await Invoice.countDocuments(query)
 
   return count
 }
@@ -72,4 +72,10 @@ export const deleteInvoiceById = async (id: string) => {
   }
   await invoice.remove()
   return invoice
+}
+
+export const getInvoicesByQueries = async (query: any) => {
+  const invoices = await Invoice.find(query).exec()
+
+  return invoices
 }

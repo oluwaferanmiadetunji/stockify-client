@@ -10,6 +10,7 @@ import invoiceReducer from './invoice.slice'
 const persistConfig = {
   key: 'root',
   storage,
+  whitelist: ['auth', 'customers', 'products', 'analytics', 'invoice'],
 }
 
 const rootReducer = combineReducers({

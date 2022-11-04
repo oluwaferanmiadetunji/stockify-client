@@ -19,6 +19,13 @@ router.get(
 )
 
 router.get(
+  '/report',
+  middlewares.isAuth,
+  middlewares.attachUser,
+  invoicesControllers.getInvoicesReport,
+)
+
+router.get(
   '/:id',
   middlewares.isAuth,
   middlewares.attachUser,

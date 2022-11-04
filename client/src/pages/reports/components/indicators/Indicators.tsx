@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, MouseEvent } from 'react'
 import { Item } from './styles'
 import Stack from '@mui/material/Stack'
 import Box from '@mui/material/Box'
@@ -6,25 +6,34 @@ import Typography from '@mui/material/Typography'
 import styles from './styles'
 import Divider from '@mui/material/Divider'
 import Grid from '@mui/material/Grid'
-import { formatCurrency } from 'utils/helpers'
+import Button from '@mui/material/Button'
+import Menu from '@mui/material/Menu'
+import MenuItem from '@mui/material/MenuItem'
 import ReactApexChart from 'react-apexcharts'
 import { areaChartOptions } from './constants'
 import { useTheme } from '@mui/material/styles'
+import { selectInvoiceState } from 'redux-store/invoice.slice'
+import { useAppSelector } from 'redux-store/hooks'
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
+import { generateYears, getCurrentYear } from 'utils/helpers'
 
 const Indicators = () => {
   const theme: any = useTheme()
+  const { report } = useAppSelector(selectInvoiceState)
 
   const { primary, secondary } = theme.palette.text
   const line = theme.palette.divider
 
   const [options, setOptions] = useState<any>(areaChartOptions)
 
-  const [series] = useState([
+  const [values] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+
+  const series = [
     {
-      name: 'Series 1',
-      data: [58, 115, 28, 83, 63, 75, 35, 55],
+      name: 'Income',
+      data: values,
     },
-  ])
+  ]
 
   useEffect(() => {
     setOptions((prevState: any) => ({
@@ -34,6 +43,10 @@ const Indicators = () => {
         labels: {
           style: {
             colors: [
+              'white',
+              'white',
+              'white',
+              'white',
               'white',
               'white',
               'white',
@@ -60,6 +73,17 @@ const Indicators = () => {
     }))
   }, [primary, secondary, line, theme])
 
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
+  const open = Boolean(anchorEl)
+  const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget)
+  }
+  const handleClose = () => {
+    setAnchorEl(null)
+  }
+
+  const [year, setYear] = useState(getCurrentYear())
+
   return (
     <Item>
       <Box sx={styles.container}>
@@ -70,13 +94,53 @@ const Indicators = () => {
         <Divider sx={styles.divider} />
 
         <Box sx={{ flexGrow: 1, mt: 3 }}>
+          <Box
+            sx={{
+              width: '100%',
+              float: 'right',
+              justifyContent: 'right',
+              textAlign: 'right',
+            }}
+          >
+            <Button
+              onClick={handleClick}
+              sx={{ color: 'white', fontSize: '16px' }}
+              endIcon={<KeyboardArrowDownIcon />}
+              variant="outlined"
+            >
+              {year}
+            </Button>
+
+            <Menu
+              id="basic-menu"
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              MenuListProps={{
+                'aria-labelledby': 'basic-button',
+              }}
+            >
+              {generateYears().map((item) => (
+                <MenuItem
+                  key={item}
+                  onClick={() => {
+                    setYear(item)
+                    handleClose()
+                  }}
+                  sx={{ width: '150px' }}
+                >
+                  {item}
+                </MenuItem>
+              ))}
+            </Menu>
+          </Box>
           <Grid container spacing={3}>
             <Grid item xs>
               <Item>
                 <Box sx={styles.card}>
                   <Typography sx={styles.cardHeader}>REVENUE</Typography>
                   <Typography sx={styles.cardText}>
-                    {formatCurrency({ amount: 0 })}
+                    {report?.claimedNetIncome}
                   </Typography>
                 </Box>
               </Item>
@@ -87,7 +151,7 @@ const Indicators = () => {
                 <Box sx={styles.card}>
                   <Typography sx={styles.cardHeader}>NET</Typography>
                   <Typography sx={styles.cardText}>
-                    {formatCurrency({ amount: 0 })}
+                    {report?.claimedNetIncome}
                   </Typography>
                 </Box>
               </Item>
@@ -98,7 +162,7 @@ const Indicators = () => {
                 <Box sx={styles.card}>
                   <Typography sx={styles.cardHeader}>PENDING ORDERS</Typography>
                   <Typography sx={styles.cardText}>
-                    {formatCurrency({ amount: 0 })}
+                    {report?.unclaimedNetIncome}
                   </Typography>
                 </Box>
               </Item>
@@ -109,7 +173,7 @@ const Indicators = () => {
                 <Box sx={styles.card}>
                   <Typography sx={styles.cardHeader}>DUE</Typography>
                   <Typography sx={styles.cardText}>
-                    {formatCurrency({ amount: 0 })}
+                    {report?.unclaimedNetIncome}
                   </Typography>
                 </Box>
               </Item>

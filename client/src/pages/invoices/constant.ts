@@ -14,10 +14,10 @@ export const classes = {
 }
 
 export const config = {
-  series: [200, 40, 35],
+  series: [200, 40],
 
   options: {
-    labels: ['Ongoing', 'Paid', 'Overdue'],
+    labels: ['Ongoing', 'Paid'],
     responsive: [
       {
         breakpoint: 480,
