@@ -80,13 +80,9 @@ export const createInvoiceRecord = catchAsync(async (req, res) => {
 })
 
 export const getInvoices = catchAsync(async (req, res) => {
-  const filter = pickQueryParams(req.query, ['name'])
-  const options = pickQueryParams(req.query, [
-    'sortBy',
-    'limit',
-    'page',
-    'user',
-  ])
+  const filter = pickQueryParams(req.query, ['name', 'user', 'isPaid'])
+  const options = pickQueryParams(req.query, ['sortBy', 'limit', 'page'])
+
   const result = await invoiceService.queryInvoices(filter, options)
 
   res.status(httpStatus.OK).send(result)

@@ -6,6 +6,7 @@ const initialState: AnalyticsInterface = {
   customer: 0,
   product: 0,
   invoice: 0,
+  sales: [],
 }
 
 const analyticsSlice = createSlice({
@@ -49,10 +50,17 @@ const analyticsSlice = createSlice({
           break
       }
     },
+    setSalesGraph: (state: AnalyticsInterface, action: PayloadAction<any>) => {
+      state.sales = action.payload
+    },
   },
 })
 
-export const { setAnalyticsData, updateCount } = analyticsSlice.actions
+export const {
+  setAnalyticsData,
+  updateCount,
+  setSalesGraph,
+} = analyticsSlice.actions
 
 export const selectAnalyticsState = (state: RootState) => state.analytics
 

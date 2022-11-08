@@ -99,6 +99,7 @@ export interface AnalyticsInterface {
   customer: number
   product: number
   invoice: number
+  sales?: any
 }
 
 export interface CreateNewInvoiceItemInterface {

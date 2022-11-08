@@ -45,6 +45,9 @@ const invoiceSchema = new Schema<IInvoice>(
       type: Boolean,
       default: false,
     },
+    paid_on: {
+      type: Date,
+    },
   },
   {
     timestamps: true,

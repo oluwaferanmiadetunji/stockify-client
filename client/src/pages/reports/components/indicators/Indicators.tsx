@@ -13,25 +13,27 @@ import ReactApexChart from 'react-apexcharts'
 import { areaChartOptions } from './constants'
 import { useTheme } from '@mui/material/styles'
 import { selectInvoiceState } from 'redux-store/invoice.slice'
-import { useAppSelector } from 'redux-store/hooks'
+import { selectAnalyticsState } from 'redux-store/analytics.slice'
+import { useAppSelector, useAppDispatch } from 'redux-store/hooks'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import { generateYears, getCurrentYear } from 'utils/helpers'
+import { getSalesgraph } from 'api/analytics'
 
 const Indicators = () => {
+  const dispatch = useAppDispatch()
   const theme: any = useTheme()
   const { report } = useAppSelector(selectInvoiceState)
+  const { sales } = useAppSelector(selectAnalyticsState)
 
   const { primary, secondary } = theme.palette.text
   const line = theme.palette.divider
 
   const [options, setOptions] = useState<any>(areaChartOptions)
 
-  const [values] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
-
   const series = [
     {
-      name: 'Income',
-      data: values,
+      name: 'Sales',
+      data: sales,
     },
   ]
 
@@ -83,6 +85,12 @@ const Indicators = () => {
   }
 
   const [year, setYear] = useState(getCurrentYear())
+
+  useEffect(() => {
+    ;(async () => {
+      await getSalesgraph(year, dispatch)
+    })()
+  }, [dispatch, year])
 
   return (
     <Item>
@@ -185,7 +193,7 @@ const Indicators = () => {
           <ReactApexChart
             options={options}
             series={series}
-            type="line"
+            type="area"
             height={345}
           />
         </Box>

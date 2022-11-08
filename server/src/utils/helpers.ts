@@ -1,6 +1,8 @@
 import randomstring from 'randomstring'
 import { IInvoice } from '../types'
 import { Naira } from './constants'
+import moment from 'moment'
+import _ from 'lodash'
 
 export const generateRandomString = (length = 8): string =>
   randomstring.generate(length)
@@ -122,6 +124,25 @@ export const paginate = (schema: any) => {
   }
 }
 
+export const stringToBoolean = (stringValue: string): Boolean | string => {
+  switch (stringValue?.toLowerCase()?.trim()) {
+    case 'true':
+    case 'yes':
+    case '1':
+      return true
+
+    case 'false':
+    case 'no':
+    case '0':
+    case null:
+    case undefined:
+      return false
+
+    default:
+      return stringValue
+  }
+}
+
 /**
  * Create an object composed of the picked object properties
  * @param {Object} object
@@ -132,8 +153,10 @@ export const pickQueryParams = (object: any, keys: any) => {
   return keys.reduce((obj: any, key: any) => {
     if (object && Object.prototype.hasOwnProperty.call(object, key)) {
       // eslint-disable-next-line no-param-reassign
-      obj[key] = object[key]
+
+      obj[key] = stringToBoolean(object[key])
     }
+
     return obj
   }, {})
 }
@@ -167,16 +190,24 @@ export const generateInvoiceNumber = (value?: number): string => {
   }
 }
 
+export const getSumFromItems = (items: any[]) => {
+  let itemsSum = 0
+
+  for (let j = 0; j < items.length; j++) {
+    itemsSum = items[j].sellingPrice * items[j].qty
+  }
+
+  return itemsSum
+}
+
 export const getPriceFromInvoice = async (
   invoices: IInvoice[],
 ): Promise<number> => {
   let sum = 0
   for (let i = 0; i < invoices.length; i++) {
-    const item = invoices[i]
+    const itemsSum = getSumFromItems(invoices[i].items)
 
-    for (let j = 0; j < item.items.length; j++) {
-      sum = item.items[j].sellingPrice * item.items[j].qty
-    }
+    sum += itemsSum
   }
 
   return sum
@@ -191,3 +222,81 @@ export const renderPriceWithCommas = (payload: number): string => {
   }
   return `${Naira} ${0}`
 }
+
+export const getTimeRange = async (year: number) => {
+  const start = new Date(year, 0, 2)
+  const end = new Date(year, 11, 32)
+
+  return Object.freeze({
+    start,
+    end,
+  })
+}
+
+export const getMonthsTimeRange = (year: number) => {
+  return [
+    {
+      month: 1,
+      start: moment(`${year}-01-01`),
+      end: moment(`${year}-01-31`),
+    },
+    {
+      month: 2,
+      start: moment(`${year}-02-01`),
+      end: moment(`${year}-02-28`),
+    },
+    {
+      month: 3,
+      start: moment(`${year}-03-01`),
+      end: moment(`${year}-03-31`),
+    },
+    {
+      month: 4,
+      start: moment(`${year}-04-01`),
+      end: moment(`${year}-04-30`),
+    },
+    {
+      month: 5,
+      start: moment(`${year}-05-01`),
+      end: moment(`${year}-05-31`),
+    },
+    {
+      month: 6,
+      start: moment(`${year}-06-01`),
+      end: moment(`${year}-06-30`),
+    },
+    {
+      month: 7,
+      start: moment(`${year}-07-01`),
+      end: moment(`${year}-07-31`),
+    },
+    {
+      month: 8,
+      start: moment(`${year}-08-01`),
+      end: moment(`${year}-08-31`),
+    },
+    {
+      month: 9,
+      start: moment(`${year}-09-01`),
+      end: moment(`${year}-09-30`),
+    },
+    {
+      month: 10,
+      start: moment(`${year}-10-01`),
+      end: moment(`${year}-10-31`),
+    },
+    {
+      month: 11,
+      start: moment(`${year}-11-01`),
+      end: moment(`${year}-11-30`),
+    },
+    {
+      month: 12,
+      start: moment(`${year}-12-01`),
+      end: moment(`${year}-12-31`),
+    },
+  ]
+}
+
+export const getUniqueArray = async (array: any[], key: string) =>
+  _.sortBy(_.uniqBy(array, key), [key])

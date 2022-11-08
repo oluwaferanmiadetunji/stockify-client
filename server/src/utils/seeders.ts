@@ -105,6 +105,11 @@ export const generateRandomInvoices = async (
 
     const notes = faker.lorem.sentences(5, '\n')
 
+    const paid_on = faker.date.between(
+      '2021-01-01T00:00:00.000Z',
+      '2023-12-31T23:00:00.000Z',
+    )
+
     for (let i = 0; i < 3; i++) {
       const product = products[Math.floor(Math.random() * products.length)]
 
@@ -125,6 +130,8 @@ export const generateRandomInvoices = async (
       items: items,
       notes,
       user,
+      isPaid: true,
+      paid_on,
     })
   }
 

@@ -1,6 +1,7 @@
 import httpStatus from 'http-status'
 import catchAsync from '../utils/catchAsync'
 import { customerService, productService, invoiceService } from '../services'
+import logger from '../config/logger'
 
 export const getReports = catchAsync(async (req, res) => {
   const user = req.currentUser._id
@@ -15,5 +16,25 @@ export const getReports = catchAsync(async (req, res) => {
     console.log('Error: ', JSON.stringify(error))
 
     res.status(httpStatus.CONFLICT).json({ message: 'Error getting report' })
+  }
+})
+
+export const getSalesGraph = catchAsync(async (req, res) => {
+  const user = req.currentUser._id
+  const { year } = req.body
+
+  try {
+    const response = await invoiceService.fetchPaidInvoicesByDatePaid({
+      year,
+      user,
+    })
+
+    res.status(httpStatus.OK).send(response)
+  } catch (error) {
+    logger.error('Error: ', JSON.stringify(error))
+
+    res
+      .status(httpStatus.SERVICE_UNAVAILABLE)
+      .json({ message: 'Error getting sales graph' })
   }
 })

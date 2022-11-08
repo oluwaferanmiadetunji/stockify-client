@@ -73,6 +73,7 @@ export interface IInvoice extends Document {
   notes: string
   _id: string
   isPaid?: boolean
+  paid_on?: string
 }
 
 // Model Types
@@ -130,6 +131,8 @@ export type CreateNewInvoiceType = {
     sellingPrice: number
   }[]
   notes?: string
+  isPaid?: boolean
+  paid_on?: Date
 }
 
 // Input Types
@@ -150,6 +153,11 @@ export interface GetCustomersByQueryType {
   lastname?: string
   phone?: string
   email?: string
+}
+
+export type FetchInvoicesByDateRange = {
+  year: number
+  user: string
 }
 
 // Service Types

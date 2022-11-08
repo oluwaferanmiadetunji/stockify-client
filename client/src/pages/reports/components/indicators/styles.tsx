@@ -36,6 +36,5 @@ export const Item = styled(Paper)(({ theme }: any) => ({
   backgroundColor: 'rgb(30, 33, 42)',
   ...theme.typography.body2,
   textAlign: 'left',
-  color: 'white',
   borderRadius: '10px',
 }))

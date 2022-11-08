@@ -11,4 +11,11 @@ router.get(
   analyticsControllers.getReports,
 )
 
+router.post(
+  '/sales/graph',
+  middlewares.isAuth,
+  middlewares.attachUser,
+  analyticsControllers.getSalesGraph,
+)
+
 export default router

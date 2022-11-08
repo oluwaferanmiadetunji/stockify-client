@@ -3,6 +3,7 @@ import ReportWrapper from './ReportWrapper'
 import { Indicators } from './components'
 import { useEffect, useState } from 'react'
 import { getInvoicesReport } from 'api/invoices'
+
 import { useAppDispatch } from 'redux-store/hooks'
 import CircularProgress from '@mui/material/CircularProgress'
 import styles from './styles'
@@ -13,7 +14,7 @@ const ReportSales = () => {
 
   useEffect(() => {
     ;(async () => {
-      // setLoading(true)
+      setLoading(true)
 
       await getInvoicesReport(dispatch)
 

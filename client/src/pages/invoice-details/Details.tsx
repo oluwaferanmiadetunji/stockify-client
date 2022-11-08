@@ -238,6 +238,15 @@ const Details = () => {
                         </Typography>
                       </Box>
 
+                      {data?.isPaid && (
+                        <Box sx={styles.box}>
+                          <Typography sx={styles.label}>Paid On</Typography>
+                          <Typography sx={styles.value}>
+                            {dayjs(data?.paid_on).format('MMM D, YYYY HH:mm')}
+                          </Typography>
+                        </Box>
+                      )}
+
                       <Box sx={styles.box}>
                         <Typography sx={styles.label}>Notes</Typography>
                         <Typography sx={styles.value}>{data?.notes}</Typography>
