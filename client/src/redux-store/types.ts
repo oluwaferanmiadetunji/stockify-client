@@ -106,6 +106,9 @@ export interface AnalyticsInterface {
       value: string
     }
     data: any
+    month: string
+    year: number
+    loading: boolean
   }
 }
 

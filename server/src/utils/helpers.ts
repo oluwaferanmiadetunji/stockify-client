@@ -300,3 +300,17 @@ export const getMonthsTimeRange = (year: number) => {
 
 export const getUniqueArray = async (array: any[], key: string) =>
   _.sortBy(_.uniqBy(array, key), [key])
+
+export const generateYears = (
+  start = new Date(2022, 0, 2).toISOString(),
+  end = new Date().toISOString(),
+) => {
+  for (
+    var arr = [], dt = new Date(start);
+    dt <= new Date(end);
+    dt.setFullYear(dt.getFullYear() + 1)
+  ) {
+    arr.push(new Date(dt).getFullYear())
+  }
+  return arr
+}

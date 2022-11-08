@@ -7,25 +7,22 @@ import styles from './styles'
 import Divider from '@mui/material/Divider'
 import Grid from '@mui/material/Grid'
 import ReactApexChart from 'react-apexcharts'
-import { areaChartOptions } from './constants'
 import { useTheme } from '@mui/material/styles'
 import { selectInvoiceState } from 'redux-store/invoice.slice'
 import { selectAnalyticsState } from 'redux-store/analytics.slice'
 import { useAppSelector, useAppDispatch } from 'redux-store/hooks'
-import { getCurrentYear } from 'utils/helpers'
 import { getSalesgraph } from 'api/analytics'
 import { Value, Label } from './index'
+import { renderPriceWithCommas } from 'utils/helpers'
 
 const Indicators = () => {
   const dispatch = useAppDispatch()
   const theme: any = useTheme()
   const { report } = useAppSelector(selectInvoiceState)
-  const { sales } = useAppSelector(selectAnalyticsState)
+  const { sales, salesGraph } = useAppSelector(selectAnalyticsState)
 
   const { primary, secondary } = theme.palette.text
   const line = theme.palette.divider
-
-  const [options, setOptions] = useState<any>(areaChartOptions)
 
   const series = [
     {
@@ -33,6 +30,96 @@ const Indicators = () => {
       data: sales,
     },
   ]
+
+  const areaChartOptions = {
+    chart: {
+      height: 340,
+      type: 'line',
+      toolbar: {
+        show: false,
+      },
+      foreColor: '#fff',
+      stacked: true,
+      animations: {
+        enabled: true,
+        easing: 'linear',
+        dynamicAnimation: {
+          speed: 1000,
+        },
+      },
+      dropShadow: {
+        enabled: true,
+        opacity: 0.3,
+        blur: 5,
+        left: -7,
+        top: 22,
+      },
+    },
+    dataLabels: {
+      enabled: false,
+    },
+    colors: ['#FCCF31', '#17ead9', '#f02fc2'],
+    stroke: {
+      curve: 'smooth',
+      width: 3,
+    },
+    grid: {
+      strokeDashArray: 4,
+      borderColor: '#40475D',
+      padding: {
+        left: 0,
+        right: 0,
+      },
+    },
+    markers: {
+      size: 0,
+      hover: {
+        size: 0,
+      },
+    },
+    xaxis: {
+      axisTicks: {
+        color: '#333',
+      },
+      axisBorder: {
+        color: '#333',
+      },
+      tickPlacement: 'on',
+      overwriteCategories:
+        salesGraph.type.value === 'monthly'
+          ? ['Week 1', 'Week 2', 'Week 3', 'Week 4']
+          : [
+              'Jan',
+              'Feb',
+              'Mar',
+              'Apr',
+              'May',
+              'Jun',
+              'Jul',
+              'Aug',
+              'Sept',
+              'Oct',
+              'Nov',
+              'Dec',
+            ],
+    },
+
+    tooltip: {
+      y: {
+        formatter: function (val: any) {
+          return renderPriceWithCommas(val)
+        },
+      },
+    },
+    fill: {
+      type: 'gradient',
+      gradient: {
+        gradientToColors: ['#F55555', '#6078ea', '#6094ea'],
+      },
+    },
+  }
+
+  const [options, setOptions] = useState<any>(areaChartOptions)
 
   useEffect(() => {
     setOptions((prevState: any) => ({
@@ -72,13 +159,11 @@ const Indicators = () => {
     }))
   }, [primary, secondary, line, theme])
 
-  const [year, setYear] = useState(getCurrentYear())
-
   useEffect(() => {
     ;(async () => {
-      await getSalesgraph(year, dispatch)
+      await getSalesgraph(2022, dispatch)
     })()
-  }, [dispatch, year])
+  }, [dispatch])
 
   return (
     <Item>

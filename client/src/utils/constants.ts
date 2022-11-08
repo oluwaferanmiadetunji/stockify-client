@@ -53,10 +53,10 @@ export const CompanyDetails = {
 }
 
 export const GRAPH_OPTIONS: GRAPH_OPTIONS_TYPE[] = [
-  {
-    label: 'Daily',
-    value: 'daily',
-  },
+  // {
+  //   label: 'Daily',
+  //   value: 'daily',
+  // },
   {
     label: 'Monthly',
     value: 'monthly',

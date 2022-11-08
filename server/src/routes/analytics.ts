@@ -12,10 +12,17 @@ router.get(
 )
 
 router.post(
-  '/sales/graph',
+  '/sales/graph/year',
   middlewares.isAuth,
   middlewares.attachUser,
-  analyticsControllers.getSalesGraph,
+  analyticsControllers.getSalesGraphByYear,
+)
+
+router.post(
+  '/sales/graph/month',
+  middlewares.isAuth,
+  middlewares.attachUser,
+  analyticsControllers.getSalesGraphByMonths,
 )
 
 export default router

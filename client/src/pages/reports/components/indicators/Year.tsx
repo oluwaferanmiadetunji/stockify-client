@@ -4,18 +4,14 @@ import Button from '@mui/material/Button'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
-import { GRAPH_OPTIONS } from 'utils/constants'
+import { generateYears } from 'utils/helpers'
 import { useAppSelector, useAppDispatch } from 'redux-store/hooks'
 import {
   selectAnalyticsState,
-  setSalesGraphType,
+  setSalesGraphYear,
 } from 'redux-store/analytics.slice'
-import { GRAPH_OPTIONS_TYPE } from 'utils/types'
 
-const Label = () => {
-  const { salesGraph } = useAppSelector(selectAnalyticsState)
-  const dispatch = useAppDispatch()
-
+const Year = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const open = Boolean(anchorEl)
   const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
@@ -25,8 +21,11 @@ const Label = () => {
     setAnchorEl(null)
   }
 
-  const handleChange = async (item: GRAPH_OPTIONS_TYPE) => {
-    dispatch(setSalesGraphType(item))
+  const { salesGraph } = useAppSelector(selectAnalyticsState)
+  const dispatch = useAppDispatch()
+
+  const handleChange = async (item: number) => {
+    dispatch(setSalesGraphYear(item))
     handleClose()
   }
 
@@ -38,19 +37,19 @@ const Label = () => {
         endIcon={<KeyboardArrowDownIcon />}
         variant="outlined"
       >
-        {salesGraph.type.label}
+        {salesGraph.year}
       </Button>
 
       <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
-        {GRAPH_OPTIONS.map((item) => (
+        {generateYears().map((item) => (
           <MenuItem
-            key={item.value}
+            key={item}
             onClick={() => {
               handleChange(item)
             }}
             sx={{ width: '150px' }}
           >
-            {item.label}
+            {item}
           </MenuItem>
         ))}
       </Menu>
@@ -58,4 +57,4 @@ const Label = () => {
   )
 }
 
-export default Label
+export default Year
