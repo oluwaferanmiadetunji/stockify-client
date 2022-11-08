@@ -1,4 +1,4 @@
-import { useState, useEffect, MouseEvent } from 'react'
+import { useState, useEffect } from 'react'
 import { Item } from './styles'
 import Stack from '@mui/material/Stack'
 import Box from '@mui/material/Box'
@@ -6,18 +6,15 @@ import Typography from '@mui/material/Typography'
 import styles from './styles'
 import Divider from '@mui/material/Divider'
 import Grid from '@mui/material/Grid'
-import Button from '@mui/material/Button'
-import Menu from '@mui/material/Menu'
-import MenuItem from '@mui/material/MenuItem'
 import ReactApexChart from 'react-apexcharts'
 import { areaChartOptions } from './constants'
 import { useTheme } from '@mui/material/styles'
 import { selectInvoiceState } from 'redux-store/invoice.slice'
 import { selectAnalyticsState } from 'redux-store/analytics.slice'
 import { useAppSelector, useAppDispatch } from 'redux-store/hooks'
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
-import { generateYears, getCurrentYear } from 'utils/helpers'
+import { getCurrentYear } from 'utils/helpers'
 import { getSalesgraph } from 'api/analytics'
+import { Value, Label } from './index'
 
 const Indicators = () => {
   const dispatch = useAppDispatch()
@@ -75,15 +72,6 @@ const Indicators = () => {
     }))
   }, [primary, secondary, line, theme])
 
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
-  const open = Boolean(anchorEl)
-  const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(event.currentTarget)
-  }
-  const handleClose = () => {
-    setAnchorEl(null)
-  }
-
   const [year, setYear] = useState(getCurrentYear())
 
   useEffect(() => {
@@ -102,7 +90,9 @@ const Indicators = () => {
         <Divider sx={styles.divider} />
 
         <Box sx={{ flexGrow: 1, mt: 3 }}>
-          <Box
+          <Stack
+            direction="row"
+            spacing={2}
             sx={{
               width: '100%',
               float: 'right',
@@ -110,38 +100,11 @@ const Indicators = () => {
               textAlign: 'right',
             }}
           >
-            <Button
-              onClick={handleClick}
-              sx={{ color: 'white', fontSize: '16px' }}
-              endIcon={<KeyboardArrowDownIcon />}
-              variant="outlined"
-            >
-              {year}
-            </Button>
+            <Label />
 
-            <Menu
-              id="basic-menu"
-              anchorEl={anchorEl}
-              open={open}
-              onClose={handleClose}
-              MenuListProps={{
-                'aria-labelledby': 'basic-button',
-              }}
-            >
-              {generateYears().map((item) => (
-                <MenuItem
-                  key={item}
-                  onClick={() => {
-                    setYear(item)
-                    handleClose()
-                  }}
-                  sx={{ width: '150px' }}
-                >
-                  {item}
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
+            <Value />
+          </Stack>
+
           <Grid container spacing={3}>
             <Grid item xs>
               <Item>

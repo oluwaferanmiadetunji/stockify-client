@@ -27,3 +27,8 @@ export interface CreateNewProduct {
   battery_health?: string
   image?: string
 }
+
+export type GRAPH_OPTIONS_TYPE = {
+  label: string
+  value: string
+}

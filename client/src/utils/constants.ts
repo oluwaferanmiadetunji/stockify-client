@@ -1,3 +1,5 @@
+import { GRAPH_OPTIONS_TYPE } from 'utils/types'
+
 export const ROUTES = {
   LOGIN: '/auth/login',
   ERROR: '/404',
@@ -49,3 +51,18 @@ export const CompanyDetails = {
   twitter: '@Denis4ward tech',
   instagram: '@Denis4ward tech',
 }
+
+export const GRAPH_OPTIONS: GRAPH_OPTIONS_TYPE[] = [
+  {
+    label: 'Daily',
+    value: 'daily',
+  },
+  {
+    label: 'Monthly',
+    value: 'monthly',
+  },
+  {
+    label: 'Yearly',
+    value: 'yearly',
+  },
+]

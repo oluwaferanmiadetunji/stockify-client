@@ -1,12 +1,18 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from './index'
 import { AnalyticsInterface } from './types'
+import { GRAPH_OPTIONS } from 'utils/constants'
+import { GRAPH_OPTIONS_TYPE } from 'utils/types'
 
 const initialState: AnalyticsInterface = {
   customer: 0,
   product: 0,
   invoice: 0,
   sales: [],
+  salesGraph: {
+    data: [],
+    type: GRAPH_OPTIONS[0],
+  },
 }
 
 const analyticsSlice = createSlice({
@@ -53,6 +59,18 @@ const analyticsSlice = createSlice({
     setSalesGraph: (state: AnalyticsInterface, action: PayloadAction<any>) => {
       state.sales = action.payload
     },
+    setSalesGraphType: (
+      state: AnalyticsInterface,
+      action: PayloadAction<GRAPH_OPTIONS_TYPE>,
+    ) => {
+      state.salesGraph.type = action.payload
+    },
+    setSalesGraphData: (
+      state: AnalyticsInterface,
+      action: PayloadAction<any>,
+    ) => {
+      state.salesGraph.data = action.payload
+    },
   },
 })
 
@@ -60,6 +78,8 @@ export const {
   setAnalyticsData,
   updateCount,
   setSalesGraph,
+  setSalesGraphType,
+  setSalesGraphData,
 } = analyticsSlice.actions
 
 export const selectAnalyticsState = (state: RootState) => state.analytics

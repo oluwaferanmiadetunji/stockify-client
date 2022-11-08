@@ -14,11 +14,11 @@ const ReportSales = () => {
 
   useEffect(() => {
     ;(async () => {
-      setLoading(true)
+      // setLoading(true)
 
       await getInvoicesReport(dispatch)
 
-      setLoading(false)
+      // setLoading(false)
     })()
   }, [dispatch])
 

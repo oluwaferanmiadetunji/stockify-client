@@ -100,6 +100,13 @@ export interface AnalyticsInterface {
   product: number
   invoice: number
   sales?: any
+  salesGraph: {
+    type: {
+      label: string
+      value: string
+    }
+    data: any
+  }
 }
 
 export interface CreateNewInvoiceItemInterface {
