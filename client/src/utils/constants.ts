@@ -37,7 +37,8 @@ export const API_ROUTES = {
   CUSTOMERS: '/customer',
   PRODUCTS: '/product',
   ANALYTICS_REPORTS: '/analytics/reports',
-  ANALYTICS_SALES_GRAPH: '/analytics/sales/graph',
+  ANALYTICS_MONTHLY_SALES_GRAPH: '/analytics/sales/graph/month',
+  ANALYTICS_YEARLY_SALES_GRAPH: '/analytics/sales/graph/year',
   INVOICES: '/invoices',
 }
 
@@ -53,10 +54,10 @@ export const CompanyDetails = {
 }
 
 export const GRAPH_OPTIONS: GRAPH_OPTIONS_TYPE[] = [
-  // {
-  //   label: 'Daily',
-  //   value: 'daily',
-  // },
+  {
+    label: 'Daily',
+    value: 'daily',
+  },
   {
     label: 'Monthly',
     value: 'monthly',

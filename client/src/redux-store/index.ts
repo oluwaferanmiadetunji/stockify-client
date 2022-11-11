@@ -16,7 +16,6 @@ const persistConfig = {
     'products',
     'analytics',
     'invoice',
-    'analytics',
   ],
 }
 

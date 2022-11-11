@@ -9,9 +9,8 @@ const initialState: AnalyticsInterface = {
   customer: 0,
   product: 0,
   invoice: 0,
-  sales: [],
   salesGraph: {
-    data: [],
+    data: {},
     type: GRAPH_OPTIONS[0],
     month: getCurrentMonth(),
     year: getCurrentYear(),
@@ -60,9 +59,7 @@ const analyticsSlice = createSlice({
           break
       }
     },
-    setSalesGraph: (state: AnalyticsInterface, action: PayloadAction<any>) => {
-      state.sales = action.payload
-    },
+
     setSalesGraphType: (
       state: AnalyticsInterface,
       action: PayloadAction<GRAPH_OPTIONS_TYPE>,
@@ -99,7 +96,6 @@ const analyticsSlice = createSlice({
 export const {
   setAnalyticsData,
   updateCount,
-  setSalesGraph,
   setSalesGraphType,
   setSalesGraphData,
   setSalesGraphMonth,
