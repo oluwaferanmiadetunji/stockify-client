@@ -23,13 +23,8 @@ export const createNewProduct = catchAsync(async (req, res) => {
 })
 
 export const getProducts = catchAsync(async (req, res) => {
-  const filter = pickQueryParams(req.query, ['name', 'category'])
-  const options = pickQueryParams(req.query, [
-    'sortBy',
-    'limit',
-    'page',
-    'user',
-  ])
+  const filter = pickQueryParams(req.query, ['name', 'category', 'user'])
+  const options = pickQueryParams(req.query, ['sortBy', 'limit', 'page'])
   const result = await productService.queryProducts(filter, options)
 
   res.status(httpStatus.OK).send(result)
