@@ -1,7 +1,7 @@
 import httpStatus from 'http-status'
 import { Invoice } from '../models'
 import ApiError from '../utils/ApiError'
-import { CreateNewInvoiceType, FetchInvoicesByDateRange } from '../types'
+import { CreateNewInvoiceType, FetchMontlynvoicesByDateRange } from '../types'
 import {
   generateRandomString,
   getMonthsTimeRange,
@@ -94,11 +94,40 @@ export const getInvoicesByQueries = async (query: any) => {
   return invoices
 }
 
-export const fetchPaidInvoicesByDatePaid = async ({
+export const generateYearlyGraphData = async (user: string) => {
+  const invoices = await Invoice.find({
+    isPaid: true,
+    user,
+  }).exec()
+
+  const graphData = []
+
+  for (let i = 0; i < invoices.length; i++) {
+    graphData.push({
+      year: moment(invoices[i].paid_on).format('YYYY'),
+      value: getSumFromItems(invoices[i].items),
+    })
+  }
+
+  const result = _.chain(graphData)
+    .groupBy('year')
+    .map((group, label) => ({
+      label,
+      value: _.sumBy(group, 'value').toFixed(2),
+    }))
+    .value()
+
+  const label = result.map((data) => data.label)
+  const value = result.map((data) => data.value)
+
+  return { label, value }
+}
+
+export const generateMontlyGraphData = async ({
   user,
   year,
-}: FetchInvoicesByDateRange) => {
-  const { end, start } = await getTimeRange(year)
+}: FetchMontlynvoicesByDateRange) => {
+  const { end, start } = getTimeRange(year)
 
   const invoices = await Invoice.find({
     isPaid: true,

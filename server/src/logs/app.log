@@ -13013,3 +13013,234 @@
 {"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-11-08T15:08:14.349Z"}
 {"level":"info","message":"POST /analytics/sales/graph/year 200 - 1177.926 ms","timestamp":"2022-11-08T15:11:23.821Z"}
 {"level":"info","message":"POST /analytics/sales/graph/month 200 - 1095.345 ms","timestamp":"2022-11-08T15:11:34.606Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-11-09T09:45:15.120Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-11-09T09:45:15.128Z"}
+{"level":"error","message":"Error: MongooseServerSelectionError: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://docs.atlas.mongodb.com/security-whitelist/","timestamp":"2022-11-10T09:44:56.307Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-11-10T15:48:27.041Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-11-10T15:48:27.051Z"}
+{"level":"info","message":"OPTIONS /auth/login 204 - 2.425 ms","timestamp":"2022-11-10T15:48:52.879Z"}
+{"level":"info","message":"POST /auth/login 200 - 604.003 ms","timestamp":"2022-11-10T15:48:53.487Z"}
+{"level":"info","message":"OPTIONS /analytics/reports 204 - 0.141 ms","timestamp":"2022-11-10T15:48:53.900Z"}
+{"level":"info","message":"GET /analytics/reports 200 - 992.270 ms","timestamp":"2022-11-10T15:48:54.901Z"}
+{"level":"info","message":"OPTIONS /analytics/sales/graph 204 - 0.445 ms","timestamp":"2022-11-10T15:49:02.659Z"}
+{"isOperational":true,"level":"error","statusCode":404,"timestamp":"2022-11-10T15:49:02.728Z"}
+{"level":"info","message":"OPTIONS /analytics/reports 204 - 0.060 ms","timestamp":"2022-11-10T15:49:02.736Z"}
+{"level":"info","message":"OPTIONS /invoices/report 204 - 0.032 ms","timestamp":"2022-11-10T15:49:02.737Z"}
+{"level":"error","message":"POST /analytics/sales/graph 404 - 71.622 ms - message: Not found","timestamp":"2022-11-10T15:49:02.743Z"}
+{"level":"info","message":"GET /analytics/reports 200 - 1231.923 ms","timestamp":"2022-11-10T15:49:03.972Z"}
+{"level":"info","message":"GET /invoices/report 200 - 9723.356 ms","timestamp":"2022-11-10T15:49:12.469Z"}
+{"level":"info","message":"POST /auth/login 200 - 377.024 ms","timestamp":"2022-11-10T15:49:27.350Z"}
+{"level":"info","message":"POST /analytics/sales/graph/month 200 - 1383.038 ms","timestamp":"2022-11-10T15:49:47.427Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-11-10T15:51:44.671Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-11-10T15:51:44.677Z"}
+{"level":"info","message":"POST /analytics/sales/graph/month 200 - 1137.675 ms","timestamp":"2022-11-10T15:51:52.547Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-11-10T15:56:10.749Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-11-10T15:56:10.767Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-11-10T15:56:52.278Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-11-10T15:56:52.282Z"}
+{"level":"info","message":"POST /analytics/sales/graph/year 200 - 21389.063 ms","timestamp":"2022-11-10T15:58:29.131Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-11-10T16:00:04.984Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-11-10T16:00:05.000Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-11-10T16:02:00.392Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-11-10T16:02:00.405Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-11-10T16:13:12.667Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-11-10T16:13:12.681Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-11-10T16:13:19.832Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-11-10T16:13:19.840Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-11-10T16:13:27.937Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-11-10T16:13:27.939Z"}
+{"level":"info","message":"POST /analytics/sales/graph/year 200 - 1650.332 ms","timestamp":"2022-11-10T16:13:36.718Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-11-10T16:17:34.797Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-11-10T16:17:34.806Z"}
+{"level":"info","message":"POST /analytics/sales/graph/year 200 - 2635.751 ms","timestamp":"2022-11-10T16:17:41.545Z"}
+{"level":"info","message":"POST /analytics/sales/graph/month 200 - 1391.448 ms","timestamp":"2022-11-10T16:17:50.805Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-11-10T16:19:24.883Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-11-10T16:19:24.893Z"}
+{"level":"info","message":"POST /analytics/sales/graph/year 200 - 2538.693 ms","timestamp":"2022-11-10T16:19:30.918Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-11-10T16:21:55.984Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-11-10T16:21:55.995Z"}
+{"level":"info","message":"POST /analytics/sales/graph/year 200 - 2461.720 ms","timestamp":"2022-11-10T16:23:18.201Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-11-10T16:26:26.164Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-11-10T16:26:26.167Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-11-10T16:28:51.606Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-11-10T16:28:51.618Z"}
+{"level":"info","message":"POST /analytics/sales/graph/year 200 - 2861.817 ms","timestamp":"2022-11-10T16:29:19.166Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-11-10T16:39:29.051Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-11-10T16:39:29.061Z"}
+{"level":"error","message":"Error: Error: querySrv ETIMEOUT _mongodb._tcp.cluster0.bqnyokc.mongodb.net","timestamp":"2022-11-10T20:22:28.223Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-11-11T06:23:57.218Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-11-11T06:23:57.230Z"}
+{"level":"info","message":"POST /analytics/sales/graph/year 200 - 8300.670 ms","timestamp":"2022-11-11T06:24:49.539Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-11-11T06:27:16.510Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-11-11T06:27:16.512Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-11-11T06:27:28.035Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-11-11T06:27:28.044Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-11-11T06:29:12.456Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-11-11T06:29:12.470Z"}
+{"level":"info","message":"POST /analytics/sales/graph/year 200 - 4041.086 ms","timestamp":"2022-11-11T06:29:33.330Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-11-11T06:30:59.427Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-11-11T06:30:59.449Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-11-11T06:35:23.603Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-11-11T06:35:23.607Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-11-11T06:35:58.843Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-11-11T06:35:58.852Z"}
+{"level":"info","message":"POST /analytics/sales/graph/year 200 - 3812.329 ms","timestamp":"2022-11-11T06:36:08.327Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-11-11T06:38:58.640Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-11-11T06:38:58.654Z"}
+{"level":"info","message":"POST /analytics/sales/graph/year 200 - 2461.305 ms","timestamp":"2022-11-11T06:39:05.243Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-11-11T06:48:18.012Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-11-11T06:48:18.022Z"}
+{"level":"info","message":"POST /analytics/sales/graph/year 200 - 14479.698 ms","timestamp":"2022-11-11T06:48:42.181Z"}
+{"level":"info","message":"GET /invoices/query?limit=1000&sortBy=createdAt:desc 200 - 7664.909 ms","timestamp":"2022-11-11T06:50:38.667Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-11-11T06:53:05.937Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-11-11T06:53:05.940Z"}
+{"level":"info","message":"GET /invoices/query?limit=1000&sortBy=createdAt:desc 200 - 7163.215 ms","timestamp":"2022-11-11T06:53:23.922Z"}
+{"level":"info","message":"POST /analytics/sales/graph/year 200 - 12966.000 ms","timestamp":"2022-11-11T06:53:50.632Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-11-11T06:55:15.426Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-11-11T06:55:15.437Z"}
+{"level":"info","message":"POST /analytics/sales/graph/year 200 - 15372.600 ms","timestamp":"2022-11-11T06:55:33.765Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-11-11T06:59:57.535Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-11-11T06:59:57.538Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-11-11T07:03:27.772Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-11-11T07:03:27.774Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-11-11T07:05:59.303Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-11-11T07:05:59.314Z"}
+{"level":"info","message":"POST /analytics/sales/graph/year 200 - 7363.452 ms","timestamp":"2022-11-11T07:06:13.756Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-11-11T07:07:51.322Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-11-11T07:07:51.337Z"}
+{"level":"info","message":"POST /analytics/sales/graph/year 200 - 9148.594 ms","timestamp":"2022-11-11T07:08:04.414Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-11-11T07:09:56.618Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-11-11T07:09:56.629Z"}
+{"level":"info","message":"POST /analytics/sales/graph/year 200 - 10858.749 ms","timestamp":"2022-11-11T07:10:11.915Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-11-11T07:13:31.772Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-11-11T07:13:31.781Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-11-11T07:15:07.965Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-11-11T07:15:07.970Z"}
+{"level":"info","message":"POST /analytics/sales/graph/year 200 - 7391.288 ms","timestamp":"2022-11-11T07:15:21.294Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-11-11T07:16:50.031Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-11-11T07:16:50.048Z"}
+{"level":"info","message":"POST /analytics/sales/graph/year 200 - 7724.088 ms","timestamp":"2022-11-11T07:16:58.661Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-11-11T07:18:38.784Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-11-11T07:18:38.796Z"}
+{"level":"info","message":"POST /analytics/sales/graph/year 200 - 7002.952 ms","timestamp":"2022-11-11T07:18:51.078Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-11-11T07:27:49.763Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-11-11T07:27:49.779Z"}
+{"level":"info","message":"POST /analytics/sales/graph/year 200 - 10166.739 ms","timestamp":"2022-11-11T07:28:05.664Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-11-11T07:29:44.678Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-11-11T07:29:44.684Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-11-11T07:30:11.687Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-11-11T07:30:11.706Z"}
+{"level":"info","message":"POST /analytics/sales/graph/year 200 - 10060.053 ms","timestamp":"2022-11-11T07:30:24.712Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-11-11T07:33:28.963Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-11-11T07:33:28.974Z"}
+{"level":"info","message":"POST /analytics/sales/graph/year 200 - 5506.471 ms","timestamp":"2022-11-11T07:33:38.071Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-11-11T07:35:11.433Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-11-11T07:35:11.443Z"}
+{"level":"info","message":"POST /analytics/sales/graph/year 200 - 2663.978 ms","timestamp":"2022-11-11T07:35:25.894Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-11-11T07:36:50.640Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-11-11T07:36:50.646Z"}
+{"level":"info","message":"POST /analytics/sales/graph/year 200 - 7808.079 ms","timestamp":"2022-11-11T07:37:14.285Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-11-11T07:40:23.766Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-11-11T07:40:23.771Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-11-11T07:42:26.221Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-11-11T07:42:26.226Z"}
+{"level":"info","message":"POST /analytics/sales/graph/year 200 - 3562.951 ms","timestamp":"2022-11-11T07:42:32.445Z"}
+{"level":"info","message":"OPTIONS /analytics/sales/graph 204 - 4.095 ms","timestamp":"2022-11-11T07:42:54.253Z"}
+{"level":"info","message":"OPTIONS /analytics/reports 204 - 0.278 ms","timestamp":"2022-11-11T07:42:54.262Z"}
+{"level":"info","message":"OPTIONS /invoices/report 204 - 0.117 ms","timestamp":"2022-11-11T07:42:54.264Z"}
+{"isOperational":true,"level":"error","statusCode":404,"timestamp":"2022-11-11T07:42:54.305Z"}
+{"level":"error","message":"POST /analytics/sales/graph 404 - 36.459 ms - message: Not found","timestamp":"2022-11-11T07:42:54.321Z"}
+{"level":"info","message":"GET /analytics/reports 200 - 1521.466 ms","timestamp":"2022-11-11T07:42:55.829Z"}
+{"level":"info","message":"GET /invoices/report 200 - 4887.919 ms","timestamp":"2022-11-11T07:42:59.202Z"}
+{"level":"info","message":"OPTIONS /auth/login 204 - 5.571 ms","timestamp":"2022-11-11T07:43:07.703Z"}
+{"level":"info","message":"POST /auth/login 200 - 460.591 ms","timestamp":"2022-11-11T07:43:08.168Z"}
+{"level":"info","message":"OPTIONS /analytics/reports 204 - 0.112 ms","timestamp":"2022-11-11T07:43:08.249Z"}
+{"level":"info","message":"GET /analytics/reports 200 - 607.484 ms","timestamp":"2022-11-11T07:43:08.858Z"}
+{"level":"info","message":"OPTIONS /customer/query?limit=1000&sortBy=createdAt:desc 204 - 0.281 ms","timestamp":"2022-11-11T07:43:14.783Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 0.051 ms","timestamp":"2022-11-11T07:43:14.785Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc 200 - 1157.534 ms","timestamp":"2022-11-11T07:43:15.948Z"}
+{"level":"info","message":"GET /customer/query?limit=1000&sortBy=createdAt:desc 200 - 1619.509 ms","timestamp":"2022-11-11T07:43:16.421Z"}
+{"level":"info","message":"OPTIONS /customer/query?limit=1000&sortBy=createdAt:desc 204 - 4.573 ms","timestamp":"2022-11-11T07:46:00.939Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 0.110 ms","timestamp":"2022-11-11T07:46:00.948Z"}
+{"level":"info","message":"GET /customer/query?limit=1000&sortBy=createdAt:desc 200 - 1102.013 ms","timestamp":"2022-11-11T07:46:02.054Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc 200 - 1081.281 ms","timestamp":"2022-11-11T07:46:02.093Z"}
+{"level":"info","message":"OPTIONS /invoices/create 204 - 0.534 ms","timestamp":"2022-11-11T07:46:25.897Z"}
+{"level":"info","message":"POST /invoices/create 201 - 2609.306 ms","timestamp":"2022-11-11T07:46:28.509Z"}
+{"level":"info","message":"OPTIONS /invoices/xce6F32I 204 - 0.312 ms","timestamp":"2022-11-11T07:46:28.799Z"}
+{"level":"info","message":"GET /invoices/xce6F32I 200 - 2185.314 ms","timestamp":"2022-11-11T07:46:30.991Z"}
+{"level":"info","message":"OPTIONS /invoices/xce6F32I 204 - 0.535 ms","timestamp":"2022-11-11T07:46:46.018Z"}
+{"level":"info","message":"PATCH /invoices/xce6F32I 200 - 2127.654 ms","timestamp":"2022-11-11T07:46:48.149Z"}
+{"level":"info","message":"GET /invoices/xce6F32I 200 - 5168.437 ms","timestamp":"2022-11-11T07:46:54.159Z"}
+{"level":"info","message":"POST /analytics/sales/graph/month 200 - 8645.476 ms","timestamp":"2022-11-11T07:47:17.894Z"}
+{"level":"info","message":"OPTIONS /customer/query?limit=1000&sortBy=createdAt:desc 204 - 1.250 ms","timestamp":"2022-11-11T07:47:32.931Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 0.116 ms","timestamp":"2022-11-11T07:47:36.382Z"}
+{"level":"info","message":"GET /customer/query?limit=1000&sortBy=createdAt:desc 200 - 3435.005 ms","timestamp":"2022-11-11T07:47:36.384Z"}
+{"level":"info","message":"OPTIONS /invoices/report 204 - 0.190 ms","timestamp":"2022-11-11T07:47:36.425Z"}
+{"level":"info","message":"GET /customer/query?limit=1000&sortBy=createdAt:desc 200 - 501.114 ms","timestamp":"2022-11-11T07:47:36.891Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc 200 - 5801.777 ms","timestamp":"2022-11-11T07:47:42.200Z"}
+{"level":"info","message":"GET /invoices/report 200 - 21928.133 ms","timestamp":"2022-11-11T07:47:58.357Z"}
+{"level":"info","message":"OPTIONS /invoices/query?limit=1000&sortBy=createdAt:desc 204 - 0.042 ms","timestamp":"2022-11-11T07:47:58.393Z"}
+{"level":"info","message":"GET /invoices/query?limit=1000&sortBy=createdAt:desc 200 - 2312.636 ms","timestamp":"2022-11-11T07:48:00.722Z"}
+{"level":"info","message":"OPTIONS /invoices/create 204 - 0.451 ms","timestamp":"2022-11-11T07:48:16.377Z"}
+{"level":"info","message":"POST /invoices/create 201 - 2543.448 ms","timestamp":"2022-11-11T07:48:18.922Z"}
+{"level":"info","message":"OPTIONS /invoices/yl7r3sQ5 204 - 0.313 ms","timestamp":"2022-11-11T07:48:19.059Z"}
+{"level":"info","message":"GET /invoices/yl7r3sQ5 200 - 732.273 ms","timestamp":"2022-11-11T07:48:19.795Z"}
+{"level":"info","message":"OPTIONS /customer/query?limit=1000&sortBy=createdAt:desc 204 - 0.295 ms","timestamp":"2022-11-11T07:48:27.872Z"}
+{"level":"info","message":"GET /customer/query?limit=1000&sortBy=createdAt:desc 200 - 472.823 ms","timestamp":"2022-11-11T07:48:28.354Z"}
+{"level":"info","message":"OPTIONS /invoices/report 204 - 0.051 ms","timestamp":"2022-11-11T07:48:28.389Z"}
+{"level":"info","message":"GET /invoices/report 200 - 5588.308 ms","timestamp":"2022-11-11T07:48:33.978Z"}
+{"level":"info","message":"OPTIONS /invoices/query?limit=1000&sortBy=createdAt:desc 204 - 0.053 ms","timestamp":"2022-11-11T07:48:34.074Z"}
+{"level":"info","message":"GET /invoices/query?limit=1000&sortBy=createdAt:desc 200 - 2323.292 ms","timestamp":"2022-11-11T07:48:36.417Z"}
+{"level":"info","message":"OPTIONS /analytics/sales/graph 204 - 0.349 ms","timestamp":"2022-11-11T07:48:46.262Z"}
+{"level":"info","message":"OPTIONS /analytics/reports 204 - 0.104 ms","timestamp":"2022-11-11T07:48:46.263Z"}
+{"level":"info","message":"OPTIONS /invoices/report 204 - 0.131 ms","timestamp":"2022-11-11T07:48:46.265Z"}
+{"isOperational":true,"level":"error","statusCode":404,"timestamp":"2022-11-11T07:48:46.285Z"}
+{"level":"error","message":"POST /analytics/sales/graph 404 - 20.365 ms - message: Not found","timestamp":"2022-11-11T07:48:46.291Z"}
+{"level":"info","message":"GET /analytics/reports 200 - 719.181 ms","timestamp":"2022-11-11T07:48:47.007Z"}
+{"level":"info","message":"GET /invoices/report 200 - 3571.729 ms","timestamp":"2022-11-11T07:48:49.862Z"}
+{"level":"info","message":"OPTIONS /customer/query?limit=1000&sortBy=createdAt:desc 204 - 0.411 ms","timestamp":"2022-11-11T07:48:52.037Z"}
+{"level":"info","message":"GET /customer/query?limit=1000&sortBy=createdAt:desc 200 - 549.388 ms","timestamp":"2022-11-11T07:48:52.590Z"}
+{"level":"info","message":"OPTIONS /invoices/report 204 - 0.081 ms","timestamp":"2022-11-11T07:48:52.622Z"}
+{"level":"info","message":"GET /invoices/report 200 - 2271.670 ms","timestamp":"2022-11-11T07:48:54.896Z"}
+{"level":"info","message":"OPTIONS /invoices/query?limit=1000&sortBy=createdAt:desc 204 - 0.090 ms","timestamp":"2022-11-11T07:48:54.967Z"}
+{"level":"info","message":"GET /invoices/query?limit=1000&sortBy=createdAt:desc 200 - 2515.881 ms","timestamp":"2022-11-11T07:48:57.518Z"}
+{"level":"info","message":"POST /analytics/sales/graph/month 200 - 1193.154 ms","timestamp":"2022-11-11T07:49:02.130Z"}
+{"level":"info","message":"OPTIONS /invoices/yl7r3sQ5 204 - 0.455 ms","timestamp":"2022-11-11T07:49:05.340Z"}
+{"level":"info","message":"GET /invoices/yl7r3sQ5 200 - 781.088 ms","timestamp":"2022-11-11T07:49:06.124Z"}
+{"level":"info","message":"OPTIONS /invoices/yl7r3sQ5 204 - 0.106 ms","timestamp":"2022-11-11T07:49:09.568Z"}
+{"level":"info","message":"PATCH /invoices/yl7r3sQ5 200 - 497.243 ms","timestamp":"2022-11-11T07:49:10.066Z"}
+{"level":"info","message":"GET /invoices/yl7r3sQ5 200 - 842.143 ms","timestamp":"2022-11-11T07:49:11.367Z"}
+{"level":"info","message":"OPTIONS /customer/query?limit=1000&sortBy=createdAt:desc 204 - 0.489 ms","timestamp":"2022-11-11T07:49:13.565Z"}
+{"level":"info","message":"GET /customer/query?limit=1000&sortBy=createdAt:desc 200 - 457.316 ms","timestamp":"2022-11-11T07:49:14.026Z"}
+{"level":"info","message":"OPTIONS /invoices/report 204 - 0.091 ms","timestamp":"2022-11-11T07:49:14.047Z"}
+{"level":"info","message":"GET /invoices/report 200 - 2541.384 ms","timestamp":"2022-11-11T07:49:16.592Z"}
+{"level":"info","message":"OPTIONS /invoices/query?limit=1000&sortBy=createdAt:desc 204 - 2.290 ms","timestamp":"2022-11-11T07:49:16.703Z"}
+{"level":"info","message":"GET /invoices/query?limit=1000&sortBy=createdAt:desc 200 - 1947.126 ms","timestamp":"2022-11-11T07:49:18.679Z"}
+{"level":"info","message":"POST /analytics/sales/graph/month 200 - 1291.653 ms","timestamp":"2022-11-11T07:49:29.826Z"}
+{"level":"info","message":"POST /analytics/sales/graph/year 200 - 2374.376 ms","timestamp":"2022-11-11T07:49:43.477Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-11-11T07:54:21.778Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-11-11T07:54:21.781Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-11-11T07:54:27.873Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-11-11T07:54:27.877Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-11-11T07:54:33.432Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-11-11T07:54:33.434Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-11-11T07:55:24.111Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-11-11T07:55:24.117Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-11-11T07:56:11.864Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-11-11T07:56:11.869Z"}
+{"level":"info","message":"POST /analytics/sales/graph/year 200 - 1492.054 ms","timestamp":"2022-11-11T07:56:50.130Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-11-11T07:58:18.650Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-11-11T07:58:18.664Z"}
+{"level":"info","message":"POST /analytics/sales/graph/year 200 - 4269.218 ms","timestamp":"2022-11-11T07:58:26.115Z"}
+{"level":"info","message":"OPTIONS /customer/query?limit=1000&sortBy=createdAt:desc 204 - 1.096 ms","timestamp":"2022-11-11T07:58:40.185Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 0.053 ms","timestamp":"2022-11-11T07:58:40.203Z"}
+{"level":"info","message":"GET /customer/query?limit=1000&sortBy=createdAt:desc 200 - 1006.850 ms","timestamp":"2022-11-11T07:58:41.218Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc 200 - 2252.381 ms","timestamp":"2022-11-11T07:58:42.457Z"}
+{"level":"info","message":"OPTIONS /invoices/create 204 - 6.162 ms","timestamp":"2022-11-11T07:59:17.822Z"}
+{"level":"info","message":"POST /invoices/create 201 - 2024.186 ms","timestamp":"2022-11-11T07:59:19.849Z"}
+{"level":"info","message":"OPTIONS /invoices/EKjCMYiE 204 - 0.058 ms","timestamp":"2022-11-11T07:59:19.946Z"}
+{"level":"info","message":"GET /invoices/EKjCMYiE 200 - 1049.945 ms","timestamp":"2022-11-11T07:59:21.012Z"}
+{"level":"info","message":"OPTIONS /invoices/EKjCMYiE 204 - 0.356 ms","timestamp":"2022-11-11T07:59:27.192Z"}
+{"level":"info","message":"PATCH /invoices/EKjCMYiE 200 - 684.622 ms","timestamp":"2022-11-11T07:59:27.879Z"}
+{"level":"info","message":"GET /invoices/EKjCMYiE 200 - 1227.414 ms","timestamp":"2022-11-11T07:59:30.023Z"}
+{"level":"info","message":"POST /analytics/sales/graph/year 200 - 7834.878 ms","timestamp":"2022-11-11T07:59:49.417Z"}

@@ -155,7 +155,7 @@ export interface GetCustomersByQueryType {
   email?: string
 }
 
-export type FetchInvoicesByDateRange = {
+export type FetchMontlynvoicesByDateRange = {
   year: number
   user: string
 }

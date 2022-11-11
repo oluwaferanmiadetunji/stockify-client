@@ -223,7 +223,7 @@ export const renderPriceWithCommas = (payload: number): string => {
   return `${Naira} ${0}`
 }
 
-export const getTimeRange = async (year: number) => {
+export const getTimeRange = (year: number) => {
   const start = new Date(year, 0, 2)
   const end = new Date(year, 11, 32)
 
@@ -300,17 +300,3 @@ export const getMonthsTimeRange = (year: number) => {
 
 export const getUniqueArray = async (array: any[], key: string) =>
   _.sortBy(_.uniqBy(array, key), [key])
-
-export const generateYears = (
-  start = new Date(2022, 0, 2).toISOString(),
-  end = new Date().toISOString(),
-) => {
-  for (
-    var arr = [], dt = new Date(start);
-    dt <= new Date(end);
-    dt.setFullYear(dt.getFullYear() + 1)
-  ) {
-    arr.push(new Date(dt).getFullYear())
-  }
-  return arr
-}

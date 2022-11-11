@@ -20,12 +20,12 @@ export const getReports = catchAsync(async (req, res) => {
   }
 })
 
-export const getSalesGraphByYear = catchAsync(async (req, res) => {
+export const getSalesGraphByMonths = catchAsync(async (req, res) => {
   const user = req.currentUser._id
   const { year } = req.body
 
   try {
-    const response = await invoiceService.fetchPaidInvoicesByDatePaid({
+    const response = await invoiceService.generateMontlyGraphData({
       year,
       user,
     })
@@ -40,17 +40,13 @@ export const getSalesGraphByYear = catchAsync(async (req, res) => {
   }
 })
 
-export const getSalesGraphByMonths = catchAsync(async (req, res) => {
+export const getSalesGraphByYear = catchAsync(async (req, res) => {
   const user = req.currentUser._id
-  const { year } = req.body
 
   try {
-    const response = await invoiceService.fetchPaidInvoicesByDatePaid({
-      year,
-      user,
-    })
+    const response = await invoiceService.generateYearlyGraphData(user)
 
-    res.status(httpStatus.OK).json({ data: response, label: MONTH_LABELS })
+    res.status(httpStatus.OK).json({ data: response })
   } catch (error) {
     logger.error('Error: ', JSON.stringify(error))
 
