@@ -1,6 +1,6 @@
 import randomstring from 'randomstring'
 import { IInvoice } from '../types'
-import { Naira } from './constants'
+import { Naira, MONTH_MAP } from './constants'
 import moment from 'moment'
 import _ from 'lodash'
 
@@ -226,6 +226,18 @@ export const renderPriceWithCommas = (payload: number): string => {
 export const getTimeRange = (year: number) => {
   const start = new Date(year, 0, 2)
   const end = new Date(year, 11, 32)
+
+  return Object.freeze({
+    start,
+    end,
+  })
+}
+
+export const getDayRange = (month: string, year: number) => {
+  const formattedMonth: any = MONTH_MAP.get(month)
+  const start = new Date(year, formattedMonth, 1);
+
+  const end = new Date(year, formattedMonth + 1, 0);
 
   return Object.freeze({
     start,

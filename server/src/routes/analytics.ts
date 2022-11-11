@@ -25,4 +25,11 @@ router.post(
   analyticsControllers.getSalesGraphByMonths,
 )
 
+router.post(
+  '/sales/graph/daily',
+  middlewares.isAuth,
+  middlewares.attachUser,
+  analyticsControllers.getSalesGraphByDay,
+)
+
 export default router

@@ -55,3 +55,24 @@ export const getSalesGraphByYear = catchAsync(async (req, res) => {
       .json({ message: 'Error getting sales graph' })
   }
 })
+
+export const getSalesGraphByDay = catchAsync(async (req, res) => {
+  const user = req.currentUser._id
+  const { year, month } = req.body
+
+  try {
+    const response = await invoiceService.generateDailyGraphData({
+      year,
+      user,
+      month,
+    })
+
+    res.status(httpStatus.OK).json({ data: response, label: MONTH_LABELS })
+  } catch (error) {
+    logger.error('Error: ', JSON.stringify(error))
+
+    res
+      .status(httpStatus.SERVICE_UNAVAILABLE)
+      .json({ message: 'Error getting sales graph' })
+  }
+})

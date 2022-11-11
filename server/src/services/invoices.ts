@@ -7,6 +7,7 @@ import {
   getMonthsTimeRange,
   getTimeRange,
   getSumFromItems,
+  getDayRange,
 } from '../utils/helpers'
 import logger from '../config/logger'
 import moment from 'moment'
@@ -229,4 +230,47 @@ export const generateMontlyGraphData = async ({
   ]
 
   return graphData
+}
+
+export const generateDailyGraphData = async ({
+  year,
+  user,
+  month,
+}: {
+  year: number
+  user: string
+  month: string
+}) => {
+  const { end, start } = getDayRange(month, year)
+
+  const invoices = await Invoice.find({
+    isPaid: true,
+    user,
+    paid_on: {
+      $gte: start,
+      $lt: end,
+    },
+  }).exec()
+
+   const graphData = []
+
+  for (let i = 0; i < invoices.length; i++) {
+    graphData.push({
+      day: moment(invoices[i].paid_on).format('D'),
+      value: getSumFromItems(invoices[i].items),
+    })
+  }
+
+  const result = _.chain(graphData)
+    .groupBy('day')
+    .map((group, label) => ({
+      label,
+      value: Number(_.sumBy(group, 'value').toFixed(2)),
+    }))
+    .value()
+
+  const label = result.map((data) => data.label)
+  const value = result.map((data) => data.value)
+  
+  return { label, value }
 }
