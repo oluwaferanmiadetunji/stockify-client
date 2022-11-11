@@ -38,7 +38,7 @@ export const getDailySalesgraph = async (
   try {
     dispatch(setSalesGraphLoading(true))
     const response = await axios.post(
-      API_ROUTES.ANALYTICS_MONTHLY_SALES_GRAPH,
+      API_ROUTES.ANALYTICS_DAILY_SALES_GRAPH,
       {
         year,
         month,

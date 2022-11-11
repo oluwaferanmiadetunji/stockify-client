@@ -16,16 +16,31 @@ export const MONTH_LABELS = [
 ]
 
 export const MONTH_MAP = new Map([
-  ['Jan', 0],
-  ['Feb', 1],
-  ['Mar', 2],
-  ['Apr', 3],
+  ['January', 0],
+  ['February', 1],
+  ['March', 2],
+  ['April', 3],
   ['May', 4],
-  ['Jun', 5],
+  ['June', 5],
   ['July', 6],
-  ['Aug', 7],
-  ['Sept', 8],
-  ['Oct', 9],
-  ['Nov', 10],
-  ['Dec', 11],
+  ['August', 7],
+  ['September', 8],
+  ['October', 9],
+  ['November', 10],
+  ['December', 11],
+])
+
+export const MONTH_DAYS_MAP = new Map([
+  ['January', 31],
+  ['February', 28],
+  ['March', 31],
+  ['April', 30],
+  ['May', 31],
+  ['June', 30],
+  ['July', 31],
+  ['August', 31],
+  ['September', 30],
+  ['October', 31],
+  ['November', 30],
+  ['December', 31],
 ])

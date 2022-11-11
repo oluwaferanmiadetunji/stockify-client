@@ -39,6 +39,7 @@ export const API_ROUTES = {
   ANALYTICS_REPORTS: '/analytics/reports',
   ANALYTICS_MONTHLY_SALES_GRAPH: '/analytics/sales/graph/month',
   ANALYTICS_YEARLY_SALES_GRAPH: '/analytics/sales/graph/year',
+  ANALYTICS_DAILY_SALES_GRAPH: '/analytics/sales/graph/daily',
   INVOICES: '/invoices',
 }
 

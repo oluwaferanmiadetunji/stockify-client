@@ -10,7 +10,11 @@ import ReactApexChart from 'react-apexcharts'
 import { selectInvoiceState } from 'redux-store/invoice.slice'
 import { selectAnalyticsState } from 'redux-store/analytics.slice'
 import { useAppSelector, useAppDispatch } from 'redux-store/hooks'
-import { getMonthlySalesgraph, getYearlySalesgraph } from 'api/analytics'
+import {
+  getMonthlySalesgraph,
+  getYearlySalesgraph,
+  getDailySalesgraph,
+} from 'api/analytics'
 import { Value, Label } from './index'
 import { renderPriceWithCommas } from 'utils/helpers'
 import Loader from './Loader'
@@ -25,6 +29,7 @@ const Indicators = () => {
       type,
       loading,
       year,
+      month,
     },
   } = useAppSelector(selectAnalyticsState)
 
@@ -137,9 +142,11 @@ const Indicators = () => {
         await getMonthlySalesgraph(year, dispatch)
       } else if (type.value === 'yearly') {
         await getYearlySalesgraph(dispatch)
+      } else if (type.value === 'daily') {
+        await getDailySalesgraph(month, year, dispatch)
       }
     })()
-  }, [dispatch, type.value, year])
+  }, [dispatch, month, type.value, year])
 
   return (
     <Item>

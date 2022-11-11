@@ -228,14 +228,16 @@ export const generateYears = (
   start = new Date(2022, 0, 2).toISOString(),
   end = new Date().toISOString(),
 ) => {
-  for (
-    var arr = [], dt = new Date(start);
-    dt <= new Date(end);
-    dt.setFullYear(dt.getFullYear() + 1)
-  ) {
-    arr.push(new Date(dt).getFullYear())
-  }
-  return arr
+  // for (
+  //   var arr = [], dt = new Date(start);
+  //   dt <= new Date(end);
+  //   dt.setFullYear(dt.getFullYear() + 1)
+  // ) {
+  //   arr.push(new Date(dt).getFullYear())
+  // }
+  // return arr
+
+  return [2021, 2022, 2023]
 }
 
 export const generateMonths = () => {
@@ -259,5 +261,7 @@ export const getCurrentYear = () => new Date().getFullYear()
 
 export const getCurrentMonth = () => {
   const currentMonth = new Date().getMonth() + 1
-  return generateMonths().find((month) => month.value === currentMonth)?.label || ''
+  return (
+    generateMonths().find((month) => month.value === currentMonth)?.label || ''
+  )
 }

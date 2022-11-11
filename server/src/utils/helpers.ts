@@ -1,6 +1,6 @@
 import randomstring from 'randomstring'
 import { IInvoice } from '../types'
-import { Naira, MONTH_MAP } from './constants'
+import { Naira, MONTH_MAP, MONTH_DAYS_MAP } from './constants'
 import moment from 'moment'
 import _ from 'lodash'
 
@@ -235,9 +235,9 @@ export const getTimeRange = (year: number) => {
 
 export const getDayRange = (month: string, year: number) => {
   const formattedMonth: any = MONTH_MAP.get(month)
-  const start = new Date(year, formattedMonth, 1);
+  const start = new Date(year, formattedMonth, 1)
 
-  const end = new Date(year, formattedMonth + 1, 0);
+  const end = new Date(year, formattedMonth + 1, 0)
 
   return Object.freeze({
     start,
@@ -312,3 +312,7 @@ export const getMonthsTimeRange = (year: number) => {
 
 export const getUniqueArray = async (array: any[], key: string) =>
   _.sortBy(_.uniqBy(array, key), [key])
+
+export const fillMissingDays = (array: any[], month: string) => {
+  const daysLength: any = MONTH_DAYS_MAP.get(month)
+}

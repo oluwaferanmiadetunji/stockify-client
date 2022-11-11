@@ -46,7 +46,7 @@ export const getSalesGraphByYear = catchAsync(async (req, res) => {
   try {
     const { label, value } = await invoiceService.generateYearlyGraphData(user)
 
-    res.status(httpStatus.OK).json({ data: value, label })
+    return res.status(httpStatus.OK).json({ data: value, label })
   } catch (error) {
     logger.error('Error: ', JSON.stringify(error))
 
@@ -61,13 +61,13 @@ export const getSalesGraphByDay = catchAsync(async (req, res) => {
   const { year, month } = req.body
 
   try {
-    const response = await invoiceService.generateDailyGraphData({
+    const { label, value } = await invoiceService.generateDailyGraphData({
       year,
       user,
       month,
     })
 
-    res.status(httpStatus.OK).json({ data: response, label: MONTH_LABELS })
+    return res.status(httpStatus.OK).json({ data: value, label })
   } catch (error) {
     logger.error('Error: ', JSON.stringify(error))
 
