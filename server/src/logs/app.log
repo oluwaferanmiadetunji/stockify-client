@@ -13244,3 +13244,10 @@
 {"level":"info","message":"PATCH /invoices/EKjCMYiE 200 - 684.622 ms","timestamp":"2022-11-11T07:59:27.879Z"}
 {"level":"info","message":"GET /invoices/EKjCMYiE 200 - 1227.414 ms","timestamp":"2022-11-11T07:59:30.023Z"}
 {"level":"info","message":"POST /analytics/sales/graph/year 200 - 7834.878 ms","timestamp":"2022-11-11T07:59:49.417Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-11-11T08:02:13.333Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-11-11T08:02:13.355Z"}
+{"level":"info","message":"POST /analytics/sales/graph/month 200 - 4655.506 ms","timestamp":"2022-11-11T08:02:35.060Z"}
+{"level":"info","message":"POST /analytics/sales/graph/year 200 - 14072.398 ms","timestamp":"2022-11-11T08:03:02.999Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-11-11T08:04:47.619Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-11-11T08:04:47.625Z"}
+{"level":"info","message":"POST /analytics/sales/graph/year 200 - 1636.922 ms","timestamp":"2022-11-11T08:04:57.697Z"}

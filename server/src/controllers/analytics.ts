@@ -44,9 +44,9 @@ export const getSalesGraphByYear = catchAsync(async (req, res) => {
   const user = req.currentUser._id
 
   try {
-    const response = await invoiceService.generateYearlyGraphData(user)
+    const { label, value } = await invoiceService.generateYearlyGraphData(user)
 
-    res.status(httpStatus.OK).json({ data: response })
+    res.status(httpStatus.OK).json({ data: value, label })
   } catch (error) {
     logger.error('Error: ', JSON.stringify(error))
 

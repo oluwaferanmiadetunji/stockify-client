@@ -113,7 +113,7 @@ export const generateYearlyGraphData = async (user: string) => {
     .groupBy('year')
     .map((group, label) => ({
       label,
-      value: _.sumBy(group, 'value').toFixed(2),
+      value: Number(_.sumBy(group, 'value').toFixed(2)),
     }))
     .value()
 
