@@ -177,7 +177,7 @@ const Indicators = () => {
             <Grid item xs>
               <Item>
                 <Box sx={styles.card}>
-                  <Typography sx={styles.cardHeader}>REVENUE</Typography>
+                  <Typography sx={styles.cardHeader}>TOTAL REVENUE</Typography>
                   <Typography sx={styles.cardText}>
                     {report?.claimedNetIncome}
                   </Typography>
@@ -185,7 +185,7 @@ const Indicators = () => {
               </Item>
             </Grid>
 
-            <Grid item xs>
+            {/* <Grid item xs>
               <Item>
                 <Box sx={styles.card}>
                   <Typography sx={styles.cardHeader}>NET</Typography>
@@ -194,12 +194,12 @@ const Indicators = () => {
                   </Typography>
                 </Box>
               </Item>
-            </Grid>
+            </Grid> */}
 
             <Grid item xs>
               <Item>
                 <Box sx={styles.card}>
-                  <Typography sx={styles.cardHeader}>PENDING ORDERS</Typography>
+                  <Typography sx={styles.cardHeader}>TOTAL PENDING ORDERS</Typography>
                   <Typography sx={styles.cardText}>
                     {report?.unclaimedNetIncome}
                   </Typography>
@@ -210,7 +210,7 @@ const Indicators = () => {
             <Grid item xs>
               <Item>
                 <Box sx={styles.card}>
-                  <Typography sx={styles.cardHeader}>DUE</Typography>
+                  <Typography sx={styles.cardHeader}>TOTAL INVOICE DUE</Typography>
                   <Typography sx={styles.cardText}>
                     {report?.unclaimedNetIncome}
                   </Typography>

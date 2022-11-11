@@ -13700,3 +13700,46 @@
 {"level":"info","message":"POST /analytics/sales/graph/daily 200 - 488.199 ms","timestamp":"2022-11-11T12:18:02.780Z"}
 {"level":"info","message":"Connected to MongoDB","timestamp":"2022-11-11T12:19:36.329Z"}
 {"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-11-11T12:19:36.338Z"}
+{"level":"info","message":"GET /analytics/reports 200 - 690.971 ms","timestamp":"2022-11-11T12:22:26.020Z"}
+{"level":"info","message":"GET /invoices/report 200 - 2820.375 ms","timestamp":"2022-11-11T12:22:38.059Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2022-11-11T12:23:55.754Z"}
+{"level":"info","message":"Server running in development and listening on port 8000","timestamp":"2022-11-11T12:23:55.767Z"}
+{"level":"info","message":"OPTIONS /analytics/sales/graph/daily 204 - 2.038 ms","timestamp":"2022-11-11T12:24:53.630Z"}
+{"level":"info","message":"OPTIONS /analytics/reports 204 - 0.161 ms","timestamp":"2022-11-11T12:24:53.634Z"}
+{"level":"info","message":"OPTIONS /invoices/report 204 - 0.044 ms","timestamp":"2022-11-11T12:24:53.694Z"}
+{"level":"info","message":"POST /analytics/sales/graph/daily 200 - 571.351 ms","timestamp":"2022-11-11T12:24:54.207Z"}
+{"level":"info","message":"GET /analytics/reports 200 - 675.061 ms","timestamp":"2022-11-11T12:24:54.370Z"}
+{"level":"info","message":"GET /invoices/report 200 - 2522.940 ms","timestamp":"2022-11-11T12:24:56.224Z"}
+{"level":"info","message":"OPTIONS /analytics/sales/graph/daily 204 - 0.530 ms","timestamp":"2022-11-11T12:25:10.441Z"}
+{"level":"info","message":"POST /analytics/sales/graph/daily 200 - 567.350 ms","timestamp":"2022-11-11T12:25:11.011Z"}
+{"level":"info","message":"POST /analytics/sales/graph/daily 200 - 639.941 ms","timestamp":"2022-11-11T12:25:15.149Z"}
+{"level":"info","message":"OPTIONS /analytics/sales/graph/daily 204 - 2.051 ms","timestamp":"2022-11-11T12:25:21.493Z"}
+{"level":"info","message":"POST /analytics/sales/graph/daily 200 - 524.509 ms","timestamp":"2022-11-11T12:25:22.025Z"}
+{"level":"info","message":"POST /analytics/sales/graph/daily 200 - 688.275 ms","timestamp":"2022-11-11T12:25:22.545Z"}
+{"level":"info","message":"OPTIONS /analytics/reports 204 - 1.051 ms","timestamp":"2022-11-11T12:26:51.797Z"}
+{"level":"info","message":"GET /analytics/reports 200 - 593.519 ms","timestamp":"2022-11-11T12:26:52.394Z"}
+{"level":"info","message":"OPTIONS /analytics/sales/graph/daily 204 - 0.480 ms","timestamp":"2022-11-11T12:26:53.635Z"}
+{"level":"info","message":"OPTIONS /invoices/report 204 - 0.264 ms","timestamp":"2022-11-11T12:26:53.665Z"}
+{"level":"info","message":"POST /analytics/sales/graph/daily 200 - 495.872 ms","timestamp":"2022-11-11T12:26:54.134Z"}
+{"level":"info","message":"GET /analytics/reports 200 - 622.713 ms","timestamp":"2022-11-11T12:26:54.276Z"}
+{"level":"info","message":"GET /invoices/report 200 - 2390.705 ms","timestamp":"2022-11-11T12:26:56.058Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc 204 - 0.308 ms","timestamp":"2022-11-11T12:27:01.881Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc 200 - 854.502 ms","timestamp":"2022-11-11T12:27:02.741Z"}
+{"level":"info","message":"OPTIONS /product/query?limit=1000&sortBy=createdAt:desc&name=Oriental%20Granite%20Pants 204 - 0.416 ms","timestamp":"2022-11-11T12:27:20.137Z"}
+{"level":"info","message":"GET /product/query?limit=1000&sortBy=createdAt:desc&name=Oriental%20Granite%20Pants 200 - 313.274 ms","timestamp":"2022-11-11T12:27:20.456Z"}
+{"level":"info","message":"OPTIONS /analytics/reports 204 - 0.229 ms","timestamp":"2022-11-11T12:27:23.067Z"}
+{"level":"info","message":"OPTIONS /product/TP6jwZrA 204 - 0.081 ms","timestamp":"2022-11-11T12:27:23.079Z"}
+{"level":"info","message":"GET /product/TP6jwZrA 200 - 1195.562 ms","timestamp":"2022-11-11T12:27:24.275Z"}
+{"level":"info","message":"GET /analytics/reports 200 - 1493.642 ms","timestamp":"2022-11-11T12:27:24.563Z"}
+{"level":"info","message":"OPTIONS /customer/query?limit=1000&sortBy=createdAt:desc 204 - 0.317 ms","timestamp":"2022-11-11T12:27:27.389Z"}
+{"level":"info","message":"GET /customer/query?limit=1000&sortBy=createdAt:desc 200 - 769.158 ms","timestamp":"2022-11-11T12:27:28.160Z"}
+{"level":"info","message":"OPTIONS /invoices/report 204 - 0.405 ms","timestamp":"2022-11-11T12:27:28.199Z"}
+{"level":"info","message":"GET /invoices/report 200 - 2421.183 ms","timestamp":"2022-11-11T12:27:30.620Z"}
+{"level":"info","message":"OPTIONS /invoices/query?limit=1000&sortBy=createdAt:desc 204 - 0.094 ms","timestamp":"2022-11-11T12:27:30.684Z"}
+{"level":"info","message":"GET /invoices/query?limit=1000&sortBy=createdAt:desc 200 - 2041.586 ms","timestamp":"2022-11-11T12:27:32.740Z"}
+{"level":"info","message":"OPTIONS /invoices/yl7r3sQ5 204 - 0.276 ms","timestamp":"2022-11-11T12:27:33.246Z"}
+{"level":"info","message":"GET /invoices/yl7r3sQ5 200 - 732.467 ms","timestamp":"2022-11-11T12:27:33.980Z"}
+{"level":"info","message":"OPTIONS /invoices/yl7r3sQ5 204 - 0.329 ms","timestamp":"2022-11-11T12:27:41.965Z"}
+{"level":"info","message":"GET /invoices/yl7r3sQ5 200 - 1046.691 ms","timestamp":"2022-11-11T12:27:43.017Z"}
+{"level":"info","message":"OPTIONS /invoices/yl7r3sQ5 204 - 2.425 ms","timestamp":"2022-11-11T12:27:53.157Z"}
+{"level":"info","message":"GET /invoices/yl7r3sQ5 200 - 784.810 ms","timestamp":"2022-11-11T12:27:53.950Z"}
