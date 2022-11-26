@@ -19,36 +19,6 @@ const analyticsSlice = createSlice({
   name: 'analytics',
   initialState,
   reducers: {
-    updateCount: (
-      state: AnalyticsInterface,
-      action: PayloadAction<{
-        type: 'increase' | 'decrease'
-        value: 'customer' | 'product' | 'invoice'
-      }>,
-    ) => {
-      switch (action.payload.value) {
-        case 'customer':
-          action.payload.type === 'increase'
-            ? (state.customer = state.customer + 1)
-            : (state.customer = state.customer - 1)
-          break
-
-        case 'product':
-          action.payload.type === 'increase'
-            ? (state.product = state.product + 1)
-            : (state.product = state.product - 1)
-          break
-
-        case 'invoice':
-          action.payload.type === 'increase'
-            ? (state.invoice = state.invoice + 1)
-            : (state.invoice = state.invoice - 1)
-          break
-        default:
-          break
-      }
-    },
-
     setSalesGraphType: (
       state: AnalyticsInterface,
       action: PayloadAction<GRAPH_OPTIONS_TYPE>,
@@ -83,7 +53,6 @@ const analyticsSlice = createSlice({
 })
 
 export const {
-  updateCount,
   setSalesGraphType,
   setSalesGraphData,
   setSalesGraphMonth,
