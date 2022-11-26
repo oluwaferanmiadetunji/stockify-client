@@ -29,7 +29,8 @@ export const saveToken = (token: string): void => {
   axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
 }
 
-export const shortenCompany = (company: string) => `${company.slice(0, 12)} ...`
+export const shortenCompany = (company: string) =>
+  company.length > 12 ? `${company.slice(0, 12)} ...` : company
 
 export const getBooleanValue = (data: string | number): boolean => {
   switch (data) {
