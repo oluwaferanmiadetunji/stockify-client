@@ -4,20 +4,19 @@ import Company from './Company'
 import ListItemButton from '@mui/material/ListItemButton'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
-import ReceiptIcon from '@mui/icons-material/Receipt';
+import ReceiptIcon from '@mui/icons-material/Receipt'
 import PeopleIcon from '@mui/icons-material/People'
 import Typography from '@mui/material/Typography'
 import HomeIcon from '@mui/icons-material/Home'
 import Link from 'next/link'
-import { ROUTES } from 'utils/constant'
+import { ROUTES, ROLES } from 'utils/constant'
 import styles from './styles'
 import Paper from '@mui/material/Paper'
 import { useRouter } from 'next/router'
 import { Fragment } from 'react'
 import { useSession } from 'next-auth/react'
-import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
-import GroupIcon from '@mui/icons-material/Group';
-
+import ShoppingBagIcon from '@mui/icons-material/ShoppingBag'
+import GroupIcon from '@mui/icons-material/Group'
 
 const NavigationLink = ({
   href,
@@ -53,16 +52,9 @@ const NavigationLink = ({
   )
 }
 
-const pages = [
-  { text: 'Dashboard', href: ROUTES.DASHBOARD, icon: <HomeIcon /> },
-  { text: 'Customers', href: ROUTES.CUSTOMERS, icon: <PeopleIcon /> },
-  { text: 'Products', href: ROUTES.PRODUCTS, icon: <ShoppingBagIcon /> },
-  { text: 'Invoices', href: ROUTES.INVOICES, icon: <ReceiptIcon /> },
-  { text: 'Users', href: ROUTES.USERS, icon: <GroupIcon /> },
-]
-
 const Sidebar = () => {
   const { data: session, status } = useSession()
+  const user: any = session?.user
   const company: any = session?.user?.company
 
   return (
@@ -82,11 +74,37 @@ const Sidebar = () => {
       {company && <Company />}
 
       <List component="nav" sx={styles.list}>
-        {pages.map(({ href, icon, text }) => (
-          <Fragment key={text}>
-            <NavigationLink href={href} icon={icon} text={text} />
-          </Fragment>
-        ))}
+        <NavigationLink
+          href={ROUTES.DASHBOARD}
+          icon={<HomeIcon />}
+          text={'Dashboard'}
+        />
+
+        <NavigationLink
+          href={ROUTES.CUSTOMERS}
+          icon={<PeopleIcon />}
+          text={'Customers'}
+        />
+
+        <NavigationLink
+          href={ROUTES.PRODUCTS}
+          icon={<ShoppingBagIcon />}
+          text={'Products'}
+        />
+
+        <NavigationLink
+          href={ROUTES.INVOICES}
+          icon={<ReceiptIcon />}
+          text={'Invoices'}
+        />
+
+        {user?.user?.role === ROLES.ADMIN && (
+          <NavigationLink
+            href={ROUTES.USERS}
+            icon={<GroupIcon />}
+            text={'Users'}
+          />
+        )}
       </List>
     </Paper>
   )

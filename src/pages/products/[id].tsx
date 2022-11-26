@@ -4,13 +4,11 @@ import { GetServerSideProps } from 'next'
 import axios from 'axios'
 import { authOptions } from 'pages/api/auth/[...nextauth]'
 import { unstable_getServerSession } from 'next-auth/next'
-import { styled, alpha } from '@mui/material/styles'
-import Menu, { MenuProps } from '@mui/material/Menu'
+import { styled } from '@mui/material/styles'
 import Paper from '@mui/material/Paper'
 import Button from '@mui/material/Button'
-import MenuItem from '@mui/material/MenuItem'
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace'
-import { ROUTES } from 'utils/constant'
+import { ROUTES, ROLES } from 'utils/constant'
 import { renderPrice } from 'utils/helpers'
 import Typography from '@mui/material/Typography'
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth'
@@ -22,11 +20,10 @@ import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import EditIcon from '@mui/icons-material/Edit'
 import { DarkContainedButton, CancelButton } from 'components/buttons'
-import CustomModal from 'components/modal'
-import Input from 'components/input'
 import { toast } from 'react-toastify'
 import { useRouter } from 'next/router'
 import Avatar from '@mui/material/Avatar'
+import { useSession } from 'next-auth/react'
 
 const styles = {
   container: {
@@ -103,147 +100,6 @@ const Item = styled(Paper)(({ theme }: any) => ({
   borderRadius: '10px',
 }))
 
-const StyledMenu = styled((props: MenuProps) => (
-  <Menu
-    elevation={0}
-    anchorOrigin={{
-      vertical: 'bottom',
-      horizontal: 'right',
-    }}
-    transformOrigin={{
-      vertical: 'top',
-      horizontal: 'right',
-    }}
-    {...props}
-  />
-))(({ theme }: any) => ({
-  '& .MuiPaper-root': {
-    background: 'rgb(30, 33, 42)',
-    borderRadius: 6,
-    borderColor: 'white',
-    marginTop: theme.spacing(1),
-    minWidth: 180,
-    color: 'white',
-    width: '200px',
-    boxShadow:
-      'rgb(255, 255, 255) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px',
-    '& .MuiMenu-list': {
-      padding: '4px 0',
-    },
-    '& .MuiMenuItem-root': {
-      '& .MuiSvgIcon-root': {
-        fontSize: 18,
-
-        marginRight: theme.spacing(1.5),
-      },
-      '&:active': {
-        backgroundColor: alpha(
-          theme.palette.primary.main,
-          theme.palette.action.selectedOpacity,
-        ),
-      },
-    },
-  },
-}))
-
-const EditProduct = ({ data, setData, token }: any) => {
-  const [open, setOpen] = useState(false)
-  const [state, setState] = useState(data)
-
-  const [loading, setLoading] = useState(false)
-
-  const handleChange = (event: { target: { name: any; value: any } }) => {
-    setState({
-      ...state,
-      [event.target.name]: event.target.value,
-    })
-  }
-
-  const handleClickOpen = () => {
-    setOpen(true)
-  }
-
-  const handleClose = () => {
-    setOpen(false)
-  }
-
-  const handleSubmit = async (event: any) => {
-    event.preventDefault()
-    setLoading(true)
-
-    try {
-      const response = await axios.patch(`customers/${data.id}`, state, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-
-      setData(response.data.data)
-      toast.success(response.data.message)
-      handleClose()
-    } catch (error) {
-      toast.error('Error updating customer')
-    }
-
-    setLoading(false)
-  }
-
-  return (
-    <>
-      <MenuItem onClick={handleClickOpen} disableRipple sx={styles.menuItem}>
-        <EditIcon sx={styles.menuIcon} />
-        Edit
-      </MenuItem>
-
-      <CustomModal header="Edit Customer" open={open} setOpen={setOpen}>
-        <Box
-          component="form"
-          sx={{
-            marginTop: '20px',
-          }}
-          onSubmit={handleSubmit}
-          autoComplete="on"
-        >
-          <Input
-            handleChange={handleChange}
-            label="Name"
-            name="name"
-            value={state.name}
-            autoComplete="name"
-            autoFocus
-          />
-
-          <Input
-            handleChange={handleChange}
-            label="Email Address"
-            name="email"
-            value={state.email}
-            autoComplete="email"
-          />
-
-          <Input
-            handleChange={handleChange}
-            label="Phone Number"
-            name="phone"
-            value={state.phone}
-            autoComplete="phone"
-          />
-        </Box>
-
-        <Box sx={{ float: 'right' }}>
-          <CancelButton onClick={handleClose} text="Cancel" />
-
-          <DarkContainedButton
-            text="Update"
-            loading={loading}
-            onClick={handleSubmit}
-          />
-        </Box>
-      </CustomModal>
-    </>
-  )
-}
-
 const ProductInfo = ({ token, product }: any) => {
   const router = useRouter()
 
@@ -274,6 +130,10 @@ const ProductInfo = ({ token, product }: any) => {
     setData(product)
   }, [product])
 
+  const { data: session } = useSession()
+
+  const user: any = session?.user
+
   return (
     <Layout title="Customers">
       <Box sx={styles.container}>
@@ -293,21 +153,23 @@ const ProductInfo = ({ token, product }: any) => {
           <Box sx={styles.header}>
             <Typography sx={styles.headerText}>{data?.name}</Typography>
 
-            <Box sx={{ display: 'flex' }}>
-              <DarkContainedButton
-                component={Link}
-                href={`${ROUTES.PRODUCTS}/${data?.id}/edit`}
-                text="Edit"
-                startIcon={<EditIcon color="inherit" />}
-                styles={{ marginRight: '20px' }}
-              />
+            {user?.user?.role === ROLES.ADMIN && (
+              <Box sx={{ display: 'flex' }}>
+                <DarkContainedButton
+                  component={Link}
+                  href={`${ROUTES.PRODUCTS}/${data?.id}/edit`}
+                  text="Edit"
+                  startIcon={<EditIcon color="inherit" />}
+                  styles={{ marginRight: '20px' }}
+                />
 
-              <CancelButton
-                onClick={onDeleteCustomer}
-                loading={deleteLoading}
-                text="Delete Product"
-              />
-            </Box>
+                <CancelButton
+                  onClick={onDeleteCustomer}
+                  loading={deleteLoading}
+                  text="Delete Product"
+                />
+              </Box>
+            )}
           </Box>
 
           <Stack direction="row" spacing={4} sx={styles.subHeader}>

@@ -12,7 +12,7 @@ import MenuItem from '@mui/material/MenuItem'
 import DeleteIcon from '@mui/icons-material/Delete'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace'
-import { ROUTES, Naira } from 'utils/constant'
+import { ROUTES, Naira, ROLES } from 'utils/constant'
 import Typography from '@mui/material/Typography'
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth'
 import Stack from '@mui/material/Stack'
@@ -29,6 +29,7 @@ import CustomModal from 'components/modal'
 import Input from 'components/input'
 import { toast } from 'react-toastify'
 import { useRouter } from 'next/router'
+import { useSession } from 'next-auth/react'
 
 const styles = {
   container: {
@@ -284,6 +285,10 @@ const CustomerInfo = ({ token, customer }: any) => {
     setData(customer)
   }, [customer])
 
+  const { data: session } = useSession()
+
+  const user: any = session?.user
+
   return (
     <Layout title="Customers">
       <Box sx={styles.container}>
@@ -304,15 +309,17 @@ const CustomerInfo = ({ token, customer }: any) => {
             <Typography sx={styles.headerText}>{data?.name}</Typography>
 
             <Box>
-              <Button
-                variant="contained"
-                disableElevation
-                onClick={handleClick}
-                endIcon={<KeyboardArrowDownIcon />}
-                sx={styles.menuButton}
-              >
-                Actions
-              </Button>
+              {user?.user?.role === ROLES.ADMIN && (
+                <Button
+                  variant="contained"
+                  disableElevation
+                  onClick={handleClick}
+                  endIcon={<KeyboardArrowDownIcon />}
+                  sx={styles.menuButton}
+                >
+                  Actions
+                </Button>
+              )}
 
               <StyledMenu anchorEl={anchorEl} open={open} onClose={handleClose}>
                 <EditCustomer data={data} setData={setData} token={token} />

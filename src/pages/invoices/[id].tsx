@@ -7,7 +7,7 @@ import Button from '@mui/material/Button'
 import Divider from '@mui/material/Divider'
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace'
 import RouterLink from 'next/link'
-import { ROUTES } from 'utils/constant'
+import { ROUTES, ROLES } from 'utils/constant'
 import { renderPrice } from 'utils/helpers'
 import VisibilityIcon from '@mui/icons-material/Visibility'
 import Stack from '@mui/material/Stack'
@@ -38,6 +38,7 @@ import { authOptions } from 'pages/api/auth/[...nextauth]'
 import { unstable_getServerSession } from 'next-auth/next'
 import { DarkContainedButton } from 'components/buttons'
 import { toast } from 'react-toastify'
+import { useSession } from 'next-auth/react'
 
 const OPTIONS = [
   {
@@ -222,6 +223,10 @@ const Details = (props: any) => {
       })
     }
   }
+
+  const { data: session } = useSession()
+
+  const user: any = session?.user
 
   return (
     <Layout title="Invoices">
@@ -467,17 +472,60 @@ const Details = (props: any) => {
                       </ListItemButton>
                     </ListItem>
 
-                    {!data?.isPaid && (
+                    {user?.user?.role === ROLES.ADMIN && (
+                      <>
+                        {!data?.isPaid && (
+                          <ListItem disablePadding>
+                            <ListItemButton
+                              onClick={markAsPaid}
+                              disabled={
+                                loading.value &&
+                                loading.type === LOADING_TYPE.update
+                              }
+                            >
+                              {loading.value &&
+                              loading.type === LOADING_TYPE.update ? (
+                                <Box
+                                  sx={{
+                                    display: 'flex',
+                                    width: '100%',
+                                    textAlign: 'center',
+                                    justifyContent: 'center',
+                                  }}
+                                >
+                                  <CircularProgress
+                                    size={25}
+                                    sx={{ color: 'white' }}
+                                  />
+                                </Box>
+                              ) : (
+                                <>
+                                  <ListItemIcon>
+                                    <PriceCheckIcon />
+                                  </ListItemIcon>
+                                  <ListItemText
+                                    sx={{ color: 'white', fontSize: '14px' }}
+                                    primary="Mark Paid"
+                                  />
+                                </>
+                              )}
+                            </ListItemButton>
+                          </ListItem>
+                        )}
+                      </>
+                    )}
+
+                    {user?.user?.role === ROLES.ADMIN && (
                       <ListItem disablePadding>
                         <ListItemButton
-                          onClick={markAsPaid}
+                          onClick={onDeleteInvoice}
                           disabled={
                             loading.value &&
-                            loading.type === LOADING_TYPE.update
+                            loading.type === LOADING_TYPE.delete
                           }
                         >
                           {loading.value &&
-                          loading.type === LOADING_TYPE.update ? (
+                          loading.type === LOADING_TYPE.delete ? (
                             <Box
                               sx={{
                                 display: 'flex',
@@ -494,53 +542,17 @@ const Details = (props: any) => {
                           ) : (
                             <>
                               <ListItemIcon>
-                                <PriceCheckIcon />
+                                <DeleteIcon />
                               </ListItemIcon>
                               <ListItemText
                                 sx={{ color: 'white', fontSize: '14px' }}
-                                primary="Mark Paid"
+                                primary="Delete"
                               />
                             </>
                           )}
                         </ListItemButton>
                       </ListItem>
                     )}
-
-                    <ListItem disablePadding>
-                      <ListItemButton
-                        onClick={onDeleteInvoice}
-                        disabled={
-                          loading.value && loading.type === LOADING_TYPE.delete
-                        }
-                      >
-                        {loading.value &&
-                        loading.type === LOADING_TYPE.delete ? (
-                          <Box
-                            sx={{
-                              display: 'flex',
-                              width: '100%',
-                              textAlign: 'center',
-                              justifyContent: 'center',
-                            }}
-                          >
-                            <CircularProgress
-                              size={25}
-                              sx={{ color: 'white' }}
-                            />
-                          </Box>
-                        ) : (
-                          <>
-                            <ListItemIcon>
-                              <DeleteIcon />
-                            </ListItemIcon>
-                            <ListItemText
-                              sx={{ color: 'white', fontSize: '14px' }}
-                              primary="Delete"
-                            />
-                          </>
-                        )}
-                      </ListItemButton>
-                    </ListItem>
                   </List>
                 </Box>
               </Item>

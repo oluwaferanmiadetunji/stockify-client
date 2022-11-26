@@ -41,3 +41,8 @@ export const API_ROUTES = {
   ANALYTICS_YEARLY_SALES_GRAPH: '/analytics/sales/graph/year',
   ANALYTICS_DAILY_SALES_GRAPH: '/analytics/sales/graph/daily',
 }
+
+export const ROLES = {
+  ADMIN: 'adm',
+  USER: 'usr',
+}
