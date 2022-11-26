@@ -15,9 +15,10 @@ const CustomInput = ({
   rows,
   placeholder,
   startAdornment,
+  disabled,
 }: {
   value: string | number
-  handleChange: any
+  handleChange?: any
   label: string
   type?: string
   autoFocus?: boolean
@@ -27,6 +28,7 @@ const CustomInput = ({
   rows?: string | number
   placeholder?: string
   startAdornment?: any
+  disabled?: boolean
 }) => {
   return (
     <Box sx={styles.formItem}>
@@ -37,6 +39,7 @@ const CustomInput = ({
 
         <BootstrapInput
           name={name}
+          disabled={disabled}
           placeholder={placeholder}
           autoComplete={autoComplete}
           autoFocus={autoFocus}

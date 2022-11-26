@@ -1,3 +1,5 @@
+import { GRAPH_OPTIONS_TYPE } from 'utils/types'
+
 export const ROUTES = {
   HOME: '/',
   SIGNIN: '/signin',
@@ -5,22 +7,11 @@ export const ROUTES = {
   DASHBOARD: '/dashboard',
   CUSTOMERS: '/customers',
   INVOICES: '/invoices',
-  DASHBOARD_SALES: '/reports/sales',
-
-  ORDER: '/orders',
-  ORDER_SUMMARY: '/orders/summary',
+  INVOICES_CREATE: '/invoices/new',
   PRODUCTS: '/products',
   PRODUCTS_CREATE: '/products/new',
-  PRODUCTS_SUMMARY: '/products/summary',
-  PRODUCTS_INVENTORY: '/products/inventory',
-  PRODUCTS_INSIGHTS: '/products/insights',
-  INVOICE_CREATE: '/invoice/create',
-  INVOICE_DETAILS: '/invoice/details',
-  INVOICE_PREVIEW: '/invoice/preview',
-  RECEIPTS: '/receipts',
-  RECEIPTS_CREATE: '/receipts/create',
-  RECEIPTS_DETAILS: '/receipts/details',
-  RECEIPTS_PREVIEW: '/receipts/preview',
+  USERS: '/users',
+  PROFILE: '/profile',
 }
 
 export const API_URL = process.env.NEXT_PUBLIC_API_URL || ''
@@ -28,3 +19,25 @@ export const API_URL = process.env.NEXT_PUBLIC_API_URL || ''
 export const drawerWidth: number = 275
 
 export const Naira = '₦'
+
+export const GRAPH_OPTIONS: GRAPH_OPTIONS_TYPE[] = [
+  {
+    label: 'Daily',
+    value: 'daily',
+  },
+  {
+    label: 'Monthly',
+    value: 'monthly',
+  },
+  {
+    label: 'Yearly',
+    value: 'yearly',
+  },
+]
+
+export const API_ROUTES = {
+  ANALYTICS_REPORTS: '/analytics/reports',
+  ANALYTICS_MONTHLY_SALES_GRAPH: '/analytics/sales/graph/month',
+  ANALYTICS_YEARLY_SALES_GRAPH: '/analytics/sales/graph/year',
+  ANALYTICS_DAILY_SALES_GRAPH: '/analytics/sales/graph/daily',
+}

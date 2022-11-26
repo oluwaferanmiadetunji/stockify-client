@@ -19,7 +19,7 @@ import dayjs from 'dayjs'
 import Grid from '@mui/material/Grid'
 import Divider from '@mui/material/Divider'
 import Link from 'next/link'
-import { useState, MouseEvent, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import EditIcon from '@mui/icons-material/Edit'
 import { DarkContainedButton, CancelButton } from 'components/buttons'
 import CustomModal from 'components/modal'
@@ -592,6 +592,8 @@ const ProductInfo = ({ token, product }: any) => {
 
 export default ProductInfo
 
+ProductInfo.auth = true
+
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const id = context?.params?.id
 
@@ -624,7 +626,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
     product = response.data.data
   } catch (error) {
-    console.log(error)
+    //@ts-ignore
+    console.log(error?.response)
 
     return {
       redirect: {
@@ -633,7 +636,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       },
     }
   }
-  
+
   return {
     props: { id, product, token },
   }

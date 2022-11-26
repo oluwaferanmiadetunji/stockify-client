@@ -9,6 +9,7 @@ import Navbar from './components/navbar'
 import { useSession } from 'next-auth/react'
 import CreateCompany from 'components/create-company'
 import { useState, useEffect } from 'react'
+import { saveToken } from 'utils/helpers'
 
 const Layout = ({ children, title }: LayoutTypes) => {
   const { data: session } = useSession()
@@ -20,6 +21,14 @@ const Layout = ({ children, title }: LayoutTypes) => {
       setIsOpen(true)
     }
   }, [session, session?.user?.company])
+
+  useEffect(() => {
+    if (session) {
+      //@ts-ignore
+      const token = session?.accessToken
+      saveToken(token)
+    }
+  }, [session])
 
   return (
     <Container disableGutters maxWidth={false} sx={styles.container}>

@@ -24,6 +24,7 @@ import axios from 'axios'
 import ImagePlaceholder from 'components/show-image'
 import { toast } from 'react-toastify'
 import { getBooleanValue } from 'utils/helpers'
+import { useRouter } from 'next/router'
 
 const WhiteBorderTextField = styledComponent(TextField)`
   & label.Mui-focused {
@@ -59,6 +60,7 @@ const selectOptions = [
 ]
 
 const UpdateProduct = (props: any) => {
+  const Router = useRouter()
   const [state, setState] = useState(props.product)
 
   const handleChange = (event: { target: { name: any; value: any } }) => {
@@ -76,6 +78,9 @@ const UpdateProduct = (props: any) => {
   }
 
   const parseData = (state: any) => {
+    delete state.id
+    delete state.createdAt
+
     return {
       ...state,
       qty: Number(state.qty),
@@ -110,8 +115,8 @@ const UpdateProduct = (props: any) => {
       )
 
       toast.success('Product updated successfully')
-
       setState(response.data.data)
+      Router.back()
     } catch (error) {
       //@ts-ignore
       toast.error(error?.response.data.message || 'Error updating product')
@@ -668,7 +673,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
     product = response.data.data
   } catch (error) {
-    console.log(error)
+    //@ts-ignore
+    console.log(error?.response)
 
     return {
       redirect: {

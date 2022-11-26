@@ -11,12 +11,7 @@ import Stack from '@mui/material/Stack'
 import EmptyData from 'components/empty'
 import { styled, Theme } from '@mui/material/styles'
 import Paper from '@mui/material/Paper'
-import Button from '@mui/material/Button'
-import FilterListIcon from '@mui/icons-material/FilterList'
-import Tooltip from '@mui/material/Tooltip'
-import queryString from 'query-string'
 import { toast } from 'react-toastify'
-import ClearIcon from '@mui/icons-material/Clear'
 import clsx from 'clsx'
 import {
   AutoSizer,
@@ -42,14 +37,6 @@ interface ColumnData {
 
 interface Row {
   index: number
-}
-
-interface CustomerInterface {
-  email: string
-  name: string
-  phone: string
-  createdAt: string
-  id: string
 }
 
 interface MuiVirtualizedTableProps {
@@ -161,6 +148,39 @@ class MuiVirtualizedTable extends PureComponent<MuiVirtualizedTableProps> {
     })
   }
 
+  handleClose = async (id: string) => {
+    try {
+      await axios.delete(`users/${id}`, {
+        headers: {
+          //@ts-ignore
+          Authorization: `Bearer ${this.props.token}`,
+        },
+      })
+
+      toast.success('User deleted successfully')
+      this.props.navigate.reload()
+    } catch (e) {
+      toast.error('Error deleting user')
+    }
+  }
+
+  renderCellData = (key: string, cellData: any) => {
+    switch (key) {
+      case 'createdAt':
+        return dayjs(cellData).format('MMM D, YYYY HH:mm')
+      case 'id':
+        return (
+          <CancelButton
+            onClick={() => this.handleClose(cellData)}
+            text="Delete"
+          />
+        )
+
+      default:
+        return cellData
+    }
+  }
+
   cellRenderer: TableCellRenderer = ({ cellData, columnIndex }: any) => {
     const { columns, rowHeight, onRowClick } = this.props
 
@@ -182,9 +202,7 @@ class MuiVirtualizedTable extends PureComponent<MuiVirtualizedTableProps> {
             : 'left'
         }
       >
-        {columns[columnIndex].dataKey === 'createdAt'
-          ? dayjs(cellData).format('MMM D, YYYY HH:mm')
-          : cellData}
+        {this.renderCellData(columns[columnIndex].dataKey, cellData)}
       </TableCell>
     )
   }
@@ -234,11 +252,6 @@ class MuiVirtualizedTable extends PureComponent<MuiVirtualizedTableProps> {
             headerHeight={headerHeight!}
             {...tableProps}
             rowClassName={this.getRowClassName}
-            onRowClick={({ rowData }) => {
-              const { id } = rowData
-
-              this.props.navigate.push(`${ROUTES.CUSTOMERS}/${id}`)
-            }}
           >
             {columns.map(({ dataKey, ...other }, index) => (
               //@ts-ignore
@@ -265,178 +278,16 @@ class MuiVirtualizedTable extends PureComponent<MuiVirtualizedTableProps> {
 
 const VirtualizedTable: any = styled(WithRouter(MuiVirtualizedTable))(MuiStyles)
 
-const FilterCustomers = ({
-  isFiltered,
-  setIsFiltered,
-  setFilteredCustomers,
+const AddUser = ({
+  setUsers,
+  users,
   token,
 }: {
-  isFiltered: boolean
-  setIsFiltered: any
-  token: string
-  setFilteredCustomers: any
-}) => {
-  const initialState = {
-    name: '',
-    email: '',
-    phone: '',
-  }
-
-  const [open, setOpen] = useState(false)
-  const [loading, setLoading] = useState(false)
-  const [state, setState] = useState(initialState)
-
-  const handleClickOpen = () => {
-    setOpen(true)
-  }
-
-  const handleClose = () => {
-    setOpen(false)
-  }
-
-  const handleChange = (event: { target: { name: any; value: any } }) => {
-    setState({
-      ...state,
-      [event.target.name]: event.target.value,
-    })
-  }
-
-  const handleSubmit = async (event: any) => {
-    event.preventDefault()
-
-    if (!state.name && !state.email && !state.phone) {
-      toast.error('Filter value not set')
-      return
-    }
-
-    const query = queryString.stringify(state, {
-      skipEmptyString: true,
-    })
-
-    setLoading(true)
-
-    try {
-      const response = await axios.get(
-        `customers?limit=1000&sortBy=createdAt:desc&${query}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        },
-      )
-
-      setIsFiltered(true)
-      setFilteredCustomers(response.data.data.results)
-    } catch (error) {
-      toast.error('Error filtering customer')
-    }
-
-    handleClose()
-
-    setLoading(false)
-  }
-
-  const onClearFilter = () => {
-    setIsFiltered(false)
-    setState(initialState)
-  }
-
-  return (
-    <Box>
-      {isFiltered && (
-        <Tooltip title="Clear Filter">
-          <Button
-            variant="outlined"
-            startIcon={<ClearIcon />}
-            onClick={onClearFilter}
-            sx={{
-              color: 'red',
-              textTransform: 'unset',
-              marginRight: '20px',
-              '&:hover': {
-                color: 'red',
-              },
-            }}
-          >
-            Clear Filter
-          </Button>
-        </Tooltip>
-      )}
-
-      <Tooltip title="Filter Customers">
-        <Button
-          variant="outlined"
-          startIcon={<FilterListIcon sx={styles.filterIcon} />}
-          onClick={handleClickOpen}
-          sx={{
-            color: 'white',
-            textTransform: 'unset',
-            '&:hover': { color: 'white' },
-          }}
-        >
-          Filter
-        </Button>
-      </Tooltip>
-
-      <CustomModal header="Filter Customer" open={open} setOpen={setOpen}>
-        <Box
-          component="form"
-          sx={{
-            marginTop: '20px',
-          }}
-          onSubmit={handleSubmit}
-          autoComplete="on"
-        >
-          <Input
-            handleChange={handleChange}
-            label="Name"
-            name="name"
-            value={state.name}
-            autoComplete="name"
-            autoFocus
-          />
-
-          <Input
-            handleChange={handleChange}
-            label="Email Address"
-            name="email"
-            value={state.email}
-            autoComplete="email"
-          />
-
-          <Input
-            handleChange={handleChange}
-            label="Phone Number"
-            name="phone"
-            value={state.phone}
-            autoComplete="phone"
-          />
-        </Box>
-
-        <Box sx={{ float: 'right' }}>
-          <CancelButton onClick={handleClose} text="Cancel" />
-
-          <DarkContainedButton
-            text="Filter"
-            loading={loading}
-            onClick={handleSubmit}
-          />
-        </Box>
-      </CustomModal>
-    </Box>
-  )
-}
-
-const AddCustomer = ({
-  setCustomers,
-  customers,
-  token,
-}: {
-  setCustomers: any
-  customers: CustomerInterface[]
+  setUsers: any
+  users: any[]
   token: string
 }) => {
-  const initialState = { name: '', email: '', phone: '' }
+  const initialState = { name: '', email: '', password: '' }
 
   const [open, setOpen] = useState(false)
   const [state, setState] = useState(initialState)
@@ -462,17 +313,17 @@ const AddCustomer = ({
     setLoading(true)
 
     try {
-      const response = await axios.post('customers', state, {
+      const response = await axios.post('users/create', state, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
       toast.success(response.data.message)
-      setCustomers([response.data.data, ...customers])
+      setUsers([response.data.data, ...users])
       setState(initialState)
       handleClose()
     } catch (error) {
-      toast.error('Error adding customer')
+      toast.error('Error adding user')
     }
 
     setLoading(false)
@@ -481,12 +332,12 @@ const AddCustomer = ({
   return (
     <>
       <DarkContainedButton
-        text="Add New Customer"
+        text="Add New User"
         onClick={handleClickOpen}
         startIcon={<AddIcon />}
       />
 
-      <CustomModal header="Add New Customer" open={open} setOpen={setOpen}>
+      <CustomModal header="Add New User" open={open} setOpen={setOpen}>
         <Box
           component="form"
           sx={{
@@ -514,9 +365,10 @@ const AddCustomer = ({
 
           <Input
             handleChange={handleChange}
-            label="Phone Number"
-            name="phone"
-            value={state.phone}
+            label="Password"
+            name="password"
+            value={state.password}
+            type="password"
             autoComplete="phone"
           />
         </Box>
@@ -535,20 +387,15 @@ const AddCustomer = ({
   )
 }
 
-const Customers = (props: any) => {
-  const [customers, setCustomers] = useState<CustomerInterface[]>([])
-  const [isFiltered, setIsFiltered] = useState(false)
-
-  const [filteredCustomers, setFilteredCustomers] = useState<
-    CustomerInterface[]
-  >([])
+const Users = (props: any) => {
+  const [users, setUsers] = useState<any[]>([])
 
   useEffect(() => {
-    setCustomers(props.customers)
-  }, [props.customers])
+    setUsers(props.users)
+  }, [props.users])
 
   return (
-    <Layout title="Customers">
+    <Layout title="Users">
       <Box sx={styles.header}>
         <Typography
           variant="h5"
@@ -556,56 +403,42 @@ const Customers = (props: any) => {
           gutterBottom
           component="div"
         >
-          Customers
+          Users
         </Typography>
 
         <Stack direction="row" spacing={2}>
-          {/* <FilterCustomers
-            isFiltered={isFiltered}
-            setIsFiltered={setIsFiltered}
-            setFilteredCustomers={setFilteredCustomers}
-            token={props.token}
-          /> */}
-
-          <AddCustomer
-            setCustomers={setCustomers}
-            customers={customers}
-            token={props.token}
-          />
+          <AddUser setUsers={setUsers} users={users} token={props.token} />
         </Stack>
       </Box>
 
       <Box sx={styles.container}>
         <Item sx={{ height: 550 }}>
-          {customers.length > 0 ? (
+          {users.length > 0 ? (
             <VirtualizedTable
               //@ts-ignore
-              rowCount={
-                isFiltered ? filteredCustomers?.length : customers.length
-              }
-              rowGetter={({ index }: any) =>
-                isFiltered ? filteredCustomers[index] : customers[index]
-              }
+              rowCount={users.length}
+              rowGetter={({ index }: any) => users[index]}
+              token={props.token}
               columns={[
                 {
-                  width: 300,
+                  width: 400,
                   label: 'Name',
                   dataKey: 'name',
                 },
                 {
-                  width: 300,
+                  width: 400,
                   label: 'Email Address',
                   dataKey: 'email',
                 },
                 {
-                  width: 300,
-                  label: 'Phone Number',
-                  dataKey: 'phone',
-                },
-                {
-                  width: 300,
+                  width: 400,
                   label: 'Date',
                   dataKey: 'createdAt',
+                },
+                {
+                  width: 400,
+                  label: '',
+                  dataKey: 'id',
                 },
               ]}
             />
@@ -618,12 +451,12 @@ const Customers = (props: any) => {
   )
 }
 
-Customers.auth = true
+Users.auth = true
 
-export default Customers
+export default Users
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  let customers: CustomerInterface[] = []
+  let users: any[] = []
 
   const session = await unstable_getServerSession(
     context.req,
@@ -644,13 +477,13 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const token = session?.accessToken
 
   try {
-    const response = await axios.get('customers?limit=100', {
+    const response = await axios.get('users/query?limit=100', {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     })
 
-    customers = response.data.data.results
+    users = response.data.data.results
   } catch (error) {
     //@ts-ignore
     console.log(error?.response)
@@ -658,7 +491,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   return {
     props: {
-      customers,
+      users,
       token,
     },
   }

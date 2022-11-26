@@ -19,12 +19,12 @@ export const BootstrapInput = styled(InputBase)(({ theme }) => ({
     color: '#fff',
   },
   '& .MuiInputBase-input': {
-    borderRadius: 4,
+    borderRadius: '10px',
     position: 'relative',
     backgroundColor: 'transparent',
     border: '1px solid #ced4da',
     fontSize: 16,
-    width: '500px',
+    width: '450px',
     padding: '10px 15px',
     transition: theme.transitions.create([
       'border-color',

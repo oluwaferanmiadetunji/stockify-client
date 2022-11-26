@@ -1,6 +1,10 @@
 import jwtDecode from 'jwt-decode'
 import axios from 'axios'
 import { Naira } from './constant'
+import randomstring from 'randomstring'
+
+export const generateRandomString = (length = 10): string =>
+  randomstring.generate(length)
 
 export function storeTokenInLocalStorage(token: string) {
   localStorage.setItem('token', token)
@@ -42,10 +46,53 @@ export const getBooleanValue = (data: string | number): boolean => {
   }
 }
 
-export const renderPrice = (number: number | string): number | string => {
-  if (typeof number === 'number') {
-    return `${Naira} ${Number(number).toFixed(2)}`
-  }
+export const renderPrice = (payload: number | string): number | string => {
+  if (payload) {
+    let data = Number(payload).toFixed(2).toString().split('.')
+    data[0] = data[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 
-  return `${Naira} ${number}`
+    return `${Naira} ${data.join('.')}`
+  }
+  return `${Naira} ${0}`
+}
+
+export const generateMonths = () => {
+  return [
+    { label: 'January', value: 1 },
+    { label: 'February', value: 2 },
+    { label: 'March', value: 3 },
+    { label: 'April', value: 4 },
+    { label: 'May', value: 5 },
+    { label: 'June', value: 6 },
+    { label: 'July', value: 7 },
+    { label: 'August', value: 8 },
+    { label: 'September', value: 9 },
+    { label: 'October', value: 10 },
+    { label: 'November', value: 11 },
+    { label: 'December', value: 12 },
+  ]
+}
+
+export const getCurrentYear = () => new Date().getFullYear()
+
+export const getCurrentMonth = () => {
+  const currentMonth = new Date().getMonth() + 1
+  return (
+    generateMonths().find((month) => month.value === currentMonth)?.label || ''
+  )
+}
+
+export const generateYears = (
+  start = new Date(2022, 0, 2).toISOString(),
+  end = new Date().toISOString(),
+) => {
+  // for (
+  //   var arr = [], dt = new Date(start);
+  //   dt <= new Date(end);
+  //   dt.setFullYear(dt.getFullYear() + 1)
+  // ) {
+  //   arr.push(new Date(dt).getFullYear())
+  // }
+  // return arr
+  return [2021, 2022, 2023]
 }

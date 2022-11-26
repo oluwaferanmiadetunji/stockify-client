@@ -3,6 +3,7 @@ import type { AppProps } from 'next/app'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'assets/css/nucleo-icons.css'
 import 'assets/scss/blk-design-system-react.scss'
+import 'assets/scss/main.scss'
 import 'assets/demo/demo.css'
 import 'react-toastify/dist/ReactToastify.css'
 import ThemeProvider, { createEmotionCache } from 'theme'
@@ -18,6 +19,8 @@ import CssBaseline from '@mui/material/CssBaseline'
 import { isValidToken, saveToken } from 'utils/helpers'
 import Router from 'next/router'
 import LoadingScreen from 'components/loader'
+import { Provider } from 'react-redux'
+import store from 'redux-store'
 
 const clientSideEmotionCache = createEmotionCache()
 
@@ -93,22 +96,24 @@ export default function App({
       refetchOnWindowFocus={true}
     >
       <CacheProvider value={emotionCache}>
-        <ThemeProvider>
-          <ToastContainer />
-          <CssBaseline />
+        <Provider store={store}>
+          <ThemeProvider>
+            <ToastContainer />
+            <CssBaseline />
 
-          {loading ? (
-            <LoadingScreen />
-          ) : //@ts-ignore
-          Component.auth ? (
-            //@ts-ignore
-            <Auth>
+            {loading ? (
+              <LoadingScreen />
+            ) : //@ts-ignore
+            Component.auth ? (
+              //@ts-ignore
+              <Auth>
+                <Component {...pageProps} />
+              </Auth>
+            ) : (
               <Component {...pageProps} />
-            </Auth>
-          ) : (
-            <Component {...pageProps} />
-          )}
-        </ThemeProvider>
+            )}
+          </ThemeProvider>
+        </Provider>
       </CacheProvider>
     </SessionProvider>
   )

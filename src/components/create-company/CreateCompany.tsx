@@ -40,6 +40,10 @@ export default function FormDialog({
   const [state, setState] = useState({
     name: '',
     image: '',
+    phone: '',
+    address: '',
+    twitter: '',
+    instagram: '',
   })
 
   const handleChange = (name: string, value: string) => {
@@ -125,6 +129,87 @@ export default function FormDialog({
               ) : (
                 <UploadImage setImageURL={setImageURL} />
               )}
+            </Box>
+
+            <Box sx={styles.formItem}>
+              <FormControl variant="standard">
+                <InputLabel shrink htmlFor="name" sx={styles.textFieldLabel}>
+                  Company Phone Number
+                </InputLabel>
+
+                <BootstrapInput
+                  id="phone"
+                  name="phone"
+                  autoComplete="phone"
+                  fullWidth
+                  size="small"
+                  onChange={(event: any) =>
+                    handleChange('phone', event.target.value)
+                  }
+                  value={state.phone}
+                  type="tel"
+                />
+              </FormControl>
+            </Box>
+
+            <Box sx={styles.formItem}>
+              <FormControl variant="standard">
+                <InputLabel shrink htmlFor="name" sx={styles.textFieldLabel}>
+                  Company Address
+                </InputLabel>
+
+                <BootstrapInput
+                  id="address"
+                  name="address"
+                  autoComplete="address"
+                  fullWidth
+                  size="small"
+                  onChange={(event: any) =>
+                    handleChange('address', event.target.value)
+                  }
+                  value={state.address}
+                />
+              </FormControl>
+            </Box>
+
+            <Box sx={styles.formItem}>
+              <FormControl variant="standard">
+                <InputLabel shrink htmlFor="name" sx={styles.textFieldLabel}>
+                  Company Twitter Profile
+                </InputLabel>
+
+                <BootstrapInput
+                  id="twitter"
+                  name="twitter"
+                  autoComplete="twitter"
+                  fullWidth
+                  size="small"
+                  onChange={(event: any) =>
+                    handleChange('twitter', event.target.value)
+                  }
+                  value={state.twitter}
+                />
+              </FormControl>
+            </Box>
+
+            <Box sx={styles.formItem}>
+              <FormControl variant="standard">
+                <InputLabel shrink htmlFor="name" sx={styles.textFieldLabel}>
+                  Company Instagram Profile
+                </InputLabel>
+
+                <BootstrapInput
+                  id="instagram"
+                  name="instagram"
+                  autoComplete="instagram"
+                  fullWidth
+                  size="small"
+                  onChange={(event: any) =>
+                    handleChange('instagram', event.target.value)
+                  }
+                  value={state.instagram}
+                />
+              </FormControl>
             </Box>
 
             <Box sx={styles.buttons}>

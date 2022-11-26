@@ -43,6 +43,7 @@ import Card from '@mui/material/Card'
 import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag'
+import MoneyIcon from '@mui/icons-material/Money'
 
 interface ColumnData {
   dataKey: string
@@ -509,12 +510,12 @@ const Products = (props: any) => {
         </Typography>
 
         <Stack direction="row" spacing={2}>
-          <FilterProducts
+          {/* <FilterProducts
             isFiltered={isFiltered}
             setIsFiltered={setIsFiltered}
             setFilteredProducts={setFilteredProducts}
             token={props.token}
-          />
+          /> */}
 
           <DarkContainedButton
             text="Add New Product"
@@ -524,8 +525,8 @@ const Products = (props: any) => {
         </Stack>
       </Box>
 
-      <Grid container spacing={0} sx={{ margin: '20px 0', width: '100%' }}>
-        <Grid item xs={4}>
+      <Grid container spacing={1} sx={{ margin: '40px 0', width: '100%' }}>
+        <Grid item xs={3}>
           <Card
             sx={{
               padding: '20px',
@@ -541,20 +542,20 @@ const Products = (props: any) => {
                 variant="h5"
                 sx={{ marginBottom: '10px', color: 'rgb(20, 184, 166)' }}
               >
-                {products.length}
+                {props.stats.inStock}
               </Typography>
 
               <Typography variant="body1">In stock</Typography>
             </Box>
 
             <ShoppingCartIcon
-              fontSize="large"
+              fontSize="medium"
               sx={{ color: 'rgb(20, 184, 166)' }}
             />
           </Card>
         </Grid>
 
-        <Grid item xs={4}>
+        <Grid item xs={3}>
           <Card
             sx={{
               padding: '20px',
@@ -570,20 +571,20 @@ const Products = (props: any) => {
                 variant="h5"
                 sx={{ marginBottom: '10px', color: 'rgb(209, 67, 67)' }}
               >
-                0
+                {props.stats.outOfStock}
               </Typography>
 
               <Typography variant="body1">Stock Out</Typography>
             </Box>
 
             <RemoveShoppingCartIcon
-              fontSize="large"
+              fontSize="medium"
               sx={{ color: 'rgb(209, 67, 67)' }}
             />
           </Card>
         </Grid>
 
-        <Grid item xs={4}>
+        <Grid item xs={3}>
           <Card
             sx={{
               padding: '20px',
@@ -599,13 +600,39 @@ const Products = (props: any) => {
                 variant="h5"
                 sx={{ marginBottom: '10px', color: 'white' }}
               >
-                {products.length}
+                {props.stats.total}
               </Typography>
 
               <Typography variant="body1">Total</Typography>
             </Box>
 
-            <ShoppingBagIcon fontSize="large" sx={{ color: 'white' }} />
+            <ShoppingBagIcon fontSize="medium" sx={{ color: 'white' }} />
+          </Card>
+        </Grid>
+
+        <Grid item xs={3}>
+          <Card
+            sx={{
+              padding: '20px',
+              borderRadius: '10px',
+              display: 'flex',
+              background: 'rgb(17, 24, 39)',
+              justifyContent: 'space-between',
+              width: '95%',
+            }}
+          >
+            <Box>
+              <Typography
+                variant="h6"
+                sx={{ marginBottom: '10px', color: 'white' }}
+              >
+                {renderPrice(props.stats.totalPrice)}
+              </Typography>
+
+              <Typography variant="body1">Total Valuation</Typography>
+            </Box>
+
+            <MoneyIcon fontSize="medium" sx={{ color: 'white' }} />
           </Card>
         </Grid>
       </Grid>
@@ -686,6 +713,13 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   // @ts-ignore
   const token = session?.accessToken
 
+  let stats = {
+    total: 0,
+    inStock: 0,
+    outOfStock: 0,
+    totalPrice: 0,
+  }
+
   try {
     const response = await axios.get('products?limit=100', {
       headers: {
@@ -693,14 +727,28 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       },
     })
 
-    products = response.data.data.results
+    products = response?.data?.data?.results
+    stats.total = response?.data?.data?.totalResults
+
+    const res = await axios.get('products/count', {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+
+    stats.inStock = res?.data?.data?.inStock
+    stats.outOfStock = res?.data?.data?.outOfStock
+    stats.totalPrice = res?.data?.data?.totalPrice
   } catch (error) {
-    console.log(error)
+    //@ts-ignore
+    console.log(error?.response)
   }
+
   return {
     props: {
       products,
       token,
+      stats,
     },
   }
 }

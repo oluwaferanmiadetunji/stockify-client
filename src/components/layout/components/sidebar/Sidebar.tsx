@@ -4,7 +4,7 @@ import Company from './Company'
 import ListItemButton from '@mui/material/ListItemButton'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
+import ReceiptIcon from '@mui/icons-material/Receipt';
 import PeopleIcon from '@mui/icons-material/People'
 import Typography from '@mui/material/Typography'
 import HomeIcon from '@mui/icons-material/Home'
@@ -16,6 +16,8 @@ import { useRouter } from 'next/router'
 import { Fragment } from 'react'
 import { useSession } from 'next-auth/react'
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
+import GroupIcon from '@mui/icons-material/Group';
+
 
 const NavigationLink = ({
   href,
@@ -55,7 +57,8 @@ const pages = [
   { text: 'Dashboard', href: ROUTES.DASHBOARD, icon: <HomeIcon /> },
   { text: 'Customers', href: ROUTES.CUSTOMERS, icon: <PeopleIcon /> },
   { text: 'Products', href: ROUTES.PRODUCTS, icon: <ShoppingBagIcon /> },
-  { text: 'Invoices', href: ROUTES.INVOICES, icon: <ShoppingCartIcon /> },
+  { text: 'Invoices', href: ROUTES.INVOICES, icon: <ReceiptIcon /> },
+  { text: 'Users', href: ROUTES.USERS, icon: <GroupIcon /> },
 ]
 
 const Sidebar = () => {

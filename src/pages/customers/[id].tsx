@@ -82,7 +82,8 @@ const styles = {
     color: 'white',
   },
   divider: {
-    bgcolor: 'rgb(43, 47, 60)',
+    bgcolor: 'white',
+    width: '100%',
   },
   label: {
     color: 'white',
@@ -403,6 +404,8 @@ const CustomerInfo = ({ token, customer }: any) => {
 
 export default CustomerInfo
 
+CustomerInfo.auth = true
+
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const id = context?.params?.id
 
@@ -435,7 +438,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
     customer = response.data.data
   } catch (error) {
-    console.log(error)
+    //@ts-ignore
+    console.log(error?.response)
 
     return {
       redirect: {

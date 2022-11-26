@@ -19,7 +19,9 @@ import ListItemText from '@mui/material/ListItemText'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import { signOut, useSession } from 'next-auth/react'
 import { ROUTES, drawerWidth } from 'utils/constant'
+import Person2Icon from '@mui/icons-material/Person2'
 import axios from 'axios'
+import { useRouter } from 'next/router'
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== 'open',
@@ -42,11 +44,20 @@ const Navbar = () => {
     setAnchorElUser(event.currentTarget)
   }
 
+  const router = useRouter()
+
   const { data: session } = useSession()
   //@ts-ignore
   const token = session?.accessToken || ''
 
   const settings = [
+    {
+      label: 'Profile',
+      onClick: async () => {
+        router.push(ROUTES.PROFILE)
+      },
+      icon: <Person2Icon fontSize="small" />,
+    },
     {
       label: 'Logout',
       onClick: async () => {

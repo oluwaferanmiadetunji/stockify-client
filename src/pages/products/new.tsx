@@ -25,6 +25,7 @@ import axios from 'axios'
 import ImagePlaceholder from 'components/show-image'
 import { toast } from 'react-toastify'
 import { getBooleanValue } from 'utils/helpers'
+import _ from 'lodash'
 
 const WhiteBorderTextField = styledComponent(TextField)`
   & label.Mui-focused {
@@ -312,8 +313,7 @@ const CreateNewProduct = (props: any) => {
             <Grid item xs={8}>
               <Box>
                 <Autocomplete
-                  // options={_.uniqBy(products, 'category')}
-                  options={[]}
+                  options={_.uniqBy(props.products, 'category')}
                   value={state.category}
                   onChange={(event, newValue: any) => {
                     if (typeof newValue === 'string') {
@@ -393,7 +393,7 @@ const CreateNewProduct = (props: any) => {
                           style: { color: 'rgb(151, 161, 186)' },
                         }}
                         sx={{
-                          width: '540px',
+                          width: '500px',
                           input: {
                             color: 'white',
                             height: '10px',
@@ -700,9 +700,25 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   // @ts-ignore
   const token = session?.accessToken
 
+  let products: any[] = []
+
+  try {
+    const response = await axios.get('products?limit=100', {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+
+    products = response?.data?.data?.results
+  } catch (error) {
+    //@ts-ignore
+    console.log(error?.response)
+  }
+
   return {
     props: {
       token,
+      products,
     },
   }
 }
