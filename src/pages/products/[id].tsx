@@ -214,7 +214,7 @@ const ProductInfo = ({ token, product }: any) => {
               </Grid>
 
               <Grid item xs={8}>
-                <Typography sx={styles.value}>{data?.id}</Typography>
+                <Typography sx={styles.value}>{data?.productId}</Typography>
               </Grid>
             </Grid>
 
@@ -303,6 +303,18 @@ const ProductInfo = ({ token, product }: any) => {
 
               <Grid item xs={8}>
                 <Typography sx={styles.value}>{data?.supplier}</Typography>
+              </Grid>
+            </Grid>
+
+            <Divider sx={styles.divider} />
+
+            <Grid container spacing={2} sx={{ padding: '20px' }}>
+              <Grid item xs={4}>
+                <Typography sx={styles.label}>Supplier Number</Typography>
+              </Grid>
+
+              <Grid item xs={8}>
+                <Typography sx={styles.value}>{data?.supplierNumber}</Typography>
               </Grid>
             </Grid>
 

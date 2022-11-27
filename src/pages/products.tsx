@@ -674,8 +674,8 @@ const Products = (props: any) => {
                 },
                 {
                   width: 300,
-                  label: 'Product ID',
-                  dataKey: 'id',
+                  label: 'Product Code',
+                  dataKey: 'productId',
                 },
               ]}
             />

@@ -196,6 +196,14 @@ const UpdateProduct = (props: any) => {
                   autoComplete="qty"
                   type="number"
                 />
+
+                <Input
+                  handleChange={handleChange}
+                  label="Product Code"
+                  name="productId"
+                  value={state.productId}
+                  autoComplete="productId"
+                />
               </Box>
             </Grid>
           </Grid>
@@ -601,7 +609,16 @@ const UpdateProduct = (props: any) => {
 
                 <Input
                   handleChange={handleChange}
-                  label="manufacturer"
+                  label="Supplier Phone Number"
+                  name="supplierNumber"
+                  value={state.supplierNumber}
+                  autoComplete="supplierNumber"
+                  type="tel"
+                />
+
+                <Input
+                  handleChange={handleChange}
+                  label="Manufacturer"
                   name="manufacturer"
                   value={state.manufacturer}
                   autoComplete="manufacturer"
