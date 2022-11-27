@@ -24,7 +24,7 @@ import { GetServerSideProps } from 'next'
 import axios from 'axios'
 import ImagePlaceholder from 'components/show-image'
 import { toast } from 'react-toastify'
-import { getBooleanValue } from 'utils/helpers'
+import { getBooleanValue, generateRandomString } from 'utils/helpers'
 import _ from 'lodash'
 
 const WhiteBorderTextField = styledComponent(TextField)`
@@ -81,6 +81,8 @@ const CreateNewProduct = (props: any) => {
     isFingerPrint: false,
     isTouch: false,
     dedicatedMemory: false,
+    productId: '',
+    supplierNumber: '',
   }
   const Router = useRouter()
   const [state, setState] = useState(initialState)
@@ -220,6 +222,40 @@ const CreateNewProduct = (props: any) => {
                   autoComplete="qty"
                   type="number"
                 />
+
+                <Input
+                  handleChange={handleChange}
+                  label="Product Code"
+                  name="productId"
+                  value={state.productId}
+                  autoComplete="productId"
+                />
+
+                <Box
+                  sx={{
+                    display: 'flex',
+                    width: '500px',
+                    justifyContent: 'flex-end',
+                  }}
+                >
+                  <Button
+                    variant="outlined"
+                    onClick={() => {
+                      setState({
+                        ...state,
+                        productId: generateRandomString(8, true),
+                      })
+                    }}
+                    sx={{
+                      color: 'white',
+                      textTransform: 'unset',
+                      '&:hover': { color: 'white' },
+                      marginRight: '10px',
+                    }}
+                  >
+                    Generate Product Code
+                  </Button>
+                </Box>
               </Box>
             </Grid>
           </Grid>
@@ -624,7 +660,16 @@ const CreateNewProduct = (props: any) => {
 
                 <Input
                   handleChange={handleChange}
-                  label="manufacturer"
+                  label="Supplier Phone Number"
+                  name="supplierNumber"
+                  value={state.supplierNumber}
+                  autoComplete="supplierNumber"
+                  type="tel"
+                />
+
+                <Input
+                  handleChange={handleChange}
+                  label="Manufacturer"
                   name="manufacturer"
                   value={state.manufacturer}
                   autoComplete="manufacturer"

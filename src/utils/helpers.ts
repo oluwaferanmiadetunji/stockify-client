@@ -3,8 +3,16 @@ import axios from 'axios'
 import { Naira } from './constant'
 import randomstring from 'randomstring'
 
-export const generateRandomString = (length = 10): string =>
-  randomstring.generate(length)
+export const generateRandomString = (
+  length = 10,
+  capitalization = false,
+): string =>
+  capitalization
+    ? randomstring.generate({
+        length,
+        capitalization: 'uppercase',
+      })
+    : randomstring.generate(length)
 
 export function storeTokenInLocalStorage(token: string) {
   localStorage.setItem('token', token)

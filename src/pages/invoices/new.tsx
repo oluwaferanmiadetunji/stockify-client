@@ -143,7 +143,15 @@ const GenerateInvoice = (props: any) => {
     })
   }
 
-  const deleteItem = (index: number) => {}
+  const deleteItem = (index: number) => {
+    let items = [...state.items]
+    items.splice(index, 1)
+
+    setState({
+      ...state,
+      items,
+    })
+  }
 
   const setProduct = (index: number, value: any) => {
     let items = [...state.items]
@@ -161,10 +169,16 @@ const GenerateInvoice = (props: any) => {
   }
 
   const updateQty = (index: number, value: number) => {
+    let newValue = value
+
+    if (value < 1) {
+      newValue = 0
+    }
+
     let items = [...state.items]
     items[index] = {
       ...items[index],
-      qty: value,
+      qty: newValue,
     }
 
     setState({
@@ -237,7 +251,7 @@ const GenerateInvoice = (props: any) => {
   }
 
   const disabled =
-    !state.subject || !state.customer || state.items[0].name == ''
+    !state.subject || !state.customer || state.items[0].name == null
 
   return (
     <Layout title="Generate Invoice">
@@ -517,18 +531,22 @@ const GenerateInvoice = (props: any) => {
                 marginTop: '20px',
               }}
             >
-              <Button
-                variant="outlined"
-                startIcon={<AddIcon />}
-                onClick={addNewItem}
-                sx={{
-                  color: 'white',
-                  textTransform: 'unset',
-                  '&:hover': { color: 'white' },
-                }}
-              >
-                Add Item
-              </Button>
+              {state.items[state.items.length - 1].name == null ? (
+                <Typography></Typography>
+              ) : (
+                <Button
+                  variant="outlined"
+                  startIcon={<AddIcon />}
+                  onClick={addNewItem}
+                  sx={{
+                    color: 'white',
+                    textTransform: 'unset',
+                    '&:hover': { color: 'white' },
+                  }}
+                >
+                  Add Item
+                </Button>
+              )}
 
               <Box sx={{ display: 'flex', alignItems: 'center' }}>
                 <Typography
