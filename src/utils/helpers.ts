@@ -95,13 +95,15 @@ export const generateYears = (
   start = new Date(2022, 0, 2).toISOString(),
   end = new Date().toISOString(),
 ) => {
-  // for (
-  //   var arr = [], dt = new Date(start);
-  //   dt <= new Date(end);
-  //   dt.setFullYear(dt.getFullYear() + 1)
-  // ) {
-  //   arr.push(new Date(dt).getFullYear())
-  // }
-  // return arr
-  return [2021, 2022, 2023]
+  for (
+    var arr = [], dt = new Date(start);
+    dt <= new Date(end);
+    dt.setFullYear(dt.getFullYear() + 1)
+  ) {
+    arr.push(new Date(dt).getFullYear())
+  }
+  return arr
 }
+
+export const capitaliseFirstLetter = (str: string) =>
+  str ? str.charAt(0).toUpperCase() + str.slice(1) : ''

@@ -129,14 +129,17 @@ const Signin = () => {
       setStep(2)
     } else if (step === 2) {
       setLoading(true)
-      const response = await axios.post('users', state)
-      setLoading(false)
-      if (response.status === 201) {
+
+      try {
+        const response = await axios.post('users', state)
         toast.success(response.data.message)
         setState(initialState)
         router.push(ROUTES.SIGNIN)
-      } else {
-        toast.error(response.data.message)
+      } catch (error) {
+        //@ts-ignore
+        toast.error(error?.response.data.message)
+      } finally {
+        setLoading(false)
       }
     }
   }

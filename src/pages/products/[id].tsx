@@ -9,7 +9,7 @@ import Paper from '@mui/material/Paper'
 import Button from '@mui/material/Button'
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace'
 import { ROUTES, ROLES } from 'utils/constant'
-import { renderPrice } from 'utils/helpers'
+import { renderPrice,capitaliseFirstLetter } from 'utils/helpers'
 import Typography from '@mui/material/Typography'
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth'
 import Stack from '@mui/material/Stack'
@@ -24,6 +24,8 @@ import { toast } from 'react-toastify'
 import { useRouter } from 'next/router'
 import Avatar from '@mui/material/Avatar'
 import { useSession } from 'next-auth/react'
+import ChevronRightIcon from '@mui/icons-material/ChevronRight'
+import AddIcon from '@mui/icons-material/Add'
 
 const styles = {
   container: {
@@ -100,10 +102,11 @@ const Item = styled(Paper)(({ theme }: any) => ({
   borderRadius: '10px',
 }))
 
-const ProductInfo = ({ token, product }: any) => {
+const ProductInfo = ({ token, product, similarProducts }: any) => {
   const router = useRouter()
 
   const [data, setData] = useState<any>({})
+  const [similar, setSimilar] = useState([])
   const [deleteLoading, setDeleteLoading] = useState(false)
 
   const onDeleteCustomer = async () => {
@@ -129,6 +132,10 @@ const ProductInfo = ({ token, product }: any) => {
   useEffect(() => {
     setData(product)
   }, [product])
+
+  useEffect(() => {
+    setSimilar(similarProducts)
+  }, [similarProducts])
 
   const { data: session } = useSession()
 
@@ -168,6 +175,23 @@ const ProductInfo = ({ token, product }: any) => {
                   loading={deleteLoading}
                   text="Delete Product"
                 />
+
+                <Button
+                  color="success"
+                  sx={{
+                    background: 'rgba(255, 255, 255, 0.08)',
+                    padding:'10px 20px',
+                    '&:hover': {
+                      background: 'rgba(255, 255, 255, 0.08)',
+                      color: 'rgb(16, 185, 129)',
+                    },
+                  }}
+                 component={Link}
+                 href={`${ROUTES.PRODUCTS}/new?variation=${product.id}`}
+                  startIcon={<AddIcon />}
+                >
+                  Add new variation
+                </Button>
               </Box>
             )}
           </Box>
@@ -227,6 +251,18 @@ const ProductInfo = ({ token, product }: any) => {
 
               <Grid item xs={8}>
                 <Avatar src={String(data?.image)} variant="square" />
+              </Grid>
+            </Grid>
+
+            <Divider sx={styles.divider} />
+
+            <Grid container spacing={2} sx={{ padding: '20px' }}>
+              <Grid item xs={4}>
+                <Typography sx={styles.label}>Product Color</Typography>
+              </Grid>
+
+              <Grid item xs={8}>
+                <Typography sx={styles.value}>{capitaliseFirstLetter(data?.color)}</Typography>
               </Grid>
             </Grid>
 
@@ -314,7 +350,9 @@ const ProductInfo = ({ token, product }: any) => {
               </Grid>
 
               <Grid item xs={8}>
-                <Typography sx={styles.value}>{data?.supplierNumber}</Typography>
+                <Typography sx={styles.value}>
+                  {data?.supplierNumber}
+                </Typography>
               </Grid>
             </Grid>
 
@@ -459,6 +497,53 @@ const ProductInfo = ({ token, product }: any) => {
             </Grid>
           </Item>
         </Box>
+
+        <Typography
+          sx={{ ...styles.headerText, marginTop: '30px', marginBottom: '30px' }}
+        >
+          Similar Products
+        </Typography>
+
+        <Box sx={{ marginTop: '30px', marginBottom: '30px' }}>
+          <Grid container spacing={3}>
+            {similar.map((product: any) => (
+              <Grid item xs={4} key={product.id}>
+                <Item sx={{ padding: '20px' }}>
+                  <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                    <Avatar
+                      src={String(product?.image)}
+                      variant="square"
+                      sx={{ marginRight: '20px' }}
+                    />
+                    <Typography sx={{ ...styles.label, fontSize: '18px' }}>
+                      {product.name}
+                    </Typography>
+                  </Box>
+
+                  <Button
+                    sx={{
+                      fontSize: '14px',
+                      fontWeight: 'bold',
+                      background: 'rgba(255, 255, 255, 0.08)',
+                      marginTop: '30px',
+                      width: '100%',
+                      color: 'rgb(16, 185, 129)',
+                      '&:hover': {
+                        background: 'rgba(255, 255, 255, 0.08)',
+                        color: 'white',
+                      },
+                    }}
+                    endIcon={<ChevronRightIcon />}
+                    component={Link}
+                    href={`${ROUTES.PRODUCTS}/${product.id}`}
+                  >
+                    View Product
+                  </Button>
+                </Item>
+              </Grid>
+            ))}
+          </Grid>
+        </Box>
       </Box>
     </Layout>
   )
@@ -487,6 +572,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   }
 
   let product = {}
+  let similarProducts = []
 
   // @ts-ignore
   const token = session?.accessToken
@@ -498,7 +584,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       },
     })
 
-    product = response.data.data
+    product = response.data?.data?.product
+    similarProducts = response.data?.data?.similarProducts
   } catch (error) {
     //@ts-ignore
     console.log(error?.response)
@@ -512,6 +599,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   }
 
   return {
-    props: { id, product, token },
+    props: { id, product, token, similarProducts },
   }
 }
